@@ -1,0 +1,14 @@
+[12-Oct-2015 21:09:23 America/Denver] PHP Notice:  Undefined variable: contenttype in /home2/coctelbr/public_html/val/download_pic.php on line 26
+[12-Oct-2015 21:10:25 America/Denver] PHP Notice:  Undefined variable: contenttype in /home2/coctelbr/public_html/val/download_pic.php on line 26
+[12-Oct-2015 21:19:28 America/Denver] PHP Notice:  Undefined variable: contenttype in /home2/coctelbr/public_html/val/download_pic.php on line 26
+[12-Oct-2015 21:23:30 America/Denver] PHP Notice:  Undefined variable: contenttype in /home2/coctelbr/public_html/val/download_pic.php on line 26
+[12-Oct-2015 21:33:01 America/Denver] PHP Notice:  Undefined variable: contenttype in /home2/coctelbr/public_html/val/download_pic.php on line 26
+[12-Oct-2015 22:03:01 America/Denver] PHP Notice:  Undefined variable: contenttype in /home2/coctelbr/public_html/val/download_pic.php on line 26
+[12-Oct-2015 22:07:13 America/Denver] PHP Notice:  Undefined variable: contenttype in /home2/coctelbr/public_html/val/download_pic.php on line 26
+[12-Oct-2015 22:22:06 America/Denver] PHP Notice:  Undefined variable: contenttype in /home2/coctelbr/public_html/val/download_pic.php on line 26
+[12-Oct-2015 22:23:05 America/Denver] PHP Notice:  Undefined variable: contenttype in /home2/coctelbr/public_html/val/download_pic.php on line 26
+[12-Oct-2015 22:27:30 America/Denver] PHP Notice:  Undefined variable: contenttype in /home2/coctelbr/public_html/val/download_pic.php on line 26
+[12-Oct-2015 22:38:42 America/Denver] PHP Notice:  Undefined variable: contenttype in /home2/coctelbr/public_html/val/download_pic.php on line 26
+[12-Oct-2015 22:39:40 America/Denver] PHP Notice:  Undefined variable: contenttype in /home2/coctelbr/public_html/val/download_pic.php on line 26
+[12-Oct-2015 22:46:36 America/Denver] PHP Notice:  Undefined variable: contenttype in /home2/coctelbr/public_html/val/download_pic.php on line 26
+[13-Oct-2015 11:43:59 America/Denver] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home2/coctelbr/public_html/val/index.php on line 26

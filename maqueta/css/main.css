@@ -1,0 +1,983 @@
+@charset "utf-8";
+@import url("normalize.css");
+/* CSS Document */
+@font-face {
+    font-family: 'hoefler_textregular';
+    src: url('fonts/hoefler_text-webfont.eot');
+    src: url('fonts/hoefler_text-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/hoefler_text-webfont.woff2') format('woff2'),
+         url('fonts/hoefler_text-webfont.woff') format('woff'),
+         url('fonts/hoefler_text-webfont.svg#hoefler_textregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+html, body {
+    background: #000;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+body 
+{
+    font-family: Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin:0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    transition:all .2s ease-out;
+    -webkit-overflow-scrolling: touch;
+}
+/* especial */
+canvas 
+{
+    border: 1px solid #404040;
+}
+.mobile
+{
+    display: none !important;
+}
+.desktop
+{
+    display: block;
+}
+.terminos_mobile
+{
+    font-size: 12px;
+    color: #fff;
+    text-decoration: underline;
+    margin: 30px 0 20px;
+    text-transform: uppercase;
+}
+.slider 
+{
+    position: absolute;
+    top: 300px;
+    left: 85px;
+    width: 152px;
+    height: 52px;
+}
+.bar 
+{
+    position: relative;
+    top: 30px;
+    width: 152px;
+    height: 2px;
+    background-color: #404040 ;
+}
+.knob 
+{
+    position: relative;
+    left: 100px;
+    border: 1px solid #404040;
+    background-color: #C0C0C0 ;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+.border_top
+{
+    width: 50px;
+    height: auto;
+    border-top: 2px solid #f3b02f;
+    display: block;
+    margin: 0 auto;
+} 
+.border_top_red
+{
+    width: 50px;
+    height: auto;
+    border-top: 2px solid #ed1a3b;
+    display: block;
+    margin: 0 auto;
+} 
+.border_top_yellow
+{
+    width: 50px;
+    height: auto;
+    border-top: 2px solid #f3b02f;
+    display: block;
+    margin: 0 auto;
+} 
+#step_1,
+#step_2,
+#step_3
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+/* especial */
+
+.wrapper 
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url(../img/bg.png);
+    background-size: cover;
+    background-position: center;
+}
+
+
+.wrapper  .content_video
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    display: -webkit-box;  
+    display: -ms-flexbox; 
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrapper  .content_video .play
+{
+    background: url(../img/controls_video.png) no-repeat;
+    width: 129px;
+    cursor: pointer;
+    top: 30%;
+    height: 129px;
+    border:none;
+    position: absolute;
+}
+.wrapper  .content_video .play.pause
+{
+    background-position: 0px -129px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.wrapper .content_facebook_connect
+{
+    width: 100%;
+    max-width: 460px;
+    height: 125px;
+    position: absolute;
+    top: calc(60% - 62px);
+    left: 0; 
+    right: 0;
+    margin: 0 auto;
+}
+.wrapper .content_facebook_connect p
+{
+    margin: 15px 0 25px;
+    line-height: 20px;
+    text-shadow: 0px 0px 3px #000;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: 18px;
+}
+.wrapper .content_facebook_connect .fb_boton
+{
+    width: 266px;
+    height: 42px;
+    margin: 0 auto;
+    display: block;
+    background: transparent url(../img/facebook_connect.png) no-repeat center;
+    background-size: contain;
+    transition:all 0.2s ease-out;
+    -webkit-overflow-scrolling: touch;
+}
+.wrapper .content_facebook_connect .fb_boton:hover
+{
+    width: 270px;
+    height: 46px;
+}
+
+
+
+
+
+
+
+
+
+
+.wrapper .content_ingresar
+{
+    max-width: 850px;
+    width: 100%;
+    position: absolute;
+    top: calc(65% - 90px);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.wrapper .content_ingresar p
+{
+    vertical-align: top;
+    font-size: 26px;
+    font-family: 'hoefler_textregular';
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 100%;
+    text-shadow:0px 1px 2px #000;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 25px;
+}
+.wrapper .content_ingresar form
+{
+    max-width: 520px;
+    margin: 20px auto 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    text-align: center;
+    overflow: hidden;
+}
+.wrapper .content_ingresar form .border_gradient 
+{
+    width: 150px;
+    border: none;
+    display: inline-block;
+    padding: 1px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ed1c3b+0,fc981e+100 */
+    background: #ed1c3b; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ed1c3b 0%, #fc981e 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #ed1c3b 0%,#fc981e 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #ed1c3b 0%,#fc981e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed1c3b', endColorstr='#fc981e',GradientType=0 ); /* IE6-9 */
+}
+.wrapper .content_ingresar form .border_gradient input.date
+{
+    width: 100%;
+    display: inline-block;
+    margin: 0px 0px 0px;
+    height: 38px;
+    border: none;
+    color: #413d4b;
+    text-align: center;
+    font-size: 15px;
+}
+.wrapper .content_ingresar form .border_gradient:nth-child(2)
+{
+    margin: 0px 15px 0px; 
+}
+.wrapper .content_ingresar form .border_gradient input.date::-webkit-input-placeholder {
+    color: #413d4b;
+    text-align: center;
+    font-size: 15px;
+}
+.wrapper .content_ingresar form .border_gradient input.date::-moz-placeholder {
+    color: #413d4b;
+    text-align: center;
+    font-size: 15px;
+}
+.wrapper .content_ingresar form .border_gradient input.date:-moz-placeholder {
+    color: #413d4b;
+    text-align: center;
+    font-size: 15px;
+}
+.wrapper .content_ingresar form .border_gradient input.date:-ms-input-placeholder {
+    color: #413d4b;
+    text-align: center;
+    font-size: 15px;
+}
+
+.wrapper .content_ingresar form input.ingresar
+{
+    width: 159px;
+    height: 43px;
+    display: block;
+    margin: 30px auto 0px;
+    border: none;
+    background: url(../img/ingresar.png) no-repeat center;
+    background-size: contain;
+    color: #fff;
+    font-size: 17px;
+}
+.wrapper .content_ingresar form input.ingresar:hover
+{
+    opacity: 0.7;
+}
+
+
+
+
+
+
+
+
+
+.wrapper .content_buscar_amigo
+{
+    width: 100%;
+    height: 190px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.wrapper .content_buscar_amigo p
+{
+    width: 100%;
+    font-size: 24px;
+    font-family: 'hoefler_textregular';
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 100%;
+    text-shadow:0px 1px 2px #000;
+    text-align: center;
+}
+.wrapper .content_buscar_amigo p span
+{
+    color: #ffa100;
+}
+.wrapper .content_buscar_amigo .content_reportar
+{
+    width: 100%;
+    height: calc(100% - 41px);
+    border-top: 1px solid #ed1a3b;
+    margin-top: 15px;
+    background: rgba(0,0,0,0.8);
+}
+.wrapper .content_buscar_amigo #step_2 .content_reportar
+{
+     margin-top: 40px;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar
+{
+    max-width: 835px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    height: auto;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar.reportar_2
+{
+    max-width: 850px;
+    display: block;
+    text-align: center;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar p
+{
+    margin: 10px 0 10px;
+    line-height: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: 18px;
+    text-transform: inherit;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form
+{
+    margin: 20px auto 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    text-align: center;
+    position: relative;
+    z-index: 100000000;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form img
+{
+    float: left;
+    margin: 5px 10px 0 0px;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form img.botella
+{
+    margin: 5px 10px 0 20px;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient 
+{
+    width: 280px;
+    height: 37px;
+    border: none;
+    /* overflow: hidden; */
+    float: left;
+    position: relative;
+    display: block;
+    padding: 1px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ed1c3b+0,fc981e+100 */
+    background: #ed1c3b; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ed1c3b 0%, #fc981e 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #ed1c3b 0%,#fc981e 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #ed1c3b 0%,#fc981e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed1c3b', endColorstr='#fc981e',GradientType=0 ); /* IE6-9 */
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient .box_amigos_facebook 
+{
+    width: 99%;
+    height: 280px;
+    border: none;
+    float: left;
+    position: absolute;
+    z-index: 10000;
+    font-size: 16px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #365899;
+    bottom: 40px;
+    overflow-y: scroll;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient .box_amigos_facebook .box_perfil
+{
+    width: 94%;
+    padding: 0 3% 6px;
+    float: left;
+    font-family: helvetica, arial, sans-serif;
+    display: block;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient .box_amigos_facebook .box_perfil img
+{
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-right: 6px;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient .box_amigos_facebook .box_perfil .nombre
+{
+    color: #365899;
+    font-weight: bold;
+    display: block;
+    text-align: left;
+    overflow: hidden;
+    padding-bottom: 2px;
+    font-size: 12px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient .box_amigos_facebook .box_perfil .text_gris
+{
+    color: #999;
+    font-size: 9px;
+    font-weight: bold;
+    display: block;
+    text-align: left;
+    overflow: hidden;
+    padding-bottom: 2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient input
+{
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0 45px 0  5%;
+    float: left;
+    position: relative;
+    font-size: 16px;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient .buscar
+{
+    position: absolute;
+    width: 39px;
+    height: 37px;
+    right: 1px;
+    z-index: 100000;
+    background: url(../img/buscar.png);
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form  input.reportar
+{
+    width: 159px;
+    height: 43px;
+    float: left;
+    display: block;
+    margin: -2px 0px 0 10px;
+    border: none;
+    background: url(../img/ingresar.png) no-repeat center;
+    background-size: contain;
+    color: #fff;
+    font-size: 16px;
+    text-indent: 25px;
+    line-height: 33px;
+    text-align: left;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form  input.reportar:hover
+{
+    opacity: 0.7;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .modificar
+{
+    width: 240px;
+    height: 43px;
+    background: url(../img/modificar.png) no-repeat center;
+    display: inline-block;
+    margin: 15px 0px 0 0px;
+    background-size: contain;
+    color: #fff;
+    font-size: 16px;
+    vertical-align: top;
+    text-indent: 85px;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: left;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .reportar_facebook
+{
+    width: 265px;
+    height: 42px;
+    background: url(../img/reportar_facebook.png) no-repeat center;
+    display: inline-block;
+    margin: 15px 4% 0;
+    background-size: contain;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .reportar_otro_amigo
+{
+    width: 266px;
+    height: 42px;
+    background: url(../img/reportar_otro_amigo.png) no-repeat center;
+    display: inline-block;
+    margin: 15px 0px 0px;
+    background-size: contain;
+    color: #fff;
+    font-size: 16px;
+    vertical-align: top;
+    text-indent: 15px;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: left;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar a:hover
+{
+    opacity: 0.6;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .compartir_facebook
+{
+    width: 200px;
+    height: 44px;
+    background: url(../img/compartir_facebook.png) no-repeat center;
+    display: inline-block;
+    margin: 15px 6% 0 0;
+    background-size: contain;
+    color: #fff;
+    font-size: 16px;
+    vertical-align: top;
+    text-indent: 15px;
+    line-height: 44px;
+    text-decoration: none;
+    text-align: left;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .reportar_amigo_final
+{
+    width: 266px;
+    height: 42px;
+    background: url(../img/reporta_un_amigo_final.png) no-repeat center;
+    display: inline-block;
+    margin: 15px 0px 0 0px;
+    background-size: contain;
+    color: #fff;
+    font-size: 16px;
+    vertical-align: top;
+    text-indent: 35px;
+    line-height: 43px;
+    text-decoration: none;
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.loader
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url(../img/bg_loader.jpg);
+    background-size: cover;
+    background-position: center;
+    top: 0;
+    z-index: 10000;
+}
+.loader .loader_center
+{
+    width: 111px;
+    height: 127px;
+    position: absolute;
+    top: calc(50% - 63.5px);
+    left: 0; 
+    right: 0;
+    margin: 0 auto;
+    background: url(../img/loader_center.png);
+    -webkit-animation: bombear 0.9s linear infinite;
+}
+@-webkit-keyframes bombear {
+    from
+    {
+        opacity: 1
+    }
+    to
+    {
+        opacity: 0.5;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.wrapper .content_terms
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.wrapper .content_terms .box_terms
+{
+    max-width: 500px;
+    width: 100%;
+    height: 500px;
+    top: 10%;
+    overflow-x: hidden;
+    border-top: 1px solid red;
+    margin: 20px auto 0;
+    text-align: center;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+61,ffffff+100&1+47,0+100 */
+    background: -moz-linear-gradient(top,  rgba(0,0,0,1) 47%, rgba(0,0,0,0.74) 61%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,1) 47%,rgba(0,0,0,0.74) 61%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(0,0,0,1) 47%,rgba(0,0,0,0.74) 61%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+}
+.wrapper .content_terms .box_terms h2
+{
+    padding: 35px 0 30px 0;
+    font-size: 32px;
+    font-family: 'hoefler_textregular';
+}
+.wrapper .content_terms .box_terms p
+{
+    padding: 40px 0 30px 0;
+    font-size: 14px;
+    padding: 30px 5%;
+    line-height: 18px;
+    overflow-x: hidden;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.wrapper .content_pops
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.55);
+    transition:all .2s ease-out;
+    -webkit-overflow-scrolling: touch;
+    top: 0;
+}
+.wrapper .content_pops .alerta_facebook
+{
+    max-width: 440px;
+    width: 100%;
+    height: 300px;
+    position: relative;
+    margin: 0 auto;
+    left: 0;
+    background: #000;
+    right: 0;
+    top: calc(50% - 150px);
+    text-align: center;
+    border-top: 1px solid red;
+}
+.wrapper .content_pops .alerta_facebook .closed_pops
+{
+    width: 16px;
+    height: 16px;
+    background: url(../img/close.png);
+    position: absolute;
+    right: 0;
+    margin: 10px;
+}
+.wrapper .content_pops .alerta_facebook h3
+{
+    padding: 40px 0 30px 0;
+    font-size: 32px;
+    font-family: 'hoefler_textregular';
+}
+.wrapper .content_pops .alerta_facebook p
+{
+    padding: 30px 30px 30px;
+    font-size: 14px;
+    line-height: 18px;
+    overflow-x: hidden;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+}
+.wrapper .content_pops .alerta_facebook .ir_facebook
+{
+    width: 266px;
+    height: 42px;
+    margin: 0 auto;
+    display: block;
+    background: transparent url(../img/ir_facebook.png) no-repeat center;
+    background-size: contain;
+}
+.wrapper .content_pops .alerta_facebook .ir_facebook:hover
+{
+    opacity: 0.7;
+}
+
+
+
+
+
+
+
+
+
+footer
+{
+    width: 100%;
+    bottom: 20px;
+    position: absolute;
+}
+footer .logo,
+footer .mail
+{
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    margin: 0px 5px 5px 10px;
+}
+footer .mail
+{
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+}
+footer .mail:hover
+{
+    text-decoration: underline;
+}
+footer .box_share
+{
+    width: 250px;
+    height: 25px;
+    float: right;
+    margin-top: 54px;
+    position: absolute;
+    bottom: -12px;
+    right: 0;
+}
+footer .box_share a.legal
+{
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px 15px 5px 0;
+    border-right: 1px solid #fff;
+    margin: 3px 0 0 0;
+    float: left;
+    font-weight: 600;
+}
+footer .box_share a:hover
+{
+    text-decoration: underline;
+}
+footer .box_share a.facebook
+{
+    height: 16px;
+    width: 9px;
+    float: left;
+    background: url(../img/share.png) no-repeat;
+    background-position: 0px 0px;
+    margin: 4px 0 0 15px;
+}
+footer .box_share a.facebook:hover
+{
+    background-position: 0px -16px;
+}
+footer .box_share a.twitter
+{
+    height: 15px;
+    width: 16px;
+    float: left;
+    background: url(../img/share.png) no-repeat;
+    background-position: -25px 0px;
+    margin: 5px 0 0 10px;
+}
+footer .box_share a.twitter:hover
+{
+    background-position: -24px -18px;
+}
+footer .box_share a.youtube
+{
+    height: 14px;
+    width: 18px;
+    float: left;
+    background: url(../img/share.png) no-repeat;
+    background-position: -50px -1px;
+    margin: 6px 0 0 10px;
+}
+footer .box_share a.youtube:hover
+{
+    background-position: -50px -18px;
+}
+footer .box_share a.instagram
+{
+    height: 16px;
+    width: 16px;
+    float: left;
+    background: url(../img/share.png) no-repeat;
+    background-position: -82px 0px;
+    margin: 5px 0 0 10px;
+    border-right: 1px solid #fff;
+    padding: 0 10px 0 0;
+}
+footer .box_share a.instagram:hover
+{
+    background-position: -82px -16px;
+}
+footer .box_share a.sound
+{
+    height: 16px;
+    width: 17px;
+    float: left;
+    background: url(../img/controls.png) no-repeat;
+    background-position: 0px -18px;
+    margin: 5px 0 0 10px;
+}
+footer .box_share a.sound:hover
+{
+    background-position: 0px 0;
+}
+footer .box_share a.sound.active
+{
+    background-position: 0px -37px;
+}
+footer .box_share a.sound.active:hover
+{
+    background-position: 0px -54px;
+}
+footer .box_share a.full,
+footer .box_share a.full_2
+{
+    height: 16px;
+    width: 17px;
+    float: left;
+    background: url(../img/controls.png) no-repeat;
+    background-position: -28px 0;
+    margin: 5px 0 0 10px;
+    display: none;
+}
+footer .box_share a.full:hover
+{
+    background-position: -28px -55px;
+}
+footer .box_share a.full_2
+{
+    background-position: -28px -18px;
+    display: block;
+    
+}
+footer .box_share a.full_2:hover
+{
+    background-position: -28px -36px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
