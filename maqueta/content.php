@@ -1,4 +1,4 @@
-<div class="content_facebook_connect" style="display:none;">
+<div class="content_facebook_connect">
 	<div class="border_top"></div>
 	<p>Conéctese por Facebook para ayudarle a que sus ”amigos” <br> le paguen las polas que le deben.</p>
 	<button id="save" class="boton fb_boton"></button>
@@ -28,7 +28,7 @@
 
 
 
-<div class="content_buscar_amigo"  >
+<div class="content_buscar_amigo"  style="display:none;">
 
 	<div id="step_1" style="display:none;">
 		<p>
@@ -102,7 +102,7 @@
 
 
 
-	<div id="step_3" >
+	<div id="step_3" style="display:none;">
 		<p>
 			Es mejor que vaya <span>buscando </span> un <span>abogado</span>
 		</p>
@@ -131,7 +131,7 @@
 
 
 
-<div class="content_pops" >
+<div class="content_pops" style="display:none;">
 	<div class="alerta_facebook">
 		<a href="javascript:(0);" class="closed_pops"></a>
 		<h3>Alerta</h3>
