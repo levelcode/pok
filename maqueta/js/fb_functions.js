@@ -11,9 +11,6 @@
       var movil = false;
       var ios =  iOS();
       var downloadURL = "";
-
-
-
       /**
        * jQuery.browser.mobile (http://detectmobilebrowser.com/)
        *
@@ -37,16 +34,16 @@
       }
 
       if(url_l == "https://www."+dominio  || url_l == "https://"+dominio || url_l == "http://"+dominio || url_l == "http://www."+dominio){
-          if(fb_valid == false){
-              //afuera de Facebook
-              (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.7&appId=1660712804256395";
-                fjs.parentNode.insertBefore(js, fjs);
-              }(document, 'script', 'facebook-jssdk'));
-          }else{
+          // if(fb_valid == false){
+          //     //afuera de Facebook
+          //     (function(d, s, id) {
+          //       var js, fjs = d.getElementsByTagName(s)[0];
+          //       if (d.getElementById(id)) return;
+          //       js = d.createElement(s); js.id = id;
+          //       js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.7&appId=1660712804256395";
+          //       fjs.parentNode.insertBefore(js, fjs);
+          //     }(document, 'script', 'facebook-jssdk'));
+          // }else{
               //viene de Facebook
               //window.top.location.href = "https://www.facebook.com/pages/VenezuelaQuiere/836776256420302?sk=app_447297352129313";
 
@@ -73,7 +70,7 @@
                   });
                   FB.Canvas.setSize({ width: 760, height: 1200});
                   // ADD ADDITIONAL FACEBOOK CODE HERE
-              };
+              // };
 
               (function(d, s, id){
                var js, fjs = d.getElementsByTagName(s)[0];
@@ -176,7 +173,7 @@
           });
           //Se agrega al canvas
           var texto_p = texto_inicial.toUpperCase().substr(0,10);
-          var texto1 = new fabric.Text(texto_p, { 
+          var texto1 = new fabric.Text(texto_p, {
             fontFamily: font,
             top: y,
             evented: false,
@@ -228,13 +225,13 @@
               portada.opacity = 0.5;
               canvas.renderAll();
           }
-          
+
       }
 
-      //Funcion para insertar los elementos desde una URL 
+      //Funcion para insertar los elementos desde una URL
       function insertarFotoDrag(url, seleccionable, eventos, zindex, nombre)
       {
-          fabric.Image.fromURL(url, function(oImg) { 
+          fabric.Image.fromURL(url, function(oImg) {
               oImg.scale(1);
               oImg.selectable = seleccionable;
               oImg.evented = eventos;
@@ -249,9 +246,9 @@
               canvas.renderAll();
           });
       }
-      
+
       //texto dinamico
-      
+
 
       $("#texto1").keydown(function(e) {
           setTimeout(function () {
@@ -272,7 +269,7 @@
           var value_t = $("#texto1").val();
           if(value_t != ""){
               canvas.discardActiveObject();
-              canvas.renderAll(); 
+              canvas.renderAll();
               var imagen = canvas.toDataURL({
                   format: 'jpeg',
                   multiplier: 1,
@@ -291,7 +288,7 @@
                  contentType: false,
               }).done(function(respond){
                   $("#save").hide();
-                  
+
                   $("#share_l").show();
                   $("#download").show();
                   var nombre_t = $("#texto1").val();
@@ -324,7 +321,7 @@
                       */
 
 
-                      
+
 
 
                   }else{
@@ -334,7 +331,7 @@
                   }
                   var url_id = respond.split("/");
 
-                  
+
                   FB.api(
                       "/me/photos",
                       "POST",
@@ -346,7 +343,7 @@
                           alert("Foto subida con exito a tu biografía, ahora solo vuelvela tu foto de perfil!");
                         }else{
                           //alert("No fue posible subir la foto por:"+JSON.stringify(response.error));
-                         
+
                           FB.login(function(response) {
                             FB.api(
                                   "/me/photos",
@@ -381,7 +378,7 @@
 
                           }, function(response){});
                   });
-                  
+
 
                   $("#share_f0").val("https://datapola.tk/index.php?id="+url_id[1]);
                   $("#share_f").prop("data-href", "https://datapola.tk/index.php?id="+url_id[1]);
@@ -397,7 +394,7 @@
           }
       });
       // conventir una dataURL en un objeto Binario
-      function dataURLtoBlob(dataURL) {   
+      function dataURLtoBlob(dataURL) {
             var binary = atob(dataURL.split(',')[1]);
             var array = [];
             for(var i = 0; i < binary.length; i++) {
