@@ -343,7 +343,7 @@
 
 
             if(movil==true){
-                //window.top.location.href = "https://www.venezuelaquiere.com/personal/"
+                //window.top.location.href = "https://datapola.tk/"
             }else{
                 //
             }
@@ -409,7 +409,7 @@
                             var value_t = data.first_name;
                             $("#texto1").val(value_t);
                             canvas.clear();
-                            init("img/back_photo.jpg", value_t, 0,78, 'Lato', 60);
+                            init("img/bg.png", value_t, 0,78, 'Lato', 60);
                         });
                       }
                     }
@@ -458,7 +458,7 @@
                         var value_t = data.first_name;
                         $("#texto1").val(value_t);
                         canvas.clear();
-                        init("img/back_photo.jpg", value_t, 0,78, 'Lato', 60);
+                        init("img/bg.png", value_t, 0,78, 'Lato', 60);
                     });
                   }
                 }
@@ -481,7 +481,7 @@
             //inicializacion
             //Toma la foto de FB dentro del canvas
 
-            init("img/back_photo.jpg", "", 0,78, 'Lato', 60);
+            init("img/bg.png", "", 0,78, 'Lato', 60);
             function init(url, texto_inicial, x, y, font, size){
                 // Creamos el BackGround de la foto
                 var rect = new fabric.Rect({
@@ -612,8 +612,8 @@
                         
                         $("#share_l").show();
                         $("#download").show();
-                        var nombre_t = $("#texto1").val().toLowerCase();
-                        downloadURL = "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio";
+                        var nombre_t = $("#texto1").val();
+                        downloadURL = "https://datapola.tk/download_pic.php?file="+respond+"&name="+nombre_t;
                         if(ios == true){
                             var modalios = "<div><img src='"+respond+"'> </br><p>Mantén presionado sobre la foto para descargarla</p></div>"
                             /*$.fancybox({
@@ -624,19 +624,19 @@
                             });
                             */
                             //$("#download").hide();
-                            $("#download").prop("href", "download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio");
+                            $("#download").prop("href", "download_pic.php?file="+respond+"&name="+nombre_t);
                             /*
                             FB.ui(
                             {
                                 method: "feed",
-                                link: 'https://www.venezuelaquiere.com/personal',
+                                link: 'https://datapola.tk',
                                 name: 'Venezuela Quiere',
                                 app_id: '447297352129313',
                                 description: 'Venezuela quiere Cambio',
                                 caption: $('#albumName').text(),
-                                source: "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio",
+                                source: "https://datapola.tk/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio",
                                 type: 'photo',
-                                picture: "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
+                                picture: "https://datapola.tk/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
 
                             }, function(response){});
                             */
@@ -646,9 +646,9 @@
 
 
                         }else{
-                             $("#download").prop("href", "download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio");
+                             $("#download").prop("href", "download_pic.php?file="+respond+"&name="+nombre_t);
 
-                             window.location.href = "download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio";
+                             window.location.href = "download_pic.php?file="+respond+"&name="+nombre_t;
                         }
                         var url_id = respond.split("/");
 
@@ -657,7 +657,7 @@
                             "/me/photos",
                             "POST",
                             {
-                                "url": "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
+                                "url": "https://datapola.tk/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
                             },
                             function (response) {
                               if (response && !response.error) {
@@ -670,7 +670,7 @@
                                         "/me/photos",
                                         "POST",
                                         {
-                                            "url": "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
+                                            "url": "https://datapola.tk/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
                                         },
                                         function (response) {
                                           if (response && !response.error) {
@@ -688,21 +688,21 @@
                                 FB.ui(
                                 {
                                     method: "feed",
-                                    link: 'https://www.venezuelaquiere.com/personal',
+                                    link: 'https://datapola.tk',
                                     name: String($("#texto1").val())+' Quiere Cambio',
                                     app_id: '447297352129313',
                                     description: 'Cambia tu foto de perfil en Facebook y WhatsApp ¡ Y actívate por el cambio !',
                                     caption: 'venezuela quiere cambio',
                                     source: downloadURL,
                                     type: 'photo',
-                                    picture: "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
+                                    picture: "https://datapola.tk/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
 
                                 }, function(response){});
                         });
                         
 
-                        $("#share_f0").val("https://www.venezuelaquiere.com/personal/index.php?id="+url_id[1]);
-                        $("#share_f").prop("data-href", "https://www.venezuelaquiere.com/personal/index.php?id="+url_id[1]);
+                        $("#share_f0").val("https://datapola.tk/index.php?id="+url_id[1]);
+                        $("#share_f").prop("data-href", "https://datapola.tk/index.php?id="+url_id[1]);
 
 
 
