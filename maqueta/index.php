@@ -1,5 +1,5 @@
 <?php
-    //require 'inc/token-validation.php';  
+    //require 'inc/token-validation.php';
 ?>
 
 <!doctype html>
@@ -23,7 +23,7 @@
         <meta property="og:title" content="" />
         <meta property="og:description" content="Cambia tu foto de perfil en Facebook y WhatsApp ¡ Y actívate por el cambio !" />
         <meta property="og:site_name" content=""/>
-        <meta property="og:type" content="article"/> 
+        <meta property="og:type" content="article"/>
         <meta property="fb:app_id" content="447297352129313" />
         <meta property="og:locale" content="es_ES" />
         <meta property="og:image:width" content="400" />
@@ -33,7 +33,7 @@
         <!-- fuentes -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
         <!-- fuentes -->
-        <?php 
+        <?php
             $dominio = "https://datapola.tk";
             if(isset($_GET["id"])){
             ?>
@@ -50,7 +50,7 @@
     </head>
     <body>
 
-        
+
         <div class="loader" style="display:none">
             <div class="loader_center"></div>
         </div>
@@ -118,9 +118,9 @@
         <script type="text/javascript" src="js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script type="text/javascript" src="js/fb_functions.js"></script>
         <script type="text/javascript" src="js/general.js"></script>
 
-        <script type="text/javascript" src="js/fb_functions.js"></script>
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;

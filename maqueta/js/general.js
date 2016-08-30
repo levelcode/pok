@@ -10,10 +10,10 @@ $(document).ready(function() {
 	        canvas.height = window.innerHeight;
 
 	        /**
-	         * Your drawings need to be inside this function otherwise they will be reset when 
+	         * Your drawings need to be inside this function otherwise they will be reset when
 	         * you resize the browser window and the canvas goes will be cleared.
 	         */
-	        drawStuff(); 
+	        drawStuff();
 	}
 	resizeCanvas();
 
@@ -88,47 +88,47 @@ $(document).ready(function() {
 	knobMid, pixData, pixels, knobX = 100;
 
 	function init() {
-	vid = document.getElementById("vid");
-	play = document.getElementById("play");
-	can = document.getElementById("can");
-	ctx = can.getContext('2d');
-	vid.addEventListener('ended', vidEnd, false);
-	vid.addEventListener('play', vidSet, false);
-	knobMid = knob.offsetWidth / 2;
-	showVid();
+		vid = document.getElementById("vid");
+		play = document.getElementById("play");
+		can = document.getElementById("can");
+		ctx = can.getContext('2d');
+		vid.addEventListener('ended', vidEnd, false);
+		vid.addEventListener('play', vidSet, false);
+		knobMid = knob.offsetWidth / 2;
+		showVid();
 	}
 
 	function vidSet() {
-	clearTimeout(vidTimer);
-	vidTimer = setTimeout(showVid, 25);
+		clearTimeout(vidTimer);
+		vidTimer = setTimeout(showVid, 25);
 	}
 
 	function showVid() {
-	ctx.drawImage(vid, 0, 0);
-	processImage();
-	if (!document.querySelector("video").paused)
-	// Repeat 40 times a second to oversample 30 fps video
-	    vidTimer = setTimeout(showVid, 25);
-	}
+		ctx.drawImage(vid, 0, 0);
+		processImage();
+		if (!document.querySelector("video").paused)
+		// Repeat 40 times a second to oversample 30 fps video
+		    vidTimer = setTimeout(showVid, 25);
+		}
 
 	function processImage() {
-	// get pixel data for entire canvas
-	pixels = ctx.getImageData(0, 0, can.width, can.height);
-	pixData = pixels.data;
-	// set alpha value using slider
-	var alphaVal = parseInt(knobX * 2.55)
-	// for each pixel
-	for (i = 0; i < can.width * can.height; i++) {
-	    // get combined rgb value to determine brightness
-	    var rgbVal = pixData[i*4] + pixData[i*4 + 1] + pixData[i*4 + 2];
-	    // set alpha value for dark pixels to knob value
-	    if (rgbVal < 150)
-	        pixData[i*4 + 3] = alphaVal;
-	}
-	 // put modified data back into image object
-	 pixels.data = pixData;
-	 // blit modified image object to screen
-	 ctx.putImageData(pixels, 0, 0);
+		// get pixel data for entire canvas
+		pixels = ctx.getImageData(0, 0, can.width, can.height);
+		pixData = pixels.data;
+		// set alpha value using slider
+		var alphaVal = parseInt(knobX * 2.55)
+		// for each pixel
+		for (i = 0; i < can.width * can.height; i++) {
+		    // get combined rgb value to determine brightness
+		    var rgbVal = pixData[i*4] + pixData[i*4 + 1] + pixData[i*4 + 2];
+		    // set alpha value for dark pixels to knob value
+		    if (rgbVal < 150)
+		        pixData[i*4 + 3] = alphaVal;
+		}
+		 // put modified data back into image object
+		 pixels.data = pixData;
+		 // blit modified image object to screen
+		 ctx.putImageData(pixels, 0, 0);
 	}
 
 
@@ -187,8 +187,7 @@ $(document).ready(function() {
 	knobX = Math.min(knobX, slider.offsetWidth - knob.offsetWidth);
 	knob.style.left = knobX;
 	}
-	
+
 });
 
 
-                
