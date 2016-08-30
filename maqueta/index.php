@@ -33,18 +33,17 @@
         <!-- fuentes -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
         <!-- fuentes -->
-
         <?php 
-        $dominio = "http://www.venezuelaquiere.com/personal/uploads/";
-        if(isset($_GET["id"])){
-        ?>
-        <meta property="og:image" content='<?php echo $dominio.$_GET["id"];?>' />
-        <?php
-        }else{
-        ?>
-        <meta property="og:image" content="http://www.venezuelaquiere.com/personal/uploads/fondo2.jpg" />
-        <?php
-        }
+            $dominio = "https://datapola.tk";
+            if(isset($_GET["id"])){
+            ?>
+            <meta property="og:image" content='<?php echo $dominio.$_GET["id"];?>' />
+            <?php
+            }else{
+            ?>
+            <meta property="og:image" content="https://datapola.tk/img/fondo2.jpg" />
+            <?php
+            }
         ?>
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
@@ -325,7 +324,7 @@
         $( window ).load(function() {
             //Facebook
             var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href);
-            var dominio = "venezuelaquiere.com/personal/";
+            var dominio = "datapola.tk/";
             var movil = false;
             var ios =  iOS();
             var downloadURL = "";
@@ -361,7 +360,7 @@
                       var js, fjs = d.getElementsByTagName(s)[0];
                       if (d.getElementById(id)) return;
                       js = d.createElement(s); js.id = id;
-                      js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5&appId=447297352129313";
+                      js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.7&appId=1660712804256395";
                       fjs.parentNode.insertBefore(js, fjs);
                     }(document, 'script', 'facebook-jssdk'));
                 }else{
@@ -370,11 +369,10 @@
 
                     window.fbAsyncInit = function() {
                         FB.init({
-                          appId      : '447297352129313',//app
-                          //appId      : '451759441683104',//test
+                          appId      : '1660712804256395',//app
                           
                           xfbml      : true,
-                          version    : 'v2.5'
+                          version    : 'v2.7'
                         });
                         FB.getLoginStatus(function(response) {
                           // Check login status on load, and if the user is
@@ -420,10 +418,10 @@
                 //adentro de Facebook
                 window.fbAsyncInit = function() {
                     FB.init({
-                      appId      : '447297352129313',//app
+                      appId      : '1660712804256395',//app
                       //appId      : '451759441683104',//test
                       xfbml      : true,
-                      version    : 'v2.5'
+                      version    : 'v2.7'
                     });
                     FB.getLoginStatus(function(response) {
                       // Check login status on load, and if the user is
@@ -468,9 +466,9 @@
             //******
             //Canvas
             //******
-            $("#share_f").hide();
-            $("#share_l").hide();
-            $("#download").hide();
+            //$("#share_f").hide();
+            //$("#share_l").hide();
+            //$("#download").hide();
 
             var canvas = new fabric.Canvas('c');
             canvas.setWidth(400);
@@ -481,6 +479,8 @@
             canvas.allowTouchScrolling = true;
 
             //inicializacion
+            //Toma la foto de FB dentro del canvas
+
             init("img/back_photo.jpg", "", 0,78, 'Lato', 60);
             function init(url, texto_inicial, x, y, font, size){
                 // Creamos el BackGround de la foto
