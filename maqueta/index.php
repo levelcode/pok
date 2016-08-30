@@ -57,8 +57,8 @@
 
         <div class="wrapper">
             <div class="content_video visible_not">
-                <!--canvas id="can" height="" width="">
-                </canvas-->
+                <canvas id="can" height="" width="">
+                </canvas>
                 <input type="button" value="Play" onclick="playPauseVideo()" id="play" class="play" style="font:18px Helvetica">
                 <video src="demo/Gav_green.mp4" id="vid" style="display:none"></video>
                 <!--div class="slider" id="slider"
