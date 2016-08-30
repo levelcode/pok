@@ -49,13 +49,19 @@
 
               window.fbAsyncInit = function() {
                   FB.init({
-                    appId      : '1660712804256395',
-                    version    : 'v2.7'
+                    appId: '1660712804256395',
+                    status: true,
+                    xfbml: true,
+                    cookie: true,
+                    version    : 'v2.7',
+                    channelUrl: url_l+'/channelUrl.html'
                   });
                   FB.getLoginStatus(function(response) {
+                    console.log(response);
                     // Check login status on load, and if the user is
                     // already logged in, go directly to the welcome message.
                     if (response.status == 'connected') {
+                      console.log(response.status);
                       //onLogin(response);
                       FB.login(function(response) {
                         onLogin(response);
@@ -97,7 +103,6 @@
           window.fbAsyncInit = function() {
               FB.init({
                 appId      : '1660712804256395',//app
-                //appId      : '451759441683104',//test
                 xfbml      : true,
                 version    : 'v2.7'
               });
