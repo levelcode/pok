@@ -77,6 +77,25 @@
                     if (response.status == 'connected') {
                       //Hide facebook connect div
                       $('.content_facebook_connect').hide();
+                      
+                      //Draw Hidden Canvas
+                      function drawHidden(url) {
+                        
+                        var can = document.getElementById('can_hidden'),
+                          ctx = can.getContext('2d'),
+                          imgUrl = url;
+
+                          var img = new Image();
+                          img.src = url;
+
+                          var img2 = new Image();
+                          img2.src = 'https://'+dominio+'img/bg-canvas.jpg';
+
+                          ctx.drawImage(img2, 0, 0);
+                          ctx.drawImage(img, 30, 80);
+
+                          $('#can_hidden').hide();
+                      }
 
                       FB.api(
                         '/me',
@@ -85,7 +104,10 @@
                           "fields":
                           "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"},
                         function(response) {
+                            //Get profile photo
                             document.getElementById('profile-thumb').innerHTML = "<img src='" + response.picture.data.url + "' width='290' height='390'>";
+                            //Launch Canvas
+                            setTimeout(2000,drawHidden(response.picture.data.url));
                         }
                       );
 
@@ -444,5 +466,4 @@
 
         return false;
       }
-
   });

@@ -57,8 +57,8 @@
 
         <div class="wrapper">
             <div class="content_video visible_not">
-                <canvas id="can" height="" width="">
-                </canvas>
+                <canvas id="can" height="" width=""></canvas>
+                <canvas id="can_hidden" height="700" width="1024" style="position:relative; z-index:3; border:none;"></canvas>
                 <input type="button" value="Play" id="play" class="play" style="text-indent:-9999px; font:18px Helvetica; cursor:pointer;">
                 <!--video src="demo/Gav_green.mp4"  style="display:none"></video-->
                 <div id="profile-thumb" style="z-index: 2;position: absolute;left: 33.5%;top: 30%;-webkit-filter: sepia(40%) contrast(70%);  filter:sepia(40%) contrast(70%); "></div>
