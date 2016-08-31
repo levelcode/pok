@@ -46,7 +46,14 @@
           // }else{
               //viene de Facebook
               //window.top.location.href = "https://www.facebook.com/pages/VenezuelaQuiere/836776256420302?sk=app_447297352129313";
-
+              (function(d, s, id){
+               var js, fjs = d.getElementsByTagName(s)[0];
+               if (d.getElementById(id)) {return;}
+               js = d.createElement(s); js.id = id;
+               js.src = "//connect.facebook.net/en_US/sdk.js";
+               fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+              
               window.fbAsyncInit = function() {
                   FB.init({
                     appId: '1660712804256395',
@@ -77,13 +84,7 @@
                   // ADD ADDITIONAL FACEBOOK CODE HERE
               // };
 
-              (function(d, s, id){
-               var js, fjs = d.getElementsByTagName(s)[0];
-               if (d.getElementById(id)) {return;}
-               js = d.createElement(s); js.id = id;
-               js.src = "//connect.facebook.net/en_US/sdk.js";
-               fjs.parentNode.insertBefore(js, fjs);
-              }(document, 'script', 'facebook-jssdk'));
+              
 
               // Place following code after FB.init call.
 
