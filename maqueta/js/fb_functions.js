@@ -5,6 +5,14 @@
 
 
   $( window ).load(function() {
+      //Video events and functions
+
+      $('#vid').click(function(){
+        this.paused?this.play():this.pause();
+        //class de parent
+        $(this).parent().toggleClass('paused');
+      });
+
       //Facebook
       var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href);
       var dominio = "datapola.tk/";
@@ -64,11 +72,23 @@
                     channelUrl: url_l+'/channelUrl.html'
                   });
                   FB.getLoginStatus(function(response) {
-                    console.log(response);
                     // Check login status on load, and if the user is
                     // already logged in, go directly to the welcome message.
                     if (response.status == 'connected') {
-                      console.log(response.status);
+                      //Hide facebook connect div
+                      $('.content_facebook_connect').hide();
+
+                      FB.api(
+                        '/me',
+                        'GET',
+                        {
+                          "fields":
+                          "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"},
+                        function(response) {
+                            document.getElementById('profile-thumb').innerHTML = "<img src='" + response.picture.data.url + "' width='290' height='390'>";
+                        }
+                      );
+
                       //onLogin(response);
                       FB.login(function(response) {
                         onLogin(response);

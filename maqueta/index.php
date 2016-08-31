@@ -59,8 +59,15 @@
             <div class="content_video visible_not">
                 <canvas id="can" height="" width="">
                 </canvas>
-                <input type="button" value="Play" onclick="playPauseVideo()" id="play" class="play" style="font:18px Helvetica">
-                <video src="demo/Gav_green.mp4" id="vid" style="display:none"></video>
+                <input type="button" value="Play" id="play" class="play" style="text-indent:-9999px; font:18px Helvetica; cursor:pointer;">
+                <!--video src="demo/Gav_green.mp4"  style="display:none"></video-->
+                <div id="profile-thumb" style="z-index: 2;position: absolute;left: 33.5%;top: 30%;-webkit-filter: sepia(40%) contrast(70%);  filter:sepia(40%) contrast(70%); "></div>
+                <video id="vid" autoplay="autoplay" poster="img/bg.png" style="position:fixed; background-color:black; top:50%; left:50%; transform:translate(-50%, -50%);width:100%; height:100%; " title="vid_1">
+                    <source src="eh5v.files/html5video/ARMANDO_BRONCA.m4v" type="video/mp4" />
+                    <source src="eh5v.files/html5video/ARMANDO_BRONCA.webm" type="video/webm" />
+                    <source src="eh5v.files/html5video/ARMANDO_BRONCA.ogv" type="video/ogg" />
+                    <source src="eh5v.files/html5video/ARMANDO_BRONCA.mp4" />
+                </video>
                 <!--div class="slider" id="slider"
                      onmousedown="mouseDown()" onmousemove="mouseXY()"
                      ontouchstart="touchXY()" ontouchmove="touchXY()">
@@ -119,7 +126,7 @@
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script type="text/javascript" src="js/fb_functions.js"></script>
-        <script type="text/javascript" src="js/general.js"></script>
+        <!--script type="text/javascript" src="js/general.js"></script-->
 
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
