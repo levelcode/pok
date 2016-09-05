@@ -66,6 +66,8 @@
 
             if(isset($_GET["id"])){
 
+                $bodyref = 'refered';
+
             ?>
 
             <meta property="og:image" content='<?php echo $dominio.$_GET["id"];?>' />
@@ -90,10 +92,7 @@
 
     </head>
 
-    <body>
-
-
-
+    <body <?php if (isset($bodyref)){echo 'class="'.$bodyref.'"';}?>>
 
 
         <div class="loader" style="display:none">
@@ -106,61 +105,43 @@
 
         <div class="wrapper">
 
-            <div class="content_video visible_not">
+            <div class="content_ingresar">
 
-                <canvas id="can" height="" width=""></canvas>
+                <p>Si usted es mayor de edad, ingrese su fecha de nacimiento.</p>
 
-                <canvas id="can_hidden" height="700" width="1024" style="position:relative; z-index:3; border:none;"></canvas>
+                <div class="border_top"></div>
 
-                <input type="button" value="Play" id="play" class="play" style="text-indent:-9999px; font:18px Helvetica; cursor:pointer;">
+                <form id="ageGateForm" name="ageGateForm">
 
-                <!--video src="demo/Gav_green.mp4"  style="display:none"></video-->
+                    <input type="hidden" name="requiredAge" id="requiredAge" value="18">
 
-                <div id="profile-thumb" style="z-index: 2;position: absolute;left: 33%;-webkit-filter: saturate(53%) brightness(98%) contrast(43%) blur(0.8px);  filter:saturate(53%) brightness(98%) contrast(43%) blur(0.8px); width: 19%; transform: rotate(2deg); "></div>
+                    <div class="border_gradient">
 
-                <video id="vid" autoplay="autoplay" poster="img/bg.png" style="" title="vid_1" webkit-playsinline>
-
-                    <source src="eh5v.files/html5video/ARMANDO_BRONCA.m4v" type="video/mp4" />
-
-                    <source src="eh5v.files/html5video/ARMANDO_BRONCA.webm" type="video/webm" />
-
-                    <source src="eh5v.files/html5video/ARMANDO_BRONCA.ogv" type="video/ogg" />
-
-                    <source src="eh5v.files/html5video/ARMANDO_BRONCA.mp4" />
-
-                </video>
-
-                <!--div class="slider" id="slider"
-
-                     onmousedown="mouseDown()" onmousemove="mouseXY()"
-
-                     ontouchstart="touchXY()" ontouchmove="touchXY()">
-
-                    <div class="bar"></div>
-
-                    <div id="knob" class="knob">
-
-                        <br />
-
-                        Alpha
+                        <input type="text" id="birthDay" placeholder="DÍA" class="date">
 
                     </div>
 
-                </div-->
+                    <div class="border_gradient">
 
-            </div>
+                        <input type="text" id="birthMonth" placeholder="MES" class="date">
+
+                    </div>
+
+                    <div class="border_gradient">
+
+                        <input type="text" id="birthYear" placeholder="AÑO" class="date">
+
+                    </div>
+
+                    <input type="submit" class="ingresar" value="INGRESAR">
+
+                </form>
+
+            </div> <!--end of agegate-->
 
             <?php include 'content.php'; ?>
 
-        </div>
-
-
-
-
-
-
-
-
+        </div><!--end of wrapper-->
 
         <footer>
 
@@ -208,22 +189,6 @@
 
         </footer>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div id="fb-root"></div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -244,6 +209,7 @@
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 
+        <script type="text/javascript" src="js/jquery-cookie.js"></script>
         <script type="text/javascript" src="js/fb_functions.js"></script>
 
         <!--script type="text/javascript" src="js/general.js"></script-->

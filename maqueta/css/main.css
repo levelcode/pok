@@ -181,25 +181,6 @@ canvas
     background-position: 0px -129px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .wrapper .content_facebook_connect
 {
     width: 100%;
@@ -210,6 +191,7 @@ canvas
     left: 0; 
     right: 0;
     margin: 0 auto;
+    z-index: 10;
 }
 .wrapper .content_facebook_connect p
 {
@@ -238,15 +220,6 @@ canvas
     width: 270px;
     height: 46px;
 }
-
-
-
-
-
-
-
-
-
 
 .wrapper .content_ingresar
 {
@@ -346,14 +319,6 @@ canvas
 {
     opacity: 0.7;
 }
-
-
-
-
-
-
-
-
 
 .wrapper .content_buscar_amigo
 {
