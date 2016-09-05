@@ -72,6 +72,7 @@ function faceConnect(){
             //Draw image profile on video
             FB.api(
               '/me',
+              '/me/taggable_friends',
               'GET',
               {
 
@@ -80,6 +81,7 @@ function faceConnect(){
 
               function(response) {
 
+                  console.log(response);
                   //Get profile photo if is refered
                   if(body.hasClass('refered')){
                     document.getElementById('profile-thumb').innerHTML = "<img src='" + response.picture.data.url + "' width='290' height='390'>";
