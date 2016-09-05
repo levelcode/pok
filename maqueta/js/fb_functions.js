@@ -72,7 +72,6 @@ function faceConnect(){
             //Draw image profile on video
             FB.api(
               '/me',
-              '/me/taggable_friends',
               'GET',
               {
 
@@ -93,6 +92,24 @@ function faceConnect(){
               }
 
             );
+
+            //Login for perimisions
+            FB.login(function(response) {
+              FB.api(
+                '/me/taggable_friends',
+                'GET',
+                {
+
+                  "fields":
+                  "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"},
+
+                function(response) {
+                    console.log(response);
+                }
+
+              );
+
+            }, {scope: 'publish_actions'});
 
           } else {
 
