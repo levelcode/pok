@@ -20,6 +20,12 @@
 
     </video>
 
+    <video id="vid2" poster="img/bg.png" style="" title="vid_1" webkit-playsinline>
+
+        <source src="demo/Gav_green.mp4" />
+
+    </video>
+
     <div class="content_facebook_connect">
 
 		<div class="border_top"></div>
@@ -33,9 +39,9 @@
 </div><!--/video-->
 
 
-<div class="content_buscar_amigo"  style="display:none;">
+<div class="content_buscar_amigo">
 
-	<div id="step_1" style="display:none;">
+	<div id="step_1">
 
 		<p>
 
@@ -143,7 +149,7 @@
 	</div>
 
 
-	<div id="step_2" style="display:none;">
+	<div id="step_2">
 
 		<div class="content_reportar">
 
@@ -165,7 +171,7 @@
 
 	</div>
 
-	<div id="step_3" style="display:none;">
+	<div id="step_3">
 
 		<p>
 

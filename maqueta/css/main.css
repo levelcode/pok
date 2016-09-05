@@ -46,7 +46,7 @@ canvas
     border: 1px solid #404040;
 }
 
-#vid {
+#vid,#vid2{
     position:fixed; 
     background-color:black; 
     top:50%; left:50%; 
@@ -55,6 +55,7 @@ canvas
     height:100%; 
 
 }
+
 .mobile
 {
     display: none !important;
@@ -942,20 +943,20 @@ footer .box_share a.full_2:hover
     background-position: -28px -36px;
 }
 
+/*------------------------ Custom function classes --------------------------*/
 
+/*Buscar amigo*/
+.content_buscar_amigo{
+    display: none;
+}
+    .content_buscar_amigo > div{
+        display: none;
+    }
 
+body.steps .content_buscar_amigo{
+    display: block;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    body.steps .content_buscar_amigo #step_1{
+        display: block;
+    }

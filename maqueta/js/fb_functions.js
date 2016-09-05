@@ -43,6 +43,10 @@ function faceConnect(){
 
           if (response.status == 'connected') {
 
+            //Autoplay video if is connected
+            var video = $("#vid, #vid2").get(0);
+                video.play();
+            
             //Draw Hidden Canvas
             function drawHidden(url) {
 
@@ -62,7 +66,6 @@ function faceConnect(){
 
 
                 $('#can_hidden').hide();
-                $('.content_facebook_connect').remove();
 
             }
 
@@ -232,12 +235,24 @@ function iOS() {
 
 
 //Video events and functions
-  $('#vid').click(function(){
+  $('#vid,#vid2').click(function(){
     this.paused?this.play():this.pause();
     //class de parent
     $(this).parent().toggleClass('paused');
-
   });
+
+  //Handle if video is finished
+    document.getElementById('vid').addEventListener('ended',myHandler,false);
+    function myHandler(e) {
+        //Show actions on bottom
+        $('body').addClass('steps');
+    }
+
+    document.getElementById('vid2').addEventListener('ended',myHandler,false);
+    function myHandler(e) {
+        //Show actions on bottom
+        $('body').addClass('steps');
+    }
 
 
 //Domain validation
@@ -248,19 +263,25 @@ function iOS() {
 
     //If body have class refered by facebook
     if(body.hasClass('refered')){
+      //Display just one video
+      $('#vid').show();
+      $('#vid2').remove();
       //Launch facebook connect if widow is load
-      console.log('enterhere');
       $(window).load(function(){
         //Launch face connect
         faceConnect();
       });
     }else{
+      //Display just one video
+      $('#vid').remove();
+      $('#vid2').show();
       //Click on facebook connect
       $('.content_facebook_connect .fb_boton').click(function(){
           //Launch face connect
           faceConnect();
-      });
+          $(this).parent().remove();
 
+        });
     }
 
 
