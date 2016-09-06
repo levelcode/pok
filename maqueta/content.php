@@ -67,64 +67,11 @@
 
 						<div class="box_amigos_facebook">
 
-
-							<div class="box_perfil">
-
-								<img src="img/test.png" alt="">
-
-								<span class="nombre"> dusf isdhfi dhsi</span>
-
-								<span class="text_gris">text_gris</span>
-
-							</div>
-
-							<div class="box_perfil">
-
-								<img src="img/test.png" alt="">
-
-								<span class="nombre"> dusf isdhfi dhsi</span>
-
-								<span class="text_gris">text_gris</span>
-
-							</div>
-
-							<div class="box_perfil">
-
-								<img src="img/test.png" alt="">
-
-								<span class="nombre"> dusf isdhfi dhsi</span>
-
-								<span class="text_gris">text_gris</span>
-
-							</div>
-
-							<div class="box_perfil">
-
-								<img src="img/test.png" alt="">
-
-								<span class="nombre"> dusf isdhfi dhsi</span>
-
-								<span class="text_gris">text_gris</span>
-
-							</div>
-
-							<div class="box_perfil">
-
-								<img src="img/test.png" alt="">
-
-								<span class="nombre"> dusf isdhfi dhsi</span>
-
-								<span class="text_gris">text_gris</span>
-
-							</div>
-
-							
-
 						</div>
 
 
 
-			        	<input type="text" placeholder="Buscar a un amigo" class="date">
+			        	<input type="text" id="search_friend" placeholder="Buscar a un amigo" class="date">
 
 			        	<button class="buscar"></button>
 

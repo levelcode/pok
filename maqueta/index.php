@@ -208,7 +208,6 @@
 
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-
         <script type="text/javascript" src="js/jquery-cookie.js"></script>
         <script type="text/javascript" src="js/fb_functions.js"></script>
 

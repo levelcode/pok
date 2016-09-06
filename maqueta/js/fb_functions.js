@@ -85,10 +85,6 @@ function faceConnect(){
                   if(body.hasClass('refered')){
                     document.getElementById('profile-thumb').innerHTML = "<img src='" + response.picture.data.url + "' width='290' height='390'>";
                   }
-
-                  //Launch Canvas
-                  setTimeout(2000,drawHidden(response.picture.data.url));
-
               }
 
             );
@@ -104,7 +100,24 @@ function faceConnect(){
                   "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"},
 
                 function(response) {
-                    console.log(response);
+
+                    var boxContainer = $('.box_amigos_facebook');
+
+                    for(y=0; y<response.data.length; y++) {
+
+                      //Load images
+                       boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + "'/><span class='nombre'>" + response.data[y].name + "</span></div>");
+
+
+                      //Action for input
+                      boxContainer.hide();
+
+                      $('#search_friend').unbind('click').click(function(event) {
+                          console.log('click');
+                          $(this).siblings('.box_amigos_facebook').toggle(400);
+                      });
+
+                    }
                 }
 
               );

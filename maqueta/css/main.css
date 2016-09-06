@@ -446,7 +446,7 @@ canvas
 {
     float: left;
     width: 50px;
-    height: 50px;
+    height: auto;
     margin-right: 6px;
 }
 .wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient .box_amigos_facebook .box_perfil .nombre
