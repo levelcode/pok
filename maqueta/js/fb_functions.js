@@ -113,8 +113,18 @@ function faceConnect(){
                       boxContainer.hide();
 
                       $('#search_friend').unbind('click').click(function(event) {
-                          console.log('click');
                           $(this).siblings('.box_amigos_facebook').toggle(400);
+                      });
+
+                      //Action box profile item
+                      $('.box_perfil').click(function(event) {
+
+                        var img = $(this).children('img').attr('src'),
+                            nombre = $(this).children('.nombre').text();
+
+                            $('#search_friend').val(nombre);
+                            $(this).parent().hide(400);
+                        
                       });
 
                     }
