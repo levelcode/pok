@@ -123,6 +123,7 @@ function faceConnect(){
                             nombre = $(this).children('.nombre').text();
 
                             $('#search_friend').val(nombre);
+                            $('#photo_friend').val(nombre);
                             $(this).parent().hide(400);
                         
                       });

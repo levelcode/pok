@@ -72,8 +72,8 @@
 
 
 			        	<input type="text" id="search_friend" placeholder="Buscar a un amigo" class="date">
-			        	<input type="hidden" id="photo_friend" placeholder="Buscar a un amigo" class="date">
-			        	<input type="hidden" id="id_friend" placeholder="Buscar a un amigo" class="date">
+			        	<input type="hidden" id="photo_friend">
+			        	<input type="hidden" id="id_friend">
 
 
 			        	<button class="buscar"></button>
