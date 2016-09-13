@@ -8,6 +8,9 @@ $('#vid,#vid2').click(function(){
   $(this).parent().toggleClass('paused');
 });
 
+//Hide canvas
+$('#can_hidden').hide();
+
 //Facebook global variables
 
 var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href),
@@ -171,26 +174,18 @@ function faceConnect(){
 
                       //Create canvas
 
-                      function drawHidden(url) {
+                      var can = document.getElementById('can_hidden'),
+                          ctx = can.getContext('2d'),
+                          imgUrl = $('#photo_friend').val();
 
-                        var canvas = document.getElementById('can_hidden');
-                        var ctx = canvas.getContext("2d");
-
-                        var img1 = new Image();
-                            img1.src = url;
+                        var img = new Image();
+                        img.src = imgUrl;
 
                         var img2 = new Image();
-                            img2.src = 'https://'+dominio+'img/bg-canvas.jpg';
+                        img2.src = 'https://'+dominio+'img/bg-canvas.jpg';
 
-                            ctx.drawImage(img1, 0, 0);
-                            ctx.drawImage(img2, 0, 0);
-
-                        $('#can_hidden').hide();
-
-                    }
-
-                      //Launch canvas
-                      drawHidden($('#photo_friend').val());
+                        ctx.drawImage(img2, 0, 0);
+                        ctx.drawImage(img, 0, 0);
 
                       return false;
 
