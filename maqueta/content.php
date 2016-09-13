@@ -82,7 +82,7 @@
 
 			        </div>
 
-					<input type="submit" id="push_public" class="reportar" value="REPORTAR">
+					<input type="submit" id="push_public" class="reportar" value="Crear Reporte">
 
 				</form>
 
@@ -99,7 +99,7 @@
 
 			<div class="content_form_reportar reportar_2">
 
-				<p>Después de que esto se haga público la unica opción que tiene su amigo es pagar o pagar esas polas.</p>
+				<p>Después de que esto se haga público la única opción que tiene su amigo es pagar o pagar esas polas.</p>
 
 				<div class="border_top_red"></div>
 
