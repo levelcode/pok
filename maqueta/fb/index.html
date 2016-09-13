@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+
+  <title>Datapola</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">s
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div>
+    Hola
+  </div>
+  <script>
+     window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1660712804256395',
+        version    : 'v2.7'
+      });
+      FB.getLoginStatus(function(response) {
+        // Check login status on load, and if the user is
+        // already logged in, go directly to the welcome message.
+        if (response.status == 'connected') {
+          //onLogin(response);
+          console.log("")
+          FB.login(function(response) {
+            onLogin(response);
+          }, {scope: 'publish_actions'});
+        } else {
+          // Otherwise, show Login dialog first.
+          FB.login(function(response) {
+            onLogin(response);
+          }, {scope: 'publish_actions'});
+        }
+      });
+      FB.Canvas.setSize({ width: 760, height: 1200});
+      // ADD ADDITIONAL FACEBOOK CODE HERE
+    // };
+
+    (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // Place following code after FB.init call.
+
+    function onLogin(response) {
+      if (response.status == 'connected') {
+        FB.api('/me?fields=first_name', function(data) {
+            var value_t = data.first_name;
+            $("#texto1").val(value_t);
+            canvas.clear();
+            init("img/bg.png", value_t, 0,78, 'Lato', 60);
+        });
+      }
+    }
+
+
+  </script>
+</body>
+</html>
