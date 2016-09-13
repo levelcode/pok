@@ -2,11 +2,11 @@
 
     <canvas id="can" height="" width=""></canvas>
 
-    <canvas id="can_hidden" height="725" width="1280" style="position:relative; z-index:3; border:none;"></canvas>
+    <canvas id="can_hidden" height="725" width="1280" ></canvas>
 
-    <input type="button" value="Play" id="play" class="play" style="text-indent:-9999px; font:18px Helvetica; cursor:pointer;">
+    <input type="button" value="Play" id="play" class="play">
 
-    <div id="profile-thumb" style="z-index: 2;position: absolute;left: 33%;-webkit-filter: saturate(53%) brightness(98%) contrast(43%) blur(0.8px);  filter:saturate(53%) brightness(98%) contrast(43%) blur(0.8px); width: 19%; transform: rotate(2deg); "></div>
+    <div id="profile-thumb" ></div>
 
     <video id="vid" poster="img/bg.png" style="" title="vid_1" webkit-playsinline>
 
