@@ -146,7 +146,11 @@ function faceConnect(){
 
                       function drawHidden(url) {
 
-                        var context = canvas.getContext('2d');
+                        var context = canvas.getContext('2d'),
+                            x =0,
+                            y =0,
+                            x2 =0,
+                            y2 =0;
 
                         var imageObj1 = new Image();
                         imageObj1.src = url;
@@ -157,7 +161,7 @@ function faceConnect(){
                         var imageObj2 = new Image();
                           imageObj2.src = 'https://'+dominio+'img/pub2.jpg';
                           imageObj2.onload = function() {
-                            context.drawImage(imageObj2, x, y);
+                            context.drawImage(imageObj2, x2, y2);
                         };
 
 
@@ -165,7 +169,7 @@ function faceConnect(){
 
                     }
 
-                    drawHidden($('#photo_friend').val(img));
+                    drawHidden($('#photo_friend').attr('src'));
 
                     var pngUrl = can.toDataURL();
 
