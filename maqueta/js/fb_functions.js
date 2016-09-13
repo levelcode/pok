@@ -140,40 +140,44 @@ function faceConnect(){
                   //Click for publish BS
                   $('#push_public').click(function(e){
 
-
                       //Create canvas
-                      var canvas = document.getElementById('can_hidden');
 
                       function drawHidden(url) {
 
-                        var context = canvas.getContext('2d'),
-                            x =0,
-                            y =0,
-                            x2 =0,
-                            y2 =0;
+                        var canvas = document.getElementById('can_hidden');
+                        var ctx = canvas.getContext("2d");
 
-                        var imageObj1 = new Image();
-                        imageObj1.src = url;
-                        imageObj1.onload = function() {
-                          context.drawImage(imageObj1, x, y);
-                        };
+                        var img1 = loadImage(url, main);
+                        var img2 = loadImage('https://datapola.com/img/pub2.jpg', main);
 
-                        var imageObj2 = new Image();
-                          imageObj2.src = 'https://'+dominio+'img/pub2.jpg';
-                          imageObj2.onload = function() {
-                            context.drawImage(imageObj2, x2, y2);
-                        };
+                        var imagesLoaded = 0;
+                        function main() {
+                            imagesLoaded += 1;
 
+                            if(imagesLoaded == 2) {
+                              console.log('yes');
+                                // composite now
+                                ctx.drawImage(img1, 0, 0);
+                                ctx.drawImage(img2, 0, 0);
+                            }
+                            else{
+                              console.log('nope');
+                            }
+                        }
+
+                        function loadImage(src, onload) {
+                            // http://www.thefutureoftheweb.com/blog/image-onload-isnt-being-called
+                            var img = new Image();
+
+                            img.onload = onload;
+                            img.src = src;
+
+                            return img;
+                        }
 
                         $('#can_hidden').hide();
 
                     }
-
-                    drawHidden($('#photo_friend').attr('src'));
-
-                    var pngUrl = can.toDataURL();
-
-                    console.log(pngUrl);
 
                     //Share action
 
@@ -204,6 +208,9 @@ function faceConnect(){
 
 
                       }, function(response){});
+
+                      //Launch canvas
+                      setTimeout(drawHidden($('#photo_friend').val()), 500);
 
                       return false;
 
