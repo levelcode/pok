@@ -816,11 +816,12 @@ canvas
 footer
 {
     width: 100%;
-    bottom: 20px;
+    bottom: 30px;
     position: absolute;
 }
 footer .logo,
-footer .mail
+footer .mail,
+footer .terminos_desktop
 {
     display: inline-block;
     color: #fff;
@@ -832,6 +833,12 @@ footer .mail
     position: absolute;
     left: 0;
     bottom: -15px;
+}
+footer .terminos_desktop
+{
+    position: absolute;
+    left: 0;
+    bottom:-27px;
 }
 footer .mail:hover
 {

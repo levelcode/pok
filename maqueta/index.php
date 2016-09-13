@@ -162,8 +162,10 @@
             <img src="img/logo.png" alt="" class="logo">
 
             <a href="mailto:datapola@poker.com" class="mail">datapola@poker.com</a>
+            
+            <a href="https://www.cervezapoker.com/sm_agegate?destination=" target="_blank" class="terminos_desktop desktop">Términos y Condiciones</a>
 
-            <a href="terms.php" target="_blank" class="terminos_mobile mobile">términos y condiciones</a>
+            <a href="https://www.cervezapoker.com/sm_agegate?destination=" target="_blank" class="terminos_mobile mobile">términos y condiciones</a>
 
             <div class="box_share desktop">
 
