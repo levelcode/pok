@@ -12,7 +12,7 @@ $('#vid,#vid2').click(function(){
 
 var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href),
     body = $('body'),
-    dominio = "datapola.tk/",
+    dominio = "datapola.com/",
     movil = false,
     ios =  iOS(),
     ref = document.referrer,
@@ -134,13 +134,44 @@ function faceConnect(){
                             $('#photo_friend').val(img);
                             $('#id_friend').val(id_user);
                             $(this).parent().hide(400);
-
                       });
                     }
 
                   //Click for publish BS
                   $('#push_public').click(function(e){
 
+
+                      //Create canvas
+                      var canvas = document.getElementById('can_hidden');
+
+                      function drawHidden(url) {
+
+                        var context = canvas.getContext('2d');
+
+                        var imageObj1 = new Image();
+                        imageObj1.src = url;
+                        imageObj1.onload = function() {
+                          context.drawImage(imageObj1, x, y);
+                        };
+
+                        var imageObj2 = new Image();
+                          imageObj2.src = 'https://'+dominio+'img/pub2.jpg';
+                          imageObj2.onload = function() {
+                            context.drawImage(imageObj2, x, y);
+                        };
+
+
+                        $('#can_hidden').hide();
+
+                    }
+
+                    drawHidden($('#photo_friend').val(img));
+
+                    var pngUrl = can.toDataURL();
+
+                    console.log(pngUrl);
+
+                    //Share action
 
                       FB.ui(
 

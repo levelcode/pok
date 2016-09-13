@@ -2,7 +2,7 @@
 
     <canvas id="can" height="" width=""></canvas>
 
-    <canvas id="can_hidden" height="700" width="1024" style="position:relative; z-index:3; border:none;"></canvas>
+    <canvas id="can_hidden" height="725" width="1280" style="position:relative; z-index:3; border:none;"></canvas>
 
     <input type="button" value="Play" id="play" class="play" style="text-indent:-9999px; font:18px Helvetica; cursor:pointer;">
 
@@ -10,19 +10,16 @@
 
     <video id="vid" poster="img/bg.png" style="" title="vid_1" webkit-playsinline>
 
-        <source src="eh5v.files/html5video/ARMANDO_BRONCA.m4v" type="video/mp4" />
+        <source src="videos/rep/rep.webm" type="video/webm" />
 
-        <source src="eh5v.files/html5video/ARMANDO_BRONCA.webm" type="video/webm" />
-
-        <source src="eh5v.files/html5video/ARMANDO_BRONCA.ogv" type="video/ogg" />
-
-        <source src="eh5v.files/html5video/ARMANDO_BRONCA.mp4" />
+        <source src="videos/rep/rep.mp4"/>
 
     </video>
 
     <video id="vid2" poster="img/bg.png" style="" title="vid_1" webkit-playsinline>
 
-        <source src="demo/Gav_green.mp4" />
+    	<source src="videos/inv/inv.webm" type="video/webm" />
+        <source src="videos/inv/inv.mp4" />
 
     </video>
 
