@@ -13,7 +13,7 @@ $( 'a.legal' ).hover(function() {
         $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
       }, function() {
         $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
-});  
+});
 
 //Hide canvas
 $('#can_hidden').hide();
@@ -60,30 +60,8 @@ function faceConnect(){
           if (response.status == 'connected') {
 
             //Autoplay video if is connected
-            var video = $("#vid, #vid2").get(0);
+            var video = $("#vid").get(0);
                 video.play();
-
-            //Draw Hidden Canvas
-            function drawHidden(url) {
-
-              var can = document.getElementById('can_hidden'),
-
-                ctx = can.getContext('2d'),
-                imgUrl = url;
-
-                var img = new Image();
-                img.src = url;
-
-                var img2 = new Image();
-                img2.src = 'https://'+dominio+'img/bg-canvas.jpg';
-
-                ctx.drawImage(img2, 0, 0);
-                ctx.drawImage(img, 30, 80);
-
-
-                $('#can_hidden').hide();
-
-            }
 
             //Draw image profile on video
             FB.api(
@@ -148,6 +126,7 @@ function faceConnect(){
                     }
 
                   //Click for publish BS
+
                   $('#push_public').click(function(e){
                     //Share action
 
@@ -349,18 +328,8 @@ function iOS() {
   document.getElementById('vid').addEventListener('ended',myHandler,false);
   function myHandler(e) {
       //Show actions on bottom
-      $('body').addClass('steps');
+      $('body').addClass('steps step_1');
   }
-
-  document.getElementById('vid2').addEventListener('ended',myHandler,false);
-  function myHandler(e) {
-      //Show actions on bottom
-      $('body').addClass('steps');
-    }
-
-
-//Domain validation
-
 
 
     //Function Facebook connect
@@ -368,8 +337,8 @@ function iOS() {
     //If body have class refered by facebook
     if(body.hasClass('refered')){
       //Display just one video
-      $('#vid').show();
-      $('#vid2').remove();
+      $('#vid').hide();
+      $('#vid2').show();
       $('.content_facebook_connect').remove();
       //Launch facebook connect if widow is load
       $(window).load(function(){
@@ -378,8 +347,8 @@ function iOS() {
       });
     }else{
       //Display just one video
-      $('#vid').remove();
-      $('#vid2').show();
+      $('#vid').show();
+      $('#vid2').hide();
       //Click on facebook connect
       $('.content_facebook_connect .fb_boton').click(function(){
           //Launch face connect
@@ -389,9 +358,42 @@ function iOS() {
         });
     }
 
+    //click on create report
+    var clickReport = $('.reportar'),
+        modifyReport = $('.content_form_reportar .modificar');
 
+    //Global linked image
+    clickReport.click(function(event) {
+      //Show second video
+      $('body').removeClass().addClass('steps step_2');
 
+      //Display Second video
+      $('#vid').hide();
+      $('#vid2').show();
 
+      //Autoplay video if I create report
+      var video = $("#vid2").get(0);
+          video.play();
+
+      //Launch image
+        document.getElementById('profile-thumb').innerHTML = "<img src='" + $('#photo_friend').val() + "' width='290' height='390'>";
+        $('.profile-thumb').delay(11000).show(0);
+      //Avoid redirections
+      return false;
+      event.preventDefault();
+    });
+
+    //Click modify
+    modifyReport.click(function(event) {
+      //Show first event
+      $('body').removeClass().addClass('steps step_1');
+      //Mute video
+      $('#vid2').get(0).stopVideo();
+      $('#vid').get(0).stopVideo();
+
+      return false;
+      event.preventDefault();
+    });
 
 
 });

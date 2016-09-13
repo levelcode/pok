@@ -25,7 +25,7 @@ html, body {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
-body 
+body
 {
     font-family: Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -41,18 +41,18 @@ body
     -webkit-overflow-scrolling: touch;
 }
 /* especial */
-canvas 
+canvas
 {
     border: 1px solid #404040;
 }
 
 #vid,#vid2{
-    position:fixed; 
-    background-color:black; 
-    top:50%; left:50%; 
+    position:fixed;
+    background-color:black;
+    top:50%; left:50%;
     transform:translate(-50%, -50%);
-    width:100%; 
-    height:100%; 
+    width:100%;
+    height:100%;
 
 }
 
@@ -72,7 +72,7 @@ canvas
     margin: 30px 0 20px;
     text-transform: uppercase;
 }
-.slider 
+.slider
 {
     position: absolute;
     top: 300px;
@@ -80,7 +80,7 @@ canvas
     width: 152px;
     height: 52px;
 }
-.bar 
+.bar
 {
     position: relative;
     top: 30px;
@@ -88,7 +88,7 @@ canvas
     height: 2px;
     background-color: #404040 ;
 }
-.knob 
+.knob
 {
     position: relative;
     left: 100px;
@@ -103,7 +103,7 @@ canvas
     height: auto;
     width: 100%;
 }
-    
+
 
 
 
@@ -116,7 +116,7 @@ canvas
     border-top: 2px solid #f3b02f;
     display: block;
     margin: 0 auto;
-} 
+}
 .border_top_red
 {
     width: 50px;
@@ -124,7 +124,7 @@ canvas
     border-top: 2px solid #ed1a3b;
     display: block;
     margin: 0 auto;
-} 
+}
 .border_top_yellow
 {
     width: 50px;
@@ -132,7 +132,7 @@ canvas
     border-top: 2px solid #f3b02f;
     display: block;
     margin: 0 auto;
-} 
+}
 #step_1,
 #step_2,
 #step_3
@@ -143,7 +143,7 @@ canvas
 }
 /* especial */
 
-.wrapper 
+.wrapper
 {
     width: 100%;
     height: 100%;
@@ -160,8 +160,8 @@ canvas
     height: 100%;
     position: absolute;
     z-index: 0;
-    display: -webkit-box;  
-    display: -ms-flexbox; 
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
     align-items: center;
@@ -169,14 +169,14 @@ canvas
 }
 .wrapper .content_video .can_hidden
 {
-    position:relative; 
-    z-index:3; 
+    position:relative;
+    z-index:3;
     border:none;
 }
 .wrapper .content_video #play
 {
-    text-indent:-9999px; 
-    font:18px Helvetica; 
+    text-indent:-9999px;
+    font:18px Helvetica;
     cursor:pointer;
 }
 .wrapper .content_video .play
@@ -191,12 +191,13 @@ canvas
 }
 .profile-thumb
 {
+    display:none;
     z-index: 2;
     position: absolute;
     left: 33%;
-    -webkit-filter: saturate(53%) brightness(98%) contrast(43%) blur(0.8px);  
-    filter:saturate(53%) brightness(98%) contrast(43%) blur(0.8px); 
-    width: 19%; 
+    -webkit-filter: saturate(53%) brightness(98%) contrast(43%) blur(0.8px);
+    filter:saturate(53%) brightness(98%) contrast(43%) blur(0.8px);
+    width: 19%;
     transform: rotate(2deg);
 }
 .wrapper .content_video .play.pause
@@ -211,7 +212,7 @@ canvas
     height: 125px;
     position: absolute;
     top: calc(60% - 62px);
-    left: 0; 
+    left: 0;
     right: 0;
     margin: 0 auto;
     z-index: 10;
@@ -277,7 +278,7 @@ canvas
     text-align: center;
     overflow: hidden;
 }
-.wrapper .content_ingresar form .border_gradient 
+.wrapper .content_ingresar form .border_gradient
 {
     width: 150px;
     border: none;
@@ -303,7 +304,7 @@ canvas
 }
 .wrapper .content_ingresar form .border_gradient:nth-child(2)
 {
-    margin: 0px 15px 0px; 
+    margin: 0px 15px 0px;
 }
 .wrapper .content_ingresar form .border_gradient input.date::-webkit-input-placeholder {
     color: #413d4b;
@@ -348,10 +349,11 @@ canvas
     width: 100%;
     height: 190px;
     position: absolute;
-    bottom: 0;
+    bottom: 40px;
     left: 0;
     right: 0;
     margin: 0 auto;
+    z-index: 999;
 }
 .wrapper .content_buscar_amigo p
 {
@@ -424,7 +426,7 @@ canvas
 {
     margin: 5px 10px 0 20px;
 }
-.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient 
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient
 {
     width: 280px;
     height: 37px;
@@ -441,7 +443,7 @@ canvas
     background: linear-gradient(to bottom,  #ed1c3b 0%,#fc981e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed1c3b', endColorstr='#fc981e',GradientType=0 ); /* IE6-9 */
 }
-.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient .box_amigos_facebook 
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient .box_amigos_facebook
 {
     width: 99%;
     height: 280px;
@@ -652,7 +654,7 @@ canvas
     height: 127px;
     position: absolute;
     top: calc(50% - 63.5px);
-    left: 0; 
+    left: 0;
     right: 0;
     margin: 0 auto;
     background: url(../img/loader_center.png);
@@ -970,7 +972,7 @@ footer .box_share a.full_2
 {
     background-position: -28px -18px;
     display: block;
-    
+
 }
 footer .box_share a.full_2:hover
 {
@@ -1004,6 +1006,12 @@ body.steps .content_buscar_amigo{
     display: block;
 }
 
-    body.steps .content_buscar_amigo #step_1{
+    /*first step*/
+    body.steps.step_1 .content_buscar_amigo #step_1{
+        display: block;
+    }
+
+    /*second step*/
+    body.steps.step_2 .content_buscar_amigo #step_2{
         display: block;
     }
