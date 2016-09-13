@@ -222,17 +222,6 @@
         <!--script type="text/javascript" src="js/general.js"></script-->
 
         <script>
-            $(document).ready(function() {
-                $( 'a.legal' ).hover(function() {
-                        $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
-                      }, function() {
-                        $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
-                });
-            });     
-
-        </script>
-
-        <script>
 
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
 
