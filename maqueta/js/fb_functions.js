@@ -139,46 +139,6 @@ function faceConnect(){
 
                   //Click for publish BS
                   $('#push_public').click(function(e){
-
-                      //Create canvas
-
-                      function drawHidden(url) {
-
-                        var canvas = document.getElementById('can_hidden');
-                        var ctx = canvas.getContext("2d");
-
-                        var img1 = loadImage(url, main);
-                        var img2 = loadImage('https://datapola.com/img/pub2.jpg', main);
-
-                        var imagesLoaded = 0;
-                        function main() {
-                            imagesLoaded += 1;
-
-                            if(imagesLoaded == 2) {
-                              console.log('yes');
-                                // composite now
-                                ctx.drawImage(img1, 0, 0);
-                                ctx.drawImage(img2, 0, 0);
-                            }
-                            else{
-                              console.log('nope');
-                            }
-                        }
-
-                        function loadImage(src, onload) {
-                            // http://www.thefutureoftheweb.com/blog/image-onload-isnt-being-called
-                            var img = new Image();
-
-                            img.onload = onload;
-                            img.src = src;
-
-                            return img;
-                        }
-
-                        $('#can_hidden').hide();
-
-                    }
-
                     //Share action
 
                       FB.ui(
@@ -209,8 +169,28 @@ function faceConnect(){
 
                       }, function(response){});
 
+                      //Create canvas
+
+                      function drawHidden(url) {
+
+                        var canvas = document.getElementById('can_hidden');
+                        var ctx = canvas.getContext("2d");
+
+                        var img1 = new Image();
+                            img1.src = url;
+
+                        var img2 = new Image();
+                            img2.src = 'https://'+dominio+'img/bg-canvas.jpg';
+
+                            ctx.drawImage(img1, 0, 0);
+                            ctx.drawImage(img2, 0, 0);
+
+                        $('#can_hidden').hide();
+
+                    }
+
                       //Launch canvas
-                      setTimeout(drawHidden($('#photo_friend').val()), 500);
+                      drawHidden($('#photo_friend').val());
 
                       return false;
 
