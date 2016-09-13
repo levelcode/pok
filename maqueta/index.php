@@ -163,7 +163,13 @@
 
             <a href="mailto:datapola@poker.com" class="mail">datapola@poker.com</a>
             
-            <a href="https://www.cervezapoker.com/sm_agegate?destination=" target="_blank" class="terminos_desktop desktop">Términos y Condiciones</a>
+            <a href="https://www.cervezapoker.com/sm_agegate?destination=" target="_blank" class="terminos_desktop desktop">TÉRMINOS Y CONDICIONES</a>
+
+
+            <div class="amigos_une_amigos">
+                <img src="img/poker_amigo_desktop.png" alt="">
+            </div>
+
 
             <a href="https://www.cervezapoker.com/sm_agegate?destination=" target="_blank" class="terminos_mobile mobile">términos y condiciones</a>
 
@@ -215,7 +221,16 @@
 
         <!--script type="text/javascript" src="js/general.js"></script-->
 
+        <script>
+            $(document).ready(function() {
+                $( 'a.legal' ).hover(function() {
+                        $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
+                      }, function() {
+                        $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
+                });
+            });     
 
+        </script>
 
         <script>
 

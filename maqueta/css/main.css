@@ -827,18 +827,22 @@ footer .terminos_desktop
     color: #fff;
     text-decoration: none;
     margin: 0px 5px 5px 10px;
+    position: relative;
+    z-index: 10;
 }
 footer .mail
 {
     position: absolute;
     left: 0;
     bottom: -15px;
+    z-index: 10;
 }
 footer .terminos_desktop
 {
     position: absolute;
     left: 0;
     bottom:-27px;
+    z-index: 10;
 }
 footer .mail:hover
 {
@@ -853,6 +857,7 @@ footer .box_share
     position: absolute;
     bottom: -12px;
     right: 0;
+    z-index: 10;
 }
 footer .box_share a.legal
 {
@@ -970,6 +975,19 @@ footer .box_share a.full_2
 footer .box_share a.full_2:hover
 {
     background-position: -28px -36px;
+}
+footer .amigos_une_amigos
+{
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    padding: 10px 0;
+    margin: 0 auto;
+    text-align: center;
+    bottom: -330px;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.77);
 }
 
 /*------------------------ Custom function classes --------------------------*/

@@ -1,9 +1,12 @@
 @charset "utf-8";
 /* CSS Document */
-	
-@media (min-width: 1200px) { 
+@media (max-width: 1024px) { 
+    footer .amigos_une_amigos img
+    {
+        width: 400px;
+        padding: 20px 0;
+    }
 }
-
 
 
 @media (max-width: 768px) {
@@ -17,6 +20,15 @@
     #vid {
         position:absolute; 
 
+    }
+    footer .box_share a.legal
+    {
+        margin: 5px 0 0 0;
+        height: 7px;
+    }
+    footer .amigos_une_amigos
+    {
+        display: none;
     }
     body
     {
