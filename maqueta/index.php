@@ -14,7 +14,7 @@
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        <title>pok</title>
+        <title>DataPola</title>
 
         <meta name="description" content="">
 
@@ -40,9 +40,9 @@
 
         <meta property="og:site_name" content=""/>
 
-        <meta property="og:type" content="article"/>
+        <meta property="og:type" content="datapola:amigo"/>
 
-        <meta property="fb:app_id" content="447297352129313" />
+        <meta property="fb:app_id" content="1660712804256395" />
 
         <meta property="og:locale" content="es_ES" />
 
@@ -50,7 +50,9 @@
 
         <meta property="og:image:height" content="400" />
 
-        <meta property="article:publisher" content="" />
+        <meta property="og:article:publisher" content="Cerveza Poker" />
+
+        <meta property="og:article:publisher" content="Cerveza Poker" />
 
 
 
@@ -62,7 +64,7 @@
 
         <?php
 
-            $dominio = "https://datapola.tk";
+            $dominio = "https://datapola.com";
 
             if(isset($_GET["id"])){
 
@@ -78,7 +80,7 @@
 
             ?>
 
-            <meta property="og:image" content="https://datapola.tk/img/fondo2.jpg" />
+            <meta property="og:image" content="https://datapola.com/img/fondo2.jpg" />
 
             <?php
 
@@ -175,7 +177,7 @@
 
             <div class="box_share desktop">
 
-                <a href="terms.php" target="_blank" class="legal">LEGAL</a>
+                <a href="javascript:void(0);" target="_blank" class="legal">LEGAL</a>
 
                 <a href="" class="facebook"></a>
 
@@ -220,7 +222,18 @@
         <script type="text/javascript" src="js/fb_functions.js"></script>
 
         <!--script type="text/javascript" src="js/general.js"></script-->
+        <script>
+            $(document).ready(function() {
+                $('#save').click(function() {
+                    //$('.loader').show();
+                    $('.wrapper').css('background', 'none');
+                    //cuando carge el video .loader colocarla en display none
+                    // cami activar mute de los videos
+                    //se creo el funcion repload() para cargar el video ajustado cuando llegan en modo reportado porfavor implementar 
 
+                });
+            });
+        </script>
         <script>
 
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

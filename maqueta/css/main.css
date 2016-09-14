@@ -39,6 +39,7 @@ body
     box-sizing: border-box;
     transition:all .2s ease-out;
     -webkit-overflow-scrolling: touch;
+    overflow: hidden;
 }
 /* especial */
 canvas
@@ -46,7 +47,16 @@ canvas
     border: 1px solid #404040;
 }
 
-#vid,#vid2{
+#vid{
+    position:fixed;
+    background-color:black;
+    top:50%; left:50%;
+    transform:translate(-50%, -50%);
+    width:100%;
+    height:100%;
+
+}
+.vid{
     position:fixed;
     background-color:black;
     top:50%; left:50%;
@@ -56,6 +66,14 @@ canvas
 
 }
 
+.vid2
+{
+    position: fixed;
+    background-color: #000;
+    top: 0;
+    width: auto;
+    height: calc(100% - 150px);
+}
 .mobile
 {
     display: none !important;
@@ -254,6 +272,7 @@ canvas
     left: 0;
     right: 0;
     margin: 0 auto;
+    z-index: 10;
 }
 .wrapper .content_ingresar p
 {
@@ -349,11 +368,11 @@ canvas
     width: 100%;
     height: 190px;
     position: absolute;
-    bottom: 40px;
+    bottom: -1px;
     left: 0;
     right: 0;
     margin: 0 auto;
-    z-index: 999;
+    z-index: 9;
 }
 .wrapper .content_buscar_amigo p
 {
@@ -540,14 +559,14 @@ canvas
 }
 .wrapper .content_buscar_amigo .content_reportar .content_form_reportar .modificar
 {
-    width: 240px;
+    width: 195px;
     height: 43px;
     background: url(../img/modificar.png) no-repeat center;
     display: inline-block;
     margin: 15px 0px 0 0px;
     background-size: contain;
     color: #fff;
-    font-size: 16px;
+    font-size: 13px;
     vertical-align: top;
     text-indent: 85px;
     line-height: 40px;
@@ -565,14 +584,14 @@ canvas
 }
 .wrapper .content_buscar_amigo .content_reportar .content_form_reportar .reportar_otro_amigo
 {
-    width: 266px;
+    width: 207px;
     height: 42px;
     background: url(../img/reportar_otro_amigo.png) no-repeat center;
     display: inline-block;
     margin: 15px 0px 0px;
     background-size: contain;
     color: #fff;
-    font-size: 16px;
+    font-size: 13px;
     vertical-align: top;
     text-indent: 15px;
     line-height: 40px;
@@ -830,7 +849,7 @@ footer .terminos_desktop
     text-decoration: none;
     margin: 0px 5px 5px 10px;
     position: relative;
-    z-index: 10;
+    z-index: 1000;
 }
 footer .mail
 {
@@ -983,13 +1002,14 @@ footer .amigos_une_amigos
     position: absolute;
     right: 0;
     left: 0;
-    z-index: 0;
-    padding: 10px 0;
+    z-index: 10;
+    padding: 30px 0;
+    border-top: 1px solid #ed1a3b;
     margin: 0 auto;
     text-align: center;
     bottom: -330px;
     opacity: 0;
-    background: rgba(0, 0, 0, 0.77);
+    background: rgba(0, 0, 0, 0.9);
 }
 
 /*------------------------ Custom function classes --------------------------*/

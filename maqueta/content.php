@@ -12,7 +12,9 @@
         <source src="videos/inv/inv.webm" type="video/webm" />
     </video>
 
-    <video id="vid2" poster="img/bg.png" style="" title="vid_1" webkit-playsinline>
+
+
+    <video id="vid2" class="vid2" poster="img/bg.png" style="" title="vid_1" webkit-playsinline>
     	<source src="videos/rep/rep.webm" type="video/webm" />
     </video>
 

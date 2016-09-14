@@ -1,0 +1,380 @@
+// custom functions
+$(function(){
+
+//Video events and functions
+$('#vid,#vid2').click(function(){
+  //this.paused?this.play():this.pause();
+  //class de parent
+  //$(this).parent().toggleClass('paused');
+});
+
+//Popup legal
+$( 'a.legal' ).hover(function() {
+        $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
+      }, function() {
+        $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
+});
+
+//Hide canvas
+$('#can_hidden').hide();
+
+//Facebook global variables
+
+var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href),
+    body = $('body'),
+    dominio = "datapola.com/",
+    movil = false,
+    ios =  iOS(),
+    ref = document.referrer,
+    fb_valid = false;
+
+
+function faceConnect(){
+
+    //------------------------- ASYNC INIT -----------------------//
+    //Function
+    (function(d, s, id){
+
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    window.fbAsyncInit = function() {
+        FB.init({
+          appId: '1660712804256395',
+          status: true,
+          xfbml: true,
+          cookie: true,
+          version    : 'v2.7',
+          channelUrl: url_l+'/channelUrl.html'
+        });
+
+        //------------------------- Login status -----------------------//
+        FB.getLoginStatus(function(response) {
+          if (response.status === 'connected') {
+            console.log('is conected');
+            //Autoplay video if is connected
+              var video = $("#vid").get(0);
+                  video.play();
+            //Draw image profile on video if the user is refered
+              if(body.hasClass('refered')){
+                FB.api(
+                    '/me',
+                    'GET',
+                    {
+                      "fields":
+                      "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"
+                    },
+
+                    function(response) {
+                      //Get profile photo if is refered
+                        document.getElementById('profile-thumb').innerHTML = "<img src='" + response.picture.data.url + "' width='290' height='390'>";
+                  });
+              }//end of refered
+              //------------------------- Login -----------------------//
+              FB.login(function(response) {
+                FB.api(
+                '/me/taggable_friends',
+                'GET',
+                {
+                  "fields":
+                  "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"
+                },
+
+                function(response) {
+                  var boxContainer = $('.box_amigos_facebook');
+
+                    for(y=0; y<response.data.length; y++) {
+
+                      $('.hidden').hide();
+
+                        //Load images
+                        boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + "'/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man'>"+ response.data[y].id +"</span></div>");
+
+                      }
+                    //Action for input
+                    boxContainer.hide();
+
+                    //search friend
+                    $('#search_friend').unbind('click').click(function(event) {
+                        $(this).siblings('.box_amigos_facebook').toggle(400);
+                    });
+
+                    //Action box profile item
+                    $('.box_perfil').click(function(event) {
+
+                      var img = $(this).children('img').attr('src'),
+                          nombre = $(this).children('.nombre').text(),
+                          id_user = $(this).children('.id_man').text();
+
+                          $('#search_friend').val(nombre);
+                          $('#photo_friend').val(img);
+                          $('#id_friend').val(id_user);
+                          $(this).parent().hide(400);
+                    });
+
+                    //Click for publish BS
+
+                    $('#push_public').click(function(e){
+                      //Share action;
+
+                      var objectToLike = 'https://datapola.com/';
+
+                      //FB API for posts open graph history
+                      FB.api(
+                        'me/objects/datapola:amigo',
+                        'post',
+                        {
+                          object: {
+                            "og":{
+                              "url": "http://samples.ogp.me/1670568909937451",
+                              "title": "Sample Amigo",
+                              "image": "https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png",
+                              "description": "tests",
+                              "app_id": "1660712804256395",
+                              "message": $('#id_friend').val() +"Debes muchas cervezas!",
+                              "tags": $('#id_friend').val()
+                            }
+                          }
+                        },
+
+                       function(response) {
+                          // handle the response
+
+                          console.log(response);
+
+                        });//End of history api
+                    });//End of publish bs
+
+                    //Create canvas
+                      function drawCanvas(){
+                          var can = document.getElementById('can_hidden'),
+                          ctx = can.getContext('2d'),
+                          imgUrl = $('#photo_friend').val();
+
+                          var img = new Image();
+                          img.src = imgUrl;
+
+                          var img2 = new Image();
+                          img2.src = 'https://'+dominio+'img/bg-canvas.jpg';
+
+                          ctx.drawImage(img2, 0, 0);
+                          ctx.drawImage(img, 0, 0);
+                      }//End of draw canvas
+                });//Api taggable response
+              });//End of response
+            }else{
+              FB.login();
+        }
+    }//End of async
+}//End of faceconnect
+
+
+  //Agegate validation
+
+    function getUrlVars() {
+      // Find the params in the URL, Used when linking from another site that has already screened for age
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+        {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+
+    $(window).load(function() {
+      // If There is no Age Cookie or Cookie is set to Failed Hide Contents of Page and display Age Gate PopUp
+          if($.cookie('age_verify') == 'underage') {
+           window.location.href = "http://www.talkingalcohol.com/espanol/";
+          }
+          var gateParam = getUrlVars()["agegate"];
+          // If Cookie is found and True Show Contents of Page and Remove Age Gate modal
+          if($.cookie('age_verify') == 'legal' ||  gateParam == 'valid' ) {
+           $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
+            $('body').addClass('ageGateActive');
+            $('.content_ingresar').hide();
+            //if is legal show video
+            $('.content_video').show();
+            //repload();
+          }
+        else {
+            //window.location.href = "http://www.talkingalcohol.com/espanol/";
+        }
+    });
+
+    function repload(){
+      $('#vid2').play();
+      $('#vid2').removeClass('vid2');
+      $('#vid2').addClass('vid');
+    }
+    // Calculate your age based on inputs
+
+      var day = $("#birthDay").val();
+      var month = $("#birthMonth").val();
+      var year = $("#birthYear").val();
+
+      // Disallow Letters into the Age Gate Input Fields
+      $('#ageGateForm input.date').on('input', function() {
+       this.value = this.value.replace(/[\s\D]/g, '', function(){
+       });
+       if ($(this).val().length == $(this).attr('maxlength'))  {
+        if($('#birthDay').val() > 31 || $('#birthMonth').val() > 12 || $('#birthYear').val() > 2014) {
+          $(this).val('');
+          }
+        if($('html').hasClass('no-touch')) {
+          $(this).parent().next().find('input.date').focus();}
+        };
+      });
+
+
+  // FORM Submit
+  $("#ageGateForm").submit(function(){
+
+      var day = $("#birthDay").val();
+      var month = $("#birthMonth").val();
+      var year = $("#birthYear").val();
+      var age  = $("#requiredAge").val();
+
+      // If Input Fields are left empty or not Formatted Correctly Display Message
+      if (day == "" || month == "" || year == "" || month.length < 2 || day.length < 2 || year.length < 4){
+        $('li.errors').html("Por favor llene los campos con el formato Correcto").slideDown(300);
+
+        return false
+     }
+
+      var mydate = new Date();
+      mydate.setFullYear(year, month-1, day);
+
+      var currdate = new Date();
+      currdate.setFullYear(currdate.getFullYear() - age);
+
+      //  If Underage Redirect to Google Homepage
+      if ((currdate - mydate) < 0){
+        $.cookie('age_verify', 'underage', { expires: 1, path:'/'});
+          $('#ageGateForm').html("<p class='message'> Solo personas mayores de " + age + " años pueden entrar a este sitio </p>");
+          window.location.href = "http://www.talkingalcohol.com/espanol/";
+           return false
+       }
+
+       // If Age is Validated Hide form and show contents
+      else {
+      $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
+        $('.content_ingresar').hide();
+        //if is legal show video
+        $('.content_video').show();
+        return false
+   }
+
+  return false;
+
+});
+
+
+//iOS emulator function
+
+function iOS() {
+
+  var iDevices = [
+
+    'iPad Simulator',
+
+    'iPhone Simulator',
+
+    'iPod Simulator',
+
+    'iPad',
+
+    'iPhone',
+
+    'iPod'
+
+  ];
+
+  while (iDevices.length) {
+
+    if (navigator.platform === iDevices.pop()){ return true; }
+
+  }
+  return false;
+
+}
+
+  //Handle if video is finished
+  document.getElementById('vid').addEventListener('ended',myHandler,false);
+  function myHandler(e) {
+      //Show actions on bottom
+      $('body').addClass('steps step_1');
+  }
+
+
+    //If body have class refered by facebook
+    if(body.hasClass('refered')){
+      //Display just one video
+      $('#vid').hide();
+      $('#vid2').show();
+      $('.content_facebook_connect').remove();
+      //Launch facebook connect if widow is load
+      $(window).load(function(){
+        //Launch face connect
+        faceConnect();
+      });
+    }else{
+      //Display just one video
+      $('#vid').show();
+      $('#vid2').hide();
+      //Click on facebook connect
+      $('.content_facebook_connect .fb_boton').click(function(){
+          //Launch face connect
+          faceConnect();
+          $(this).parent().remove();
+
+        });
+    }
+
+    //click on create report
+    var clickReport = $('.reportar'),
+        modifyReport = $('.content_form_reportar .modificar');
+
+    //Global linked image
+    clickReport.click(function(event) {
+      //Show second video
+      $('body').removeClass().addClass('steps step_2');
+
+      //Display Second video
+      $('#vid').hide();
+      $('#vid2').show();
+
+      //Autoplay video if I create report
+      var video = $("#vid2").get(0);
+          video.play();
+
+      //Launch image
+        document.getElementById('profile-thumb').innerHTML = "<img src='" + $('#photo_friend').val() + "' width='290' height='390'>";
+        $('.profile-thumb').delay(11000).show(0);
+      //Avoid redirections
+      return false;
+      event.preventDefault();
+    });
+
+    //Click modify
+    modifyReport.click(function(event) {
+      //Show first event
+      $('body').removeClass().addClass('steps step_1');
+      //Mute video
+      $("#vid2 , .profile-thumb").hide();
+      var video2 = $("#vid2").get(0);
+          video2.currentTime = 0;
+          video2.pause();
+
+      return false;
+      event.preventDefault();
+    });
+
+
+});

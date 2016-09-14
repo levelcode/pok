@@ -1,0 +1,8 @@
+RewriteEngine On 
+RewriteCond %{HTTP_HOST} ^datapola\.com [NC]
+RewriteCond %{SERVER_PORT} 80 
+RewriteRule ^(.*)$ https://datapola.com/$1 [R,L]
+
+RewriteCond %{HTTP_HOST} ^www.datapola\.com [NC]
+RewriteCond %{SERVER_PORT} 80 
+RewriteRule ^(.*)$ https://datapola.com/$1 [R,L]

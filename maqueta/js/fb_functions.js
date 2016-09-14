@@ -1,26 +1,22 @@
-// custom functions
-$(function(){
+ //Globales
+var canvas ='';
+var context ='';
+var imageLoader = '';
 
-//Video events and functions
-$('#vid,#vid2').click(function(){
-  this.paused?this.play():this.pause();
-  //class de parent
-  $(this).parent().toggleClass('paused');
-});
 
-//Popup legal
-$( 'a.legal' ).hover(function() {
-        $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
-      }, function() {
-        $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
-});
+$( window ).load(function() {
+    //Facebook
+    var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href);
+    var dominio = "datapola.com/";
+    var movil = false;
+    var ios =  iOS();
+    var downloadURL = "";
+    var day;
+    var month;
+    var year;
 
-//Hide canvas
-$('#can_hidden').hide();
-
-//Facebook global variables
-
-var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href),
+    //Vars FB
+    var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href),
     body = $('body'),
     dominio = "datapola.com/",
     movil = false,
@@ -29,176 +25,9 @@ var url_l = String((window.location != window.parent.location) ? document.referr
     fb_valid = false;
 
 
-function faceConnect(){
-
-  (function(d, s, id){
-
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-
-    window.fbAsyncInit = function() {
-        FB.init({
-          appId: '1660712804256395',
-          status: true,
-          xfbml: true,
-          cookie: true,
-          version    : 'v2.7',
-          channelUrl: url_l+'/channelUrl.html'
-        });
-
-        FB.getLoginStatus(function(response) {
-
-          // Check login status on load, and if the user is
-
-          // already logged in, go directly to the welcome message.
-
-          if (response.status == 'connected') {
-
-            //Autoplay video if is connected
-            var video = $("#vid").get(0);
-                video.play();
-
-            //Draw image profile on video
-            FB.api(
-              '/me',
-              'GET',
-              {
-
-                "fields":
-                "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"},
-
-              function(response) {
-
-                  //Get profile photo if is refered
-                  if(body.hasClass('refered')){
-                    document.getElementById('profile-thumb').innerHTML = "<img src='" + response.picture.data.url + "' width='290' height='390'>";
-                  }
-              }
-
-            );
-
-            //Login for perimisions
-            FB.login(function(response) {
-              FB.api(
-                '/me/friends',
-                'GET',
-                {
-
-                  "fields":
-                  "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"},
-
-                function(response) {
-
-                    var boxContainer = $('.box_amigos_facebook');
-
-                    for(y=0; y<response.data.length; y++) {
-
-                      $('.hidden').hide();
-
-                      //Load images
-                       boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + "'/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man'>"+ response.data[y].id +"</span></div>");
-
-
-                      //Action for input
-                      boxContainer.hide();
-
-                      $('#search_friend').unbind('click').click(function(event) {
-                          $(this).siblings('.box_amigos_facebook').toggle(400);
-                      });
-
-                      //Action box profile item
-                      $('.box_perfil').click(function(event) {
-
-                        var img = $(this).children('img').attr('src'),
-                            nombre = $(this).children('.nombre').text(),
-                            id_user = $(this).children('.id_man').text();
-
-                            $('#search_friend').val(nombre);
-                            $('#photo_friend').val(img);
-                            $('#id_friend').val(id_user);
-                            $(this).parent().hide(400);
-                      });
-                    }
-
-                  //Click for publish BS
-
-                  $('#push_public').click(function(e){
-                    //Share action
-
-                      FB.ui(
-
-                      {
-
-                          method: "feed",
-
-                          to: $('#id_friend').val(),
-
-                          link: 'https://datapola.tk/?id='+$('#id_friend').val(),
-
-                          name: $('#search_friend').val() + ' debes '+ $('#beers_input').val() + ' Polas',
-
-                          app_id: '1660712804256395',
-
-                          description: 'Ingresa y reporta a los amigos que te deben las polas',
-
-                          caption: 'Datapola',
-
-                          //source: downloadURL,
-
-                          type: 'photo',
-
-                          picture: $('#photo_friend').val()
-
-
-
-                      }, function(response){});
-
-                      //Create canvas
-
-                      var can = document.getElementById('can_hidden'),
-                          ctx = can.getContext('2d'),
-                          imgUrl = $('#photo_friend').val();
-
-                        var img = new Image();
-                        img.src = imgUrl;
-
-                        var img2 = new Image();
-                        img2.src = 'https://'+dominio+'img/bg-canvas.jpg';
-
-                        ctx.drawImage(img2, 0, 0);
-                        ctx.drawImage(img, 0, 0);
-
-                      return false;
-
-                  });
-
-                }
-
-              );
-
-            }, {scope: 'publish_actions'});
-
-          } else {
-
-            // Otherwise, show Login dialog first.
-
-            FB.login(function(response) {
-
-            }, {scope: 'publish_actions'});
-
-          }
-
-        });
-    }
-}//End of face connect
-
-  //Agegate validation
-
+    //******************
+    // Validacion Cookie
+    //******************
     function getUrlVars() {
       // Find the params in the URL, Used when linking from another site that has already screened for age
         var vars = [], hash;
@@ -212,32 +41,41 @@ function faceConnect(){
         return vars;
     }
 
-    $(window).load(function() {
-      // If There is no Age Cookie or Cookie is set to Failed Hide Contents of Page and display Age Gate PopUp
-          if($.cookie('age_verify') == 'underage') {
-           window.location.href = "http://www.talkingalcohol.com/espanol/";
-          }
-          var gateParam = getUrlVars()["agegate"];
-          // If Cookie is found and True Show Contents of Page and Remove Age Gate modal
-          if($.cookie('age_verify') == 'legal' ||  gateParam == 'valid' ) {
-           $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
-            $('body').addClass('ageGateActive');
-            $('.content_ingresar').hide();
-            //if is legal show video
-            $('.content_video').show();
-          }
-        else {
-            //window.location.href = "http://www.talkingalcohol.com/espanol/";
-        }
-    });
+    function repload(){
+      $('#vid2').play();
+      $('#vid2').removeClass('vid2');
+      $('#vid2').addClass('vid');
+    }
+
+    if($.cookie('age_verify') == 'underage') {
+      window.location.href = "http://www.talkingalcohol.com/espanol/";
+    }
+    var gateParam = getUrlVars()["agegate"];
+    // If Cookie is found and True Show Contents of Page and Remove Age Gate modal
+    if($.cookie('age_verify') == 'legal' ||  gateParam == 'valid' ) {
+      $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
+      $('body').addClass('ageGateActive');
+      $('.content_ingresar').hide();
+      //if is legal show video
+      $('.content_video').show();
+      //repload();
+    }
+    else {
+        //window.location.href = "http://www.talkingalcohol.com/espanol/";
+    }
+
+
+    //***************
+    //Validador Edad
+    //***************
+
     // Calculate your age based on inputs
+    day = $("#birthDay").val();
+    month = $("#birthMonth").val();
+    year = $("#birthYear").val();
 
-      var day = $("#birthDay").val();
-      var month = $("#birthMonth").val();
-      var year = $("#birthYear").val();
-
-      // Disallow Letters into the Age Gate Input Fields
-      $('#ageGateForm input.date').on('input', function() {
+    // Disallow Letters into the Age Gate Input Fields
+    $('#ageGateForm input.date').on('input', function() {
        this.value = this.value.replace(/[\s\D]/g, '', function(){
        });
        if ($(this).val().length == $(this).attr('maxlength'))  {
@@ -246,12 +84,218 @@ function faceConnect(){
           }
         if($('html').hasClass('no-touch')) {
           $(this).parent().next().find('input.date').focus();}
-        };
+      };
+    });
+
+
+    /**
+     * jQuery.browser.mobile (http://detectmobilebrowser.com/)
+     *
+     * jQuery.browser.mobile will be true if the browser is a mobile device
+     *
+     **/
+    (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
+
+    movil = jQuery.browser.mobile;
+
+    if(movil==true){
+        //window.top.location.href = "https://www.venezuelaquiere.com/personal/"
+    }else{
+        //
+    }
+    //viene de Facebook
+    //window.top.location.href = "https://www.facebook.com/pages/VenezuelaQuiere/836776256420302?sk=app_447297352129313"
+
+    //******
+    //Facebook
+    //******
+
+    window.fbAsyncInit = function() {
+        //Se instancia el elemento FB
+        FB.init({
+          appId: '1660712804256395',
+          status: true,
+          xfbml: true,
+          cookie: true,
+          version    : 'v2.7',
+          channelUrl: url_l+'/channelUrl.html'
+        });
+        console.log("SDK FB solicitado");
+
+        FB.getLoginStatus(function(response) {
+          // Check login status on load, and if the user is
+          // already logged in, go directly to the welcome message.
+          if (response.status == 'connected') {
+            //onLogin(response);
+            FB.login(function(response) {
+              onLogin(response);
+            }, {scope: 'publish_actions'});
+          } else {
+            // Otherwise, show Login dialog first.
+            FB.login(function(response) {
+              onLogin(response);
+            }, {scope: 'publish_actions'});
+          }
+        });
+        FB.Canvas.setSize({ width: 760, height: 1200});
+        // ADD ADDITIONAL FACEBOOK CODE HERE
+    };
+
+    (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // Place following code after FB.init call.
+
+    function onLogin(response) {
+      if (response.status == 'connected') {
+        FB.api('/me?fields=first_name', function(data) {
+            var value_t = data.first_name;
+            //$("#texto1").val(value_t);
+            //canvas.clear();
+            //init("img/back_photo.jpg", value_t, 0,78, 'Lato', 60);
+        });
+
+        FB.api("me?fields=age_range",
+            function (response) {
+              if (response && !response.error) {
+                  if(Number(response.min) <= 18){
+                  }
+                /* handle the result */
+              }else{
+                console.log(response);
+              }
+            }
+        );
+      }
+    };
+
+    //******
+    //Facebook
+    //******
+
+    //******
+    //funciones Globales canvas
+    //******
+    function dataURLtoBlob(dataURL) {
+          var binary = atob(dataURL.split(',')[1]);
+          var array = [];
+          for(var i = 0; i < binary.length; i++) {
+              array.push(binary.charCodeAt(i));
+          }
+          return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
+    }
+    function iOS() {
+
+      var iDevices = [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+      ];
+
+      while (iDevices.length) {
+        if (navigator.platform === iDevices.pop()){ return true; }
+      }
+
+      return false;
+    }
+
+    function init(){
+
+      //Video events and functions
+      $('#vid,#vid2').click(function(){
+        //this.paused?this.play():this.pause();
+        //class de parent
+        //$(this).parent().toggleClass('paused');
       });
 
+      //Popup legal
+      $( 'a.legal' ).hover(function() {
+              $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
+            }, function() {
+              $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
+      });
 
-  // FORM Submit
-  $("#ageGateForm").submit(function(){
+      //Hide canvas
+      $('#can_hidden').hide();
+
+      document.getElementById('vid').addEventListener('ended',myHandler,false);
+      function myHandler(e) {
+          //Show actions on bottom
+          $('body').addClass('steps step_1');
+      }
+      //If body have class refered by facebook
+      if(body.hasClass('refered')){
+        //Display just one video
+        $('#vid').hide();
+        $('#vid2').show();
+        $('.content_facebook_connect').remove();
+        //Launch facebook connect if widow is load
+        $(window).load(function(){
+          //Launch face connect
+          faceConnect();
+        });
+      }else{
+        //Display just one video
+        $('#vid').show();
+        $('#vid2').hide();
+        //Click on facebook connect
+        $('.content_facebook_connect .fb_boton').click(function(){
+            //Launch face connect
+            faceConnect();
+            $(this).parent().remove();
+
+          });
+      }
+
+      //click on create report
+      var clickReport = $('.reportar'),
+          modifyReport = $('.content_form_reportar .modificar');
+
+      //Global linked image
+      clickReport.click(function(event) {
+        //Show second video
+        $('body').removeClass().addClass('steps step_2');
+
+        //Display Second video
+        $('#vid').hide();
+        $('#vid2').show();
+
+        //Autoplay video if I create report
+        var video = $("#vid2").get(0);
+            video.play();
+
+        //Launch image
+          document.getElementById('profile-thumb').innerHTML = "<img src='" + $('#photo_friend').val() + "' width='290' height='390'>";
+          $('.profile-thumb').delay(11000).show(0);
+        //Avoid redirections
+        return false;
+        event.preventDefault();
+      });
+
+      //Click modify
+      modifyReport.click(function(event) {
+        //Show first event
+        $('body').removeClass().addClass('steps step_1');
+        //Mute video
+        $("#vid2 , .profile-thumb").hide();
+        var video2 = $("#vid2").get(0);
+            video2.currentTime = 0;
+            video2.pause();
+
+        return false;
+        event.preventDefault();
+      });
+    }
+
+    $("#ageGateForm").submit(function(){
 
       var day = $("#birthDay").val();
       var month = $("#birthMonth").val();
@@ -261,9 +305,8 @@ function faceConnect(){
       // If Input Fields are left empty or not Formatted Correctly Display Message
       if (day == "" || month == "" || year == "" || month.length < 2 || day.length < 2 || year.length < 4){
         $('li.errors').html("Por favor llene los campos con el formato Correcto").slideDown(300);
-
         return false
-     }
+      }
 
       var mydate = new Date();
       mydate.setFullYear(year, month-1, day);
@@ -274,128 +317,390 @@ function faceConnect(){
       //  If Underage Redirect to Google Homepage
       if ((currdate - mydate) < 0){
         $.cookie('age_verify', 'underage', { expires: 1, path:'/'});
-          $('#ageGateForm').html("<p class='message'> Solo personas mayores de " + age + " años pueden entrar a este sitio </p>");
-          window.location.href = "http://www.talkingalcohol.com/espanol/";
-           return false
-       }
-
-       // If Age is Validated Hide form and show contents
+        $('#ageGateForm').html("<p class='message'> Solo personas mayores de " + age + " años pueden entrar a este sitio </p>");
+        window.location.href = "http://www.talkingalcohol.com/espanol/";
+        return false
+      }
+      // If Age is Validated Hide form and show contents
       else {
-      $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
+        $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
         $('.content_ingresar').hide();
         //if is legal show video
         $('.content_video').show();
         return false
-   }
+      }
+      return false;
+    });
 
-  return false;
+    function faceConnect(){
+      console.log('is conected');
+      //Autoplay video if is connected
+      var video = $("#vid").get(0);
+      video.play();
+      //Draw image profile on video if the user is refered
+      if(body.hasClass('refered')){
+        FB.api('/me','GET',
+              {
+                "fields":
+                "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"
+              },
 
-});
+              function(response) {
+                //Get profile photo if is refered
+                document.getElementById('profile-thumb').innerHTML = "<img src='" + response.picture.data.url + "' width='290' height='390'>";
+            });
+        }//end of refered
+        //------------------------- Login -----------------------//
+        FB.api(
+        '/me/taggable_friends',
+        'GET',
+        {
+          "fields":
+          "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"
+        },
+        function(response) {
+
+          var boxContainer = $('.box_amigos_facebook');
+          for(y=0; y<response.data.length; y++) {
+            $('.hidden').hide();
+            //Load images
+            boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + "'/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man'>"+ response.data[y].id +"</span></div>");
+          }
+          //Action for input
+          boxContainer.hide();
+          //search friend
+          $('#search_friend').unbind('click').click(function(event) {
+              $(this).siblings('.box_amigos_facebook').toggle(400);
+          });
+
+          //Action box profile item
+          $('.box_perfil').click(function(event) {
+
+            var img = $(this).children('img').attr('src'),
+                nombre = $(this).children('.nombre').text(),
+                id_user = $(this).children('.id_man').text();
+
+                $('#search_friend').val(nombre);
+                $('#photo_friend').val(img);
+                $('#id_friend').val(id_user);
+                $(this).parent().hide(400);
+          });
+          //Click for publish BS
+          $('#push_public').click(function(e){
+
+            //Share action;
+            var objectToLike = 'https://datapola.com/';
+
+            //Object
+            FB.api(
+              'me/objects/datapola:amigo',
+              'post',
+              {
+                object: {
+                  "og":{
+                    "url": "https://datapola.com/id?="+$('#id_friend').val(),
+                    "title": "Datapola el que la debe, la paga!",
+                    "image": $('#photo_friend').val(),
+                    "description": "",
+                    "app_id": "1660712804256395",
+                    "message": $('#id_friend').val() +"Debes " + $('#beers_input').val() + "cervezas!",
+                    "tags": $('#id_friend').val(),
+                    "picture": $('#photo_friend').val()
+                  }
+                }
+              },
+              function(response) {
+                var objectID = response.id;
+                //Action
+                FB.api(
+                    'me/datapola:reportar',
+                    'post',
+                    {
+                       amigo:objectID , // make sure to have the apropiate og:type meta set
+                       link: objectToLike,
+                       tags: $('#id_friend').val(), // the tokens ids for those friens you wanna tag and you got on previous step
+                       title: 'whatever',
+                       image: $('#photo_friend').val(),
+                       message: $('#search_friend').val() + "debes "+ $('#beers_input').val() +" polas",
+                       picture: $('#photo_friend').val(),
+                     },
+                    function(response) {
+                    }
+                );
+              });//End of history api
+          });//End of publish bs
+
+                        //Create canvas
+          function drawCanvas(){
+              var can = document.getElementById('can_hidden'),
+              ctx = can.getContext('2d'),
+              imgUrl = $('#photo_friend').val();
+
+              var img = new Image();
+              img.src = imgUrl;
+
+              var img2 = new Image();
+              img2.src = 'https://'+dominio+'img/bg-canvas.jpg';
+
+              ctx.drawImage(img2, 0, 0);
+              ctx.drawImage(img, 0, 0);
+          }//End of draw canvas
+        });//End of async
+    }//End of facbook connect
+
+    init();
 
 
 
 
-//iOS emulator function
-
-function iOS() {
-
-  var iDevices = [
-
-    'iPad Simulator',
-
-    'iPhone Simulator',
-
-    'iPod Simulator',
-
-    'iPad',
-
-    'iPhone',
-
-    'iPod'
-
-  ];
-
-  while (iDevices.length) {
-
-    if (navigator.platform === iDevices.pop()){ return true; }
-
-  }
-  return false;
-
-}
-
-  //Handle if video is finished
-  document.getElementById('vid').addEventListener('ended',myHandler,false);
-  function myHandler(e) {
-      //Show actions on bottom
-      $('body').addClass('steps step_1');
-  }
 
 
-    //Function Facebook connect
 
-    //If body have class refered by facebook
-    if(body.hasClass('refered')){
-      //Display just one video
-      $('#vid').hide();
-      $('#vid2').show();
-      $('.content_facebook_connect').remove();
-      //Launch facebook connect if widow is load
-      $(window).load(function(){
-        //Launch face connect
-        faceConnect();
-      });
-    }else{
-      //Display just one video
-      $('#vid').show();
-      $('#vid2').hide();
-      //Click on facebook connect
-      $('.content_facebook_connect .fb_boton').click(function(){
-          //Launch face connect
-          faceConnect();
-          $(this).parent().remove();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+    //******
+    //Canvas
+    //******
+    $("#share_f").hide();
+    $("#share_l").hide();
+    $("#download").hide();
+
+    var canvas = new fabric.Canvas('c');
+    canvas.setWidth(400);
+    canvas.setHeight(400);
+    //desactivamos seleccion por grupos
+    canvas.selection = false;
+    // Permitimos el scroll
+    canvas.allowTouchScrolling = true;
+
+    //inicializacion
+    init("img/back_photo.jpg", "", 0,78, 'Lato', 60);
+    function init(url, texto_inicial, x, y, font, size){
+        // Creamos el BackGround de la foto
+        var rect = new fabric.Rect({
+          left: 0,
+          top: 0,
+          fill: 'white',
+          width: 400,
+          height: 400,
+          selectable: false
+        });
+        //Se agrega al canvas
+        var texto_p = texto_inicial.toUpperCase().substr(0,10);
+        var texto1 = new fabric.Text(texto_p, {
+          fontFamily: font,
+          top: y,
+          evented: false,
+          fontSize: size,
+          stroke : '#FFF',
+          strokeWidth: 2.5,
+          selectable: false
+        });
+        canvas.add(rect);
+        canvas.moveTo(rect, -2);
+        insertarFotoDrag(url,false, false,1,"portada");
+        canvas.add(texto1);
+        canvas.centerObjectH(texto1);
+        canvas.moveTo(texto1, 2);
+        canvas.renderAll();
+    }
+    // Redimensionar las imagenes subidas para que no se salgan del canvas
+    canvas.on({
+        'object:selected': selectedObject,
+        'mouse:down': mousedown,
+        'mouse:up': mouseup
+    });
+    function mousedown(e){
+        var id = canvas.getObjects().indexOf(e.target);
+        if (id == 1) {
+            var portada = canvas.item(2);
+            portada.opacity = 0.5;
+            canvas.renderAll();
+        }
+
+    }
+    function mouseup(e){
+        var id = canvas.getObjects().indexOf(e.target);
+        if (id == 1) {
+            var portada = canvas.item(2);
+            //portada.opacity = 1;
+            canvas.renderAll();
+        }
+    }
+
+    function selectedObject(e) {
+        var id = canvas.getObjects().indexOf(e.target);
+        var object = canvas.item(id);
+        if(id != 1){
+            canvas.moveTo(object, 100);
+            canvas.moveTo(canvas.getObjects('text')[0], 101);
+        }else{
+            var portada = canvas.item(2);
+            portada.opacity = 0.5;
+            canvas.renderAll();
+        }
+
+    }
+
+    //Funcion para insertar los elementos desde una URL
+    function insertarFotoDrag(url, seleccionable, eventos, zindex, nombre)
+    {
+        fabric.Image.fromURL(url, function(oImg) {
+            oImg.scale(1);
+            oImg.selectable = seleccionable;
+            oImg.evented = eventos;
+            oImg.set({
+                borderColor: 'red',
+                cornerColor: 'green',
+                cornerSize: 10,
+                transparentCorners: false
+            });
+            canvas.add(oImg);
+            canvas.moveTo(oImg, zindex);
+            canvas.renderAll();
         });
     }
 
-    //click on create report
-    var clickReport = $('.reportar'),
-        modifyReport = $('.content_form_reportar .modificar');
+    //texto dinamico
 
-    //Global linked image
-    clickReport.click(function(event) {
-      //Show second video
-      $('body').removeClass().addClass('steps step_2');
 
-      //Display Second video
-      $('#vid').hide();
-      $('#vid2').show();
-
-      //Autoplay video if I create report
-      var video = $("#vid2").get(0);
-          video.play();
-
-      //Launch image
-        document.getElementById('profile-thumb').innerHTML = "<img src='" + $('#photo_friend').val() + "' width='290' height='390'>";
-        $('.profile-thumb').delay(11000).show(0);
-      //Avoid redirections
-      return false;
-      event.preventDefault();
+    $("#texto1").keydown(function(e) {
+        setTimeout(function () {
+            var value_t = $("#texto1").val();
+            var texto_t = canvas.getObjects('text')[0];
+            texto_t.text = value_t.toUpperCase().substr(0,10);
+            var texto_w = texto_t.width;
+            var texto_l = texto_t.left;
+            texto_t.left = 180-(texto_w/2);
+            canvas.renderAll();
+            $("#save").show();
+            $("#share_l").hide();
+            $("#download").hide();
+        }, 100);
     });
 
-    //Click modify
-    modifyReport.click(function(event) {
-      //Show first event
-      $('body').removeClass().addClass('steps step_1');
-      //Mute video
-      $("#vid2 , .profile-thumb").hide();
-      var video2 = $("#vid2").get(0);
-          video2.currentTime = 0;
-          video2.pause();
+    $('#save').click(function(e){
+        var value_t = $("#texto1").val();
+        if(value_t != ""){
+            canvas.discardActiveObject();
+            canvas.renderAll();
+            var imagen = canvas.toDataURL({
+                format: 'jpeg',
+                multiplier: 1,
+                quality: 10
+            })
+            var file= dataURLtoBlob(imagen);
+            //creamos un form data object
+            var fd = new FormData();
+            fd.append("foto", file);
+            // Envío del canvas via ajax
+            $.ajax({
+               url: "upload_photo.php",
+               type: "POST",
+               data: fd,
+               processData: false,
+               contentType: false,
+            }).done(function(respond){
+                $("#save").hide();
 
-      return false;
-      event.preventDefault();
+                $("#share_l").show();
+                $("#download").show();
+                var nombre_t = $("#texto1").val().toLowerCase();
+                downloadURL = "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio";
+                if(ios == true){
+                    var modalios = "<div><img src='"+respond+"'> </br><p>Mantén presionado sobre la foto para descargarla</p></div>"
+                    $("#download").prop("href", "download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio");
+                }else{
+                     $("#download").prop("href", "download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio");
+
+                     window.location.href = "download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio";
+                }
+                var url_id = respond.split("/");
+
+
+                FB.api(
+                    "/me/photos",
+                    "POST",
+                    {
+                        "url": "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
+                    },
+                    function (response) {
+                      if (response && !response.error) {
+                        alert("Foto subida con exito a tu biografía, ahora solo vuelvela tu foto de perfil!");
+                      }else{
+                        //alert("No fue posible subir la foto por:"+JSON.stringify(response.error));
+
+                        FB.login(function(response) {
+                          FB.api(
+                                "/me/photos",
+                                "POST",
+                                {
+                                    "url": "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
+                                },
+                                function (response) {
+                                  if (response && !response.error) {
+                                    alert("Foto subida con exito a tu biografía, ahora solo vuelvela tu foto de perfil!");
+                                  }else{
+                                    alert("No fue posible subir la foto por falta del siguiente permiso:"+JSON.stringify(response.error));
+                                  }
+                                }
+                            );
+                        }, {scope: 'publish_actions'});
+                      }
+                    }
+                );
+                $('#share_l').click(function(e){
+                        FB.ui(
+                        {
+                            method: "feed",
+                            link: 'https://www.venezuelaquiere.com/personal',
+                            name: String($("#texto1").val())+' Quiere Cambio',
+                            app_id: '447297352129313',
+                            description: 'Cambia tu foto de perfil en Facebook y WhatsApp ¡ Y actívate por el cambio !',
+                            caption: 'venezuela quiere cambio',
+                            source: downloadURL,
+                            type: 'photo',
+                            picture: "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
+
+                        }, function(response){});
+                });
+
+
+                $("#share_f0").val("https://www.venezuelaquiere.com/personal/index.php?id="+url_id[1]);
+                $("#share_f").prop("data-href", "https://www.venezuelaquiere.com/personal/index.php?id="+url_id[1]);
+            });
+        }else{
+            alert("Escribe tu Nombre antes de descargasr la foto!");
+            $("#texto1").focus();
+        }
     });
+ */
 
 
 });
