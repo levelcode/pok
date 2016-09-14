@@ -6,21 +6,16 @@
 
     <input type="button" value="Play" id="play" class="play">
 
-    <div id="profile-thumb" ></div>
+    <div id="profile-thumb" class="profile-thumb"></div>
 
     <video id="vid" poster="img/bg.png" style="" title="vid_1" webkit-playsinline>
-
-        <source src="videos/rep/rep.webm" type="video/webm" />
-
-        <source src="videos/rep/rep.mp4"/>
-
+        <source src="videos/inv/inv.webm" type="video/webm" />
     </video>
 
-    <video id="vid2" poster="img/bg.png" style="" title="vid_1" webkit-playsinline>
 
-    	<source src="videos/inv/inv.webm" type="video/webm" />
-        <source src="videos/inv/inv.mp4" />
 
+    <video id="vid2" class="vid2" poster="img/bg.png" style="" title="vid_1" webkit-playsinline>
+    	<source src="videos/rep/rep.webm" type="video/webm" />
     </video>
 
     <div class="content_facebook_connect">
@@ -82,7 +77,7 @@
 
 			        </div>
 
-					<input type="submit" id="push_public" class="reportar" value="Crear Reporte">
+					<input type="submit" class="reportar" value="Crear Reporte">
 
 				</form>
 
@@ -105,9 +100,9 @@
 
 				<a href="javascript:void(0);" class="modificar">MODIFICAR</a>
 
-				<a href="javascript:void(0);" class="reportar_facebook"></a>
+				<a id="push_public" class="reportar_facebook"></a>
 
-				<a href="javascript:void(0);" class="reportar_otro_amigo">REPORTAR A OTRO AMIGO</a>
+				<a href="javascript:void(0);"  class="reportar_otro_amigo">REPORTAR A OTRO AMIGO</a>
 
 			</div>
 

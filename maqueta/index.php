@@ -14,7 +14,7 @@
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        <title>pok</title>
+        <title>DataPola</title>
 
         <meta name="description" content="">
 
@@ -62,7 +62,7 @@
 
         <?php
 
-            $dominio = "https://datapola.tk";
+            $dominio = "https://datapola.com";
 
             if(isset($_GET["id"])){
 
@@ -78,7 +78,7 @@
 
             ?>
 
-            <meta property="og:image" content="https://datapola.tk/img/fondo2.jpg" />
+            <meta property="og:image" content="https://datapola.com/img/fondo2.jpg" />
 
             <?php
 
@@ -175,7 +175,7 @@
 
             <div class="box_share desktop">
 
-                <a href="terms.php" target="_blank" class="legal">LEGAL</a>
+                <a href="javascript:void(0);" target="_blank" class="legal">LEGAL</a>
 
                 <a href="" class="facebook"></a>
 
@@ -220,7 +220,18 @@
         <script type="text/javascript" src="js/fb_functions.js"></script>
 
         <!--script type="text/javascript" src="js/general.js"></script-->
+        <script>
+            $(document).ready(function() {
+                $('#save').click(function() {
+                    //$('.loader').show();
+                    $('.wrapper').css('background', 'none');
+                    //cuando carge el video .loader colocarla en display none
+                    // cami activar mute de los videos
+                    //se creo el funcion repload() para cargar el video ajustado cuando llegan en modo reportado porfavor implementar 
 
+                });
+            });
+        </script>
         <script>
 
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
