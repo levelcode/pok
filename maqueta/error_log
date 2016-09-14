@@ -10,6 +10,7 @@
 [14-Sep-2016 08:37:25 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20131226/ssh2.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20131226/ssh2.so: cannot open shared object file: No such file or directory in Unknown on line 0
 [14-Sep-2016 08:40:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20131226/exif.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20131226/exif.so: cannot open shared object file: No such file or directory in Unknown on line 0
 [14-Sep-2016 08:40:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20131226/ssh2.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20131226/ssh2.so: cannot open shared object file: No such file or directory in Unknown on line 0
+<<<<<<< HEAD
 [14-Sep-2016 09:12:47 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20131226/exif.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20131226/exif.so: cannot open shared object file: No such file or directory in Unknown on line 0
 [14-Sep-2016 09:12:47 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20131226/ssh2.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20131226/ssh2.so: cannot open shared object file: No such file or directory in Unknown on line 0
 [14-Sep-2016 09:24:18 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20131226/exif.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20131226/exif.so: cannot open shared object file: No such file or directory in Unknown on line 0
@@ -544,3 +545,5 @@
 [14-Sep-2016 23:11:34 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20131226/ssh2.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20131226/ssh2.so: cannot open shared object file: No such file or directory in Unknown on line 0
 [14-Sep-2016 23:12:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20131226/exif.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20131226/exif.so: cannot open shared object file: No such file or directory in Unknown on line 0
 [14-Sep-2016 23:12:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20131226/ssh2.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20131226/ssh2.so: cannot open shared object file: No such file or directory in Unknown on line 0
+=======
+>>>>>>> 19973960bfa36ec3438fb253611649bc10cf7be6
