@@ -133,18 +133,18 @@ function faceConnect(){
                     var objectToLike = 'https://datapola.com/';
 
                     FB.api(
-                      'me/datapola:share',
+                      '/me/og.likes',
                       'post',
                       {
-                         object: objectToLike,
-                         tags: $('#id_friend').val(),
-                         title:'ejemplito', 
-                         message: $('#id_friend').val()+' Debes muchas cervezas'
+                         'object': objectToLike,
+                         'tags': $('#id_friend').val(),
+                         'title':'ejemplito',
+                         'message': $('#id_friend').val()+ 'Debes muchas cervezas!'
                       },
 
                      function(response) {
                         console.log(response);
-                      }{scope: 'publish_actions,taggable_friends'}); 
+                      }); 
 
                     /*
                     FB.api(
