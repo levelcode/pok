@@ -85,7 +85,7 @@ function faceConnect(){
             //Login for perimisions
             FB.login(function(response) {
               FB.api(
-                '/me/friends',
+                '/me/taggable_friends',
                 'GET',
                 {
 
@@ -128,15 +128,45 @@ function faceConnect(){
                   //Click for publish BS
 
                   $('#push_public').click(function(e){
-                    //Share action
+                    //Share action;
 
+                    var objectToLike = 'https://datapola.com/';
+
+                    FB.api(
+                      'me/datapola:share',
+                      'post',
+                      {
+                         object: objectToLike,
+                         tags: $('#id_friend').val(),
+                         title:'ejemplito', 
+                         message: $('#id_friend').val()+' Debes muchas cervezas'
+                      },
+
+                     function(response) {
+                        console.log(response);
+                      }{scope: 'publish_actions,taggable_friends'}); 
+
+                    /*
+                    FB.api(
+                    'me/datapola:share',
+                    'post',
+                    {
+                       'product': '"http://samples.ogp.me/297573733621733"',
+                       'tags': $('#id_friend').val(),
+                       'title':'ejemplito', 
+                       'message': $('#id_friend').val()+' Debes muchas cervezas'
+                    },
+
+                   function(response) {
+                      console.log(response);
+                    }
+                  );  
+                    
                       FB.ui(
 
                       {
 
                           method: "feed",
-
-                          to: $('#id_friend').val(),
 
                           link: 'https://datapola.com/?id='+$('#id_friend').val(),
 
@@ -144,9 +174,11 @@ function faceConnect(){
 
                           app_id: '1660712804256395',
 
-                          description: 'Ingresa y reporta a los amigos que te deben las polas',
+                          description:'Datapola el que la debe la paga',
 
                           caption: 'Datapola',
+
+                          tags: $('#id_friend').val(),
 
                           //source: downloadURL,
 
@@ -156,7 +188,9 @@ function faceConnect(){
 
 
 
-                      }, function(response){});
+                      }, function(response){scope: 'publish_actions,taggable_friends'});
+
+                      */
 
                       //Create canvas
 
@@ -181,7 +215,7 @@ function faceConnect(){
 
               );
 
-            }, {scope: 'publish_actions'});
+            }, {scope: 'publish_actions,taggable_friends'});
 
           } else {
 
@@ -189,7 +223,7 @@ function faceConnect(){
 
             FB.login(function(response) {
 
-            }, {scope: 'publish_actions'});
+            }, {scope: 'publish_actions,taggable_friends'});
 
           }
 
@@ -338,8 +372,6 @@ function iOS() {
       $('body').addClass('steps step_1');
   }
 
-
-    //Function Facebook connect
 
     //If body have class refered by facebook
     if(body.hasClass('refered')){
