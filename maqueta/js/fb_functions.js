@@ -2,7 +2,25 @@
 var canvas ='';
 var context ='';
 var imageLoader = '';
+//Gonzo script
 
+$(function(){
+
+  //Click and save
+  $('#save').click(function() {
+    $('.wrapper').css('background', 'none');
+    $('.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
+    $('.marco_video img').delay(28000).css('display', 'block');
+  });
+
+  //legal
+  $( 'a.legal' ).hover(function() {
+          $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
+        }, function() {
+          $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
+  });
+
+})
 
 $( window ).load(function() {
     //Hide canvas

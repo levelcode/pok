@@ -226,10 +226,7 @@
             $(document).ready(function() {
                 $('#save').click(function() {
                     //$('.loader').show();
-                    $('.wrapper').css('background', 'none');
-                    $('.marco_video').css('display', 'block');
-                    $('.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
-                    $('.marco_video img').delay(28000).css('display', 'block');
+
                     //Popup legal
                     //cuando carge el video .loader colocarla en display none
                     // cami activar mute de los videos

@@ -67,6 +67,7 @@ canvas
 }
 .marco_video
 {
+    display:none;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -1058,4 +1059,8 @@ body.steps .content_buscar_amigo{
     /*second step*/
     body.steps.step_2 .content_buscar_amigo #step_2{
         display: block;
+    }
+
+    body.steps.step_2 .content_buscar_amigo .marco_video{
+        display:block;
     }
