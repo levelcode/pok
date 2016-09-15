@@ -179,13 +179,13 @@
 
                 <a href="javascript:void(0);" target="_blank" class="legal">LEGAL</a>
 
-                <a href="" class="facebook"></a>
+                <a href="https://www.facebook.com/CervezaPoker/?fref=ts" target="_blank" class="facebook"></a>
 
-                <a href="" class="twitter"></a>
+                <a href="https://twitter.com/cervezapoker?lang=es" target="_blank" class="twitter"></a>
 
-                <a href="" class="youtube"></a>
+                <a href="https://www.youtube.com/user/CervezaPokerColombia" target="_blank" class="youtube"></a>
 
-                <a href="" class="instagram"></a>
+                <a href="https://www.instagram.com/cervezapoker/"  target="_blank" class="instagram"></a>
 
                 <a href="javascript:void(0);" class="sound"></a>
 

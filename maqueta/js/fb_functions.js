@@ -1,4 +1,3 @@
-<<<<<<< HEAD
  //Globales
 var canvas ='';
 var context ='';
@@ -1146,4 +1145,3 @@ function iOS() {
 
 
 });
->>>>>>> 19973960bfa36ec3438fb253611649bc10cf7be6
