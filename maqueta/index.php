@@ -151,13 +151,13 @@
 
                 <a href="javascript:void(0);" class="legal"></a>
 
-                <a href="" class="facebook"></a>
+                <a href="https://www.facebook.com/CervezaPoker/?fref=ts" target="_blank"  class="facebook"></a>
 
-                <a href="" class="twitter"></a>
+                <a href="https://twitter.com/cervezapoker?lang=es" class="twitter"></a>
 
-                <a href="" class="youtube"></a>
+                <a href="https://www.youtube.com/user/CervezaPokerColombia" target="_blank" class="youtube"></a>
 
-                <a href="" class="instagram"></a>
+                <a href="https://www.instagram.com/cervezapoker/"  target="_blank" class="instagram"></a>
 
             </div>
 
@@ -222,25 +222,6 @@
         <script type="text/javascript" src="js/fb_functions.js"></script>
 
         <!--script type="text/javascript" src="js/general.js"></script-->
-        <script>
-            $(document).ready(function() {
-                $('#save').click(function() {
-                    //$('.loader').show();
-
-                    //Popup legal
-                    //cuando carge el video .loader colocarla en display none
-                    // cami activar mute de los videos
-                    //se creo el funcion repload() para cargar el video ajustado cuando llegan en modo reportado porfavor implementar
-
-                });
-
-                $( 'a.legal' ).hover(function() {
-                        $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
-                      }, function() {
-                        $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
-                });
-            });
-        </script>
         <script>
 
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

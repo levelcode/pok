@@ -2,6 +2,7 @@
 var canvas ='';
 var context ='';
 var imageLoader = '';
+var random = Math.floor((Math.random() * 10000) + 1);
 //Gonzo script
 
 $(function(){
@@ -21,6 +22,7 @@ $(function(){
   });
 
 })
+
 
 $( window ).load(function() {
     //Hide canvas
@@ -287,13 +289,26 @@ $( window ).load(function() {
         $('#vid').hide();
         $('#vid2').show();
 
-        //Autoplay video if I create report
-        var video = $("#vid2").get(0);
-            video.play();
+        var canvas2 = new fabric.Canvas('c2'),
+            urlFoto = $('#photo_friend').val(),
+            trimedNme = String(unescape(encodeURIComponent( $('#search_friend').val().replace(/\s+/g, '') ))+random);;
 
-        //Launch image
-          document.getElementById('profile-thumb').innerHTML = "<img src='" + $('#photo_friend').val() + "' width='290' height='390'>";
+        var foto2 = fototexto(canvas2,"img/410x536.jpg", "img/sello_p.png",urlFoto, 30, 30,0.9, $('#search_friend').val() , $('#beers_input').val(), 400,440, 'hoefler_textregular', 60, 410, 536, String(trimedNme+'_p'), callBack2);
+        function callBack2(url){
+          var urlformat = "https://datapola.com/"+url;
+          console.log('Foto reporte renerada: '+url);
+          $('.marco_video').show();
+
+          //Autoplay video if I create report
+          var video = $("#vid2").get(0);
+              video.play();
+
+          //Launch image
+          document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
           $('.profile-thumb').delay(11000).show(0);
+        }
+
+
         //Avoid redirections
         return false;
         event.preventDefault();
@@ -409,79 +424,62 @@ $( window ).load(function() {
 
             //Share action;
             var objectToLike = 'https://datapola.com/',
-                trimedNme = unescape(encodeURIComponent( $('#search_friend').val().replace(/\s+/g, '') ));
-
-
+                trimedNme = String(unescape(encodeURIComponent( $('#search_friend').val().replace(/\s+/g, '') ))+random);
 
             var dataFB = {
                 "image_url" : $('#photo_friend').val(),
                 "id_user" : trimedNme
             };
 
+            var canvas1 = new fabric.Canvas('c1'),
+                urlFoto = $('#photo_friend').val();
+                //inicializacion
+            console.log('url foto FB: '+ console.log('launch draw'));
+            var foto1 = fototexto(canvas1,"img/600x600.jpg", "img/sello.png",urlFoto, 115, 60,0.9,$('#search_friend').val() , $('#beers_input').val(), 430,470, 'hoefler_textregular', 60, 600, 600, trimedNme,callBack1);
 
-            //******
-            //Upload profile photo
-            //******
-
-            $.ajax({
-                url: "upload_photo_profile.php",
-                type: "POST",
-                data: dataFB
-            }).done(function(respond){
-
-            });
-
-            //Draw dinamic canvas
-            setTimeout(
-                function (){
-                var canvas1 = new fabric.Canvas('c1'),
-                  canvas2 = new fabric.Canvas('c2'),
-                  urlImg1 = "profiles/"+trimedNme+".jpg"
-                  //inicializacion
-
-                  var foto1 = fototexto(canvas1,"img/600x600.jpg", "img/sello.png",urlImg1, 115, 60,$('#search_friend').val() , $('#beers_input').val(), 430,470, 'hoefler_textregular', 60, 600, 600, trimedNme);
-
-                  var foto2 = fototexto(canvas2,"img/410x536.jpg", "img/sello_p.png",urlImg1, 30, 30, $('#search_friend').val() , $('#beers_input').val(), 400,440, 'hoefler_textregular', 60, 410, 536, trimedNme);
-                  console.log('launch draw');
-              }
-              ,2500);
-
-            //Object
-            FB.api(
-              'me/objects/datapola:amigo',
-              'post',
-              {
-                object: {
-                  "og":{
-                    "url": "https://datapola.com/id?="+$('#id_friend').val(),
-                    "title": "Datapola el que la debe, la paga!",
-                    "description": "",
-                    "app_id": "1660712804256395",
-                    "message": $('#id_friend').val() +" debes " + $('#beers_input').val() + "cervezas!",
-                    "tags": $('#id_friend').val(),
-                    "picture": 'https://datapola.com/uploads/JamesPerez.jpg'
-                  }
-                }
-              },
-              function(response) {
-                var objectID = response.id;
-                //Action
-                FB.api(
-                    'me/datapola:reportar',
-                    'post',
-                    {
-                       amigo:objectID , // make sure to have the apropiate og:type meta set
-                       link: objectToLike,
-                       tags: $('#id_friend').val(), // the tokens ids for those friens you wanna tag and you got on previous step
-                       title: 'whatever',
-                       image: $('#photo_friend').val(),
-                       message: $('#search_friend').val() + " debes "+ $('#beers_input').val() +" polas",
-                       picture: 'https://datapola.com/uploads/JamesPerez.jpg'
-                     },
-                    function(response) {
+            function callBack1(url, nombre){
+              console.log('launch draw 1'+url);
+              var urlformat = "https://datapola.com/"+url;
+              console.log("url retornada: " + urlformat);
+              //FB Object
+              FB.api(
+                'me/objects/datapola:amigo',
+                'post',
+                {
+                  object: {
+                    "og":{
+                      "url": "https://datapola.com/index.php?id="+nombre,
+                      "title": "Datapola el que la debe, la paga!",
+                      "description": "",
+                      "app_id": "1660712804256395",
+                      "message": $('#id_friend').val() +" debes " + $('#beers_input').val() + "cervezas!",
+                      "tags": $('#id_friend').val(),
+                      "image": urlformat,
+                      "picture": urlformat
                     }
-                );
-              });//End of history api
+                  }
+                },
+                function(response) {
+                  var objectID = response.id;
+                  //Action
+                  FB.api(
+                      'me/datapola:reportar',
+                      'post',
+                      {
+                         amigo:objectID , // make sure to have the apropiate og:type meta set
+                         link: objectToLike,
+                         tags: $('#id_friend').val(), // the tokens ids for those friens you wanna tag and you got on previous step
+                         title: 'whatever',
+                         image: urlformat,
+                         message: $('#search_friend').val() + " debes "+ $('#beers_input').val() +" polas",
+                         picture: urlformat
+                      },
+                      function(response) {
+                        console.log("exito en la publicacion en FB" + response);
+                      }
+                  );
+                });//End FB Object
+            }
 
           });//End of publish bs
         });//End of async
@@ -490,7 +488,7 @@ $( window ).load(function() {
     init();
 
 
-    function fototexto(canvas, url_fondo, url_sello ,url, x, y, texto_nombre, texto_polas, top_texto_nombre, top_texto_polas, font, size, width, height, tName){
+    function fototexto(canvas, url_fondo, url_sello ,url, x, y, scale, texto_nombre, texto_polas, top_texto_nombre, top_texto_polas, font, size, width, height, tName, callback){
         canvas.setWidth(width);
         canvas.setHeight(height);
         //desactivamos seleccion por grupos
@@ -530,7 +528,7 @@ $( window ).load(function() {
         canvas.add(rect);
         canvas.moveTo(rect, -2);
         insertarFotoDrag(canvas, url_fondo,false, false,1, 'fondo',0,0,1);
-        insertarFotoDrag(canvas, url,false, false,2, 'foto',x,y,0.9);
+        insertarFotoDrag(canvas, url,false, false,2, 'foto',x,y,scale);
 
         //texto1
         canvas.add(texto1);
@@ -544,7 +542,7 @@ $( window ).load(function() {
 
         insertarFotoDrag(canvas, url_sello,false, false,5, 'sello',0,0,1);
         canvas.renderAll();
-        create(canvas, tName);
+        create(canvas, tName, callback);
 
     }
 
@@ -566,10 +564,10 @@ $( window ).load(function() {
             canvas.add(oImg);
             canvas.moveTo(oImg, zindex);
             canvas.renderAll();
-        });
+        }, {crossOrigin: 'Anonymous'});
     }
 
-    function create(canvas, tName){
+    function create(canvas, tName, callback){
         canvas.discardActiveObject();
         canvas.renderAll();
         var return_t = '';
@@ -600,7 +598,7 @@ $( window ).load(function() {
               downloadURL = "https://www.datapola.com/download_pic.php?file="+respond+"&name="+nombre_foto;
               */
               console.log('foto id:'+respond);
-              return_t = respond;
+              callback(respond, tName);
           });
 
         }, 2000);
