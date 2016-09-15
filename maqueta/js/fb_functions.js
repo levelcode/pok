@@ -9,7 +9,6 @@ $(function(){
 
   //Click and save
   $('#save').click(function() {
-    $('.wrapper').css('background', 'none');
     $('.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
     $('.marco_video img').delay(28000).css('display', 'block');
   });
@@ -232,11 +231,9 @@ $( window ).load(function() {
 
     function init(){
 
-      //Video events and functions
-      $('#vid,#vid2').click(function(){
-        //this.paused?this.play():this.pause();
-        //class de parent
-        //$(this).parent().toggleClass('paused');
+      //Video controls
+      $(".sound").click( function (){
+          $('video').prop('muted', !$('video').prop('muted'));
       });
 
       //Popup legal
@@ -254,14 +251,7 @@ $( window ).load(function() {
       }
       //If body have class refered by facebook
       if(body.hasClass('refered')){
-        //Display just one video
-        $('#vid').hide();
-        $('#vid2').show();
-        //play Video
-        var video = $("#vid2").get(0);
-        video.play();
         $('.content_facebook_connect').remove();
-        //Launch facebook connect if widow is load
         //Launch face connect
           faceConnect();
       }else{
@@ -273,18 +263,22 @@ $( window ).load(function() {
             //Launch face connect
             faceConnect();
             $(this).parent().remove();
-
           });
       }
 
       //click on create report
       var clickReport = $('.reportar'),
-          modifyReport = $('.content_form_reportar .modificar');
+          modifyReport = $('.content_form_reportar .modificar'),
+          reportAnother = $('.content_form_reportar .reportar_otro_amigo');
 
       //Global linked image
       clickReport.click(function(event) {
         //Show second video
         $('body').removeClass().addClass('steps step_2');
+
+        //hide report another guy
+        reportAnother.hide();
+
 
         //Display Second video
         $('#vid').hide();
@@ -322,7 +316,7 @@ $( window ).load(function() {
                       $('.profile-thumb').show();
                   }
 
-                  //When vid2b is finished
+                  //When vid2a is finished
                   document.getElementById('vid2a').addEventListener('ended',stop3,false);
                   function stop3(e) {
                       $('.vid2').hide();
@@ -333,13 +327,19 @@ $( window ).load(function() {
                       $('.profile-thumb').hide();
                   }
 
+                  //When vid2b is finished
+                  document.getElementById('vid2b').addEventListener('ended',stop4,false);
+                  function stop4(e) {
+                      $('.content_video').hide();
+                        modifyReport.hide();
+                        reportAnother.show();
+                  }
+
                   //Hide play icon
                   $(this).hide();
 
           });
         }
-
-
         //Avoid redirections
         return false;
         event.preventDefault();
@@ -358,6 +358,21 @@ $( window ).load(function() {
         return false;
         event.preventDefault();
       });
+
+      //Click modify
+      reportAnother.click(function(event) {
+        //Show first event
+        $('body').removeClass().addClass('steps step_1');
+        //Mute video
+        $("#vid2 , .profile-thumb").hide();
+        var video2 = $("#vid2").get(0);
+            video2.currentTime = 0;
+            video2.pause();
+
+        return false;
+        event.preventDefault();
+      });
+
     }
 
     $("#ageGateForm").submit(function(){
@@ -399,18 +414,49 @@ $( window ).load(function() {
 
     function faceConnect(){
       console.log('is conected');
-      //Autoplay video if is connected
-      var video = $("#vid").get(0);
-      video.play();
+
       //Draw image profile on video if the user is refered
       if(body.hasClass('refered')){
 
-        var video = $("#vid").get(0);
-            video.pause();
-            $("#vid").hide();
+        //Autoplay video if is connected
 
-          document.getElementById('profile-thumb').innerHTML = "<img src='" + response.picture.data.url + "' width='290' height='390'>";
-        }//end of refered
+        var video2 = $("#vid2").get(0),
+            video2a = $("#vid2a").get(0),
+            video2b = $("#vid2b").get(0);
+            //Play Videpo
+            video2.play();
+            //Launch image
+            //When vid2 is finished
+            document.getElementById('vid2').addEventListener('ended',stop2,false);
+            function stop2(e) {
+                $('.vid2').hide();
+                $('#vid2a').show();
+                //Play second Video
+                video2a.play();
+                //Attach image generated
+                document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
+                $('.profile-thumb').show();
+            }
+
+            //When vid2a is finished
+            document.getElementById('vid2a').addEventListener('ended',stop3,false);
+            function stop3(e) {
+                $('.vid2').hide();
+                $('#vid2b').show();
+                //Play third Video
+                video2b.play();
+                //Attach image generated
+                $('.profile-thumb').hide();
+                //Add body steps
+                //Show actions on bottom
+                $('body').addClass('steps step_1');
+            }
+
+
+        }else{
+          var video = $("#vid").get(0);
+              video.play();
+        }
         //------------------------- Login -----------------------//
         FB.api(
         '/me/taggable_friends',

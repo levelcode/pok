@@ -1,9 +1,5 @@
 <div class="content_video"  style="display:none;">
 
-    <canvas id="can" height="" width=""></canvas>
-
-    <canvas id="can_hidden" height="725" width="1280" ></canvas>
-
     <input type="button" value="Play" id="play" class="play">
 
     <div id="profile-thumb" class="profile-thumb"></div>
@@ -14,21 +10,24 @@
     	</a>
     </div>
 
+	<!--First video-->
     <video id="vid" poster="img/bg.png" style="" title="vid_1" webkit-playsinline>
         <source src="videos/inv/inv.webm" type="video/webm" />
     </video>
 
+    <!--Second video-->
     <video id="vid2" class="vid2" poster="img/bg.png"  title="vid_1" webkit-playsinline>
     	<source src="videos/rep_en3/rep1_opc1.webm" type="video/webm" />
     	<source src="videos/rep_en3/rep1_opc1.ogg" type="video/ogg" />
-    	<source src="videos/rep_en3/rep1_opc1.mp4" type="video/mp4" />
     </video>
 
+	<!--third video-->
     <video id="vid2a" class="vid2" poster="img/bg.png" title="vid_2" webkit-playsinline>
     	<source src="videos/rep_en3/rep2.webm" type="video/webm" />
     	<source src="videos/rep_en3/rep2.ogg" type="video/ogg" />
     </video>
 
+	<!--Last video-->
     <video id="vid2b" class="vid2" poster="img/bg.png" title="vid_2" webkit-playsinline>
     	<source src="videos/rep_en3/rep3.webm" type="video/webm" />
     	<source src="videos/rep_en3/rep3.ogg" type="video/ogg" />
