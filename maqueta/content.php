@@ -6,7 +6,7 @@
     	<?php
     			if(isset($_GET["id"])){
 	        ?>
-	        <img src="uploads/<?php echo $_GET["id"].'_p.jpg';?>/>
+	        <img src="uploads/<?php echo $_GET["id"].'_p.jpg';?>"/>
 	        <?php
 	        }else{ }
 
