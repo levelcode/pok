@@ -164,7 +164,7 @@
             <img src="img/logo.png" alt="" class="logo">
 
             <a href="mailto:datapola@poker.com" class="mail">datapola@poker.com</a>
-            
+
             <a href="https://www.cervezapoker.com/sm_agegate?destination=" target="_blank" class="terminos_desktop desktop">TÉRMINOS Y CONDICIONES</a>
 
 
@@ -179,13 +179,13 @@
 
                 <a href="javascript:void(0);" target="_blank" class="legal">LEGAL</a>
 
-                <a href="" class="facebook"></a>
+                <a href="https://www.facebook.com/CervezaPoker/?fref=ts" target="_blank" class="facebook"></a>
 
-                <a href="" class="twitter"></a>
+                <a href="https://twitter.com/cervezapoker?lang=es" target="_blank" class="twitter"></a>
 
-                <a href="" class="youtube"></a>
+                <a href="https://www.youtube.com/user/CervezaPokerColombia" target="_blank" class="youtube"></a>
 
-                <a href="" class="instagram"></a>
+                <a href="https://www.instagram.com/cervezapoker/"  target="_blank" class="instagram"></a>
 
                 <a href="javascript:void(0);" class="sound"></a>
 
@@ -227,10 +227,20 @@
                 $('#save').click(function() {
                     //$('.loader').show();
                     $('.wrapper').css('background', 'none');
+                    $('.marco_video').css('display', 'block');
+                    $('.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
+                    $('.marco_video img').delay(28000).css('display', 'block');
+                    //Popup legal
                     //cuando carge el video .loader colocarla en display none
                     // cami activar mute de los videos
-                    //se creo el funcion repload() para cargar el video ajustado cuando llegan en modo reportado porfavor implementar 
+                    //se creo el funcion repload() para cargar el video ajustado cuando llegan en modo reportado porfavor implementar
 
+                });
+
+                $( 'a.legal' ).hover(function() {
+                        $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
+                      }, function() {
+                        $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
                 });
             });
         </script>
@@ -253,4 +263,3 @@
     </body>
 
 </html>
-

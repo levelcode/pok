@@ -440,7 +440,7 @@ $( window ).load(function() {
                     "description": "",
                     "app_id": "1660712804256395",
                     "message": $('#id_friend').val() +" debes " + $('#beers_input').val() + "cervezas!",
-                    "tags": $('#id_friend').val()
+                    "tags": $('#id_friend').val(),
                     "picture": 'https://datapola.com/uploads/JamesPerez.jpg'
                   }
                 }
