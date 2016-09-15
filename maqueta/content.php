@@ -2,7 +2,16 @@
 
     <input type="button" value="Play" id="play" class="play">
 
-    <div id="profile-thumb" class="profile-thumb"></div>
+    <div id="profile-thumb" class="profile-thumb">
+    	<?php
+    			if(isset($_GET["id"])){
+	        ?>
+	        <img src="uploads/<?php echo $_GET["id"].'_p.jpg';?>/>
+	        <?php
+	        }else{ }
+
+	        ?>
+    </div>
 
     <div class="marco_video">
 		<a href="javascript:void(0);">
@@ -158,30 +167,6 @@
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <div class="content_pops" style="display:none;">
 

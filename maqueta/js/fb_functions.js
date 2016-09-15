@@ -418,6 +418,7 @@ $( window ).load(function() {
       //Draw image profile on video if the user is refered
       if(body.hasClass('refered')){
 
+        $("#vid2").show();
         //Autoplay video if is connected
 
         var video2 = $("#vid2").get(0),
@@ -434,24 +435,10 @@ $( window ).load(function() {
                 //Play second Video
                 video2a.play();
                 //Attach image generated
-                document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
                 $('.profile-thumb').show();
             }
 
             //When vid2a is finished
-            document.getElementById('vid2a').addEventListener('ended',stop3,false);
-            function stop3(e) {
-                $('.vid2').hide();
-                $('#vid2b').show();
-                //Play third Video
-                video2b.play();
-                //Attach image generated
-                $('.profile-thumb').hide();
-                //Add body steps
-                //Show actions on bottom
-                $('body').addClass('steps step_1');
-            }
-
 
         }else{
           var video = $("#vid").get(0);
