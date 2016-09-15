@@ -75,19 +75,14 @@ canvas
     background-size: contain;
     display: none;
 }
-.marco_video img
-{
-    position: absolute;
-    top: 3%;
-    display: none;
-    left: 5%;
-}
 .marco_video img.play_vid2
 {
     left: 0;
     right: 0;
+    position: absolute;
     margin: 0 auto;
     top: 20%;
+    display: none;
     cursor: pointer;
 }
 .vid2
