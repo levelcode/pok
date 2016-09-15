@@ -704,7 +704,7 @@ $( window ).load(function() {
 
 
 });
-=======
+
 // custom functions
 $(function(){
 
