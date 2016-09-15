@@ -1,4 +1,3 @@
-<<<<<<< HEAD
  //Globales
 var canvas ='';
 var context ='';
@@ -6,6 +5,9 @@ var imageLoader = '';
 
 
 $( window ).load(function() {
+    //Hide canvas
+    $('.canvascreator').hide();
+
     //Facebook
     var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href);
     var dominio = "datapola.com/";
@@ -224,9 +226,7 @@ $( window ).load(function() {
               $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
       });
 
-      //Hide canvas
-      $('#can_hidden').hide();
-
+      //listener video
       document.getElementById('vid').addEventListener('ended',myHandler,false);
       function myHandler(e) {
           //Show actions on bottom
@@ -357,7 +357,7 @@ $( window ).load(function() {
         'GET',
         {
           "fields":
-          "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"
+          "context,first_name,last_name,name,id,picture.width(400).height(400).type(large)"
         },
         function(response) {
 
@@ -365,7 +365,7 @@ $( window ).load(function() {
           for(y=0; y<response.data.length; y++) {
             $('.hidden').hide();
             //Load images
-            boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + "'/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man'>"+ response.data[y].id +"</span></div>");
+            boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + " '/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man'>"+ response.data[y].id +"</span></div>");
           }
           //Action for input
           boxContainer.hide();
@@ -390,7 +390,43 @@ $( window ).load(function() {
           $('#push_public').click(function(e){
 
             //Share action;
-            var objectToLike = 'https://datapola.com/';
+            var objectToLike = 'https://datapola.com/',
+                trimedNme = unescape(encodeURIComponent( $('#search_friend').val().replace(/\s+/g, '') ));
+
+
+
+            var dataFB = {
+                "image_url" : $('#photo_friend').val(),
+                "id_user" : trimedNme
+            };
+
+
+            //******
+            //Upload profile photo
+            //******
+
+            $.ajax({
+                url: "upload_photo_profile.php",
+                type: "POST",
+                data: dataFB
+            }).done(function(respond){
+
+            });
+
+            //Draw dinamic canvas
+            setTimeout(
+                function (){
+                var canvas1 = new fabric.Canvas('c1'),
+                  canvas2 = new fabric.Canvas('c2'),
+                  urlImg1 = "profiles/"+trimedNme+".jpg"
+                  //inicializacion
+
+                  var foto1 = fototexto(canvas1,"img/600x600.jpg", "img/sello.png",urlImg1, 115, 60,$('#search_friend').val() , $('#beers_input').val(), 430,470, 'hoefler_textregular', 60, 600, 600, trimedNme);
+
+                  var foto2 = fototexto(canvas2,"img/410x536.jpg", "img/sello_p.png",urlImg1, 30, 30, $('#search_friend').val() , $('#beers_input').val(), 400,440, 'hoefler_textregular', 60, 410, 536, trimedNme);
+                  console.log('launch draw');
+              }
+              ,2500);
 
             //Object
             FB.api(
@@ -401,12 +437,11 @@ $( window ).load(function() {
                   "og":{
                     "url": "https://datapola.com/id?="+$('#id_friend').val(),
                     "title": "Datapola el que la debe, la paga!",
-                    "image": $('#photo_friend').val(),
                     "description": "",
                     "app_id": "1660712804256395",
-                    "message": $('#id_friend').val() +"Debes " + $('#beers_input').val() + "cervezas!",
-                    "tags": $('#id_friend').val(),
-                    "picture": $('#photo_friend').val()
+                    "message": $('#id_friend').val() +" debes " + $('#beers_input').val() + "cervezas!",
+                    "tags": $('#id_friend').val()
+                    "picture": 'https://datapola.com/uploads/JamesPerez.jpg'
                   }
                 }
               },
@@ -422,158 +457,86 @@ $( window ).load(function() {
                        tags: $('#id_friend').val(), // the tokens ids for those friens you wanna tag and you got on previous step
                        title: 'whatever',
                        image: $('#photo_friend').val(),
-                       message: $('#search_friend').val() + "debes "+ $('#beers_input').val() +" polas",
-                       picture: $('#photo_friend').val(),
+                       message: $('#search_friend').val() + " debes "+ $('#beers_input').val() +" polas",
+                       picture: 'https://datapola.com/uploads/JamesPerez.jpg'
                      },
                     function(response) {
                     }
                 );
               });//End of history api
+
           });//End of publish bs
-
-                        //Create canvas
-          function drawCanvas(){
-              var can = document.getElementById('can_hidden'),
-              ctx = can.getContext('2d'),
-              imgUrl = $('#photo_friend').val();
-
-              var img = new Image();
-              img.src = imgUrl;
-
-              var img2 = new Image();
-              img2.src = 'https://'+dominio+'img/bg-canvas.jpg';
-
-              ctx.drawImage(img2, 0, 0);
-              ctx.drawImage(img, 0, 0);
-          }//End of draw canvas
         });//End of async
     }//End of facbook connect
 
     init();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-    //******
-    //Canvas
-    //******
-    $("#share_f").hide();
-    $("#share_l").hide();
-    $("#download").hide();
-
-    var canvas = new fabric.Canvas('c');
-    canvas.setWidth(400);
-    canvas.setHeight(400);
-    //desactivamos seleccion por grupos
-    canvas.selection = false;
-    // Permitimos el scroll
-    canvas.allowTouchScrolling = true;
-
-    //inicializacion
-    init("img/back_photo.jpg", "", 0,78, 'Lato', 60);
-    function init(url, texto_inicial, x, y, font, size){
+    function fototexto(canvas, url_fondo, url_sello ,url, x, y, texto_nombre, texto_polas, top_texto_nombre, top_texto_polas, font, size, width, height, tName){
+        canvas.setWidth(width);
+        canvas.setHeight(height);
+        //desactivamos seleccion por grupos
+        canvas.selection = false;
+        // Permitimos el scroll
+        canvas.allowTouchScrolling = true;
         // Creamos el BackGround de la foto
         var rect = new fabric.Rect({
           left: 0,
           top: 0,
           fill: 'white',
-          width: 400,
-          height: 400,
+          width: width,
+          height: height,
           selectable: false
         });
         //Se agrega al canvas
-        var texto_p = texto_inicial.toUpperCase().substr(0,10);
-        var texto1 = new fabric.Text(texto_p, {
+        var texto_p1 = texto_nombre.substr(0,15);
+        var texto_p2 = texto_polas.substr(0,10);
+        var texto1 = new fabric.Text(texto_p1, {
           fontFamily: font,
-          top: y,
+          top: top_texto_nombre,
           evented: false,
-          fontSize: size,
-          stroke : '#FFF',
+          fontSize: 40,
+          fill: '#ad0414',
+          strokeWidth: 2.5,
+          selectable: false
+        });
+        var texto2 = new fabric.Text(texto_p2, {
+          fontFamily: font,
+          top: top_texto_polas,
+          evented: false,
+          fontSize: 70,
+          fill : '#ad0414',
           strokeWidth: 2.5,
           selectable: false
         });
         canvas.add(rect);
         canvas.moveTo(rect, -2);
-        insertarFotoDrag(url,false, false,1,"portada");
+        insertarFotoDrag(canvas, url_fondo,false, false,1, 'fondo',0,0,1);
+        insertarFotoDrag(canvas, url,false, false,2, 'foto',x,y,0.9);
+
+        //texto1
         canvas.add(texto1);
         canvas.centerObjectH(texto1);
-        canvas.moveTo(texto1, 2);
+        canvas.moveTo(texto1, 3);
+
+        //texto2
+        canvas.add(texto2);
+        canvas.centerObjectH(texto2);
+        canvas.moveTo(texto2, 4);
+
+        insertarFotoDrag(canvas, url_sello,false, false,5, 'sello',0,0,1);
         canvas.renderAll();
-    }
-    // Redimensionar las imagenes subidas para que no se salgan del canvas
-    canvas.on({
-        'object:selected': selectedObject,
-        'mouse:down': mousedown,
-        'mouse:up': mouseup
-    });
-    function mousedown(e){
-        var id = canvas.getObjects().indexOf(e.target);
-        if (id == 1) {
-            var portada = canvas.item(2);
-            portada.opacity = 0.5;
-            canvas.renderAll();
-        }
-
-    }
-    function mouseup(e){
-        var id = canvas.getObjects().indexOf(e.target);
-        if (id == 1) {
-            var portada = canvas.item(2);
-            //portada.opacity = 1;
-            canvas.renderAll();
-        }
-    }
-
-    function selectedObject(e) {
-        var id = canvas.getObjects().indexOf(e.target);
-        var object = canvas.item(id);
-        if(id != 1){
-            canvas.moveTo(object, 100);
-            canvas.moveTo(canvas.getObjects('text')[0], 101);
-        }else{
-            var portada = canvas.item(2);
-            portada.opacity = 0.5;
-            canvas.renderAll();
-        }
+        create(canvas, tName);
 
     }
 
     //Funcion para insertar los elementos desde una URL
-    function insertarFotoDrag(url, seleccionable, eventos, zindex, nombre)
+    function insertarFotoDrag(canvas, url, seleccionable, eventos, zindex, nombre, left, top, scale)
     {
         fabric.Image.fromURL(url, function(oImg) {
-            oImg.scale(1);
+            oImg.scale(scale);
+            oImg.left = left;
+            oImg.top = top;
             oImg.selectable = seleccionable;
             oImg.evented = eventos;
             oImg.set({
@@ -588,562 +551,41 @@ $( window ).load(function() {
         });
     }
 
-    //texto dinamico
+    function create(canvas, tName){
+        canvas.discardActiveObject();
+        canvas.renderAll();
+        var return_t = '';
 
+        console.log('name: ' + tName);
 
-    $("#texto1").keydown(function(e) {
-        setTimeout(function () {
-            var value_t = $("#texto1").val();
-            var texto_t = canvas.getObjects('text')[0];
-            texto_t.text = value_t.toUpperCase().substr(0,10);
-            var texto_w = texto_t.width;
-            var texto_l = texto_t.left;
-            texto_t.left = 180-(texto_w/2);
-            canvas.renderAll();
-            $("#save").show();
-            $("#share_l").hide();
-            $("#download").hide();
-        }, 100);
-    });
+        var setI = setTimeout(function () {
+          var imagen = canvas.toDataURL({
+              format: 'jpeg',
+              multiplier: 1,
+              quality: 10
+          })
+          var file= dataURLtoBlob(imagen);
+          //creamos un form data object
+          var fd = new FormData();
+          fd.append("foto", file);
+          fd.append("name_file",tName);
+          // Envío del canvas via ajax
+          $.ajax({
+              url: "upload_photo.php",
+              type: "POST",
+              data: fd,
+              processData: false,
+              contentType: false,
+          }).done(function(respond){
+              /*
+              var nombre_foto = Math.floor((Math.random() * 1000000) + 1);
+              downloadURL = "https://www.datapola.com/download_pic.php?file="+respond+"&name="+nombre_foto;
+              */
+              console.log('foto id:'+respond);
+              return_t = respond;
+          });
 
-    $('#save').click(function(e){
-        var value_t = $("#texto1").val();
-        if(value_t != ""){
-            canvas.discardActiveObject();
-            canvas.renderAll();
-            var imagen = canvas.toDataURL({
-                format: 'jpeg',
-                multiplier: 1,
-                quality: 10
-            })
-            var file= dataURLtoBlob(imagen);
-            //creamos un form data object
-            var fd = new FormData();
-            fd.append("foto", file);
-            // Envío del canvas via ajax
-            $.ajax({
-               url: "upload_photo.php",
-               type: "POST",
-               data: fd,
-               processData: false,
-               contentType: false,
-            }).done(function(respond){
-                $("#save").hide();
+        }, 2000);
 
-                $("#share_l").show();
-                $("#download").show();
-                var nombre_t = $("#texto1").val().toLowerCase();
-                downloadURL = "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio";
-                if(ios == true){
-                    var modalios = "<div><img src='"+respond+"'> </br><p>Mantén presionado sobre la foto para descargarla</p></div>"
-                    $("#download").prop("href", "download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio");
-                }else{
-                     $("#download").prop("href", "download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio");
-
-                     window.location.href = "download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio";
-                }
-                var url_id = respond.split("/");
-
-
-                FB.api(
-                    "/me/photos",
-                    "POST",
-                    {
-                        "url": "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
-                    },
-                    function (response) {
-                      if (response && !response.error) {
-                        alert("Foto subida con exito a tu biografía, ahora solo vuelvela tu foto de perfil!");
-                      }else{
-                        //alert("No fue posible subir la foto por:"+JSON.stringify(response.error));
-
-                        FB.login(function(response) {
-                          FB.api(
-                                "/me/photos",
-                                "POST",
-                                {
-                                    "url": "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
-                                },
-                                function (response) {
-                                  if (response && !response.error) {
-                                    alert("Foto subida con exito a tu biografía, ahora solo vuelvela tu foto de perfil!");
-                                  }else{
-                                    alert("No fue posible subir la foto por falta del siguiente permiso:"+JSON.stringify(response.error));
-                                  }
-                                }
-                            );
-                        }, {scope: 'publish_actions'});
-                      }
-                    }
-                );
-                $('#share_l').click(function(e){
-                        FB.ui(
-                        {
-                            method: "feed",
-                            link: 'https://www.venezuelaquiere.com/personal',
-                            name: String($("#texto1").val())+' Quiere Cambio',
-                            app_id: '447297352129313',
-                            description: 'Cambia tu foto de perfil en Facebook y WhatsApp ¡ Y actívate por el cambio !',
-                            caption: 'venezuela quiere cambio',
-                            source: downloadURL,
-                            type: 'photo',
-                            picture: "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
-
-                        }, function(response){});
-                });
-
-
-                $("#share_f0").val("https://www.venezuelaquiere.com/personal/index.php?id="+url_id[1]);
-                $("#share_f").prop("data-href", "https://www.venezuelaquiere.com/personal/index.php?id="+url_id[1]);
-            });
-        }else{
-            alert("Escribe tu Nombre antes de descargasr la foto!");
-            $("#texto1").focus();
-        }
-    });
- */
-
-
+    };
 });
-=======
-// custom functions
-$(function(){
-
-//Video events and functions
-$('#vid,#vid2').click(function(){
-  //this.paused?this.play():this.pause();
-  //class de parent
-  //$(this).parent().toggleClass('paused');
-});
-
-//Popup legal
-$( 'a.legal' ).hover(function() {
-        $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
-      }, function() {
-        $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
-});
-
-//Hide canvas
-$('#can_hidden').hide();
-
-//Facebook global variables
-
-var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href),
-    body = $('body'),
-    dominio = "datapola.com/",
-    movil = false,
-    ios =  iOS(),
-    ref = document.referrer,
-    fb_valid = false;
-
-
-function faceConnect(){
-
-  (function(d, s, id){
-
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-
-    window.fbAsyncInit = function() {
-        FB.init({
-          appId: '1660712804256395',
-          status: true,
-          xfbml: true,
-          cookie: true,
-          version    : 'v2.7',
-          channelUrl: url_l+'/channelUrl.html'
-        });
-
-        FB.getLoginStatus(function(response) {
-
-          // Check login status on load, and if the user is
-
-          // already logged in, go directly to the welcome message.
-
-          if (response.status == 'connected') {
-
-            //Autoplay video if is connected
-            var video = $("#vid").get(0);
-                video.play();
-
-            //Draw image profile on video
-            FB.api(
-              '/me',
-              'GET',
-              {
-
-                "fields":
-                "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"},
-
-              function(response) {
-
-                  //Get profile photo if is refered
-                  if(body.hasClass('refered')){
-                    document.getElementById('profile-thumb').innerHTML = "<img src='" + response.picture.data.url + "' width='290' height='390'>";
-                  }
-              }
-
-            );
-
-            //Login for perimisions
-            FB.login(function(response) {
-              FB.api(
-                '/me/taggable_friends',
-                'GET',
-                {
-
-                  "fields":
-                  "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"},
-
-                function(response) {
-
-                    var boxContainer = $('.box_amigos_facebook');
-
-                    for(y=0; y<response.data.length; y++) {
-
-                      $('.hidden').hide();
-
-                      //Load images
-                       boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + "'/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man'>"+ response.data[y].id +"</span></div>");
-
-
-                      //Action for input
-                      boxContainer.hide();
-
-                      $('#search_friend').unbind('click').click(function(event) {
-                          $(this).siblings('.box_amigos_facebook').toggle(400);
-                      });
-
-                      //Action box profile item
-                      $('.box_perfil').click(function(event) {
-
-                        var img = $(this).children('img').attr('src'),
-                            nombre = $(this).children('.nombre').text(),
-                            id_user = $(this).children('.id_man').text();
-
-                            $('#search_friend').val(nombre);
-                            $('#photo_friend').val(img);
-                            $('#id_friend').val(id_user);
-                            $(this).parent().hide(400);
-                      });
-                    }
-
-                  //Click for publish BS
-
-                  $('#push_public').click(function(e){
-                    //Share action;
-
-                    var objectToLike = 'https://datapola.com/';
-
-                    FB.api(
-                      '/me/og.likes',
-                      'post',
-                      {
-                         'object': objectToLike,
-                         'tags': $('#id_friend').val(),
-                         'title':'ejemplito',
-                         'message': $('#id_friend').val()+ 'Debes muchas cervezas!'
-                      },
-
-                     function(response) {
-                        console.log(response);
-                      }); 
-
-                    /*
-                    FB.api(
-                    'me/datapola:share',
-                    'post',
-                    {
-                       'product': '"http://samples.ogp.me/297573733621733"',
-                       'tags': $('#id_friend').val(),
-                       'title':'ejemplito', 
-                       'message': $('#id_friend').val()+' Debes muchas cervezas'
-                    },
-
-                   function(response) {
-                      console.log(response);
-                    }
-                  );  
-                    
-                      FB.ui(
-
-                      {
-
-                          method: "feed",
-
-                          link: 'https://datapola.com/?id='+$('#id_friend').val(),
-
-                          name: $('#search_friend').val() + ' debes '+ $('#beers_input').val() + ' Polas',
-
-                          app_id: '1660712804256395',
-
-                          description:'Datapola el que la debe la paga',
-
-                          caption: 'Datapola',
-
-                          tags: $('#id_friend').val(),
-
-                          //source: downloadURL,
-
-                          type: 'photo',
-
-                          picture: $('#photo_friend').val()
-
-
-
-                      }, function(response){scope: 'publish_actions,taggable_friends'});
-
-                      */
-
-                      //Create canvas
-
-                      var can = document.getElementById('can_hidden'),
-                          ctx = can.getContext('2d'),
-                          imgUrl = $('#photo_friend').val();
-
-                        var img = new Image();
-                        img.src = imgUrl;
-
-                        var img2 = new Image();
-                        img2.src = 'https://'+dominio+'img/bg-canvas.jpg';
-
-                        ctx.drawImage(img2, 0, 0);
-                        ctx.drawImage(img, 0, 0);
-
-                      return false;
-
-                  });
-
-                }
-
-              );
-
-            }, {scope: 'publish_actions,taggable_friends'});
-
-          } else {
-
-            // Otherwise, show Login dialog first.
-
-            FB.login(function(response) {
-
-            }, {scope: 'publish_actions,taggable_friends'});
-
-          }
-
-        });
-    }
-}//End of face connect
-
-  //Agegate validation
-
-    function getUrlVars() {
-      // Find the params in the URL, Used when linking from another site that has already screened for age
-        var vars = [], hash;
-        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-        for(var i = 0; i < hashes.length; i++)
-        {
-            hash = hashes[i].split('=');
-            vars.push(hash[0]);
-            vars[hash[0]] = hash[1];
-        }
-        return vars;
-    }
-
-    $(window).load(function() {
-      // If There is no Age Cookie or Cookie is set to Failed Hide Contents of Page and display Age Gate PopUp
-          if($.cookie('age_verify') == 'underage') {
-           window.location.href = "http://www.talkingalcohol.com/espanol/";
-          }
-          var gateParam = getUrlVars()["agegate"];
-          // If Cookie is found and True Show Contents of Page and Remove Age Gate modal
-          if($.cookie('age_verify') == 'legal' ||  gateParam == 'valid' ) {
-           $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
-            $('body').addClass('ageGateActive');
-            $('.content_ingresar').hide();
-            //if is legal show video
-            $('.content_video').show();
-            //repload();
-          }
-        else {
-            //window.location.href = "http://www.talkingalcohol.com/espanol/";
-        }
-    });
-
-    function repload(){
-      $('#vid2').play();
-      $('#vid2').removeClass('vid2');
-      $('#vid2').addClass('vid');
-    }
-    // Calculate your age based on inputs
-
-      var day = $("#birthDay").val();
-      var month = $("#birthMonth").val();
-      var year = $("#birthYear").val();
-
-      // Disallow Letters into the Age Gate Input Fields
-      $('#ageGateForm input.date').on('input', function() {
-       this.value = this.value.replace(/[\s\D]/g, '', function(){
-       });
-       if ($(this).val().length == $(this).attr('maxlength'))  {
-        if($('#birthDay').val() > 31 || $('#birthMonth').val() > 12 || $('#birthYear').val() > 2014) {
-          $(this).val('');
-          }
-        if($('html').hasClass('no-touch')) {
-          $(this).parent().next().find('input.date').focus();}
-        };
-      });
-
-
-  // FORM Submit
-  $("#ageGateForm").submit(function(){
-
-      var day = $("#birthDay").val();
-      var month = $("#birthMonth").val();
-      var year = $("#birthYear").val();
-      var age  = $("#requiredAge").val();
-
-      // If Input Fields are left empty or not Formatted Correctly Display Message
-      if (day == "" || month == "" || year == "" || month.length < 2 || day.length < 2 || year.length < 4){
-        $('li.errors').html("Por favor llene los campos con el formato Correcto").slideDown(300);
-
-        return false
-     }
-
-      var mydate = new Date();
-      mydate.setFullYear(year, month-1, day);
-
-      var currdate = new Date();
-      currdate.setFullYear(currdate.getFullYear() - age);
-
-      //  If Underage Redirect to Google Homepage
-      if ((currdate - mydate) < 0){
-        $.cookie('age_verify', 'underage', { expires: 1, path:'/'});
-          $('#ageGateForm').html("<p class='message'> Solo personas mayores de " + age + " años pueden entrar a este sitio </p>");
-          window.location.href = "http://www.talkingalcohol.com/espanol/";
-           return false
-       }
-
-       // If Age is Validated Hide form and show contents
-      else {
-      $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
-        $('.content_ingresar').hide();
-        //if is legal show video
-        $('.content_video').show();
-        return false
-   }
-
-  return false;
-
-});
-
-
-
-
-//iOS emulator function
-
-function iOS() {
-
-  var iDevices = [
-
-    'iPad Simulator',
-
-    'iPhone Simulator',
-
-    'iPod Simulator',
-
-    'iPad',
-
-    'iPhone',
-
-    'iPod'
-
-  ];
-
-  while (iDevices.length) {
-
-    if (navigator.platform === iDevices.pop()){ return true; }
-
-  }
-  return false;
-
-}
-
-  //Handle if video is finished
-  document.getElementById('vid').addEventListener('ended',myHandler,false);
-  function myHandler(e) {
-      //Show actions on bottom
-      $('body').addClass('steps step_1');
-  }
-
-
-    //If body have class refered by facebook
-    if(body.hasClass('refered')){
-      //Display just one video
-      $('#vid').hide();
-      $('#vid2').show();
-      $('.content_facebook_connect').remove();
-      //Launch facebook connect if widow is load
-      $(window).load(function(){
-        //Launch face connect
-        faceConnect();
-      });
-    }else{
-      //Display just one video
-      $('#vid').show();
-      $('#vid2').hide();
-      //Click on facebook connect
-      $('.content_facebook_connect .fb_boton').click(function(){
-          //Launch face connect
-          faceConnect();
-          $(this).parent().remove();
-
-        });
-    }
-
-    //click on create report
-    var clickReport = $('.reportar'),
-        modifyReport = $('.content_form_reportar .modificar');
-
-    //Global linked image
-    clickReport.click(function(event) {
-      //Show second video
-      $('body').removeClass().addClass('steps step_2');
-
-      //Display Second video
-      $('#vid').hide();
-      $('#vid2').show();
-
-      //Autoplay video if I create report
-      var video = $("#vid2").get(0);
-          video.play();
-
-      //Launch image
-        document.getElementById('profile-thumb').innerHTML = "<img src='" + $('#photo_friend').val() + "' width='290' height='390'>";
-        $('.profile-thumb').delay(11000).show(0);
-      //Avoid redirections
-      return false;
-      event.preventDefault();
-    });
-
-    //Click modify
-    modifyReport.click(function(event) {
-      //Show first event
-      $('body').removeClass().addClass('steps step_1');
-      //Mute video
-      $("#vid2 , .profile-thumb").hide();
-      var video2 = $("#vid2").get(0);
-          video2.currentTime = 0;
-          video2.pause();
-
-      return false;
-      event.preventDefault();
-    });
-
-
-});
->>>>>>> 19973960bfa36ec3438fb253611649bc10cf7be6
