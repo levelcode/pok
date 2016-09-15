@@ -102,6 +102,10 @@
         position: relative;
         top: 0;
     }
+    .wrapper .content_facebook_connect
+    {
+        position: absolute;
+    }
     .wrapper .content_ingresar p
     {
         font-size: 22px;
@@ -210,18 +214,49 @@
 
     
 }
- 
-@media (max-width: 375px) {
+@media (max-width: 414px) {
+    #vid
+    {
+        transform: translate(-50%, -65%);
+    }
+    .vid2
+    {
+        height: calc(100% - 493px);
+        width: 100%;
+    }
     .wrapper  .content_video
     {
-        height: 220px;
+        height: 272px;
+    }
+} 
+@media (max-width: 375px) {
+    #vid
+    {
+        transform: translate(-50%, -53%);
+    }
+    .vid2
+    {
+        height: calc(100% - 453px);
+        width: 100%;
+    }
+    .wrapper  .content_video
+    {
+        height: 246px;
     }
 }
 @media (max-width: 320px) {
-	
+	#vid
+    {
+        transform: translate(-50%, -55%);
+    }
+    .vid2
+    {
+        height: calc(100% - 385px);
+        width: 100%;
+    }
     .wrapper  .content_video
     {
-        height: 200px;
+        height: 216px;
     }
 
 
