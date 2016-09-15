@@ -93,10 +93,11 @@ canvas
 }
 .vid2
 {
+    display:none;
     position: fixed;
     background-color: #000;
     top: 0;
-    width: auto;
+    width: 100%;
     height: calc(100% - 150px);
 }
 .mobile

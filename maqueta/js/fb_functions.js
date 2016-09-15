@@ -257,12 +257,13 @@ $( window ).load(function() {
         //Display just one video
         $('#vid').hide();
         $('#vid2').show();
+        //play Video
+        var video = $("#vid2").get(0);
+        video.play();
         $('.content_facebook_connect').remove();
         //Launch facebook connect if widow is load
-        $(window).load(function(){
-          //Launch face connect
+        //Launch face connect
           faceConnect();
-        });
       }else{
         //Display just one video
         $('#vid').show();
@@ -287,6 +288,7 @@ $( window ).load(function() {
 
         //Display Second video
         $('#vid').hide();
+        $('.vid2').hide();
         $('#vid2').show();
 
         var canvas2 = new fabric.Canvas('c2'),
@@ -300,12 +302,41 @@ $( window ).load(function() {
           $('.marco_video').show();
 
           //Autoplay video if I create report
-          var video = $("#vid2").get(0);
-              video.play();
+          $('.play_vid2').click(function(event) {
+              var video2 = $("#vid2").get(0),
+                  video2a = $("#vid2a").get(0),
+                  video2b = $("#vid2b").get(0);
+                  //Play Videpo
+                  video2.play();
+                  //Launch image
 
-          //Launch image
-          document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
-          $('.profile-thumb').delay(11000).show(0);
+                  //When vid2 is finished
+                  document.getElementById('vid2').addEventListener('ended',stop2,false);
+                  function stop2(e) {
+                      $('.vid2').hide();
+                      $('#vid2a').show();
+                      //Play second Video
+                      video2a.play();
+                      //Attach image generated
+                      document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
+                      $('.profile-thumb').show();
+                  }
+
+                  //When vid2b is finished
+                  document.getElementById('vid2a').addEventListener('ended',stop3,false);
+                  function stop3(e) {
+                      $('.vid2').hide();
+                      $('#vid2b').show();
+                      //Play third Video
+                      video2b.play();
+                      //Attach image generated
+                      $('.profile-thumb').hide();
+                  }
+
+                  //Hide play icon
+                  $(this).hide();
+
+          });
         }
 
 
@@ -373,16 +404,12 @@ $( window ).load(function() {
       video.play();
       //Draw image profile on video if the user is refered
       if(body.hasClass('refered')){
-        FB.api('/me','GET',
-              {
-                "fields":
-                "context,first_name,last_name,name,id,picture.width(290).height(390).type(large)"
-              },
 
-              function(response) {
-                //Get profile photo if is refered
-                document.getElementById('profile-thumb').innerHTML = "<img src='" + response.picture.data.url + "' width='290' height='390'>";
-            });
+        var video = $("#vid").get(0);
+            video.pause();
+            $("#vid").hide();
+
+          document.getElementById('profile-thumb').innerHTML = "<img src='" + response.picture.data.url + "' width='290' height='390'>";
         }//end of refered
         //------------------------- Login -----------------------//
         FB.api(
