@@ -226,7 +226,7 @@
     }
     .wrapper  .content_video
     {
-        height: 272px;
+        height: 240px;
     }
 } 
 @media (max-width: 375px) {
@@ -241,7 +241,7 @@
     }
     .wrapper  .content_video
     {
-        height: 246px;
+        height: 212px;
     }
 }
 @media (max-width: 320px) {
@@ -256,7 +256,7 @@
     }
     .wrapper  .content_video
     {
-        height: 216px;
+        height: 181px;
     }
 
 
