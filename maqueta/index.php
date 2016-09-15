@@ -227,10 +227,20 @@
                 $('#save').click(function() {
                     //$('.loader').show();
                     $('.wrapper').css('background', 'none');
+                    $('.marco_video').css('display', 'block');
+                    $('.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
+                    $('.marco_video img').delay(28000).css('display', 'block');
+                    //Popup legal
                     //cuando carge el video .loader colocarla en display none
                     // cami activar mute de los videos
                     //se creo el funcion repload() para cargar el video ajustado cuando llegan en modo reportado porfavor implementar 
 
+                });
+
+                $( 'a.legal' ).hover(function() {
+                        $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
+                      }, function() {
+                        $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
                 });
             });
         </script>

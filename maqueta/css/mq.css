@@ -8,6 +8,17 @@
     }
 }
 
+@media (max-width: 970px) {
+    
+   
+    .wrapper .content_buscar_amigo .content_reportar .content_form_reportar form
+    {
+        left: 16%;
+        zoom: 0.7;   
+    }
+
+}
+
 
 @media (max-width: 768px) {
     
@@ -21,6 +32,17 @@
         position:absolute; 
 
     }
+    .wrapper .content_buscar_amigo .content_reportar .content_form_reportar form
+    {
+        left: initial;
+        zoom: 1;   
+    }
+    .marco_video img.play_vid2
+    {
+        width: 50%;
+        margin: 0 auto;
+    }
+    
     footer .box_share a.legal
     {
         margin: 5px 0 0 0;
@@ -227,6 +249,11 @@
     .wrapper  .content_video
     {
         height: 240px;
+    }
+    .marco_video img.play_vid2
+    {
+        width: 90%;
+        margin: 0 auto;
     }
 } 
 @media (max-width: 375px) {

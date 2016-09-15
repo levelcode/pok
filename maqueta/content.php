@@ -7,8 +7,13 @@
     <input type="button" value="Play" id="play" class="play">
 
     <div id="profile-thumb" class="profile-thumb"></div>
-
+	<div class="marco_video">
+		<a href="javascript:void(0);">
+    		<img src="img/play_vid2.png" class="play_vid2" alt="">
+    	</a>
+    </div>
     <video id="vid" poster="img/bg.png" style="" title="vid_1" webkit-playsinline>
+    	
         <source src="videos/inv/inv.webm" type="video/webm" />
     </video>
 

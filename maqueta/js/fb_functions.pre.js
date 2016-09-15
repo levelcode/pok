@@ -8,12 +8,13 @@ $('#vid,#vid2').click(function(){
   //$(this).parent().toggleClass('paused');
 });
 
-//Popup legal
+/*Popup legal
 $( 'a.legal' ).hover(function() {
         $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
       }, function() {
         $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
 });
+*/
 
 //Hide canvas
 $('#can_hidden').hide();
