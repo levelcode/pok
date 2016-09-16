@@ -9,7 +9,7 @@ $(function(){
 
   //Click and save
   $('#save').click(function() {
-    $('.amigos_une_amigos' ).animate({'padding': '0px'}, 400);
+    $('.amigos_une_amigos' ).fadeOut(300);
     $('.amigos_une_amigos img' ).animate({'width': '250px'}, 400);
     $('.marco_video img').delay(28000).css('display', 'block');
   });
@@ -243,12 +243,6 @@ $( window ).load(function() {
               $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
       });
 
-      //listener video
-      document.getElementById('vid').addEventListener('ended',myHandler,false);
-      function myHandler(e) {
-          //Show actions on bottom
-          $('body').addClass('steps step_1');
-      }
       //If body have class refered by facebook
       if(body.hasClass('refered')){
         $('.content_facebook_connect').remove();
@@ -482,7 +476,12 @@ $( window ).load(function() {
         function(response) {
 
           var boxContainer = $('.box_amigos_facebook');
-          console.log("Se encontraron : "+response.data.length+" amigos")
+          console.log("Se encontraron : "+response.data.length+" amigos");
+
+          //Show actions on bottom
+            $('body').addClass('steps step_1');
+
+          //Data array
           for(y=0; y<response.data.length; y++) {
             $('.hidden').hide();
             //Load images
@@ -701,6 +700,8 @@ $( window ).load(function() {
 
         console.log('name: ' + tName);
 
+        $('body').addClass('loading');
+
         var setI = setTimeout(function () {
           var imagen = canvas.toDataURL({
               format: 'jpeg',
@@ -726,6 +727,7 @@ $( window ).load(function() {
               */
               console.log('foto id:'+respond);
               callback(respond, tName);
+              $('body').removeClass('loading');
           });
 
         }, 3000);

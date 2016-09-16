@@ -1071,3 +1071,7 @@ body.steps .content_buscar_amigo{
     body.steps.step_2 .content_buscar_amigo .marco_video{
         display:block;
     }
+
+body.loading .loader{
+    display:block;
+}
