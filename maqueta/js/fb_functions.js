@@ -286,8 +286,12 @@ $( window ).load(function() {
       clickReport.click(function(event) {
         if($.trim($('#photo_friend').val()).length > 0){
 
-          //Show second video
-        $('body').removeClass().addClass('steps step_2');
+          //Show second video if is refered
+          if($('body').hasClass('refered')){
+            $('body').removeClass().addClass('steps step_3');
+          }else{
+            $('body').removeClass().addClass('steps step_2');
+          }
 
         //pause video
         var video = $("#vid").get(0);
@@ -385,6 +389,12 @@ $( window ).load(function() {
         var video2 = $("#vid2").get(0);
             video2.currentTime = 0;
             video2.pause();
+
+        //Play First Video
+        $("#vid").show();
+
+        var video1 = $("#vid").get(0);
+            video1.play();
 
         //Hide rec square
         $('.marco_video, .play').hide();

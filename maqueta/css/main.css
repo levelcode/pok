@@ -1075,6 +1075,11 @@ body.steps .content_buscar_amigo{
         display:block;
     }
 
+    /*second step*/
+    body.steps.step_3 .content_buscar_amigo #step_3{
+        display: block;
+    }
+
 /*Loading*/
 
 .loader{
