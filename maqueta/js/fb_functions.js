@@ -730,7 +730,7 @@ $( window ).load(function() {
               $('body').removeClass('loading');
           });
 
-        }, 3000);
+        }, 4000);
 
     };
 });

@@ -1072,6 +1072,12 @@ body.steps .content_buscar_amigo{
         display:block;
     }
 
+/*Loading*/
+
+.loader{
+    display:none;
+}
+
 body.loading .loader{
     display:block;
 }
