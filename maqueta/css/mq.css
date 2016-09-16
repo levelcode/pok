@@ -1,6 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 @media (max-width: 1280px) {
+    
 }
 @media (max-width: 1024px) {
     footer .amigos_une_amigos img
@@ -24,6 +25,15 @@
 
 @media (max-width: 768px) {
 
+    .profile-thumb
+    {
+        width: 150px;
+        top: 33%;
+        left: -14%;
+        right: 0;
+        margin: 0 auto;
+    }
+    
 
 
 
@@ -262,6 +272,12 @@
         width: 90%;
         margin: 0 auto;
     }
+    .profile-thumb
+    {
+        width: 81px;
+        top: 28%;
+        left: -14%;
+    }
 }
 @media (max-width: 375px) {
     #vid
@@ -291,6 +307,12 @@
     .wrapper  .content_video
     {
         height: 181px;
+    }
+    .profile-thumb
+    {
+        width: 81px;
+        top: 28%;
+        left: -14%;
     }
 
 
