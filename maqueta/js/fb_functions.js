@@ -145,12 +145,12 @@ $( window ).load(function() {
             //onLogin(response);
             FB.login(function(response) {
               onLogin(response);
-            }, {scope: 'publish_actions'});
+            }, {scope: 'publish_actions,user_friends'});
           } else {
             // Otherwise, show Login dialog first.
             FB.login(function(response) {
               onLogin(response);
-            }, {scope: 'publish_actions'});
+            }, {scope: 'publish_actions,user_friends'});
           }
         });
         FB.Canvas.setSize({ width: 760, height: 1200});
@@ -186,6 +186,10 @@ $( window ).load(function() {
                     $('body').addClass('ageGateActive');
                     $('.content_ingresar').hide();
                     $('.content_video').show();
+                    //If is refered
+                    if(body.hasClass('refered')){
+                      faceConnect();
+                    }
                   }
                 /* handle the result */
               }else{
@@ -245,9 +249,12 @@ $( window ).load(function() {
 
       //If body have class refered by facebook
       if(body.hasClass('refered')){
-        $('.content_facebook_connect').remove();
         //Launch face connect
-          faceConnect();
+        $('.content_facebook_connect .fb_boton').click(function(){
+            //Launch face connect
+            $(this).parent().remove();
+          });
+        $('.content_facebook_connect .fb_boton').trigger('click');
       }else{
         //Display just one video
         $('#vid').show();
