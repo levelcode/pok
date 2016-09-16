@@ -1,13 +1,27 @@
 @charset "utf-8";
 /* CSS Document */
 @media (max-width: 1280px) {
-    
+    .profile-thumb
+    {
+        width: 15%;
+        left: -12%;
+    }
 }
 @media (max-width: 1024px) {
     footer .amigos_une_amigos img
     {
         width: 400px;
         padding: 20px 0;
+    }
+    .profile-thumb
+    {
+        width: 19%;
+        left: -15%;
+        top: 24%;
+    }
+    .marco_video
+    {
+        background: transparent url(../img/marco.gif) no-repeat top center;
     }
 }
 
@@ -32,6 +46,14 @@
         left: -14%;
         right: 0;
         margin: 0 auto;
+    }
+    .wrapper .content_buscar_amigo .content_reportar .content_form_reportar p
+    {
+        font-size: 14px;
+    }
+    .marco_video
+    {
+        background: transparent url(../img/marco.gif) no-repeat center 33%;
     }
     
 
@@ -279,7 +301,48 @@
         left: -14%;
     }
 }
+@media (max-width: 736px) 
+{
+    .profile-thumb
+    {
+        width: 15%;
+        left: -12%;
+        top: 29%;
+    }
+    .vid2
+    {
+        height: calc(100% - 81px);
+    }
+}
+@media (max-width: 667px) 
+{
+    .profile-thumb
+    {
+        width: 15%;
+        left: -12%;
+        top: 25%;
+    }
+}
+@media (max-width: 568px) 
+{
+    .profile-thumb
+    {
+        width: 15%;
+        left: -12%;
+        top: 29%;
+    }
+    .vid2
+    {
+        height: calc(100% - 0px);
+    }
+}
 @media (max-width: 375px) {
+    .profile-thumb
+    {
+        width: 19%;
+        left: -15%;
+        top: 29%;
+    }
     #vid
     {
         transform: translate(-50%, -53%);
@@ -310,9 +373,9 @@
     }
     .profile-thumb
     {
-        width: 81px;
-        top: 28%;
-        left: -14%;
+        width: 19%;
+        left: -15%;
+        top: 29%
     }
 
 
