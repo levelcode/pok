@@ -277,6 +277,11 @@ $( window ).load(function() {
         //Show second video
         $('body').removeClass().addClass('steps step_2');
 
+        //pause video
+        var video = $("#vid").get(0);
+            video.currentTime = 0;
+            video.pause();
+
         //hide report another guy
         reportAnother.hide();
 
