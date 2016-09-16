@@ -75,6 +75,7 @@ canvas
     background: transparent url(../img/marco.gif) no-repeat center;
     background-size: contain;
     display: none;
+    left: 0;
 }
 .marco_video img
 {
@@ -222,6 +223,10 @@ canvas
     text-indent:-9999px;
     font:18px Helvetica;
     cursor:pointer;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 18%;
 }
 .wrapper .content_video .play
 {
@@ -506,6 +511,7 @@ canvas
 .wrapper .content_buscar_amigo .content_reportar .content_form_reportar form .border_gradient .box_amigos_facebook .box_perfil
 {
     width: 94%;
+    height: 60px;
     padding: 0 3% 6px;
     float: left;
     font-family: helvetica, arial, sans-serif;
@@ -908,7 +914,7 @@ footer .box_share
 }
 footer .box_share a.legal
 {
-    font-size: 12px;
+    font-size: 0px;
     color: #fff;
     text-transform: uppercase;
     text-decoration: none;
@@ -1030,12 +1036,15 @@ footer .amigos_une_amigos
     left: 0;
     z-index: 10;
     padding: 30px 0;
-    border-top: 1px solid #ed1a3b;
     margin: 0 auto;
     text-align: center;
     bottom: -30px;
     opacity: 1;
-    background: rgba(0, 0, 0, 0.9);
+}
+footer .amigos_une_amigos img
+{
+    width: 30%;
+    max-width: 384px;
 }
 
 /*------------------------ Custom function classes --------------------------*/

@@ -20,24 +20,25 @@
     </div>
 
 	<!--First video-->
-    <video id="vid" poster="img/bg.png" style="" title="vid_1" webkit-playsinline>
+    <video id="vid" src="videos/inv/inv.mp4" poster="img/bg.png" style="" title="vid_1" webkit-playsinline playsinline>
         <source src="videos/inv/inv.webm" type="video/webm" />
+        <source src="videos/inv/inv.ogg" type="video/ogg" />
     </video>
 
     <!--Second video-->
-    <video id="vid2" class="vid2" poster="img/bg.png"  title="vid_1" webkit-playsinline>
+    <video id="vid2" src="videos/rep_en3/rep1_opc1.mp4" class="vid2" poster="img/bg.png"  title="vid_1" webkit-playsinline playsinline>
     	<source src="videos/rep_en3/rep1_opc1.webm" type="video/webm" />
     	<source src="videos/rep_en3/rep1_opc1.ogg" type="video/ogg" />
     </video>
 
 	<!--third video-->
-    <video id="vid2a" class="vid2" poster="img/bg.png" title="vid_2" webkit-playsinline>
+    <video id="vid2a" src="videos/rep_en3/rep2.mp4" class="vid2" poster="img/bg.png" title="vid_2" webkit-playsinline playsinline>
     	<source src="videos/rep_en3/rep2.webm" type="video/webm" />
     	<source src="videos/rep_en3/rep2.ogg" type="video/ogg" />
     </video>
 
 	<!--Last video-->
-    <video id="vid2b" class="vid2" poster="img/bg.png" title="vid_2" webkit-playsinline>
+    <video id="vid2b" src="videos/rep_en3/rep3.mp4" class="vid2" poster="img/bg.png" title="vid_2" webkit-playsinline playsinline>
     	<source src="videos/rep_en3/rep3.webm" type="video/webm" />
     	<source src="videos/rep_en3/rep3.ogg" type="video/ogg" />
     </video>

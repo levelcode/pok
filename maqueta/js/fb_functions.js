@@ -2,22 +2,16 @@
 var canvas ='';
 var context ='';
 var imageLoader = '';
-var random = Math.floor((Math.random() * 10000) + 1);
+var random = Math.floor((Math.random() * 10000000) + 1);
 //Gonzo script
 
 $(function(){
 
   //Click and save
   $('#save').click(function() {
-    $('.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
+    $('.amigos_une_amigos' ).animate({'padding': '0px'}, 400);
+    $('.amigos_une_amigos img' ).animate({'width': '250px'}, 400);
     $('.marco_video img').delay(28000).css('display', 'block');
-  });
-
-  //legal
-  $( 'a.legal' ).hover(function() {
-          $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
-        }, function() {
-          $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
   });
 
 })
@@ -186,6 +180,12 @@ $( window ).load(function() {
             function (response) {
               if (response && !response.error) {
                   if(Number(response.min) <= 18){
+                    console.log("Menor de edad");
+                  }else{
+                    console.log("Mayor de edad");
+                    $('body').addClass('ageGateActive');
+                    $('.content_ingresar').hide();
+                    $('.content_video').show();
                   }
                 /* handle the result */
               }else{
@@ -287,58 +287,68 @@ $( window ).load(function() {
 
         var canvas2 = new fabric.Canvas('c2'),
             urlFoto = $('#photo_friend').val(),
-            trimedNme = String(unescape(encodeURIComponent( $('#search_friend').val().replace(/\s+/g, '') ))+random);;
+            //trimedNme = String(unescape(encodeURIComponent( $('#search_friend').val().replace(/\s+/g, '') ))+random);;
+            trimedNme = random;
 
-        var foto2 = fototexto(canvas2,"img/410x536.jpg", "img/sello_p.png",urlFoto, 30, 30,0.9, $('#search_friend').val() , $('#beers_input').val(), 400,440, 'hoefler_textregular', 60, 410, 536, String(trimedNme+'_p'), callBack2);
+        var foto2 = fototexto(canvas2,"img/410x536.jpg", "img/sello_p.png",urlFoto, 30, 30,0.7, $('#search_friend').val() , $('#beers_input').val(), 400,440, 'hoefler_textregular', 60, 410, 536, String(trimedNme+'_p'), callBack2);
+        //$('.loader').show();
         function callBack2(url){
           var urlformat = "https://datapola.com/"+url;
-          console.log('Foto reporte renerada: '+url);
           $('.marco_video').show();
 
           //Autoplay video if I create report
-          $('.play_vid2').click(function(event) {
-              var video2 = $("#vid2").get(0),
-                  video2a = $("#vid2a").get(0),
-                  video2b = $("#vid2b").get(0);
-                  //Play Videpo
-                  video2.play();
-                  //Launch image
+          $('.play_vid2').hide();
 
-                  //When vid2 is finished
-                  document.getElementById('vid2').addEventListener('ended',stop2,false);
-                  function stop2(e) {
-                      $('.vid2').hide();
-                      $('#vid2a').show();
-                      //Play second Video
-                      video2a.play();
-                      //Attach image generated
-                      document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
-                      $('.profile-thumb').show();
-                  }
+          //$('.play_vid2').click(function(event) {
+          var video2 = $("#vid2").get(0),
+              video2a = $("#vid2a").get(0),
+              video2b = $("#vid2b").get(0);
+              //Play Videpo
+          video2.play();
 
-                  //When vid2a is finished
-                  document.getElementById('vid2a').addEventListener('ended',stop3,false);
-                  function stop3(e) {
-                      $('.vid2').hide();
-                      $('#vid2b').show();
-                      //Play third Video
-                      video2b.play();
-                      //Attach image generated
-                      $('.profile-thumb').hide();
-                  }
+          //Launch image
+          //Video Control
+          video2.click(function(){this.paused?this.play():this.pause();});
+          video2a.click(function(){this.paused?this.play():this.pause();});
+          video2b.click(function(){this.paused?this.play():this.pause();});
 
-                  //When vid2b is finished
-                  document.getElementById('vid2b').addEventListener('ended',stop4,false);
-                  function stop4(e) {
-                      $('.content_video').hide();
-                        modifyReport.hide();
-                        reportAnother.show();
-                  }
+          //Clear bfeore append
+          $('#profile-thumb').empty();
 
-                  //Hide play icon
-                  $(this).hide();
+          //Append current photo
+          $('#profile-thumb').append("<img src='" + urlformat + "' width='290' height='390'>").hide();
 
-          });
+          //When vid2 is finished
+          document.getElementById('vid2').addEventListener('ended',stop2,false);
+          function stop2(e) {
+              $('.vid2').hide();
+              $('#vid2a').show();
+              //Play second Video
+              video2a.play();
+              //Attach image generated
+              $('#profile-thumb').show()
+              //document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
+              $('.profile-thumb').show();
+          }
+
+          //When vid2a is finished
+          document.getElementById('vid2a').addEventListener('ended',stop3,false);
+          function stop3(e) {
+              $('.vid2').hide();
+              $('#vid2b').show();
+              //Play third Video
+              video2b.play();
+              //Attach image generated
+              $('.profile-thumb').hide();
+          }
+
+          //When vid2b is finished
+          document.getElementById('vid2b').addEventListener('ended',stop4,false);
+          function stop4(e) {
+              //$('.content_video').hide();
+                //modifyReport.hide();
+                //reportAnother.show();
+          }
         }
         //Avoid redirections
         return false;
@@ -412,41 +422,58 @@ $( window ).load(function() {
       return false;
     });
 
-    function faceConnect(){
-      console.log('is conected');
-
-      //Draw image profile on video if the user is refered
-      if(body.hasClass('refered')){
-
-        $("#vid2").show();
-        //Autoplay video if is connected
-
-        var video2 = $("#vid2").get(0),
-            video2a = $("#vid2a").get(0),
-            video2b = $("#vid2b").get(0);
-            //Play Videpo
-            video2.play();
-            //Launch image
-            //When vid2 is finished
-            document.getElementById('vid2').addEventListener('ended',stop2,false);
-            function stop2(e) {
-                $('.vid2').hide();
-                $('#vid2a').show();
-                //Play second Video
-                video2a.play();
-                //Attach image generated
-                $('.profile-thumb').show();
-            }
-
-            //When vid2a is finished
-
-        }else{
-          var video = $("#vid").get(0);
-              video.play();
+    function filler(response, query, boxContainer){
+      var query_l = query.length - 1;
+      var query_t = query.substring(0,query_l).toLowerCase();
+      var count = 0;
+      boxContainer.empty();
+      $('.hidden').hide();
+      for(y=0; y<response.data.length; y++) {
+        var name_f = String(response.data[y].name).substring(0,query_l).toLowerCase();
+        if(String(query_t) == String(name_f)){
+          count++
+          boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + " '/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man'>"+ response.data[y].id +"</span></div>");
         }
+        //Load images
+      }
+      console.log("coincidieron: "+ count)
+      //Action for input
+      //boxContainer.hide();
+      //search friend
+      $('#search_friend').unbind('click').click(function(event) {
+          $(this).siblings('.box_amigos_facebook').toggle(400);
+      });
+      $('#search_friend').keydown(function(e) {
+          setTimeout(function () {
+              var value_t = $("#search_friend").val();
+              if(value_t.length >= 3){
+                console.log(value_t);
+              }
+          }, 100);
+      });
+      //Action box profile item
+      $('.box_perfil').click(function(event) {
+
+        var img = $(this).children('img').attr('src'),
+            nombre = $(this).children('.nombre').text(),
+            id_user = $(this).children('.id_man').text();
+
+            $('#search_friend').val(nombre);
+            $('#photo_friend').val(img);
+            $('#id_friend').val(id_user);
+            $(this).parent().hide(400);
+      });
+    }
+
+    var video2 = $("#vid2").get(0),
+        video2a = $("#vid2a").get(0),
+        video2b = $("#vid2b").get(0);
+
+    function faceConnect(){
+      console.log('Peticiones de FB');
         //------------------------- Login -----------------------//
         FB.api(
-        '/me/taggable_friends',
+        '/me/taggable_friends?limit=1000',
         'GET',
         {
           "fields":
@@ -455,6 +482,7 @@ $( window ).load(function() {
         function(response) {
 
           var boxContainer = $('.box_amigos_facebook');
+          console.log("Se encontraron : "+response.data.length+" amigos")
           for(y=0; y<response.data.length; y++) {
             $('.hidden').hide();
             //Load images
@@ -466,6 +494,18 @@ $( window ).load(function() {
           $('#search_friend').unbind('click').click(function(event) {
               $(this).siblings('.box_amigos_facebook').toggle(400);
           });
+          $('#search_friend').keydown(function(e) {
+              setTimeout(function () {
+                  var value_t = $("#search_friend").val();
+                  if(value_t.length >= 3){
+                    console.log(value_t);
+                    filler(response, value_t, boxContainer);
+                  }else{
+                    filler(response, '', boxContainer);
+                  }
+              }, 100);
+          });
+
 
           //Action box profile item
           $('.box_perfil').click(function(event) {
@@ -484,18 +524,17 @@ $( window ).load(function() {
 
             //Share action;
             var objectToLike = 'https://datapola.com/',
-                trimedNme = String(unescape(encodeURIComponent( $('#search_friend').val().replace(/\s+/g, '') ))+random);
-
-            var dataFB = {
+                trimedNme = random,
+                dataFB = {
                 "image_url" : $('#photo_friend').val(),
                 "id_user" : trimedNme
             };
 
             var canvas1 = new fabric.Canvas('c1'),
                 urlFoto = $('#photo_friend').val();
-                //inicializacion
+            //inicializacion
             console.log('url foto FB: '+ console.log('launch draw'));
-            var foto1 = fototexto(canvas1,"img/600x600.jpg", "img/sello.png",urlFoto, 115, 60,0.9,$('#search_friend').val() , $('#beers_input').val(), 430,470, 'hoefler_textregular', 60, 600, 600, trimedNme,callBack1);
+            var foto1 = fototexto(canvas1,"img/600x600.jpg", "img/sello.png",urlFoto, 115, 60,0.7,$('#search_friend').val() , $('#beers_input').val(), 430,470, 'hoefler_textregular', 60, 600, 600, trimedNme,callBack1);
 
             function callBack1(url, nombre){
               console.log('launch draw 1'+url);
@@ -540,8 +579,36 @@ $( window ).load(function() {
                   );
                 });//End FB Object
             }
-
           });//End of publish bs
+
+          //Draw image profile on video if the user is refered
+            if(body.hasClass('refered')){
+
+              $("#vid2").show();
+              //Autoplay video if is connected
+
+
+                  //Play Videpo
+                  video2.play();
+                  //Launch image
+                  //When vid2 is finished
+                  document.getElementById('vid2').addEventListener('ended',stop2,false);
+                  function stop2(e) {
+                      $('.vid2').hide();
+                      $('#vid2a').show();
+                      //Play second Video
+                      video2a.play();
+                      //Attach image generated
+                      $('.profile-thumb').show();
+                  }
+
+                  //When vid2a is finished
+
+              }else{
+                var video = $("#vid").get(0);
+                    video.play();
+              }
+
         });//End of async
     }//End of facbook connect
 
@@ -661,7 +728,7 @@ $( window ).load(function() {
               callback(respond, tName);
           });
 
-        }, 2000);
+        }, 3000);
 
     };
 });

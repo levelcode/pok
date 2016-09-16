@@ -28,6 +28,11 @@
 }
 
 @media (max-width: 767px) {
+    video#vid2.vid2
+    {
+        left: 0;
+        height: calc(100% - 360px);
+    }
     #vid {
         position:absolute;
 
