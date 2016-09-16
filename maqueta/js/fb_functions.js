@@ -24,13 +24,6 @@ $(function(){
     }
    });
 
-  $('#publish_friend input').blur(function()
-  {
-      if( !$(this).val() ) {
-            $(this).parents().addClass('warning');
-      }
-  });
-
 })
 
 
@@ -291,7 +284,9 @@ $( window ).load(function() {
 
       //Global linked image
       clickReport.click(function(event) {
-        //Show second video
+        if($.trim($('#photo_friend').val()).length > 0){
+
+          //Show second video
         $('body').removeClass().addClass('steps step_2');
 
         //pause video
@@ -372,6 +367,9 @@ $( window ).load(function() {
                 //modifyReport.hide();
                 //reportAnother.show();
           }
+
+        }
+
         }
         //Avoid redirections
         return false;
