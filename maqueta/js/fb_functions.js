@@ -279,7 +279,7 @@ $( window ).load(function() {
 
       //click on create report
       var clickReport = $('.reportar'),
-          modifyReport = $('.content_form_reportar .modificar'),
+          modifyReport = $('.content_form_reportar .modificar, .reportar_amigo_final'),
           reportAnother = $('.content_form_reportar .reportar_otro_amigo');
 
       //Global linked image
@@ -288,9 +288,17 @@ $( window ).load(function() {
 
           //Show second video if is refered
           if($('body').hasClass('refered')){
+
             $('body').removeClass().addClass('steps step_3');
+            //pause video
+            var video = $("#vid2").get(0);
+                video.currentTime = 0;
+                video.pause();
+
           }else{
+
             $('body').removeClass().addClass('steps step_2');
+
           }
 
         //pause video
@@ -559,7 +567,7 @@ $( window ).load(function() {
                 $(this).parent().hide(400);
           });
           //Click for publish BS
-          $('#push_public').click(function(e){
+          $('#push_public, .compartir_facebook').click(function(e){
 
             //Share action;
             var objectToLike = 'https://datapola.com/',
