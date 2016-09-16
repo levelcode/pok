@@ -14,6 +14,23 @@ $(function(){
     $('.marco_video img').delay(28000).css('display', 'block');
   });
 
+  //Typing validation
+  $("#beers_input").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+        $("#errmsg").html("Ingresa solo números").show().fadeOut("slow");
+               return false;
+    }
+   });
+
+  $('#publish_friend input').blur(function()
+  {
+      if( !$(this).val() ) {
+            $(this).parents().addClass('warning');
+      }
+  });
+
 })
 
 
@@ -370,6 +387,9 @@ $( window ).load(function() {
         var video2 = $("#vid2").get(0);
             video2.currentTime = 0;
             video2.pause();
+
+        //Hide rec square
+        $('.marco_video, .play').hide();
 
         return false;
         event.preventDefault();

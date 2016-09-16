@@ -85,7 +85,7 @@
 						<div class="box_amigos_facebook"></div><!--facebook friends dinamicaly loaded-->
 
 
-			        	<input type="text" id="search_friend" placeholder="Buscar a un amigo" class="date">
+			        	<input type="text" id="search_friend" placeholder="Buscar a un amigo" class="date" required>
 			        	<input type="hidden" id="photo_friend">
 			        	<input type="hidden" id="id_friend">
 
@@ -98,7 +98,7 @@
 
 					<div class="border_gradient">
 
-			        	<input type="text" id="beers_input" placeholder="¿cuántas polas le deben?" class="date">
+			        	<input type="number" min="1" max="99" id="beers_input" placeholder="¿cuántas polas le deben?" class="date" required><span id="errmsg"></span>
 
 			        </div>
 
