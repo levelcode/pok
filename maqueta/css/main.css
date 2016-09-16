@@ -240,10 +240,13 @@ canvas
     display:none;
     z-index: 2;
     position: absolute;
-    left: 33%;
     -webkit-filter: saturate(53%) brightness(98%) contrast(43%) blur(0.8px);
     filter:saturate(53%) brightness(98%) contrast(43%) blur(0.8px);
-    width: 19%;
+    width: 180px;
+    top: 22%;
+    left: -11%;
+    right: 0;
+    margin: 0 auto;
     transform: rotate(2deg);
 }
 .wrapper .content_video .play.pause
