@@ -245,12 +245,7 @@ canvas
     width: 19%;
     left: 33%;
     margin: 0 auto;
-    transform: rotate(1.2deg);
-
-    width: 15%;
-    left: -12%;
-    right: 0;
-    margin: 0 auto;    
+    transform: rotate(1.2deg);  
 }
 .wrapper .content_video .play.pause
 {
