@@ -9,6 +9,7 @@ $(function(){
 
   //Click and save
   $('#save').click(function() {
+    $('.content_video').show();
     $('.amigos_une_amigos' ).fadeOut(300);
     $('.amigos_une_amigos img' ).animate({'width': '250px'}, 400);
     $('.marco_video img').delay(28000).css('display', 'block');
@@ -23,7 +24,7 @@ $(function(){
                return false;
     }
    });
-
+   $('.content_video').hide();
 })
 
 
@@ -83,7 +84,6 @@ $( window ).load(function() {
       $('body').addClass('ageGateActive');
       $('.content_ingresar').hide();
       //if is legal show video
-      $('.content_video').show();
       //repload();
     }
     else {
@@ -195,7 +195,6 @@ $( window ).load(function() {
                     console.log("Mayor de edad");
                     $('body').addClass('ageGateActive');
                     $('.content_ingresar').hide();
-                    $('.content_video').show();
                     //If is refered
                     if(body.hasClass('refered')){
                       faceConnect();
@@ -458,7 +457,7 @@ $( window ).load(function() {
         $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
         $('.content_ingresar').hide();
         //if is legal show video
-        $('.content_video').show();
+        
         return false
       }
       return false;
