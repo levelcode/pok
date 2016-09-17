@@ -520,7 +520,7 @@ $( window ).load(function() {
         var name_f = String(response.data[y].name).substring(0,query_l).toLowerCase();
         if(String(query_t) == String(name_f)){
           count++
-          boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + " '/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man'>"+ response.data[y].id +"</span></div>");
+          boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + " '/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man' style='display:none'>"+ response.data[y].id +"</span></div>");
         }
         //Load images
       }
@@ -581,7 +581,7 @@ $( window ).load(function() {
           for(y=0; y<response.data.length; y++) {
             $('.hidden').hide();
             //Load images
-            boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + " '/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man'>"+ response.data[y].id +"</span></div>");
+            boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + " '/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man' style='display:none'>"+ response.data[y].id +"</span></div>");
           }
           //Action for input
           boxContainer.hide();
@@ -671,10 +671,17 @@ $( window ).load(function() {
                          picture: urlformat
                       },
                       function(response) {
-                        setTimeout(function(){$('.content_terms').fadeOut(0); $('#push_public').show();$('#retorno_pub').empty();}, 3000);
-                        $('#retorno_pub').empty();
-                        $('#retorno_pub').append('Éxito al publicar en FB');
-                        console.log("exito en la publicacion en FB" + response);
+                        if (!response || response.error) {
+                          setTimeout(function(){$('.content_terms').fadeOut(0); $('#push_public').show();$('#retorno_pub').empty();}, 3000);
+                          console.log(response.error);
+                          $('#retorno_pub').append('Error al publicar en FB');
+                        } else {
+                          setTimeout(function(){$('.content_terms').fadeOut(0); $('#push_public').show();$('#retorno_pub').empty();}, 3000);
+                          $('#retorno_pub').empty();
+                          $('#retorno_pub').append('Éxito al publicar en FB');
+                          console.log("exito en la publicacion en FB" + response);
+                        }
+                        
                       }
                   );
                 });//End FB Object
