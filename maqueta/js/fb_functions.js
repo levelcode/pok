@@ -282,7 +282,7 @@ $( window ).load(function() {
 
       //click on create report
       var clickReport = $('.reportar'),
-          modifyReport = $('.content_form_reportar .modificar, .reportar_amigo_final'),
+          modifyReport = $('.content_form_reportar .modificar'),
           reportAnother = $('.content_form_reportar .reportar_otro_amigo');
 
       //Global linked image
@@ -603,10 +603,10 @@ $( window ).load(function() {
                   object: {
                     "og":{
                       "url": "https://datapola.com/index.php?id="+nombre,
-                      "title": "Datapola el que la debe, la paga!",
+                      "title": "HA SIDO REPORTADO EN DATAPOLA",
                       "description": "",
                       "app_id": "1660712804256395",
-                      "message": $('#id_friend').val() +" debes " + $('#beers_input').val() + "cervezas!",
+                      "message": "Que todo el mundo sepa que usted le promete polas de cumpleaños a sus amigos y nunca les paga.",
                       "tags": $('#id_friend').val(),
                       "image": urlformat,
                       "picture": urlformat
