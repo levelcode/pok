@@ -192,7 +192,7 @@
             </div>
 
 
-            <a href="https://www.cervezapoker.com/sm_agegate?destination=" target="_blank" class="terminos_mobile mobile">términos y condiciones</a>
+            <a href="https://www.cervezapoker.com/politica-de-proteccion-de-datos" target="_blank" class="terminos_mobile mobile">términos y condiciones</a>
 
             <div class="box_share desktop">
 
