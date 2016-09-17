@@ -22,8 +22,7 @@ $(function(){
     video.play();
     setTimeout(function(){ video.pause();}, 200);
     $('.loader').show();
-    $('.amigos_une_amigos' ).fadeOut(300);
-    $('.amigos_une_amigos img' ).animate({'width': '250px'}, 400);
+    $('.amigos_une_amigos').animate({'width': '850px', 'bottom': '-34'}, 400);
     $('.marco_video img').delay(28000).css('display', 'block');
   });
 
@@ -563,7 +562,7 @@ $( window ).load(function() {
             $('body').addClass('steps step_1');
 
             //Hide legal
-            $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
+            
             $('.content_video').show();
 
           //Data array
