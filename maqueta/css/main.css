@@ -1089,7 +1089,10 @@ body.steps .content_buscar_amigo{
 .loader{
     display:none;
 }
-
+body.loading
+{
+    overflow: hidden;
+}
 body.loading .loader{
     display:block;
 }
