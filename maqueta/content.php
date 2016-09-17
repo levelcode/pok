@@ -14,7 +14,7 @@
 
 <div class="content_video"  style="display:none;">
 
-    <input type="button" value="Play" id="play" class="play">
+    <!--input type="button" value="Play" id="play" class="play"-->
 
     <div id="profile-thumb" class="profile-thumb">
     	<?php
