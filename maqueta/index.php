@@ -108,8 +108,9 @@
         <div class="wrapper">
             
             <div class="content_terms">
+                <div class="drop_bg"></div><!--ghost bg-->
                 <div class="box_terms">
-                    <a href="javscript:void(0);">x</a>
+                    <a href="javscript:void(0);" class="close">x</a>
                     <h2>Modal</h2>
                     <div class="border_top_yellow"></div>
                     <form>
