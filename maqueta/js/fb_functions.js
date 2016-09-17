@@ -5,6 +5,11 @@ var imageLoader = '';
 var random = Math.floor((Math.random() * 10000000) + 1);
 
 //Variables de video
+var video2c = $("#vid2"),
+    video2ac = $("#vid2a"),
+    video2bc = $("#vid2b"),
+    videoc = $("#vid");
+
 var video2 = $("#vid2").get(0),
     video2a = $("#vid2a").get(0),
     video2b = $("#vid2b").get(0),
@@ -12,15 +17,20 @@ var video2 = $("#vid2").get(0),
 
 //Gonzo script
 
+//hack for mobile video
+function autov(video, videoc){
+  videoc.prop('muted', true);
+  video.play();
+  setTimeout(function(){ video.pause();videoc.prop('muted', false);video.currentTime = 0;}, 200);
+}
+
 $(function(){
-
-  //hack for mobile video
-
   //Click and save
   $('#save').click(function() {
     //hack for mobile video manage autoplay
-    video.play();
-    setTimeout(function(){ video.pause();}, 200);
+    autov(video, videoc);
+    //video.play();
+    //setTimeout(function(){ video.pause();video.currentTime = 0;}, 200);
     $('.loader').show();
     $('.amigos_une_amigos').animate({'width': '850px', 'bottom': '-34'}, 400);
     $('.marco_video img').delay(28000).css('display', 'block');
@@ -150,12 +160,11 @@ $( window ).load(function() {
     movil = jQuery.browser.mobile;
 
     if(movil==true){
-        //window.top.location.href = "https://www.venezuelaquiere.com/personal/"
+        
     }else{
-        //
+        
     }
-    //viene de Facebook
-    //window.top.location.href = "https://www.facebook.com/pages/VenezuelaQuiere/836776256420302?sk=app_447297352129313"
+    
 
     //******
     //Facebook
@@ -312,12 +321,15 @@ $( window ).load(function() {
       clickReport.click(function(event) {
         $('.loader').show();
         //Hack videos mobile
-        video2a.currentTime = 0;
+
+        autov(video2a, video2ac);
+        autov(video2b, video2bc);
+        /*video2a.currentTime = 0;
         video2a.play();
-        setTimeout(function(){ video2a.pause();}, 100);
+        setTimeout(function(){ video2a.pause();video2a.currentTime = 0;video2a.currentTime = 0;}, 100);
         video2b.currentTime = 0;
         video2b.play();
-        setTimeout(function(){ video2b.pause();}, 100);
+        setTimeout(function(){ video2b.pause();video2b.currentTime = 0;}, 100);*/
 
 
         if($.trim($('#photo_friend').val()).length > 0){
