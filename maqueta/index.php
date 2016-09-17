@@ -110,9 +110,13 @@
             <div class="content_terms">
                 <div class="box_terms">
                     <a href="javscript:void(0);">x</a>
-                    <h2>Términos y condiciones</h2>
+                    <h2>Modal</h2>
                     <div class="border_top_yellow"></div>
-                    <p>Bavaria S.A. ha puesto a disposición de los usuarios el Sitio Web “datapola.com“. Los usuarios aceptan y declaran que han reportado a sus amigos con su consentimiento, así como también declaran que cuentan con la autorización del mismo para su difusión y/o exhibición. El usuario asume toda responsabilidad por el contenido generado en o a través del Sitio Web. En ningún caso será responsable Bavaria S.A. por o en relación con cualquier contenido publicado, transmitido, intercambiado o recibido por o en nombre de cualquier usuario o de otra persona en o a través del sitio web. Este es un portal con fines de entretenimiento realizado para los amigos por Cerveza Poker. No tiene fines comerciales ni legales.</p>
+                    <form>
+                        <label>Edita el texto de tu publicacion</label>
+                        <input type="text">
+                    </form>
+                    <button id="save" class="boton fb_boton"></button>
                 </div>
             </div>
 
