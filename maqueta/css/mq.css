@@ -61,6 +61,10 @@
         position:absolute;
 
     }
+    .vid2
+    {
+        height: calc(100% - 54%);
+    }
     .wrapper .content_buscar_amigo .content_reportar .content_form_reportar form
     {
         left: initial;
