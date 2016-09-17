@@ -682,6 +682,13 @@ $( window ).load(function() {
 
                   //When vid2a is finished
 
+                  $('.reportar_amigo_final').click(function(event) {
+                    /* Act on the event */
+                    video2a.currentTime = 0;
+                    video2a.pause();
+                    $('body').removeClass().addClass('steps step_3');
+                  });
+
               }else{
                 var video = $("#vid").get(0);
                     video.play();
