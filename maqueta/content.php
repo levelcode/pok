@@ -20,7 +20,7 @@
     </div>
 
 	<!--First video-->
-    <video id="vid" src="videos/inv/inv.mp4" poster="img/bg.png" style="" title="vid_1" webkit-playsinline playsinline>
+    <video id="vid" src="videos/inv/inv.mp4" style="" title="vid_1" webkit-playsinline playsinline>
         <source src="videos/inv/inv.webm" type="video/webm" />
         <source src="videos/inv/inv.ogg" type="video/ogg" />
     </video>
