@@ -330,58 +330,62 @@ $( window ).load(function() {
           $('.marco_video').show();
 
           //Autoplay video if I create report
-          $('.play_vid2').hide();
+          //$('.play_vid2').hide();
 
-          //$('.play_vid2').click(function(event) {
-          var video2 = $("#vid2").get(0),
-              video2a = $("#vid2a").get(0),
-              video2b = $("#vid2b").get(0);
-              //Play Videpo
-          video2.play();
+          $('.play_vid2').click(function(event) {
 
-          //Launch image
-          //Video Control
-          video2.click(function(){this.paused?this.play():this.pause();});
-          video2a.click(function(){this.paused?this.play():this.pause();});
-          video2b.click(function(){this.paused?this.play():this.pause();});
+              var video2 = $("#vid2").get(0),
+                video2a = $("#vid2a").get(0),
+                video2b = $("#vid2b").get(0);
+                //Play Videpo
+            video2.play();
 
-          //Clear bfeore append
-          $('#profile-thumb').empty();
+            //Launch image
+            //Video Control
+            video2.click(function(){this.paused?this.play():this.pause();});
+            video2a.click(function(){this.paused?this.play():this.pause();});
+            video2b.click(function(){this.paused?this.play():this.pause();});
 
-          //Append current photo
-          $('#profile-thumb').append("<img src='" + urlformat + "' width='290' height='390'>").hide();
+            //Clear bfeore append
+            $('#profile-thumb').empty();
 
-          //When vid2 is finished
-          document.getElementById('vid2').addEventListener('ended',stop2,false);
-          function stop2(e) {
-              $('.vid2').hide();
-              $('#vid2a').show();
-              //Play second Video
-              video2a.play();
-              //Attach image generated
-              $('#profile-thumb').show()
-              //document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
-              $('.profile-thumb').show();
-          }
+            //Append current photo
+            $('#profile-thumb').append("<img src='" + urlformat + "' width='290' height='390'>").hide();
 
-          //When vid2a is finished
-          document.getElementById('vid2a').addEventListener('ended',stop3,false);
-          function stop3(e) {
-              $('.vid2').hide();
-              $('#vid2b').show();
-              //Play third Video
-              video2b.play();
-              //Attach image generated
-              $('.profile-thumb').hide();
-          }
+            //When vid2 is finished
+            document.getElementById('vid2').addEventListener('ended',stop2,false);
+            function stop2(e) {
+                $('.vid2').hide();
+                $('#vid2a').show();
+                //Play second Video
+                video2a.play();
+                //Attach image generated
+                $('#profile-thumb').show()
+                //document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
+                $('.profile-thumb').show();
+            }
 
-          //When vid2b is finished
-          document.getElementById('vid2b').addEventListener('ended',stop4,false);
-          function stop4(e) {
-              //$('.content_video').hide();
-                //modifyReport.hide();
-                //reportAnother.show();
-          }
+            //When vid2a is finished
+            document.getElementById('vid2a').addEventListener('ended',stop3,false);
+            function stop3(e) {
+                $('.vid2').hide();
+                $('#vid2b').show();
+                //Play third Video
+                video2b.play();
+                //Attach image generated
+                $('.profile-thumb').hide();
+            }
+
+            //When vid2b is finished
+            document.getElementById('vid2b').addEventListener('ended',stop4,false);
+            function stop4(e) {
+                //$('.content_video').hide();
+                  //modifyReport.hide();
+                  //reportAnother.show();
+            }
+
+          });//Play vid 2
+          
 
         }
 
