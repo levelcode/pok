@@ -1,3 +1,17 @@
+<div class="content_facebook_connect">
+
+	<div class="border_top"></div>
+
+	<p>Conéctese por Facebook para ayudarle a que sus ”amigos” <br> le paguen las polas que le deben.</p>
+
+	<button id="save" class="boton fb_boton"></button>
+
+</div><!--/facebook connect-->
+
+
+
+
+
 <div class="content_video"  style="display:none;">
 
     <input type="button" value="Play" id="play" class="play">
@@ -42,16 +56,6 @@
     	<source src="videos/rep_en3/rep3.webm" type="video/webm" />
     	<source src="videos/rep_en3/rep3.ogg" type="video/ogg" />
     </video>
-
-    <div class="content_facebook_connect">
-
-		<div class="border_top"></div>
-
-		<p>Conéctese por Facebook para ayudarle a que sus ”amigos” <br> le paguen las polas que le deben.</p>
-
-		<button id="save" class="boton fb_boton"></button>
-
-	</div><!--/facebook connect-->
 
 </div><!--/video-->
 
