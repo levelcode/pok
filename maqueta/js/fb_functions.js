@@ -311,20 +311,7 @@ $( window ).load(function() {
       clickReport.click(function(event) {
         if($.trim($('#photo_friend').val()).length > 0){
 
-          //Show second video if is refered
-          if($('body').hasClass('refered')){
-
-            $('body').removeClass().addClass('steps step_3');
-            //pause video
-            var video = $("#vid2").get(0);
-                video.currentTime = 0;
-                video.pause();
-
-          }else{
-
             $('body').removeClass().addClass('steps step_2');
-
-          }
 
         //pause video
         var video = $("#vid").get(0);
@@ -675,6 +662,9 @@ $( window ).load(function() {
               $("#vid2").show();
               //Autoplay video if is connected
 
+
+                  //video
+                  $('body').removeClass().addClass('steps step_3');
 
                   //Play Videpo
                   video2.play();
