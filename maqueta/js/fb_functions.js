@@ -16,16 +16,11 @@ $(function(){
 
   //hack for mobile video
 
-  if ($(window).width() < 768){
-    $('body').on( "click", function(){
-        video.play();
-        setTimeout(function(){ video.pause();}, 500);
-    });
-    setTimeout(function(){ video.play(); }, 10000);
-  }
-
   //Click and save
   $('#save').click(function() {
+    //hack for mobile video manage autoplay
+    video.play();
+    setTimeout(function(){ video.pause();}, 200);
     $('.loader').show();
     $('.amigos_une_amigos' ).fadeOut(300);
     $('.amigos_une_amigos img' ).animate({'width': '250px'}, 400);
