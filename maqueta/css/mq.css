@@ -86,6 +86,11 @@
         position: fixed;
         top: 5%;
     }
+    .profile-thumb
+    {
+        -webkit-filter: saturate(53%) brightness(98%) contrast(43%) blur(0.8px);
+        filter: saturate(53%) brightness(98%) contrast(43%) blur(1px);
+    }
 
     footer .box_share a.legal
     {
