@@ -36,9 +36,9 @@
 
         <meta property="og:title" content="" />
 
-        <meta property="og:description" content="Cambia tu foto de perfil en Facebook y WhatsApp ¡ Y actívate por el cambio !" />
+        <meta property="og:description" content="Que todo el mundo sepa que usted le promete polas de cumpleaños a sus amigos y nunca les paga." />
 
-        <meta property="og:site_name" content=""/>
+        <meta property="og:site_name" content="DATAPOLA"/>
 
         <meta property="og:type" content="datapola:amigo"/>
 
@@ -72,7 +72,7 @@
 
             ?>
 
-            <meta property="og:image" content='<?php echo $dominio.$_GET["id"];?>' />
+            <meta property="og:image" content='<?php echo $dominio."/uploads/".$_GET["id"].".jpg";?>' />
 
             <?php
 
