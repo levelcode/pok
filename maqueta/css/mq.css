@@ -105,6 +105,10 @@
     {
         overflow: initial;
     }
+    .wrapper  .content_video
+    {
+        background: #000;
+    }
     .wrapper  .content_video .play
     {
         top: inherit;
