@@ -311,11 +311,14 @@ $( window ).load(function() {
 
       //Global linked image
       clickReport.click(function(event) {
+        $('.loader').show();
         //Hack videos mobile
+        video2a.currentTime = 0;
         video2a.play();
-        setTimeout(function(){ video2a.pause();}, 200);
+        setTimeout(function(){ video2a.pause();}, 100);
+        video2b.currentTime = 0;
         video2b.play();
-        setTimeout(function(){ video2b.pause();}, 200);
+        setTimeout(function(){ video2b.pause();}, 100);
 
 
         if($.trim($('#photo_friend').val()).length > 0){
@@ -344,6 +347,7 @@ $( window ).load(function() {
         var foto2 = fototexto(canvas2,"img/410x536.jpg", "img/sello_p.png",urlFoto, 30, 30,0.7, $('#search_friend').val() , $('#beers_input').val(), 400,440, 'hoefler_textregular', 60, 410, 536, String(trimedNme+'_p'), callBack2);
         //$('.loader').show();
         function callBack2(url){
+          $('.loader').hide();
           var urlformat = "https://datapola.com/"+url;
           $('.marco_video').show();
 
@@ -414,24 +418,27 @@ $( window ).load(function() {
       //Click modify
       modifyReport.click(function(event) {
         //Show first event
+        $('#profile-thumb').empty();
         $('body').removeClass().addClass('steps step_1');
         
         //Mute video
-        $("#vid2 , .profile-thumb").hide();
-            video2.currentTime = 0;
-            video2.pause();
-
-            video2a.currentTime = 0;
-            video2a.pause();
-
-        //Play First Video
-        $('.loader').hide();
-
-        $("#vid").show();
-        video.play();
-
+        $(".vid2, .profile-thumb").hide();
         //Hide rec square
         $('.marco_video, .play').hide();
+        video2.currentTime = 0;
+        video2.pause();
+
+        video2a.currentTime = 0;
+        video2a.pause();
+
+        video2b.currentTime = 0;
+        video2b.pause();
+
+        //Play First Video
+
+        $("#vid").show();
+        video.currentTime = 0;
+        video.play();
 
         return false;
         event.preventDefault();
@@ -597,7 +604,6 @@ $( window ).load(function() {
           });
           //Click for publish BS
           $('#push_public, .compartir_facebook').click(function(e){
-
             //Share action;
             var objectToLike = 'https://datapola.com/',
                 trimedNme = random,
