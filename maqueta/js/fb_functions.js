@@ -311,6 +311,13 @@ $( window ).load(function() {
 
       //Global linked image
       clickReport.click(function(event) {
+        //Hack videos mobile
+        video2a.play();
+        setTimeout(function(){ video2a.pause();}, 200);
+        video2b.play();
+        setTimeout(function(){ video2b.pause();}, 200);
+
+
         if($.trim($('#photo_friend').val()).length > 0){
 
             $('body').removeClass().addClass('steps step_2');
@@ -653,39 +660,38 @@ $( window ).load(function() {
           //Draw image profile on video if the user is refered
             if(body.hasClass('refered')){
 
-              $("#vid2").show();
-              //Autoplay video if is connected
+                $("#vid2").show();
+                //Autoplay video if is connected
 
+                //video
+                $('body').removeClass().addClass('steps step_3');
 
-                  //video
-                  $('body').removeClass().addClass('steps step_3');
+                //Play Videpo
+                video2.play();
+                //Launch image
+                //When vid2 is finished
+                document.getElementById('vid2').addEventListener('ended',stop2,false);
+                function stop2(e) {
+                    $('.vid2').hide();
+                    $('#vid2a').show();
+                    //Play second Video
+                    video2a.play();
+                    //Attach image generated
+                    $('.profile-thumb').show();
+                }
 
-                  //Play Videpo
-                  video2.play();
-                  //Launch image
-                  //When vid2 is finished
-                  document.getElementById('vid2').addEventListener('ended',stop2,false);
-                  function stop2(e) {
-                      $('.vid2').hide();
-                      $('#vid2a').show();
-                      //Play second Video
-                      video2a.play();
-                      //Attach image generated
-                      $('.profile-thumb').show();
-                  }
+                //When vid2a is finished
 
-                  //When vid2a is finished
-
-                  $('.reportar_amigo_final').click(function(event) {
-                    /* Act on the event */
-                    video2a.currentTime = 0;
-                    video2a.pause();
-                    $('body').removeClass().addClass('steps step_2');
-                  });
+                $('.reportar_amigo_final').click(function(event) {
+                  /* Act on the event */
+                  video2a.currentTime = 0;
+                  video2a.pause();
+                  $('body').removeClass().addClass('steps step_2');
+                });
 
               }else{
                   $('.loader').hide();
-                  console.log("borrado de loader");
+                  console.log("borrado de loader, carga video");
                   video.play();
               }
 
