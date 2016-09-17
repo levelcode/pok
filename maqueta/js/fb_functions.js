@@ -25,6 +25,8 @@ $(function(){
     }
    });
    $('.content_video').hide();
+   $('.content_facebook_connect').hide();
+   
 })
 
 
@@ -83,6 +85,7 @@ $( window ).load(function() {
       $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
       $('body').addClass('ageGateActive');
       $('.content_ingresar').hide();
+      $('.content_facebook_connect').show();
       //if is legal show video
       //repload();
     }
@@ -195,6 +198,7 @@ $( window ).load(function() {
                     console.log("Mayor de edad");
                     $('body').addClass('ageGateActive');
                     $('.content_ingresar').hide();
+                    $('.content_facebook_connect').show();
                     //If is refered
                     if(body.hasClass('refered')){
                       faceConnect();
@@ -456,6 +460,7 @@ $( window ).load(function() {
       else {
         $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
         $('.content_ingresar').hide();
+        $('.content_facebook_connect').show();
         //if is legal show video
         
         return false
