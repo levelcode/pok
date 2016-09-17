@@ -350,13 +350,14 @@ $( window ).load(function() {
           $('.loader').hide();
           var urlformat = "https://datapola.com/"+url;
           $('.marco_video').show();
-
+          $('.play_vid2').show();
           //Autoplay video if I create report
-          //$('.play_vid2').hide();
+          //
 
           $('.play_vid2').click(function(event) {
                 //Play Videpo
                 video2.play();
+                $('.play_vid2').hide();
 
             //Kill link
             $(this).off();    
