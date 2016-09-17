@@ -97,7 +97,7 @@
     <body <?php if (isset($bodyref)){echo 'class="'.$bodyref.'"';}?>>
 
         <!--Loader-->
-        <div class="loader">
+        <div class="loader" style="width: 100%;height: 100%;background-color: black;z-index: 10000;display:block">
 
             <div class="loader_center"></div>
 

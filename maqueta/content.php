@@ -12,7 +12,7 @@
 
 
 
-<div class="content_video">
+<div class="content_video" style="display:none">
 
     <!--input type="button" value="Play" id="play" class="play"-->
 

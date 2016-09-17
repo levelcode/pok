@@ -3,6 +3,13 @@ var canvas ='';
 var context ='';
 var imageLoader = '';
 var random = Math.floor((Math.random() * 10000000) + 1);
+
+//Variables de video
+var video2 = $("#vid2").get(0),
+    video2a = $("#vid2a").get(0),
+    video2b = $("#vid2b").get(0),
+    video = $("#vid").get(0);
+
 //Gonzo script
 
 $(function(){
@@ -10,8 +17,6 @@ $(function(){
   //hack for mobile video
 
   if ($(window).width() < 768){
-
-    var video = $("#video1").get(0);
     $('body').on( "click", function(){
         video.play();
         setTimeout(function(){ video.pause();}, 500);
@@ -21,7 +26,7 @@ $(function(){
 
   //Click and save
   $('#save').click(function() {
-    $('.content_video').show();
+    $('.loader').show();
     $('.amigos_une_amigos' ).fadeOut(300);
     $('.amigos_une_amigos img' ).animate({'width': '250px'}, 400);
     $('.marco_video img').delay(28000).css('display', 'block');
@@ -38,6 +43,7 @@ $(function(){
    });
    $('.content_video').hide();
    $('.content_facebook_connect').hide();
+   $('.loader').hide();
    
 })
 
@@ -221,6 +227,7 @@ $( window ).load(function() {
                     $('body').addClass('ageGateActive');
                     $('.content_ingresar').hide();
                     $('.content_facebook_connect').show();
+                    $('.loader').hide();
                     //If is refered
                     if(body.hasClass('refered')){
                       faceConnect();
@@ -314,7 +321,7 @@ $( window ).load(function() {
             $('body').removeClass().addClass('steps step_2');
 
         //pause video
-        var video = $("#vid").get(0);
+        
             video.currentTime = 0;
             video.pause();
 
@@ -342,10 +349,6 @@ $( window ).load(function() {
           //$('.play_vid2').hide();
 
           $('.play_vid2').click(function(event) {
-
-              var video2 = $("#vid2").get(0),
-                video2a = $("#vid2a").get(0),
-                video2b = $("#vid2b").get(0);
                 //Play Videpo
                 video2.play();
 
@@ -413,19 +416,17 @@ $( window ).load(function() {
         
         //Mute video
         $("#vid2 , .profile-thumb").hide();
-        var video2 = $("#vid2").get(0);
             video2.currentTime = 0;
             video2.pause();
 
-        var video2a = $("#vid2a").get(0);
             video2a.currentTime = 0;
             video2a.pause();
 
         //Play First Video
-        $("#vid").show();
+        $('.loader').hide();
 
-        var video1 = $("#vid").get(0);
-            video1.play();
+        $("#vid").show();
+        video.play();
 
         //Hide rec square
         $('.marco_video, .play').hide();
@@ -440,7 +441,6 @@ $( window ).load(function() {
         $('body').removeClass().addClass('steps step_1');
         //Mute video
         $("#vid2 , .profile-thumb").hide();
-        var video2 = $("#vid2").get(0);
             video2.currentTime = 0;
             video2.pause();
 
@@ -481,6 +481,7 @@ $( window ).load(function() {
         $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
         $('.content_ingresar').hide();
         $('.content_facebook_connect').show();
+        $('.loader').hide();
         //if is legal show video
         
         return false
@@ -531,9 +532,7 @@ $( window ).load(function() {
       });
     }
 
-    var video2 = $("#vid2").get(0),
-        video2a = $("#vid2a").get(0),
-        video2b = $("#vid2b").get(0);
+    
 
     function faceConnect(){
       console.log('Peticiones de FB');
@@ -690,8 +689,9 @@ $( window ).load(function() {
                   });
 
               }else{
-                var video = $("#vid").get(0);
-                    video.play();
+                  $('.loader').hide();
+                  console.log("borrado de loader");
+                  video.play();
               }
 
         });//End of async
