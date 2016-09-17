@@ -686,7 +686,7 @@ $( window ).load(function() {
                     /* Act on the event */
                     video2a.currentTime = 0;
                     video2a.pause();
-                    $('body').removeClass().addClass('steps step_3');
+                    $('body').removeClass().addClass('steps step_2');
                   });
 
               }else{
