@@ -74,6 +74,8 @@ canvas
     position: absolute;
     top: 3%;
     left: 5%;
+    display:block!Important;
+    z-index:999999
 }
 .marco_video img.play_vid2
 {
@@ -741,6 +743,7 @@ canvas
     height: 100%;
     position: absolute;
     display: none;
+    z-index:10000;
 }
 .wrapper .content_terms .box_terms
 {
