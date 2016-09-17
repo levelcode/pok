@@ -634,9 +634,8 @@ $( window ).load(function() {
                     "og":{
                       "url": "https://datapola.com/index.php?id="+nombre,
                       "title": "HA SIDO REPORTADO EN DATAPOLA",
-                      "description": "",
+                      "description": "Que todo el mundo sepa que usted le promete polas de cumpleaños a sus amigos y nunca les paga.",
                       "app_id": "1660712804256395",
-                      "message": "Que todo el mundo sepa que usted le promete polas de cumpleaños a sus amigos y nunca les paga.",
                       "tags": $('#id_friend').val(),
                       "image": urlformat,
                       "picture": urlformat
@@ -653,9 +652,10 @@ $( window ).load(function() {
                          amigo:objectID , // make sure to have the apropiate og:type meta set
                          link: objectToLike,
                          tags: $('#id_friend').val(), // the tokens ids for those friens you wanna tag and you got on previous step
-                         title: 'whatever',
+                         caption: 'DATAPOLA',
+                         description: 'Que todo el mundo sepa que usted le promete polas de cumpleaños a sus amigos y nunca les paga.',
                          image: urlformat,
-                         message: $('#search_friend').val() + " debes "+ $('#beers_input').val() +" polas",
+                         message: $('#publication').val(),
                          picture: urlformat
                       },
                       function(response) {
