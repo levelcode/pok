@@ -401,7 +401,7 @@ $( window ).load(function() {
         $('body').removeClass().addClass('steps step_1');
         //Mute video
         $("#vid2 , .profile-thumb").hide();
-        var video2 = $("#vid2").get(0);
+        var video2 = $(".vid2").get(0);
             video2.currentTime = 0;
             video2.pause();
 
