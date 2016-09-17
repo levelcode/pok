@@ -607,6 +607,15 @@ canvas
     margin: 15px 4% 0;
     background-size: contain;
 }
+.fb_boton
+{
+    width: 265px;
+    height: 42px;
+    background: url(../img/reportar_facebook.png) no-repeat center;
+    display: inline-block;
+    margin: 15px 4% 0;
+    background-size: contain;
+}
 .wrapper .content_buscar_amigo .content_reportar .content_form_reportar .reportar_otro_amigo
 {
     width: 207px;
@@ -796,16 +805,7 @@ canvas
 }
 .wrapper .content_terms .box_terms button
 {
-    width: 100%;
-    display: block;
-    height: 30px;
-    background: #fff;
-    margin: 30px auto;
-    max-width: 320px;
-    color: #000;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    
 }
 .wrapper .content_terms .box_terms p
 {

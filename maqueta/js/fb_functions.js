@@ -605,6 +605,9 @@ $( window ).load(function() {
           //Click for publish BS
           $('#push_public, .compartir_facebook').click(function(e){
             //Share action;
+            $('#push_public').hide();
+            $('#retorno_pub').empty();
+            $('#retorno_pub').append('Publicando');
             var objectToLike = 'https://datapola.com/',
                 trimedNme = random,
                 dataFB = {
@@ -656,6 +659,9 @@ $( window ).load(function() {
                          picture: urlformat
                       },
                       function(response) {
+                        setTimeout(function(){$('.content_terms').fadeOut(0); $('#push_public').show();$('#retorno_pub').empty();}, 3000);
+                        $('#retorno_pub').empty();
+                        $('#retorno_pub').append('Éxito al publicar en FB');
                         console.log("exito en la publicacion en FB" + response);
                       }
                   );

@@ -111,13 +111,15 @@
                 <div class="drop_bg"></div><!--ghost bg-->
                 <div class="box_terms">
                     <a href="javscript:void(0);" class="close">x</a>
-                    <h2>Modal</h2>
+                    <h2>Publicar en Facebook</h2>
                     <div class="border_top_yellow"></div>
                     <form>
                         <label>Edita el texto de tu publicacion</label>
-                        <input type="text" id="publication">
+                        <input type="text" id="publication" placeholder="Escribe el mensaje que acompañará la publicación">
                     </form>
                     <button id="push_public" class="boton fb_boton"></button>
+
+                    <p id="retorno_pub"></p>
                 </div>
             </div>
 
