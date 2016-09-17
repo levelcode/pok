@@ -5,8 +5,6 @@
     font-family: 'hoefler_textregular';
     src: url('fonts/hoefler_text-webfont.eot');
     src: url('fonts/hoefler_text-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/hoefler_text-webfont.woff2') format('woff2'),
-         url('fonts/hoefler_text-webfont.woff') format('woff'),
          url('fonts/hoefler_text-webfont.svg#hoefler_textregular') format('svg');
     font-weight: normal;
     font-style: normal;
