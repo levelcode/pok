@@ -52,6 +52,14 @@
 }
 
 @media (max-width: 767px) {
+    .profile-thumb
+    {
+        position: fixed;
+    }
+    .wrapper .content_buscar_amigo
+    {
+        background: rgba(0,0,0,1);
+    }
     video#vid2.vid2
     {
         left: 0;
@@ -276,7 +284,7 @@
     }
     .vid2
     {
-        height: calc(100% - 493px);
+        height: calc(100% - 67%);
         width: 100%;
     }
     .wrapper  .content_video
@@ -305,7 +313,7 @@
     }
     .vid2
     {
-        height: calc(100% - 453px);
+        height: calc(100% - 68%);
         width: 100%;
     }
     .wrapper  .content_video
