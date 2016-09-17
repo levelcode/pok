@@ -73,7 +73,6 @@ canvas
 {
     position: absolute;
     top: 3%;
-    display: none;
     left: 5%;
 }
 .marco_video img.play_vid2
@@ -1099,6 +1098,10 @@ body.steps .content_buscar_amigo{
     body.steps.step_1 .content_buscar_amigo #step_1{
         display: block;
     }
+
+        body.steps.step_1 .vid_2{
+            display: none;
+        }
 
     /*second step*/
     body.steps.step_2 .content_buscar_amigo #step_2{

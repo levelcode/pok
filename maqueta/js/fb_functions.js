@@ -7,9 +7,22 @@ var random = Math.floor((Math.random() * 10000000) + 1);
 
 $(function(){
 
+  //hack for mobile video
+
+  if ($(window).width() < 768){
+
+    var video = $("#video1").get(0);
+    $('body').on( "click", function(){
+        video.play();
+        setTimeout(function(){ video.pause();}, 500);
+    });
+    setTimeout(function(){ video.play(); }, 10000);
+  }
+
   //Click and save
   $('#save').click(function() {
     $('.content_video').show();
+    $('.amigos_une_amigos' ).fadeOut(300);
     $('.amigos_une_amigos img' ).animate({'width': '250px'}, 400);
     $('.marco_video img').delay(28000).css('display', 'block');
   });
@@ -23,7 +36,6 @@ $(function(){
                return false;
     }
    });
-
    $('.content_video').hide();
    $('.content_facebook_connect').hide();
    
@@ -282,7 +294,7 @@ $( window ).load(function() {
 
       //click on create report
       var clickReport = $('.reportar'),
-          modifyReport = $('.modificar'),
+          modifyReport = $('.content_form_reportar .modificar'),
           reportAnother = $('.content_form_reportar .reportar_otro_amigo');
 
       //Global linked image
@@ -338,12 +350,10 @@ $( window ).load(function() {
                 video2a = $("#vid2a").get(0),
                 video2b = $("#vid2b").get(0);
                 //Play Videpo
-            video2.play();
+                video2.play();
 
-            //remove button handler clicK
-            $(this).off();
-
-
+            //Kill link
+            $(this).off();    
             //Launch image
             //Video Control
             video2.click(function(){this.paused?this.play():this.pause();});
@@ -400,14 +410,19 @@ $( window ).load(function() {
       });
 
       //Click modify
-      modifyReport.on("click",function(){
-
-        //hide thumb
-        $("#vid2 , .profile-thumb").hide();
-        
-
-        //Show first event    
+      modifyReport.click(function(event) {
+        //Show first event
         $('body').removeClass().addClass('steps step_1');
+        
+        //Mute video
+        $("#vid2 , .profile-thumb").hide();
+        var video2 = $("#vid2").get(0);
+            video2.currentTime = 0;
+            video2.pause();
+
+        var video2a = $("#vid2a").get(0);
+            video2a.currentTime = 0;
+            video2a.pause();
 
         //Play First Video
         $("#vid").show();
@@ -418,15 +433,8 @@ $( window ).load(function() {
         //Hide rec square
         $('.marco_video, .play').hide();
 
-        var video2 = $("#vid2,#vid2a,#vid2b").get(0);
-            video2.currentTime = 0;
-            video2.pause();
-
-            console.log('trigger pause');
-
         return false;
         event.preventDefault();
-
       });
 
       //Click modify
@@ -547,9 +555,10 @@ $( window ).load(function() {
 
           //Show actions on bottom
             $('body').addClass('steps step_1');
-            $('.content_video').show();
-            //hide just friends
+
+            //Hide legal
             $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
+            $('.content_video').show();
 
           //Data array
           for(y=0; y<response.data.length; y++) {
