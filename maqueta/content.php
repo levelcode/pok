@@ -1,4 +1,4 @@
-<div class="content_facebook_connect">
+<div class="content_facebook_connect" style="display:none;">
 
 	<div class="border_top"></div>
 
