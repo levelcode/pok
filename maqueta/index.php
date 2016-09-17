@@ -115,9 +115,9 @@
                     <div class="border_top_yellow"></div>
                     <form>
                         <label>Edita el texto de tu publicacion</label>
-                        <input type="text">
+                        <input type="text" id="publication">
                     </form>
-                    <button id="save" class="boton fb_boton"></button>
+                    <button id="push_public" class="boton fb_boton"></button>
                 </div>
             </div>
 

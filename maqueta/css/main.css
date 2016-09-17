@@ -1099,8 +1099,8 @@ body.steps .content_buscar_amigo{
         display: block;
     }
 
-        body.steps.step_1 .vid_2{
-            display: none;
+        body.steps.step_1 .content_video .vid2{
+            display: !important;
         }
 
     /*second step*/

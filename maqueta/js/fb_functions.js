@@ -38,6 +38,14 @@ $(function(){
    });
    $('.content_video').hide();
    $('.content_facebook_connect').hide();
+
+   $('.reportar_facebook').click(function(event) {
+     $('.content_terms').fadeIn(600);
+   });
+
+   $('.drop_bg, .close').click(function(event) {
+     $('.content_terms').fadeOut(600);
+   });
    
 })
 
