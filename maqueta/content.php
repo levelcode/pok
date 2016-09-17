@@ -129,7 +129,7 @@
 
 				<a href="javascript:void(0);" class="modificar">MODIFICAR</a>
 
-				<a id="push_public" class="reportar_facebook"></a>
+				<a class="reportar_facebook"></a>
 
 				<a href="javascript:void(0);"  class="reportar_otro_amigo">REPORTAR A OTRO AMIGO</a>
 
