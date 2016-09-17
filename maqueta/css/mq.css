@@ -63,10 +63,11 @@
     video#vid2.vid2
     {
         left: 0;
-        height: calc(100% - 360px);
+        height: calc(100% - 56%);
     }
-    #vid {
-        position:absolute;
+    #vid 
+    {
+        height: calc(100% - 56%);
 
     }
     .vid2
@@ -278,10 +279,6 @@
 
 }
 @media (max-width: 414px) {
-    #vid
-    {
-        transform: translate(-50%, -65%);
-    }
     .vid2
     {
         height: calc(100% - 67%);
@@ -307,10 +304,6 @@
     {
        
     }
-    #vid
-    {
-        transform: translate(-50%, -53%);
-    }
     .vid2
     {
         height: calc(100% - 68%);
@@ -322,10 +315,7 @@
     }
 }
 @media (max-width: 320px) {
-    #vid
-    {
-        transform: translate(-50%, -55%);
-    }
+
     .vid2
     {
         height: calc(100% - 385px);
