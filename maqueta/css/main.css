@@ -598,7 +598,8 @@ canvas
     text-decoration: none;
     text-align: left;
 }
-.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .reportar_facebook
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .reportar_facebook,
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .report
 {
     width: 265px;
     height: 42px;
@@ -606,6 +607,7 @@ canvas
     display: inline-block;
     margin: 15px 4% 0;
     background-size: contain;
+    cursor:pointer;
 }
 .fb_boton
 {

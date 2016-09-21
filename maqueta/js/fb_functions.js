@@ -62,10 +62,10 @@ $( window ).load(function() {
      $('.loader').hide();
 
     //click modal
-    $('.reportar_facebook').click(function(event) {
-      console.log('show modal');
-     $('.content_terms').fadeIn(600);
-   });
+    //$('.reportar_facebook').click(function(event) {
+    //  console.log('show modal');
+     //$('.content_terms').fadeIn(600);
+   //});
 
    $('.drop_bg, .close').click(function(event) {
      $('.content_terms').fadeOut(600);

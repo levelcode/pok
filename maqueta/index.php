@@ -98,9 +98,9 @@
 
         <div class="wrapper">
             
-            <div class="content_terms">
+            <!--div class="content_terms">
                 <div class="drop_bg"></div><!--ghost bg-->
-                <div class="box_terms">
+                <!--div class="box_terms">
                     <a href="javscript:void(0);" class="close">x</a>
                     <h2>Publicar en Facebook</h2>
                     <div class="border_top_yellow"></div>
@@ -112,7 +112,7 @@
 
                     <p id="retorno_pub"></p>
                 </div>
-            </div>
+            </div-->
 
             <?php include 'content.php'; ?>
 
