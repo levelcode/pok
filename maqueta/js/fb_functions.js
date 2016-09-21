@@ -39,7 +39,11 @@ $( window ).load(function() {
     //**************
     //Click and save
     $('#save').click(function() {
-      fb_log(faceConnect)
+
+      FB.login(function(response) {
+        onLogin(response);
+      }, {scope: 'publish_actions,user_friends'});
+
       //hack for mobile video manage autoplay
       autov(video, videoc);
       //video.play();
@@ -179,83 +183,85 @@ $( window ).load(function() {
     //******
     //Facebook
     //******
-    function fb_log(callback){
-      window.fbAsyncInit = function() {
-          //Se instancia el elemento FB
-          FB.init({
-            appId: '1660712804256395',
-            status: true,
-            xfbml: true,
-            cookie: true,
-            version    : 'v2.7',
-            channelUrl: url_l+'/channelUrl.html'
-          });
-          console.log("SDK FB solicitado");
-
-          FB.getLoginStatus(function(response) {
-            // Check login status on load, and if the user is
-            // already logged in, go directly to the welcome message.
-            if (response.status == 'connected') {
-              //onLogin(response);
-              FB.login(function(response) {
-                onLogin(response);
-              }, {scope: 'publish_actions,user_friends'});
-            } else {
-              // Otherwise, show Login dialog first.
-              FB.login(function(response) {
-                onLogin(response);
-              }, {scope: 'publish_actions,user_friends'});
-            }
-          });
-          FB.Canvas.setSize({ width: 760, height: 1200});
-          // ADD ADDITIONAL FACEBOOK CODE HERE
-      };
-
-      (function(d, s, id){
+    (function(d, s, id){
        var js, fjs = d.getElementsByTagName(s)[0];
        if (d.getElementById(id)) {return;}
        js = d.createElement(s); js.id = id;
        js.src = "//connect.facebook.net/en_US/sdk.js";
        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
+    }(document, 'script', 'facebook-jssdk'));
+    window.fbAsyncInit = function() {
+        //Se instancia el elemento FB
+        FB.init({
+          appId: '1660712804256395',
+          status: true,
+          xfbml: true,
+          cookie: true,
+          version    : 'v2.7',
+          channelUrl: url_l+'/channelUrl.html'
+        });
+        console.log("SDK FB solicitado");
+
+        FB.getLoginStatus(function(response) {
+          // Check login status on load, and if the user is
+          // already logged in, go directly to the welcome message.
+          if (response.status == 'connected') {
+            //onLogin(response);
+            FB.login(function(response) {
+              onLogin(response);
+            }, {scope: 'publish_actions,user_friends'});
+          } else {
+            // Otherwise, show Login dialog first.
+            
+          }
+        });
+        FB.Canvas.setSize({ width: 760, height: 1200});
+        // ADD ADDITIONAL FACEBOOK CODE HERE
+    };
+
+    function onLogin(response) {
+      if (response.status == 'connected') {
+        FB.api('/me?fields=first_name', function(data) {
+            var value_t = data.first_name;
+            //$("#texto1").val(value_t);
+            //canvas.clear();
+            //init("img/back_photo.jpg", value_t, 0,78, 'Lato', 60);
+        });
+
+        FB.api("me?fields=age_range",
+            function (response) {
+              if (response && !response.error) {
+                  if(Number(response.min) <= 18){
+                    console.log("Menor de edad");
+                  }else{
+                    console.log("Mayor de edad");
+                    $('body').addClass('ageGateActive');
+                    $('.content_ingresar').hide();
+                    $('.content_facebook_connect').show();
+                    $('.loader').hide();
+                    faceConnect();
+                    //If is refered
+                    if(body.hasClass('refered')){
+
+                      //faceConnect();
+                    }
+                  }
+                /* handle the result */
+              }else{
+                console.log(response);
+              }
+            }
+        );
+      }
+    };
+    function fb_log(callback){
+      
+
+      
 
       // Place following code after FB.init call.
 
-      function onLogin(response) {
-        if (response.status == 'connected') {
-          FB.api('/me?fields=first_name', function(data) {
-              var value_t = data.first_name;
-              //$("#texto1").val(value_t);
-              //canvas.clear();
-              //init("img/back_photo.jpg", value_t, 0,78, 'Lato', 60);
-          });
-
-          FB.api("me?fields=age_range",
-              function (response) {
-                if (response && !response.error) {
-                    if(Number(response.min) <= 18){
-                      console.log("Menor de edad");
-                    }else{
-                      console.log("Mayor de edad");
-                      $('body').addClass('ageGateActive');
-                      $('.content_ingresar').hide();
-                      $('.content_facebook_connect').show();
-                      $('.loader').hide();
-                      callback()
-                      //If is refered
-                      if(body.hasClass('refered')){
-
-                        //faceConnect();
-                      }
-                    }
-                  /* handle the result */
-                }else{
-                  console.log(response);
-                }
-              }
-          );
-        }
-      };
+      
     }
 
     //******
