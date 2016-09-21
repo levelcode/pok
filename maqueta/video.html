@@ -13,16 +13,66 @@
 <body>
 <!-- Start EasyHtml5Video.com BODY section -->
 <style type="text/css">.easyhtml5video .eh5v_script{display:none}</style>
-<div class="easyhtml5video" style="position:relative;max-width:1280px;">
-<video controls="controls"  autoplay="autoplay" poster="eh5v.files/html5video/ARMANDO_BRONCA.jpg" style="width:100%" title="vid_1">
-	<source src="eh5v.files/html5video/ARMANDO_BRONCA.m4v" type="video/mp4" />
-	<source src="eh5v.files/html5video/ARMANDO_BRONCA.webm" type="video/webm" />
-	<source src="eh5v.files/html5video/ARMANDO_BRONCA.ogv" type="video/ogg" />
-	<source src="eh5v.files/html5video/ARMANDO_BRONCA.mp4" />
-</video>
+<div style="position:relative;max-width:1280px; border:solid 1px black;">
+<!--
+<video id="vid2a" src="videos/rep_en3/rep2.mp4" style="display:none" autoplay="false">
+	<source src="videos/rep_en3/rep2.webm" type="video/webm" />
+	<source src="videos/rep_en3/rep2.ogg" type="video/ogg" />
+</video>-->
+<canvas id="c"></canvas>
 </div>
-<script src="eh5v.files/html5video/html5ext.js" type="text/javascript"></script>
-<!-- End EasyHtml5Video.com BODY section -->
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.4/fabric.min.js"></script>
+
+
+
+<script  type="text/javascript">
+
+var canvas = new fabric.Canvas('c');
+canvas.setWidth(1920);
+canvas.setHeight(1080);
+//desactivamos seleccion por grupos
+canvas.selection = true;
+// Permitimos el scroll
+canvas.allowTouchScrolling = true;
+var video1El = document.getElementById('vid2a');
+
+insertarFotoDrag("uploads/test_p.jpg", false, 10, "nombre", 1)
+
+var video1 = new fabric.Image(video1El, {
+  left: 350,
+  top: 300,
+  originX: 'center',
+  originY: 'center'
+});
+
+canvas.add(video1);
+//video1.getElement().play();
+
+fabric.util.requestAnimFrame(function render() {
+  canvas.renderAll();
+  fabric.util.requestAnimFrame(render);
+});
+
+function insertarFotoDrag(url, seleccionable, zindex, nombre, scale)
+{
+	fabric.Image.fromURL(url, function(oImg) { 
+		oImg.scale(scale);
+		oImg.selectable = seleccionable;
+		oImg.set({
+		    borderColor: 'red',
+		    cornerColor: 'green',
+		    cornerSize: 10,
+		    transparentCorners: false
+		});
+		canvas.add(oImg);
+		canvas.moveTo(oImg, zindex);
+		canvas.renderAll();
+	});
+	console.log("Se agrego:"+url);
+}
+console.log("canvas loaded");
+	
+</script>
 
 </body>
 </html>
