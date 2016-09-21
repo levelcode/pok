@@ -54,6 +54,9 @@
     .profile-thumb
     {
         position: fixed;
+        top: initial;
+        left: -15%;
+
     }
     .wrapper .content_buscar_amigo
     {
