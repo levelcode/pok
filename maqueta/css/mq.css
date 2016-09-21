@@ -306,6 +306,12 @@
     {
         width: 19.2%;
     }
+    #vid,
+    .vid2
+    {
+        height: calc(100% - 68%);
+        width: 100%;
+    }
 }
 
 @media (max-width: 375px) {
