@@ -59,7 +59,7 @@ $( window ).load(function() {
       }
      });
      $('.content_video').hide();
-     $('.content_facebook_connect').hide();
+     //$('.content_facebook_connect').hide();
      $('.loader').hide();
 
     //click modal
