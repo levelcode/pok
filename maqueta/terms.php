@@ -16,32 +16,9 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/mq.css">
         <link rel="stylesheet" href="js/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
-        <meta property="og:title" content="" />
-        <meta property="og:description" content="Cambia tu foto de perfil en Facebook y WhatsApp ¡ Y actívate por el cambio !" />
-        <meta property="og:site_name" content=""/>
-        <meta property="og:type" content="article"/> 
-        <meta property="fb:app_id" content="447297352129313" />
-        <meta property="og:locale" content="es_ES" />
-        <meta property="og:image:width" content="400" />
-        <meta property="og:image:height" content="400" />
-        <meta property="article:publisher" content="" />
 
         <!-- fuentes -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
-        <!-- fuentes -->
-
-        <?php 
-        $dominio = "http://www.venezuelaquiere.com/personal/uploads/";
-        if(isset($_GET["id"])){
-        ?>
-        <meta property="og:image" content='<?php echo $dominio.$_GET["id"];?>' />
-        <?php
-        }else{
-        ?>
-        <meta property="og:image" content="http://www.venezuelaquiere.com/personal/uploads/fondo2.jpg" />
-        <?php
-        }
-        ?>
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
@@ -52,11 +29,112 @@
         <div class="wrapper">
             
 			<div class="content_terms">
-				<div class="box_terms">
-					<h2>Términos y condiciones</h2>
-					<div class="border_top_yellow"></div>
-					<p>Bavaria S.A. ha puesto a disposición de los usuarios el Sitio Web “datapola.com“. Los usuarios aceptan y declaran que han reportado a sus amigos con su consentimiento, así como también declaran que cuentan con la autorización del mismo para su difusión y/o exhibición. El usuario asume toda responsabilidad por el contenido generado en o a través del Sitio Web. En ningún caso será responsable Bavaria S.A. por o en relación con cualquier contenido publicado, transmitido, intercambiado o recibido por o en nombre de cualquier usuario o de otra persona en o a través del sitio web. Este es un portal con fines de entretenimiento realizado para los amigos por Cerveza Poker. No tiene fines comerciales ni legales.</p>
-				</div>
+				
+          <div>
+              <h1 style="text-align:center">Actividad Campaña Beerdays- Poker</h1>
+          <br>
+                
+
+          FECHA DE ELABORACIÓN: 14 septiembre 2016
+          <br>
+          FIRMAS DE REVISIÓN: ________________ (Jurídica)   _______________Marca <br><br>
+
+                
+          <h3 style="text-align:center">ACTIVIDAD DATAPOLA â&#147; POKER</h3> 
+
+          <h3 style="text-align:center">CUMPLIMIENTO PUBLICIDAD COMERCIAL â&#147; INFORMACIÓN AL CONSUMIDOR</h3>
+
+
+          <h3>I.  MECANISMO DE PARTICIPACIÓN: </h3>
+
+          <a href="http://www.datapola.cervezapoker.com" target="_blank">www.datapola.cervezapoker.com</a>
+
+
+          <h3>II. QUIÉNES PUEDEN PARTICIPAR:</h3>
+
+          Todas las personas naturales, residentes en cualquier ciudad del territorio dado que es una actividad digital sin restricciones.
+
+
+          <h3>III.  MECÁNICA:</h3>
+
+          Para participar, el usuario deberá: <br>
+
+          1-  Ingresar a la URL: <a href="http://www.datapola.cervezapoker.com" target="_blank">www.datapola.cervezapoker.com</a><br>
+
+          2-  Durante el transcurso de los días desde el 15 de septiembre de 2016 hasta el 31 de marzo de 2017,  se lanzará LA ACTIVIDAD âDATAPOLA a través de la página oficial en Facebook de Poker, este es un landing en donde las personas podrán reportar simbólicamente a los amigos que le deben pola de sus cumpleaños. Cuando las personas ingresan al landing deben realizar Facebook connect. Si las personas tienen en listado de sus amigos privado le saldrá una advertencia que para continuar necesita tener este listado público para que los amigos puedan ser arrastrados. Una vez la persona ingresa se encontraran con el funcionario de datapola que les pedirá reportar a esos amigos que les han quedado debiendo siempre polas de cumpleaños. En el buscador la persona ingresa el nombre del amigo a quien quiere reportar, una vez seleccionado y confirmado el amigo, el usuario se encuentra con otro video en el cual aparecerá la foto y nombre de ese amigo al que reporto. La manera de finalizar el reporte es compartiendo este video en Facebook, este video tendrá un tag automático al amigo que reporto. 
+          <br>
+          3-  Participarán todas las personas que realicen la acción Facebook connect y compartir en las fechas estipuladas anteriormente.
+          <br>
+
+
+          <h3>IV. PLAZO O VIGENCIA DE LA ACTIVIDAD</h3>
+
+          La actividad se llevará a cabo desde 15 de septiembre de 2016 hasta el 31 de marzo de 2017
+
+
+          <h3>V.  CONDICIONES Y RESTRICCIONES GENERALES</h3>
+
+          Antes de participar en la actividad, el usuario debe asegurarse de cumplir con los requisitos establecidos, leer, comprender y aceptar todos los términos y condiciones de la misma:<br>
+
+          • Ser mayor de 18 años.<br>
+          • Los concursantes no podrán invitar a menores de edad para que participen en la actividad.<br>
+          • Cada participante podrá participar las veces que desee, pues podrá reportar más de un amigo.<br>
+          • El envío de los datos garantiza que la totalidad de la información contenida en ellos es propiedad del remitente y autoriza su uso a BAVARIA S.A., para los fines previstos en este documento.<br>
+          • La información que en virtud de la actividad entreguen los participantes, será recopilada por BAVARIA S.A. y no por las redes sociales.<br>
+          • Facebook no es patrocinador, administrador, garante o responsable en forma alguna de la actividad. Por tanto, el participante exonera a la red social Facebook de cualquier reclamación o responsabilidad por causas surgidas con ocasión o en relación con la misma. <br>
+          • BAVARIA S.A. no se hace responsable de los comentarios u opiniones ni de los términos que los usuarios utilicen en las respuestas de la actividad en la red social Facebook.<br>
+          • BAVARIA S.A. no se hace responsable por la integridad física o por la propiedad de los ganadores/concursantes, cuando éstas resulten afectadas con ocasión de la participación en el concurso o en relación con cualquier evento derivado de los premios aquí otorgados. Los concursantes reconocen y aceptan lo anterior y, por tanto, liberan a BAVARIA S.A. de cualquier reclamación judicial o extrajudicial que pudiere derivarse por tales hechos.<br>
+          <br>
+          El participante de manera expresa acepta, que su participación en la actividad será de buena fe y se abstendrá de:<br>
+
+          • Realizar cualquier práctica abusiva, restrictiva, de acoso o amenaza en contra de los demás usuarios y/o terceros.<br>
+          • Publicar, transmitir, facilitar la publicación o transmisión de contenidos obscenos, pornográficos, difamatorios, abusivos, ofensivos, profanos o que en forma alguna viole derechos de terceros.<br>
+          • Publicar, transmitir, facilitar la publicación o transmisión de contenidos que involucren menores de edad.<br>
+          • Utilizar la actividad o las plataformas empleadas con fines ilegales.<br>
+          • Utilizar la actividad o las plataformas empleadas para la obtención de datos o información de terceros.<br>
+          • Crear o enviar correo no deseado (spam) a otros usuarios de la red social Facebook o a terceros.<br>
+          • Crear y usar más de un perfil registrado en la red social Facebook, con el propósito de obtener una ventaja en la actividad.<br>
+          • Tener perfiles duplicados con los mismos datos de registro. En caso de verificarse lo anterior, el usuario será descalificado de manera inmediata.<br>
+          • Publicar contenido sometido a protección de derechos de autor que no le pertenece, o del cual no tiene las autorizaciones requeridas.<br>
+          • Violar leyes de cualquier jurisdicción. <br>
+          • Utilizar medios automatizados, diferentes a los normalmente utilizados y ya autorizados, para acceder al sitio de la actividad con el fin de defraudar la misma, obtener ventaja sobre otros participantes o cualquier otro fin no legítimo.<br>
+          • Interferir o intentar interferir con el funcionamiento adecuado del sitio de la actividad.<br>
+          • Incumplir de cualquier forma los términos y condiciones de la actividad. <br><br>
+
+          Serán excluidos de la participación en la actividad, aquellos participantes que:<br>
+
+          • Realicen cualquiera de los actos enunciados en el numeral anterior.<br>
+          • A criterio de BAVARIA S.A., no cumplan con los términos y condiciones de la actividad, o de manera alguna vulneren o deterioren la imagen de BAVARIA S.A. o de sus marcas.<br>
+
+
+          <h3>VI. PROTECCIÓN DE DATOS PERSONALES Y ENVÃO DE PUBLICIDAD:</h3>
+
+          • El participante deberá aceptar de manera expresa la recopilación, almacenamiento y tratamiento de sus datos personales, marcando la casilla de verificación dispuesta para el efecto.
+          <br>
+          • El participante autoriza el uso de su perfil e imagen en la red social Facebook para ser utilizada por <a href="http://cervezapoker.com" target="_blank">cervezapoker.com</a> para ser visible en la plataforma digital de la actividad de la marca.
+          <br>
+          • El participante declara que la información suministrada por él, incluyendo la relacionada con sus datos personales, es cierta, fidedigna y actualizada.
+          <br>
+          • Los datos personales y demás información suministrados por el participante serán objeto de tratamiento automatizado e incorporada a la base de datos administrada por la agencia de publicidad encargada de desarrollar la campaña o actividad promocional para la marca Bavaria (DDB).
+          <br>
+          • El participante presta su consentimiento libre, expreso e informado para que la información personal que ha ingresado sea almacenada, recopilada o utilizada por BAVARIA S.A. directamente o a través de terceros, con fines de comunicación, envío de información y/o para el mercadeo de sus productos.
+          <br>
+          • La información suministrada será objeto de protección mediante el uso de tecnologías y procedimientos de seguridad evitando el acceso, revelación y usos no autorizados.
+          <br>
+          • En virtud de lo estipulado en la Ley 1581 de 2012, Decreto 1377 de 2013 y demás normas concordantes, y en la política de protección de datos de Bavaria S.A., disponible en la página web <a href="http://www.bavaria.co" target="_blank">www.bavaria.co</a>, si el usuario desea darse de baja de esta plataforma, solicitar alguna modificación, corrección, actualización o supresión de todos los datos personales que nos ha proporcionado, dejar de recibir información comercial, así como contactarse con nosotros por cualquier otra causa, puede enviar un correo electrónico: <a href="mailto:info@cervezapoker.com" target="_blank">info@cervezapoker.com</a>
+          <br>
+
+          <h3>VII.  AUTORIZACIÓN DE REGISTRO, FIJACIÓN Y USO DE IMAGEN:</h3>
+
+          1.  El participante declara que:<br>
+          • Conoce a BAVARIA S.A., sus marcas y que los productos que fabrica y/o distribuye son bebidas a base de malta, en especial cervezas.<br>
+
+          2.  El participante renuncia expresamente a exigir cualquier tipo de compensación a BAVARIA S.A., sus vinculadas o subsidiarias, por el uso que realicen del material fotográfico y/o audiovisual tomado o grabado durante la actividad, siempre y cuando dicho uso se sujete a las condiciones acordadas en este documento. <br>
+
+          3.  Imagen de terceros. Tomando en consideración que los contenidos audiovisuales y/o fotográficos presentados por el participante para efectos de su participación en la actividad, pueden contener la imagen de terceros, esto es, la representación gráfica de su cara, cuerpo, silueta o cualquier otro tipo de forma o aspecto, que lo identifique bajo cualquier medio conocido o por conocer, así como su voz y demás características asociadas, el participante declara, que cuenta con la autorización para el uso de la imagen de los terceros que sea utilizada en su video y/o fotografía, por cualquier medio, durante la vigencia de la actividad y hasta los dos (2) años siguientes a su finalización. En consecuencia, el participante asume total responsabilidad y mantendrá indemne a BAVARIA S.A. frente a cualquier reclamación que pudieran efectuar terceras personas con ocasión de una vulneración a derechos de imagen y será responsable frente a BAVARIA S.A. de todas las cargas pecuniarias que pudieran derivarse para esta última a favor de terceros con motivo de acciones, reclamaciones o conflictos originados por dicha causa.
+
+              <br>
+          </div>
 			</div>
 
         </div>
@@ -85,457 +163,5 @@
             </div>
             <img src="img/poker_amigo_mobile.png" class="mobile" alt="">
         </footer>
-
-
-
-
-        
-        <div id="fb-root"></div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js"></script>-->
-        <script src="js/fabric/dist/fabric.min.js"></script>
-        <!-- Add fancyBox -->
-
-        <script type="text/javascript" src="js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-        <script>
-
-        //Globales
-        var canvas ='';
-        var context ='';
-        var imageLoader = '';
-
-
-        $( window ).load(function() {
-            //Facebook
-            var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href);
-            var dominio = "venezuelaquiere.com/personal/";
-            var movil = false;
-            var ios =  iOS();
-            var downloadURL = "";
-
-
-
-            /**
-             * jQuery.browser.mobile (http://detectmobilebrowser.com/)
-             *
-             * jQuery.browser.mobile will be true if the browser is a mobile device
-             *
-             **/
-            (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
-
-            movil = jQuery.browser.mobile;
-
-
-            if(movil==true){
-                //window.top.location.href = "https://www.venezuelaquiere.com/personal/"
-            }else{
-                //
-            }
-            var ref = document.referrer;
-            var fb_valid = false;
-            if (ref.match(/^https?:\/\/([^\/]+\.)?facebook\.com(\/|$)/i)) {
-              fb_valid = true;
-            }
-
-            if(url_l == "https://www."+dominio  || url_l == "https://"+dominio || url_l == "http://"+dominio || url_l == "http://www."+dominio){
-                if(fb_valid == false){
-                    //afuera de Facebook
-                    (function(d, s, id) {
-                      var js, fjs = d.getElementsByTagName(s)[0];
-                      if (d.getElementById(id)) return;
-                      js = d.createElement(s); js.id = id;
-                      js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5&appId=447297352129313";
-                      fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));
-                }else{
-                    //viene de Facebook
-                    //window.top.location.href = "https://www.facebook.com/pages/VenezuelaQuiere/836776256420302?sk=app_447297352129313";
-
-                    window.fbAsyncInit = function() {
-                        FB.init({
-                          appId      : '447297352129313',//app
-                          //appId      : '451759441683104',//test
-                          
-                          xfbml      : true,
-                          version    : 'v2.5'
-                        });
-                        FB.getLoginStatus(function(response) {
-                          // Check login status on load, and if the user is
-                          // already logged in, go directly to the welcome message.
-                          if (response.status == 'connected') {
-                            //onLogin(response);
-                            FB.login(function(response) {
-                              onLogin(response);
-                            }, {scope: 'publish_actions'});
-                          } else {
-                            // Otherwise, show Login dialog first.
-                            FB.login(function(response) {
-                              onLogin(response);
-                            }, {scope: 'publish_actions'});
-                          }
-                        });
-                        FB.Canvas.setSize({ width: 760, height: 1200});
-                        // ADD ADDITIONAL FACEBOOK CODE HERE
-                    };
-
-                    (function(d, s, id){
-                     var js, fjs = d.getElementsByTagName(s)[0];
-                     if (d.getElementById(id)) {return;}
-                     js = d.createElement(s); js.id = id;
-                     js.src = "//connect.facebook.net/en_US/sdk.js";
-                     fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));
-
-                    // Place following code after FB.init call.
-
-                    function onLogin(response) {
-                      if (response.status == 'connected') {
-                        FB.api('/me?fields=first_name', function(data) {
-                            var value_t = data.first_name;
-                            $("#texto1").val(value_t);
-                            canvas.clear();
-                            init("img/back_photo.jpg", value_t, 0,78, 'Lato', 60);
-                        });
-                      }
-                    }
-                }
-            }else{
-                //adentro de Facebook
-                window.fbAsyncInit = function() {
-                    FB.init({
-                      appId      : '447297352129313',//app
-                      //appId      : '451759441683104',//test
-                      xfbml      : true,
-                      version    : 'v2.5'
-                    });
-                    FB.getLoginStatus(function(response) {
-                      // Check login status on load, and if the user is
-                      // already logged in, go directly to the welcome message.
-                      if (response.status == 'connected') {
-                        //onLogin(response);
-                        FB.login(function(response) {
-                          onLogin(response);
-                        }, {scope: 'publish_actions'});
-                      } else {
-                        // Otherwise, show Login dialog first.
-                        FB.login(function(response) {
-                          onLogin(response);
-                        }, {scope: 'publish_actions'});
-                      }
-                    });
-                    FB.Canvas.setSize({ width: 760, height: 1200});
-                    // ADD ADDITIONAL FACEBOOK CODE HERE
-                };
-
-                (function(d, s, id){
-                 var js, fjs = d.getElementsByTagName(s)[0];
-                 if (d.getElementById(id)) {return;}
-                 js = d.createElement(s); js.id = id;
-                 js.src = "//connect.facebook.net/en_US/sdk.js";
-                 fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-
-                // Place following code after FB.init call.
-
-                function onLogin(response) {
-                  if (response.status == 'connected') {
-                    FB.api('/me?fields=first_name', function(data) {
-                        var value_t = data.first_name;
-                        $("#texto1").val(value_t);
-                        canvas.clear();
-                        init("img/back_photo.jpg", value_t, 0,78, 'Lato', 60);
-                    });
-                  }
-                }
-            }
-            //******
-            //Canvas
-            //******
-            $("#share_f").hide();
-            $("#share_l").hide();
-            $("#download").hide();
-
-            var canvas = new fabric.Canvas('c');
-            canvas.setWidth(400);
-            canvas.setHeight(400);
-            //desactivamos seleccion por grupos
-            canvas.selection = false;
-            // Permitimos el scroll
-            canvas.allowTouchScrolling = true;
-
-            //inicializacion
-            init("img/back_photo.jpg", "", 0,78, 'Lato', 60);
-            function init(url, texto_inicial, x, y, font, size){
-                // Creamos el BackGround de la foto
-                var rect = new fabric.Rect({
-                  left: 0,
-                  top: 0,
-                  fill: 'white',
-                  width: 400,
-                  height: 400,
-                  selectable: false
-                });
-                //Se agrega al canvas
-                var texto_p = texto_inicial.toUpperCase().substr(0,10);
-                var texto1 = new fabric.Text(texto_p, { 
-                  fontFamily: font,
-                  top: y,
-                  evented: false,
-                  fontSize: size,
-                  stroke : '#FFF',
-                  strokeWidth: 2.5,
-                  selectable: false
-                });
-                canvas.add(rect);
-                canvas.moveTo(rect, -2);
-                insertarFotoDrag(url,false, false,1,"portada");
-                canvas.add(texto1);
-                canvas.centerObjectH(texto1);
-                canvas.moveTo(texto1, 2);
-                canvas.renderAll();
-            }
-            // Redimensionar las imagenes subidas para que no se salgan del canvas
-            canvas.on({
-                'object:selected': selectedObject,
-                'mouse:down': mousedown,
-                'mouse:up': mouseup
-            });
-            function mousedown(e){
-                var id = canvas.getObjects().indexOf(e.target);
-                if (id == 1) {
-                    var portada = canvas.item(2);
-                    portada.opacity = 0.5;
-                    canvas.renderAll();
-                }
-
-            }
-            function mouseup(e){
-                var id = canvas.getObjects().indexOf(e.target);
-                if (id == 1) {
-                    var portada = canvas.item(2);
-                    //portada.opacity = 1;
-                    canvas.renderAll();
-                }
-            }
-
-            function selectedObject(e) {
-                var id = canvas.getObjects().indexOf(e.target);
-                var object = canvas.item(id);
-                if(id != 1){
-                    canvas.moveTo(object, 100);
-                    canvas.moveTo(canvas.getObjects('text')[0], 101);
-                }else{
-                    var portada = canvas.item(2);
-                    portada.opacity = 0.5;
-                    canvas.renderAll();
-                }
-                
-            }
-
-            //Funcion para insertar los elementos desde una URL 
-            function insertarFotoDrag(url, seleccionable, eventos, zindex, nombre)
-            {
-                fabric.Image.fromURL(url, function(oImg) { 
-                    oImg.scale(1);
-                    oImg.selectable = seleccionable;
-                    oImg.evented = eventos;
-                    oImg.set({
-                        borderColor: 'red',
-                        cornerColor: 'green',
-                        cornerSize: 10,
-                        transparentCorners: false
-                    });
-                    canvas.add(oImg);
-                    canvas.moveTo(oImg, zindex);
-                    canvas.renderAll();
-                });
-            }
-            
-            //texto dinamico
-            
-
-            $("#texto1").keydown(function(e) {
-                setTimeout(function () {
-                    var value_t = $("#texto1").val();
-                    var texto_t = canvas.getObjects('text')[0];
-                    texto_t.text = value_t.toUpperCase().substr(0,10);
-                    var texto_w = texto_t.width;
-                    var texto_l = texto_t.left;
-                    texto_t.left = 180-(texto_w/2);
-                    canvas.renderAll();
-                    $("#save").show();
-                    $("#share_l").hide();
-                    $("#download").hide();
-                }, 100);
-            });
-
-            $('#save').click(function(e){
-                var value_t = $("#texto1").val();
-                if(value_t != ""){
-                    canvas.discardActiveObject();
-                    canvas.renderAll(); 
-                    var imagen = canvas.toDataURL({
-                        format: 'jpeg',
-                        multiplier: 1,
-                        quality: 10
-                    })
-                    var file= dataURLtoBlob(imagen);
-                    //creamos un form data object
-                    var fd = new FormData();
-                    fd.append("foto", file);
-                    // Envío del canvas via ajax
-                    $.ajax({
-                       url: "upload_photo.php",
-                       type: "POST",
-                       data: fd,
-                       processData: false,
-                       contentType: false,
-                    }).done(function(respond){
-                        $("#save").hide();
-                        
-                        $("#share_l").show();
-                        $("#download").show();
-                        var nombre_t = $("#texto1").val().toLowerCase();
-                        downloadURL = "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio";
-                        if(ios == true){
-                            var modalios = "<div><img src='"+respond+"'> </br><p>Mantén presionado sobre la foto para descargarla</p></div>"
-                            /*$.fancybox({
-                                width: "600px",
-                                height: "600px",
-                                autoResize: true,
-                                content: modalios,
-                            });
-                            */
-                            //$("#download").hide();
-                            $("#download").prop("href", "download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio");
-                            /*
-                            FB.ui(
-                            {
-                                method: "feed",
-                                link: 'https://www.venezuelaquiere.com/personal',
-                                name: 'Venezuela Quiere',
-                                app_id: '447297352129313',
-                                description: 'Venezuela quiere Cambio',
-                                caption: $('#albumName').text(),
-                                source: "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio",
-                                type: 'photo',
-                                picture: "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
-
-                            }, function(response){});
-                            */
-
-
-                            
-
-
-                        }else{
-                             $("#download").prop("href", "download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio");
-
-                             window.location.href = "download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio";
-                        }
-                        var url_id = respond.split("/");
-
-                        
-                        FB.api(
-                            "/me/photos",
-                            "POST",
-                            {
-                                "url": "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
-                            },
-                            function (response) {
-                              if (response && !response.error) {
-                                alert("Foto subida con exito a tu biografía, ahora solo vuelvela tu foto de perfil!");
-                              }else{
-                                //alert("No fue posible subir la foto por:"+JSON.stringify(response.error));
-                               
-                                FB.login(function(response) {
-                                  FB.api(
-                                        "/me/photos",
-                                        "POST",
-                                        {
-                                            "url": "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
-                                        },
-                                        function (response) {
-                                          if (response && !response.error) {
-                                            alert("Foto subida con exito a tu biografía, ahora solo vuelvela tu foto de perfil!");
-                                          }else{
-                                            alert("No fue posible subir la foto por falta del siguiente permiso:"+JSON.stringify(response.error));
-                                          }
-                                        }
-                                    );
-                                }, {scope: 'publish_actions'});
-                              }
-                            }
-                        );
-                        $('#share_l').click(function(e){
-                                FB.ui(
-                                {
-                                    method: "feed",
-                                    link: 'https://www.venezuelaquiere.com/personal',
-                                    name: String($("#texto1").val())+' Quiere Cambio',
-                                    app_id: '447297352129313',
-                                    description: 'Cambia tu foto de perfil en Facebook y WhatsApp ¡ Y actívate por el cambio !',
-                                    caption: 'venezuela quiere cambio',
-                                    source: downloadURL,
-                                    type: 'photo',
-                                    picture: "https://www.venezuelaquiere.com/personal/download_pic.php?file="+respond+"&name="+nombre_t+"QuiereCambio"
-
-                                }, function(response){});
-                        });
-                        
-
-                        $("#share_f0").val("https://www.venezuelaquiere.com/personal/index.php?id="+url_id[1]);
-                        $("#share_f").prop("data-href", "https://www.venezuelaquiere.com/personal/index.php?id="+url_id[1]);
-
-
-
-
-
-                    });
-                }else{
-                    alert("Escribe tu Nombre antes de descargasr la foto!");
-                    $("#texto1").focus();
-                }
-            });
-            // conventir una dataURL en un objeto Binario
-            function dataURLtoBlob(dataURL) {   
-                  var binary = atob(dataURL.split(',')[1]);
-                  var array = [];
-                  for(var i = 0; i < binary.length; i++) {
-                      array.push(binary.charCodeAt(i));
-                  }
-                  return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
-            }
-            function iOS() {
-
-              var iDevices = [
-                'iPad Simulator',
-                'iPhone Simulator',
-                'iPod Simulator',
-                'iPad',
-                'iPhone',
-                'iPod'
-              ];
-
-              while (iDevices.length) {
-                if (navigator.platform === iDevices.pop()){ return true; }
-              }
-
-              return false;
-            }
-
-        });
-        </script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
     </body>
 </html>
