@@ -63,6 +63,7 @@ $( window ).load(function() {
 
     //click modal
     $('.reportar_facebook').click(function(event) {
+      console.log('show modal');
      $('.content_terms').fadeIn(600);
    });
 
@@ -70,7 +71,7 @@ $( window ).load(function() {
      $('.content_terms').fadeOut(600);
    });
 
-    //Hide canvas
+    //Hide canvascontent_terms
     $('.canvascreator').hide();
 
     //**************
@@ -98,64 +99,8 @@ $( window ).load(function() {
     //******************
     // Validacion Cookie
     //******************
-    function getUrlVars() {
-      // Find the params in the URL, Used when linking from another site that has already screened for age
-        var vars = [], hash;
-        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-        for(var i = 0; i < hashes.length; i++)
-        {
-            hash = hashes[i].split('=');
-            vars.push(hash[0]);
-            vars[hash[0]] = hash[1];
-        }
-        return vars;
-    }
+    
 
-    function repload(){
-      $('#vid2').play();
-      $('#vid2').removeClass('vid2');
-      $('#vid2').addClass('vid');
-    }
-
-    if($.cookie('age_verify') == 'underage') {
-      window.location.href = "http://www.talkingalcohol.com/espanol/";
-    }
-    var gateParam = getUrlVars()["agegate"];
-    // If Cookie is found and True Show Contents of Page and Remove Age Gate modal
-    if($.cookie('age_verify') == 'legal' ||  gateParam == 'valid' ) {
-      $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
-      $('body').addClass('ageGateActive');
-      $('.content_ingresar').hide();
-      $('.content_facebook_connect').show();
-      //if is legal show video
-      //repload();
-    }
-    else {
-        //window.location.href = "http://www.talkingalcohol.com/espanol/";
-    }
-
-
-    //***************
-    //Validador Edad
-    //***************
-
-    // Calculate your age based on inputs
-    day = $("#birthDay").val();
-    month = $("#birthMonth").val();
-    year = $("#birthYear").val();
-
-    // Disallow Letters into the Age Gate Input Fields
-    $('#ageGateForm input.date').on('input', function() {
-       this.value = this.value.replace(/[\s\D]/g, '', function(){
-       });
-       if ($(this).val().length == $(this).attr('maxlength'))  {
-        if($('#birthDay').val() > 31 || $('#birthMonth').val() > 12 || $('#birthYear').val() > 2014) {
-          $(this).val('');
-          }
-        if($('html').hasClass('no-touch')) {
-          $(this).parent().next().find('input.date').focus();}
-      };
-    });
 
 
     /**
