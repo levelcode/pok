@@ -112,43 +112,6 @@
                 </div>
             </div>
 
-
-
-
-            <div class="content_ingresar">
-
-                <p>Si usted es mayor de edad, ingrese su fecha de nacimiento.</p>
-
-                <div class="border_top"></div>
-
-                <form id="ageGateForm" name="ageGateForm">
-
-                    <input type="hidden" name="requiredAge" id="requiredAge" value="18">
-
-                    <div class="border_gradient">
-
-                        <input type="text" id="birthDay" placeholder="DÍA" class="date">
-
-                    </div>
-
-                    <div class="border_gradient">
-
-                        <input type="text" id="birthMonth" placeholder="MES" class="date">
-
-                    </div>
-
-                    <div class="border_gradient">
-
-                        <input type="text" id="birthYear" placeholder="AÑO" class="date">
-
-                    </div>
-
-                    <input type="submit" class="ingresar" value="INGRESAR">
-
-                </form>
-
-            </div> <!--end of agegate-->
-
             <?php include 'content.php'; ?>
 
         </div><!--end of wrapper-->

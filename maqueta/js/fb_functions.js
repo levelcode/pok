@@ -483,45 +483,6 @@ $( window ).load(function() {
 
     }
 
-    $("#ageGateForm").submit(function(){
-
-      var day = $("#birthDay").val();
-      var month = $("#birthMonth").val();
-      var year = $("#birthYear").val();
-      var age  = $("#requiredAge").val();
-
-      // If Input Fields are left empty or not Formatted Correctly Display Message
-      if (day == "" || month == "" || year == "" || month.length < 2 || day.length < 2 || year.length < 4){
-        $('li.errors').html("Por favor llene los campos con el formato Correcto").slideDown(300);
-        return false
-      }
-
-      var mydate = new Date();
-      mydate.setFullYear(year, month-1, day);
-
-      var currdate = new Date();
-      currdate.setFullYear(currdate.getFullYear() - age);
-
-      //  If Underage Redirect to Google Homepage
-      if ((currdate - mydate) < 0){
-        $.cookie('age_verify', 'underage', { expires: 1, path:'/'});
-        $('#ageGateForm').html("<p class='message'> Solo personas mayores de " + age + " años pueden entrar a este sitio </p>");
-        window.location.href = "http://www.talkingalcohol.com/espanol/";
-        return false
-      }
-      // If Age is Validated Hide form and show contents
-      else {
-        $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
-        $('.content_ingresar').hide();
-        $('.content_facebook_connect').show();
-        $('.loader').hide();
-        //if is legal show video
-        
-        return false
-      }
-      return false;
-    });
-
     function filler(response, query, boxContainer){
       var query_l = query.length - 1;
       var query_t = query.substring(0,query_l).toLowerCase();
