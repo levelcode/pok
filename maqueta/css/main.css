@@ -610,10 +610,10 @@ canvas
     cursor:pointer;
     position:relative;
 }
-.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .report.loaded{
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .reportar_facebook.loaded{
     background-image:none;
 }
-.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .report.loaded:after{
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .reportar_facebook.loaded:after{
     content:"";
     display:block;
     width:58px;
