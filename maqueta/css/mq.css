@@ -313,6 +313,7 @@
     {
        
     }
+    #vid,
     .vid2
     {
         height: calc(100% - 68%);
@@ -324,7 +325,6 @@
     }
 }
 @media (max-width: 320px) {
-
     .vid2
     {
         height: calc(100% - 385px);
