@@ -1,4 +1,4 @@
-<div class="content_facebook_connect">
+<!--div class="content_facebook_connect">
 
 	<div class="border_top"></div>
 
@@ -130,7 +130,7 @@
 
 				<a href="javascript:void(0);" class="modificar">MODIFICAR</a>
 
-				<a class="reportar_facebook"></a>
+				<a class="reportar_facebook" id="push_public"></a>
 
 				<a href="javascript:void(0);"  class="reportar_otro_amigo">REPORTAR A OTRO AMIGO</a>
 

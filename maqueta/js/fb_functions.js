@@ -528,7 +528,7 @@ $( window ).load(function() {
                 $(this).parent().hide(400);
           });
           //Click for publish BS
-          $('#push_public, .compartir_facebook').click(function(e){
+          $('#push_public').click(function(e){
             //Share action;
             $('#push_public').hide();
             $('#retorno_pub').empty();
