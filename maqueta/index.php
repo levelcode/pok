@@ -34,33 +34,15 @@
 
         <link rel="stylesheet" href="js/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
 
-        <meta property="og:title" content="" />
-
         <meta property="og:description" content="Que todo el mundo sepa que usted le promete polas de cumpleaños a sus amigos y nunca les paga." />
-
-        <meta property="og:site_name" content="DATAPOLA"/>
 
         <meta property="og:type" content="datapola:amigo"/>
 
         <meta property="fb:app_id" content="1660712804256395" />
 
-        <meta property="og:locale" content="es_ES" />
-
         <meta property="og:image:width" content="400" />
 
         <meta property="og:image:height" content="400" />
-
-        <meta property="og:article:publisher" content="Cerveza Poker" />
-
-        <meta property="og:article:publisher" content="Cerveza Poker" />
-
-
-
-        <!-- fuentes -->
-
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
-
-        <!-- fuentes -->
 
         <?php
 
@@ -72,7 +54,10 @@
 
             ?>
 
-            <meta property="og:image" content='<?php echo $dominio."/uploads/".$_GET["id"].".jpg";?>' />
+            <meta property="og:image" content='<?php echo $dominio."/subidas/".$_GET["id"]."_p.jpg";?>' />
+            <meta property="og:url" content='<?php echo $dominio."/index.php?id=".$_GET["id"]; ?>' />
+            <meta property="og:amigo" content="<?php echo $_GET["id"]; ?>" />
+
 
             <?php
 
@@ -88,7 +73,11 @@
 
         ?>
 
+        <!-- fuentes -->
 
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+
+        <!-- fuentes -->
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 

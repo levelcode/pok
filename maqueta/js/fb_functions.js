@@ -25,34 +25,42 @@ function autov(video, videoc){
 }
 
 $(function(){
-  //Click and save
-  $('#save').click(function() {
-    //hack for mobile video manage autoplay
-    autov(video, videoc);
-    //video.play();
-    //setTimeout(function(){ video.pause();video.currentTime = 0;}, 200);
-    $('.loader').show();
-    $('.amigos_une_amigos').animate({'width': '850px', 'bottom': '-34'}, 400);
-    $('.marco_video img').delay(28000).css('display', 'block');
-  });
-
-  //Typing validation
-  $("#beers_input").keypress(function (e) {
-     //if the letter is not digit then display error and don't type anything
-     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-        //display error message
-        $("#errmsg").html("Ingresa solo números").show().fadeOut("slow");
-               return false;
-    }
-   });
-   $('.content_video').hide();
-   $('.content_facebook_connect').hide();
-   $('.loader').hide();
+  
    
 })
 
 
 $( window ).load(function() {
+
+    function call2(){
+      console.log("fb por boton");
+    }
+
+    //**************
+    //Click and save
+    $('#save').click(function() {
+      fb_log(faceConnect)
+      //hack for mobile video manage autoplay
+      autov(video, videoc);
+      //video.play();
+      //setTimeout(function(){ video.pause();video.currentTime = 0;}, 200);
+      $('.loader').show();
+      $('.amigos_une_amigos').animate({'width': '850px', 'bottom': '-34'}, 400);
+      $('.marco_video img').delay(28000).css('display', 'block');
+    });
+
+    //Typing validation
+    $("#beers_input").keypress(function (e) {
+       //if the letter is not digit then display error and don't type anything
+       if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+          //display error message
+          $("#errmsg").html("Ingresa solo números").show().fadeOut("slow");
+                 return false;
+      }
+     });
+     $('.content_video').hide();
+     $('.content_facebook_connect').hide();
+     $('.loader').hide();
 
     //click modal
     $('.reportar_facebook').click(function(event) {
@@ -65,6 +73,8 @@ $( window ).load(function() {
 
     //Hide canvas
     $('.canvascreator').hide();
+
+    //**************
 
     //Facebook
     var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href);
@@ -169,81 +179,84 @@ $( window ).load(function() {
     //******
     //Facebook
     //******
+    function fb_log(callback){
+      window.fbAsyncInit = function() {
+          //Se instancia el elemento FB
+          FB.init({
+            appId: '1660712804256395',
+            status: true,
+            xfbml: true,
+            cookie: true,
+            version    : 'v2.7',
+            channelUrl: url_l+'/channelUrl.html'
+          });
+          console.log("SDK FB solicitado");
 
-    window.fbAsyncInit = function() {
-        //Se instancia el elemento FB
-        FB.init({
-          appId: '1660712804256395',
-          status: true,
-          xfbml: true,
-          cookie: true,
-          version    : 'v2.7',
-          channelUrl: url_l+'/channelUrl.html'
-        });
-        console.log("SDK FB solicitado");
-
-        FB.getLoginStatus(function(response) {
-          // Check login status on load, and if the user is
-          // already logged in, go directly to the welcome message.
-          if (response.status == 'connected') {
-            //onLogin(response);
-            FB.login(function(response) {
-              onLogin(response);
-            }, {scope: 'publish_actions,user_friends'});
-          } else {
-            // Otherwise, show Login dialog first.
-            FB.login(function(response) {
-              onLogin(response);
-            }, {scope: 'publish_actions,user_friends'});
-          }
-        });
-        FB.Canvas.setSize({ width: 760, height: 1200});
-        // ADD ADDITIONAL FACEBOOK CODE HERE
-    };
-
-    (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    // Place following code after FB.init call.
-
-    function onLogin(response) {
-      if (response.status == 'connected') {
-        FB.api('/me?fields=first_name', function(data) {
-            var value_t = data.first_name;
-            //$("#texto1").val(value_t);
-            //canvas.clear();
-            //init("img/back_photo.jpg", value_t, 0,78, 'Lato', 60);
-        });
-
-        FB.api("me?fields=age_range",
-            function (response) {
-              if (response && !response.error) {
-                  if(Number(response.min) <= 18){
-                    console.log("Menor de edad");
-                  }else{
-                    console.log("Mayor de edad");
-                    $('body').addClass('ageGateActive');
-                    $('.content_ingresar').hide();
-                    $('.content_facebook_connect').show();
-                    $('.loader').hide();
-                    //If is refered
-                    if(body.hasClass('refered')){
-                      faceConnect();
-                    }
-                  }
-                /* handle the result */
-              }else{
-                console.log(response);
-              }
+          FB.getLoginStatus(function(response) {
+            // Check login status on load, and if the user is
+            // already logged in, go directly to the welcome message.
+            if (response.status == 'connected') {
+              //onLogin(response);
+              FB.login(function(response) {
+                onLogin(response);
+              }, {scope: 'publish_actions,user_friends'});
+            } else {
+              // Otherwise, show Login dialog first.
+              FB.login(function(response) {
+                onLogin(response);
+              }, {scope: 'publish_actions,user_friends'});
             }
-        );
-      }
-    };
+          });
+          FB.Canvas.setSize({ width: 760, height: 1200});
+          // ADD ADDITIONAL FACEBOOK CODE HERE
+      };
+
+      (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+      // Place following code after FB.init call.
+
+      function onLogin(response) {
+        if (response.status == 'connected') {
+          FB.api('/me?fields=first_name', function(data) {
+              var value_t = data.first_name;
+              //$("#texto1").val(value_t);
+              //canvas.clear();
+              //init("img/back_photo.jpg", value_t, 0,78, 'Lato', 60);
+          });
+
+          FB.api("me?fields=age_range",
+              function (response) {
+                if (response && !response.error) {
+                    if(Number(response.min) <= 18){
+                      console.log("Menor de edad");
+                    }else{
+                      console.log("Mayor de edad");
+                      $('body').addClass('ageGateActive');
+                      $('.content_ingresar').hide();
+                      $('.content_facebook_connect').show();
+                      $('.loader').hide();
+                      callback()
+                      //If is refered
+                      if(body.hasClass('refered')){
+
+                        //faceConnect();
+                      }
+                    }
+                  /* handle the result */
+                }else{
+                  console.log(response);
+                }
+              }
+          );
+        }
+      };
+    }
 
     //******
     //Facebook
@@ -307,7 +320,6 @@ $( window ).load(function() {
         //Click on facebook connect
         $('.content_facebook_connect .fb_boton').click(function(){
             //Launch face connect
-            faceConnect();
             $(this).parent().remove();
           });
       }
@@ -649,6 +661,7 @@ $( window ).load(function() {
                       "description": "Que todo el mundo sepa que usted le promete polas de cumpleaños a sus amigos y nunca les paga.",
                       "app_id": "1660712804256395",
                       "tags": $('#id_friend').val(),
+                      'amigo': "https://datapola.com/index.php?id="+nombre,
                       "image": urlformat,
                       "picture": urlformat
                     }
@@ -661,7 +674,7 @@ $( window ).load(function() {
                       'me/datapola:reportar',
                       'post',
                       {
-                         amigo:objectID , // make sure to have the apropiate og:type meta set
+                         amigo: "https://datapola.com/index.php?id="+nombre, // make sure to have the apropiate og:type meta set
                          link: objectToLike,
                          tags: $('#id_friend').val(), // the tokens ids for those friens you wanna tag and you got on previous step
                          caption: 'DATAPOLA',
