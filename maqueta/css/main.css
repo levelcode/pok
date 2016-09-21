@@ -59,6 +59,7 @@ canvas
     height:100%;
     left: 0;
     top: 0;
+
 }
 .marco_video
 {
@@ -96,7 +97,6 @@ canvas
     width: 100%;
     height: calc(100% - 150px);
     left: 0;
-    top: 0;
 }
 .mobile
 {
@@ -242,8 +242,10 @@ canvas
     position: absolute;
     -webkit-filter: saturate(53%) brightness(98%) contrast(43%) blur(0.8px);
     filter: saturate(53%) brightness(98%) contrast(43%) blur(0.8px);
-    width: 19%;
-    left: 33%;
+    width: 180px;
+    top: 22%;
+    left: -11%;
+    right: 0;
     margin: 0 auto;
     transform: rotate(1.2deg);
 }
