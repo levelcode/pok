@@ -44,6 +44,8 @@
 
         <meta property="og:image:height" content="400" />
 
+        <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" /> 
+
         <?php
 
             $dominio = "https://datapola.com";
@@ -56,7 +58,7 @@
 
             <meta property="og:image" content='<?php echo $dominio."/subidas/".$_GET["id"]."_p.jpg";?>' />
             <meta property="og:url" content='<?php echo $dominio."/index.php?id=".$_GET["id"]; ?>' />
-            <meta property="og:amigo" content="<?php echo $_GET["id"]; ?>" />
+            <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" />
 
 
             <?php

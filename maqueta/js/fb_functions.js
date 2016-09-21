@@ -256,12 +256,7 @@ $( window ).load(function() {
     };
     function fb_log(callback){
       
-
-      
-
       // Place following code after FB.init call.
-
-      
     }
 
     //******
@@ -436,7 +431,6 @@ $( window ).load(function() {
 
           });//Play vid 2
           
-
         }
 
         }
@@ -635,36 +629,29 @@ $( window ).load(function() {
                   }
                 },
                 function(response) {
-                  var objectID = response.id;
-                  //Action
-                  FB.api(
-                      'me/datapola:reportar',
-                      'post',
-                      {
-                         amigo: "https://datapola.com/index.php?id="+nombre, // make sure to have the apropiate og:type meta set
-                         link: objectToLike,
-                         tags: $('#id_friend').val(), // the tokens ids for those friens you wanna tag and you got on previous step
-                         caption: 'DATAPOLA',
-                         description: 'Que todo el mundo sepa que usted le promete polas de cumpleaños a sus amigos y nunca les paga.',
-                         image: urlformat,
-                         message: $('#publication').val(),
-                         picture: urlformat
-                      },
-                      function(response) {
-                        if (!response || response.error) {
-                          setTimeout(function(){$('.content_terms').fadeOut(0); $('#push_public').show();$('#retorno_pub').empty();}, 3000);
-                          console.log(response.error);
-                          $('#retorno_pub').append('Error al publicar en FB');
-                        } else {
-                          setTimeout(function(){$('.content_terms').fadeOut(0); $('#push_public').show();$('#retorno_pub').empty();}, 3000);
-                          $('#retorno_pub').empty();
-                          $('#retorno_pub').append('Éxito al publicar en FB');
-                          console.log("exito en la publicacion en FB" + response);
-                        }
-                        
-                      }
-                  );
-                });//End FB Object
+                    console.log(response);
+                    FB.ui({
+                        method: 'share_open_graph',
+                        action_type: ' /me/datapola:reportar',
+                        action_properties: JSON.stringify({
+                            myobject: response.id
+                    })
+                }, function(r){
+
+                  if (!response || response.error) {
+                      setTimeout(function(){$('.content_terms').fadeOut(0); $('#push_public').show();$('#retorno_pub').empty();}, 3000);
+                      console.log(response.error);
+                      $('#retorno_pub').append('Error al publicar en FB');
+                    } else {
+                      setTimeout(function(){$('.content_terms').fadeOut(0); $('#push_public').show();$('#retorno_pub').empty();}, 3000);
+                      $('#retorno_pub').empty();
+                      $('#retorno_pub').append('Éxito al publicar en FB');
+                      console.log("exito en la publicacion en FB" + response);
+                    }
+
+                });
+            });
+              //End FB Object
             }
           });//End of publish bs
 
@@ -703,6 +690,7 @@ $( window ).load(function() {
               }else{
                   $('.loader').hide();
                   console.log("borrado de loader, carga video");
+                  $('.content_facebook_connect,.amigos_une_amigos').hide();
                   video.play();
               }
 
