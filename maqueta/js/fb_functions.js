@@ -577,7 +577,8 @@ $( window ).load(function() {
                         action_type: 'datapola:reportar',
                         action_properties: JSON.stringify({
                           amigo:id_amiguito,
-                          tags:String($('#id_friend').val())
+                          tags:String($('#id_friend').val()),
+                          url:'https://datapola.com/test/index.php?id='+nombre
                         })
                       }, function(r){
 

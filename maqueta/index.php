@@ -94,8 +94,6 @@
 
         </div>
 
-
-
         <div class="wrapper">
             
             <!--div class="content_terms">
