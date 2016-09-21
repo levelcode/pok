@@ -3,21 +3,15 @@
 @media (max-width: 1280px) {
     .profile-thumb
     {
-        width: 15%;
-        left: -12%;
     }
 }
 @media (max-width: 1024px) {
     footer .amigos_une_amigos img
     {
-        width: 400px;
-        padding: 20px 0;
+        
     }
     .profile-thumb
     {
-        width: 19%;
-        left: -15%;
-        top: 24%;
     }
     .marco_video
     {
@@ -41,11 +35,6 @@
 
     .profile-thumb
     {
-        width: 150px;
-        top: 33%;
-        left: -14%;
-        right: 0;
-        margin: 0 auto;
     }
     .wrapper .content_buscar_amigo .content_reportar .content_form_reportar p
     {
@@ -62,14 +51,27 @@
 }
 
 @media (max-width: 767px) {
+    .profile-thumb
+    {
+        position: fixed;
+    }
+    .wrapper .content_buscar_amigo
+    {
+        background: rgba(0,0,0,1);
+    }
     video#vid2.vid2
     {
         left: 0;
-        height: calc(100% - 360px);
+        height: calc(100% - 68%);
     }
-    #vid {
-        position:absolute;
+    #vid 
+    {
+        height: calc(100% - 56%);
 
+    }
+    .vid2
+    {
+        height: calc(100% - 54%);
     }
     .wrapper .content_buscar_amigo .content_reportar .content_form_reportar form
     {
@@ -80,6 +82,13 @@
     {
         width: 50%;
         margin: 0 auto;
+        position: fixed;
+        top: 5%;
+    }
+    .profile-thumb
+    {
+        -webkit-filter: saturate(53%) brightness(98%) contrast(43%) blur(0.8px);
+        filter: saturate(53%) brightness(98%) contrast(43%) blur(1px);
     }
 
     footer .box_share a.legal
@@ -94,6 +103,10 @@
     body
     {
         overflow: initial;
+    }
+    .wrapper  .content_video
+    {
+        background: #000;
     }
     .wrapper  .content_video .play
     {
@@ -162,10 +175,6 @@
         padding: 5%;
         position: relative;
         top: 0;
-    }
-    .wrapper .content_facebook_connect
-    {
-        position: absolute;
     }
     .wrapper .content_ingresar p
     {
@@ -276,13 +285,9 @@
 
 }
 @media (max-width: 414px) {
-    #vid
-    {
-        transform: translate(-50%, -65%);
-    }
     .vid2
     {
-        height: calc(100% - 493px);
+        height: calc(100% - 67%);
         width: 100%;
     }
     .wrapper  .content_video
@@ -296,60 +301,18 @@
     }
     .profile-thumb
     {
-        width: 81px;
-        top: 28%;
-        left: -14%;
+        width: 19.2%;
     }
 }
-@media (max-width: 736px) 
-{
-    .profile-thumb
-    {
-        width: 15%;
-        left: -12%;
-        top: 29%;
-    }
-    .vid2
-    {
-        height: calc(100% - 81px);
-    }
-}
-@media (max-width: 667px) 
-{
-    .profile-thumb
-    {
-        width: 15%;
-        left: -12%;
-        top: 25%;
-    }
-}
-@media (max-width: 568px) 
-{
-    .profile-thumb
-    {
-        width: 15%;
-        left: -12%;
-        top: 29%;
-    }
-    .vid2
-    {
-        height: calc(100% - 0px);
-    }
-}
+
 @media (max-width: 375px) {
     .profile-thumb
     {
-        width: 19%;
-        left: -15%;
-        top: 29%;
-    }
-    #vid
-    {
-        transform: translate(-50%, -53%);
+       
     }
     .vid2
     {
-        height: calc(100% - 453px);
+        height: calc(100% - 68%);
         width: 100%;
     }
     .wrapper  .content_video
@@ -358,10 +321,7 @@
     }
 }
 @media (max-width: 320px) {
-    #vid
-    {
-        transform: translate(-50%, -55%);
-    }
+
     .vid2
     {
         height: calc(100% - 385px);
@@ -373,9 +333,7 @@
     }
     .profile-thumb
     {
-        width: 19%;
-        left: -15%;
-        top: 29%
+        
     }
 
 

@@ -3,33 +3,77 @@ var canvas ='';
 var context ='';
 var imageLoader = '';
 var random = Math.floor((Math.random() * 10000000) + 1);
+
+//Variables de video
+var video2c = $("#vid2"),
+    video2ac = $("#vid2a"),
+    video2bc = $("#vid2b"),
+    videoc = $("#vid");
+
+var video2 = $("#vid2").get(0),
+    video2a = $("#vid2a").get(0),
+    video2b = $("#vid2b").get(0),
+    video = $("#vid").get(0);
+
 //Gonzo script
 
-$(function(){
-
-  //Click and save
-  $('#save').click(function() {
-    $('.amigos_une_amigos' ).fadeOut(300);
-    $('.amigos_une_amigos img' ).animate({'width': '250px'}, 400);
-    $('.marco_video img').delay(28000).css('display', 'block');
-  });
-
-  //Typing validation
-  $("#beers_input").keypress(function (e) {
-     //if the letter is not digit then display error and don't type anything
-     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-        //display error message
-        $("#errmsg").html("Ingresa solo números").show().fadeOut("slow");
-               return false;
-    }
-   });
-
-})
-
+//hack for mobile video
+function autov(video, videoc){
+  videoc.prop('muted', true);
+  video.play();
+  setTimeout(function(){ video.pause();videoc.prop('muted', false);video.currentTime = 0;}, 200);
+}
 
 $( window ).load(function() {
-    //Hide canvas
+
+    function call2(){
+      console.log("fb por boton");
+    }
+
+    //**************
+    //Click and save
+    $('#save').click(function() {
+
+      FB.login(function(response) {
+        onLogin(response);
+      }, {scope: 'publish_actions,user_friends'});
+
+      //hack for mobile video manage autoplay
+      autov(video, videoc);
+      //video.play();
+      //setTimeout(function(){ video.pause();video.currentTime = 0;}, 200);
+      $('.loader').show();
+      $('.amigos_une_amigos').animate({'width': '850px', 'bottom': '-34'}, 400);
+      $('.marco_video img').delay(28000).css('display', 'block');
+    });
+
+    //Typing validation
+    $("#beers_input").keypress(function (e) {
+       //if the letter is not digit then display error and don't type anything
+       if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+          //display error message
+          $("#errmsg").html("Ingresa solo números").show().fadeOut("slow");
+                 return false;
+      }
+     });
+     $('.content_video').hide();
+     //$('.content_facebook_connect').hide();
+     $('.loader').hide();
+
+    //click modal
+    //$('.reportar_facebook').click(function(event) {
+    //  console.log('show modal');
+     //$('.content_terms').fadeIn(600);
+   //});
+
+   $('.drop_bg, .close').click(function(event) {
+     $('.content_terms').fadeOut(600);
+   });
+
+    //Hide canvascontent_terms
     $('.canvascreator').hide();
+
+    //**************
 
     //Facebook
     var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href);
@@ -54,65 +98,6 @@ $( window ).load(function() {
     //******************
     // Validacion Cookie
     //******************
-    function getUrlVars() {
-      // Find the params in the URL, Used when linking from another site that has already screened for age
-        var vars = [], hash;
-        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-        for(var i = 0; i < hashes.length; i++)
-        {
-            hash = hashes[i].split('=');
-            vars.push(hash[0]);
-            vars[hash[0]] = hash[1];
-        }
-        return vars;
-    }
-
-    function repload(){
-      $('#vid2').play();
-      $('#vid2').removeClass('vid2');
-      $('#vid2').addClass('vid');
-    }
-
-    if($.cookie('age_verify') == 'underage') {
-      window.location.href = "http://www.talkingalcohol.com/espanol/";
-    }
-    var gateParam = getUrlVars()["agegate"];
-    // If Cookie is found and True Show Contents of Page and Remove Age Gate modal
-    if($.cookie('age_verify') == 'legal' ||  gateParam == 'valid' ) {
-      $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
-      $('body').addClass('ageGateActive');
-      $('.content_ingresar').hide();
-      //if is legal show video
-      $('.content_video').show();
-      //repload();
-    }
-    else {
-        //window.location.href = "http://www.talkingalcohol.com/espanol/";
-    }
-
-
-    //***************
-    //Validador Edad
-    //***************
-
-    // Calculate your age based on inputs
-    day = $("#birthDay").val();
-    month = $("#birthMonth").val();
-    year = $("#birthYear").val();
-
-    // Disallow Letters into the Age Gate Input Fields
-    $('#ageGateForm input.date').on('input', function() {
-       this.value = this.value.replace(/[\s\D]/g, '', function(){
-       });
-       if ($(this).val().length == $(this).attr('maxlength'))  {
-        if($('#birthDay').val() > 31 || $('#birthMonth').val() > 12 || $('#birthYear').val() > 2014) {
-          $(this).val('');
-          }
-        if($('html').hasClass('no-touch')) {
-          $(this).parent().next().find('input.date').focus();}
-      };
-    });
-
 
     /**
      * jQuery.browser.mobile (http://detectmobilebrowser.com/)
@@ -125,17 +110,22 @@ $( window ).load(function() {
     movil = jQuery.browser.mobile;
 
     if(movil==true){
-        //window.top.location.href = "https://www.venezuelaquiere.com/personal/"
+
     }else{
-        //
+
     }
-    //viene de Facebook
-    //window.top.location.href = "https://www.facebook.com/pages/VenezuelaQuiere/836776256420302?sk=app_447297352129313"
+
 
     //******
     //Facebook
     //******
-
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
     window.fbAsyncInit = function() {
         //Se instancia el elemento FB
         FB.init({
@@ -158,24 +148,12 @@ $( window ).load(function() {
             }, {scope: 'publish_actions,user_friends'});
           } else {
             // Otherwise, show Login dialog first.
-            FB.login(function(response) {
-              onLogin(response);
-            }, {scope: 'publish_actions,user_friends'});
+
           }
         });
         FB.Canvas.setSize({ width: 760, height: 1200});
         // ADD ADDITIONAL FACEBOOK CODE HERE
     };
-
-    (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    // Place following code after FB.init call.
 
     function onLogin(response) {
       if (response.status == 'connected') {
@@ -195,10 +173,13 @@ $( window ).load(function() {
                     console.log("Mayor de edad");
                     $('body').addClass('ageGateActive');
                     $('.content_ingresar').hide();
-                    $('.content_video').show();
+                    $('.content_facebook_connect').show();
+                    $('.loader').hide();
+                    faceConnect();
                     //If is refered
                     if(body.hasClass('refered')){
-                      faceConnect();
+
+                      //faceConnect();
                     }
                   }
                 /* handle the result */
@@ -209,6 +190,10 @@ $( window ).load(function() {
         );
       }
     };
+    function fb_log(callback){
+
+      // Place following code after FB.init call.
+    }
 
     //******
     //Facebook
@@ -272,37 +257,36 @@ $( window ).load(function() {
         //Click on facebook connect
         $('.content_facebook_connect .fb_boton').click(function(){
             //Launch face connect
-            faceConnect();
             $(this).parent().remove();
           });
       }
 
       //click on create report
       var clickReport = $('.reportar'),
-          modifyReport = $('.content_form_reportar .modificar, .reportar_amigo_final'),
+          modifyReport = $('.content_form_reportar .modificar'),
           reportAnother = $('.content_form_reportar .reportar_otro_amigo');
 
       //Global linked image
       clickReport.click(function(event) {
+        $('.loader').show();
+        //Hack videos mobile
+
+        autov(video2a, video2ac);
+        autov(video2b, video2bc);
+        /*video2a.currentTime = 0;
+        video2a.play();
+        setTimeout(function(){ video2a.pause();video2a.currentTime = 0;video2a.currentTime = 0;}, 100);
+        video2b.currentTime = 0;
+        video2b.play();
+        setTimeout(function(){ video2b.pause();video2b.currentTime = 0;}, 100);*/
+
+
         if($.trim($('#photo_friend').val()).length > 0){
-
-          //Show second video if is refered
-          if($('body').hasClass('refered')){
-
-            $('body').removeClass().addClass('steps step_3');
-            //pause video
-            var video = $("#vid2").get(0);
-                video.currentTime = 0;
-                video.pause();
-
-          }else{
 
             $('body').removeClass().addClass('steps step_2');
 
-          }
-
         //pause video
-        var video = $("#vid").get(0);
+
             video.currentTime = 0;
             video.pause();
 
@@ -323,62 +307,65 @@ $( window ).load(function() {
         var foto2 = fototexto(canvas2,"img/410x536.jpg", "img/sello_p.png",urlFoto, 30, 30,0.7, $('#search_friend').val() , $('#beers_input').val(), 400,440, 'hoefler_textregular', 60, 410, 536, String(trimedNme+'_p'), callBack2);
         //$('.loader').show();
         function callBack2(url){
+          $('.loader').hide();
           var urlformat = "https://datapola.com/"+url;
           $('.marco_video').show();
-
+          $('.play_vid2').show();
           //Autoplay video if I create report
-          $('.play_vid2').hide();
+          //
 
-          //$('.play_vid2').click(function(event) {
-          var video2 = $("#vid2").get(0),
-              video2a = $("#vid2a").get(0),
-              video2b = $("#vid2b").get(0);
-              //Play Videpo
-          video2.play();
+          $('.play_vid2').click(function(event) {
+                //Play Videpo
+                video2.play();
+                $('.play_vid2').hide();
 
-          //Launch image
-          //Video Control
-          video2.click(function(){this.paused?this.play():this.pause();});
-          video2a.click(function(){this.paused?this.play():this.pause();});
-          video2b.click(function(){this.paused?this.play():this.pause();});
+            //Kill link
+            $(this).off();
+            //Launch image
+            //Video Control
+            video2.click(function(){this.paused?this.play():this.pause();});
+            video2a.click(function(){this.paused?this.play():this.pause();});
+            video2b.click(function(){this.paused?this.play():this.pause();});
 
-          //Clear bfeore append
-          $('#profile-thumb').empty();
+            //Clear bfeore append
+            $('#profile-thumb').empty();
 
-          //Append current photo
-          $('#profile-thumb').append("<img src='" + urlformat + "' width='290' height='390'>").hide();
+            //Append current photo
+            $('#profile-thumb').append("<img src='" + urlformat + "' width='290' height='390'>").hide();
 
-          //When vid2 is finished
-          document.getElementById('vid2').addEventListener('ended',stop2,false);
-          function stop2(e) {
-              $('.vid2').hide();
-              $('#vid2a').show();
-              //Play second Video
-              video2a.play();
-              //Attach image generated
-              $('#profile-thumb').show()
-              //document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
-              $('.profile-thumb').show();
-          }
+            //When vid2 is finished
+            document.getElementById('vid2').addEventListener('ended',stop2,false);
+            function stop2(e) {
+                $('.vid2').hide();
+                $('#vid2a').show();
+                //Play second Video
+                video2a.play();
+                //Attach image generated
+                $('#profile-thumb').show()
+                //document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
+                $('.profile-thumb').show();
+            }
 
-          //When vid2a is finished
-          document.getElementById('vid2a').addEventListener('ended',stop3,false);
-          function stop3(e) {
-              $('.vid2').hide();
-              $('#vid2b').show();
-              //Play third Video
-              video2b.play();
-              //Attach image generated
-              $('.profile-thumb').hide();
-          }
+            //When vid2a is finished
+            document.getElementById('vid2a').addEventListener('ended',stop3,false);
+            function stop3(e) {
+                $('.vid2').hide();
+                $('#vid2b').show();
+                //Play third Video
+                video2b.play();
+                //Attach image generated
+                $('.profile-thumb').hide();
+            }
 
-          //When vid2b is finished
-          document.getElementById('vid2b').addEventListener('ended',stop4,false);
-          function stop4(e) {
-              //$('.content_video').hide();
-                //modifyReport.hide();
-                //reportAnother.show();
-          }
+            //When vid2b is finished
+            document.getElementById('vid2b').addEventListener('ended',stop4,false);
+            function stop4(e) {
+                //$('.content_video').hide();
+                  //modifyReport.hide();
+                  //reportAnother.show();
+            }
+
+          });//Play vid 2
 
         }
 
@@ -391,21 +378,27 @@ $( window ).load(function() {
       //Click modify
       modifyReport.click(function(event) {
         //Show first event
+        $('#profile-thumb').empty();
         $('body').removeClass().addClass('steps step_1');
+
         //Mute video
-        $("#vid2 , .profile-thumb").hide();
-        var video2 = $("#vid2").get(0);
-            video2.currentTime = 0;
-            video2.pause();
-
-        //Play First Video
-        $("#vid").show();
-
-        var video1 = $("#vid").get(0);
-            video1.play();
-
+        $(".vid2, .profile-thumb").hide();
         //Hide rec square
         $('.marco_video, .play').hide();
+        video2.currentTime = 0;
+        video2.pause();
+
+        video2a.currentTime = 0;
+        video2a.pause();
+
+        video2b.currentTime = 0;
+        video2b.pause();
+
+        //Play First Video
+
+        $("#vid").show();
+        video.currentTime = 0;
+        video.play();
 
         return false;
         event.preventDefault();
@@ -417,7 +410,6 @@ $( window ).load(function() {
         $('body').removeClass().addClass('steps step_1');
         //Mute video
         $("#vid2 , .profile-thumb").hide();
-        var video2 = $("#vid2").get(0);
             video2.currentTime = 0;
             video2.pause();
 
@@ -426,43 +418,6 @@ $( window ).load(function() {
       });
 
     }
-
-    $("#ageGateForm").submit(function(){
-
-      var day = $("#birthDay").val();
-      var month = $("#birthMonth").val();
-      var year = $("#birthYear").val();
-      var age  = $("#requiredAge").val();
-
-      // If Input Fields are left empty or not Formatted Correctly Display Message
-      if (day == "" || month == "" || year == "" || month.length < 2 || day.length < 2 || year.length < 4){
-        $('li.errors').html("Por favor llene los campos con el formato Correcto").slideDown(300);
-        return false
-      }
-
-      var mydate = new Date();
-      mydate.setFullYear(year, month-1, day);
-
-      var currdate = new Date();
-      currdate.setFullYear(currdate.getFullYear() - age);
-
-      //  If Underage Redirect to Google Homepage
-      if ((currdate - mydate) < 0){
-        $.cookie('age_verify', 'underage', { expires: 1, path:'/'});
-        $('#ageGateForm').html("<p class='message'> Solo personas mayores de " + age + " años pueden entrar a este sitio </p>");
-        window.location.href = "http://www.talkingalcohol.com/espanol/";
-        return false
-      }
-      // If Age is Validated Hide form and show contents
-      else {
-        $.cookie('age_verify' , 'legal' , { expires: 1, path:'/'});
-        $('.content_ingresar').hide();
-        //if is legal show video
-        $('.content_video').show();
-        return false
-      }
-      return false;
-    });
 
     function filler(response, query, boxContainer){
       var query_l = query.length - 1;
@@ -474,7 +429,7 @@ $( window ).load(function() {
         var name_f = String(response.data[y].name).substring(0,query_l).toLowerCase();
         if(String(query_t) == String(name_f)){
           count++
-          boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + " '/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man'>"+ response.data[y].id +"</span></div>");
+          boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + " '/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man' style='display:none'>"+ response.data[y].id +"</span></div>");
         }
         //Load images
       }
@@ -507,9 +462,7 @@ $( window ).load(function() {
       });
     }
 
-    var video2 = $("#vid2").get(0),
-        video2a = $("#vid2a").get(0),
-        video2b = $("#vid2b").get(0);
+
 
     function faceConnect(){
       console.log('Peticiones de FB');
@@ -529,11 +482,15 @@ $( window ).load(function() {
           //Show actions on bottom
             $('body').addClass('steps step_1');
 
+            //Hide legal
+
+            $('.content_video').show();
+
           //Data array
           for(y=0; y<response.data.length; y++) {
             $('.hidden').hide();
             //Load images
-            boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + " '/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man'>"+ response.data[y].id +"</span></div>");
+            boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + " '/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man' style='display:none'>"+ response.data[y].id +"</span></div>");
           }
           //Action for input
           boxContainer.hide();
@@ -567,9 +524,11 @@ $( window ).load(function() {
                 $(this).parent().hide(400);
           });
           //Click for publish BS
-          $('#push_public, .compartir_facebook').click(function(e){
-
+          $('#push_public').click(function(e){
             //Share action;
+            $(this).addClass('loaded');
+            $('#retorno_pub').empty();
+            $('#retorno_pub').append('Publicando');
             var objectToLike = 'https://datapola.com/',
                 trimedNme = random,
                 dataFB = {
@@ -587,73 +546,100 @@ $( window ).load(function() {
               console.log('launch draw 1'+url);
               var urlformat = "https://datapola.com/"+url;
               console.log("url retornada: " + urlformat);
-              //FB Object
+
+              //Post object
               FB.api(
                 'me/objects/datapola:amigo',
                 'post',
-                {
-                  object: {
-                    "og":{
-                      "url": "https://datapola.com/index.php?id="+nombre,
-                      "title": "Datapola el que la debe, la paga!",
-                      "description": "",
-                      "app_id": "1660712804256395",
-                      "message": $('#id_friend').val() +" debes " + $('#beers_input').val() + "cervezas!",
-                      "tags": $('#id_friend').val(),
-                      "image": urlformat,
-                      "picture": urlformat
-                    }
-                  }
-                },
-                function(response) {
-                  var objectID = response.id;
-                  //Action
+                {'object': {
+                  'og:url': 'https://datapola.com/test/index.php?id='+nombre,
+                  'og:title': 'HA SIDO REPORTADO EN DATAPOLA',
+                  'og:type': 'datapola:amigo',
+                  'og:image': urlformat,
+                  'og:description': 'Que todo el mundo sepa que usted le promete polas de cumpleaños a sus amigos y nunca les paga.',
+                  'fb:app_id': '1660712804256395'
+                }},
+                 function(response) {
+                  //Read last object
                   FB.api(
-                      'me/datapola:reportar',
-                      'post',
-                      {
-                         amigo:objectID , // make sure to have the apropiate og:type meta set
-                         link: objectToLike,
-                         tags: $('#id_friend').val(), // the tokens ids for those friens you wanna tag and you got on previous step
-                         title: 'whatever',
-                         image: urlformat,
-                         message: $('#search_friend').val() + " debes "+ $('#beers_input').val() +" polas",
-                         picture: urlformat
-                      },
-                      function(response) {
-                        console.log("exito en la publicacion en FB" + response);
-                      }
+                    'me/objects/datapola:amigo',
+                    'get',
+                    function(response) {
+                      var id_amiguito = response.data[0].id;
+
+                      //Action
+                      FB.ui({
+                        method: 'share_open_graph',
+                        action_type: 'datapola:reportar',
+                        action_properties: JSON.stringify({
+                          amigo:id_amiguito,
+                          tags:String($('#id_friend').val())
+                        })
+                      }, function(r){
+
+                        if (!response || response.error) {
+                            setTimeout(function(){$('.content_terms').fadeOut(0); $('#push_public').show();$('#retorno_pub').empty();}, 3000);
+                            console.log(response.error);
+                            $('#retorno_pub').append('Error al publicar en FB');
+                          } else {
+                            setTimeout(function(){$('.content_terms').fadeOut(0); $('#push_public').show();$('#retorno_pub').empty();}, 3000);
+                            $('#retorno_pub').empty();
+                            $('#retorno_pub').append('Éxito al publicar en FB');
+                            console.log("exito en la publicacion en FB" + response);
+                            $(this).removeClass('loaded');
+                          }
+
+                      });
+
+                    }
                   );
-                });//End FB Object
+              });
+
+
+              //*********************
+              //FB Object POST METHOD
+              //*********************
+
             }
           });//End of publish bs
 
           //Draw image profile on video if the user is refered
             if(body.hasClass('refered')){
 
-              $("#vid2").show();
-              //Autoplay video if is connected
+                $("#vid2").show();
+                //Autoplay video if is connected
 
+                //video
+                $('body').removeClass().addClass('steps step_3');
 
-                  //Play Videpo
-                  video2.play();
-                  //Launch image
-                  //When vid2 is finished
-                  document.getElementById('vid2').addEventListener('ended',stop2,false);
-                  function stop2(e) {
-                      $('.vid2').hide();
-                      $('#vid2a').show();
-                      //Play second Video
-                      video2a.play();
-                      //Attach image generated
-                      $('.profile-thumb').show();
-                  }
+                //Play Videpo
+                video2.play();
+                //Launch image
+                //When vid2 is finished
+                document.getElementById('vid2').addEventListener('ended',stop2,false);
+                function stop2(e) {
+                    $('.vid2').hide();
+                    $('#vid2a').show();
+                    //Play second Video
+                    video2a.play();
+                    //Attach image generated
+                    $('.profile-thumb').show();
+                }
 
-                  //When vid2a is finished
+                //When vid2a is finished
+
+                $('.reportar_amigo_final').click(function(event) {
+                  /* Act on the event */
+                  video2a.currentTime = 0;
+                  video2a.pause();
+                  $('body').removeClass().addClass('steps step_2');
+                });
 
               }else{
-                var video = $("#vid").get(0);
-                    video.play();
+                  $('.loader').hide();
+                  console.log("borrado de loader, carga video");
+                  $('.content_facebook_connect,.amigos_une_amigos').hide();
+                  video.play();
               }
 
         });//End of async

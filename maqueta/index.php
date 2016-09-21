@@ -34,33 +34,17 @@
 
         <link rel="stylesheet" href="js/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
 
-        <meta property="og:title" content="" />
-
-        <meta property="og:description" content="Cambia tu foto de perfil en Facebook y WhatsApp ¡ Y actívate por el cambio !" />
-
-        <meta property="og:site_name" content=""/>
+        <meta property="og:description" content="Que todo el mundo sepa que usted le promete polas de cumpleaños a sus amigos y nunca les paga." />
 
         <meta property="og:type" content="datapola:amigo"/>
 
         <meta property="fb:app_id" content="1660712804256395" />
 
-        <meta property="og:locale" content="es_ES" />
-
         <meta property="og:image:width" content="400" />
 
         <meta property="og:image:height" content="400" />
 
-        <meta property="og:article:publisher" content="Cerveza Poker" />
-
-        <meta property="og:article:publisher" content="Cerveza Poker" />
-
-
-
-        <!-- fuentes -->
-
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
-
-        <!-- fuentes -->
+        <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" /> 
 
         <?php
 
@@ -72,7 +56,10 @@
 
             ?>
 
-            <meta property="og:image" content='<?php echo $dominio.$_GET["id"];?>' />
+            <meta property="og:image" content='<?php echo $dominio."/subidas/".$_GET["id"]."_p.jpg";?>' />
+            <meta property="og:url" content='<?php echo $dominio."/index.php?id=".$_GET["id"]; ?>' />
+            <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" />
+
 
             <?php
 
@@ -88,7 +75,11 @@
 
         ?>
 
+        <!-- fuentes -->
 
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+
+        <!-- fuentes -->
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
@@ -97,7 +88,7 @@
     <body <?php if (isset($bodyref)){echo 'class="'.$bodyref.'"';}?>>
 
         <!--Loader-->
-        <div class="loader">
+        <div class="loader" style="width: 100%;height: 100%;background-color: black;z-index: 10000;display:block">
 
             <div class="loader_center"></div>
 
@@ -106,40 +97,22 @@
 
 
         <div class="wrapper">
+            
+            <!--div class="content_terms">
+                <div class="drop_bg"></div><!--ghost bg-->
+                <!--div class="box_terms">
+                    <a href="javscript:void(0);" class="close">x</a>
+                    <h2>Publicar en Facebook</h2>
+                    <div class="border_top_yellow"></div>
+                    <form>
+                        <label>Edita el texto de tu publicacion</label>
+                        <input type="text" id="publication" placeholder="Escribe el mensaje que acompañará la publicación">
+                    </form>
+                    <button id="push_public" class="boton fb_boton"></button>
 
-            <div class="content_ingresar">
-
-                <p>Si usted es mayor de edad, ingrese su fecha de nacimiento.</p>
-
-                <div class="border_top"></div>
-
-                <form id="ageGateForm" name="ageGateForm">
-
-                    <input type="hidden" name="requiredAge" id="requiredAge" value="18">
-
-                    <div class="border_gradient">
-
-                        <input type="text" id="birthDay" placeholder="DÍA" class="date">
-
-                    </div>
-
-                    <div class="border_gradient">
-
-                        <input type="text" id="birthMonth" placeholder="MES" class="date">
-
-                    </div>
-
-                    <div class="border_gradient">
-
-                        <input type="text" id="birthYear" placeholder="AÑO" class="date">
-
-                    </div>
-
-                    <input type="submit" class="ingresar" value="INGRESAR">
-
-                </form>
-
-            </div> <!--end of agegate-->
+                    <p id="retorno_pub"></p>
+                </div>
+            </div-->
 
             <?php include 'content.php'; ?>
 
@@ -173,7 +146,7 @@
             </div>
 
 
-            <a href="https://www.cervezapoker.com/sm_agegate?destination=" target="_blank" class="terminos_mobile mobile">términos y condiciones</a>
+            <a href="https://www.cervezapoker.com/politica-de-proteccion-de-datos" target="_blank" class="terminos_mobile mobile">términos y condiciones</a>
 
             <div class="box_share desktop">
 
@@ -215,9 +188,11 @@
 
         <script type="text/javascript" src="js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
-
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.4/fabric.min.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        
+
         <script type="text/javascript" src="js/jquery-cookie.js"></script>
         <script type="text/javascript" src="js/fb_functions.js"></script>
 

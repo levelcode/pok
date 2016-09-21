@@ -1,6 +1,20 @@
-<div class="content_video"  style="display:none;">
+<div class="content_facebook_connect">
 
-    <input type="button" value="Play" id="play" class="play">
+	<div class="border_top"></div>
+
+	<p>Conéctese por Facebook para ayudarle a que sus ”amigos” <br> le paguen las polas que le deben.</p>
+
+	<button id="save" class="boton fb_boton"></button>
+
+</div><!--/facebook connect-->
+
+
+
+
+
+<div class="content_video" style="display:none">
+
+    <!--input type="button" value="Play" id="play" class="play"-->
 
     <div id="profile-thumb" class="profile-thumb">
     	<?php
@@ -20,7 +34,7 @@
     </div>
 
 	<!--First video-->
-    <video id="vid" src="videos/inv/inv.mp4" poster="img/bg.png" style="" title="vid_1" webkit-playsinline playsinline>
+    <video id="vid" src="videos/inv/inv.mp4" style="" title="vid_1" webkit-playsinline playsinline>
         <source src="videos/inv/inv.webm" type="video/webm" />
         <source src="videos/inv/inv.ogg" type="video/ogg" />
     </video>
@@ -35,6 +49,7 @@
     <video id="vid2a" src="videos/rep_en3/rep2.mp4" class="vid2" poster="img/bg.png" title="vid_2" webkit-playsinline playsinline>
     	<source src="videos/rep_en3/rep2.webm" type="video/webm" />
     	<source src="videos/rep_en3/rep2.ogg" type="video/ogg" />
+    	<canvas class="c"></canvas>
     </video>
 
 	<!--Last video-->
@@ -42,16 +57,6 @@
     	<source src="videos/rep_en3/rep3.webm" type="video/webm" />
     	<source src="videos/rep_en3/rep3.ogg" type="video/ogg" />
     </video>
-
-    <div class="content_facebook_connect">
-
-		<div class="border_top"></div>
-
-		<p>Conéctese por Facebook para ayudarle a que sus ”amigos” <br> le paguen las polas que le deben.</p>
-
-		<button id="save" class="boton fb_boton"></button>
-
-	</div><!--/facebook connect-->
 
 </div><!--/video-->
 
@@ -125,7 +130,7 @@
 
 				<a href="javascript:void(0);" class="modificar">MODIFICAR</a>
 
-				<a id="push_public" class="reportar_facebook"></a>
+				<a class="reportar_facebook" id="push_public"></a>
 
 				<a href="javascript:void(0);"  class="reportar_otro_amigo">REPORTAR A OTRO AMIGO</a>
 
