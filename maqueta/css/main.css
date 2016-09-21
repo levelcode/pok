@@ -237,15 +237,17 @@ canvas
 }
 .profile-thumb
 {
-    display: none;
+    display:none;
     z-index: 2;
     position: absolute;
     -webkit-filter: saturate(53%) brightness(98%) contrast(43%) blur(0.8px);
-    filter: saturate(53%) brightness(98%) contrast(43%) blur(0.8px);
-    width: 19%;
-    left: 33%;
+    filter:saturate(53%) brightness(98%) contrast(43%) blur(0.8px);
+    width: 14%;
+    top: 23%;
+    left: -11%;
+    right: 0;
     margin: 0 auto;
-    transform: rotate(1.2deg);
+    transform: rotate(2deg);
 }
 .wrapper .content_video .play.pause
 {
