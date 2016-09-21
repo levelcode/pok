@@ -24,11 +24,6 @@ function autov(video, videoc){
   setTimeout(function(){ video.pause();videoc.prop('muted', false);video.currentTime = 0;}, 200);
 }
 
-$(function(){
-  
-   
-})
-
 
 $( window ).load(function() {
 
@@ -627,19 +622,22 @@ $( window ).load(function() {
                   'me/datapola:reportar',
                   'post',
                   {
+                    'caption': 'HA SIDO REPORTADO EN DATAPOLA',
                     'tags' : String($('#id_friend').val()),
+                    'message' : String($('#publication').val()),
                     'amigo': String('"'+'https://datapola.com/test/index.php?id='+nombre+'"')
                   },
                  function(response) {
                     if (!response || response.error) {
                       setTimeout(function(){$('.content_terms').fadeOut(0); $('#push_public').show();$('#retorno_pub').empty();}, 3000);
                       console.log(response.error);
+                      $('#retorno_pub').empty();
                       $('#retorno_pub').append('Error al publicar en FB');
                     } else {
                       setTimeout(function(){$('.content_terms').fadeOut(0); $('#push_public').show();$('#retorno_pub').empty();}, 3000);
                       $('#retorno_pub').empty();
                       $('#retorno_pub').append('Éxito al publicar en FB');
-                      console.log("exito en la publicacion en FB" + response);
+                      console.log("Éxito en la publicacion en FB" + response);
                     }
                   }
                 );

@@ -49,6 +49,7 @@
     <video id="vid2a" src="videos/rep_en3/rep2.mp4" class="vid2" poster="img/bg.png" title="vid_2" webkit-playsinline playsinline>
     	<source src="videos/rep_en3/rep2.webm" type="video/webm" />
     	<source src="videos/rep_en3/rep2.ogg" type="video/ogg" />
+    	<canvas class="c"></canvas>
     </video>
 
 	<!--Last video-->
