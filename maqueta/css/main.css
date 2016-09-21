@@ -73,6 +73,7 @@ canvas
     background-size: contain;
     display: none;
     left: 0;
+    top: 0;
 }
 .marco_video img
 {
