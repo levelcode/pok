@@ -902,7 +902,20 @@ canvas
 {
     opacity: 0.7;
 }
-
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .reportar_facebook.loaded{
+    background-image:none;
+}
+.wrapper .content_buscar_amigo .content_reportar .content_form_reportar .reportar_facebook.loaded:after{
+    content:"";
+    display:block;
+    width:58px;
+    height:58px;
+    background-image:url(../img/ripple.svg);
+    position:absolute;
+    top:4px;
+    left:50%;
+    margin-left:-29px;
+}
 
 
 
