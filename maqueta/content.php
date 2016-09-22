@@ -13,50 +13,52 @@
 
 
 <div class="content_video" style="display:none">
+	<div id="contenedor_videos">
+	    <!--input type="button" value="Play" id="play" class="play"-->
 
-    <!--input type="button" value="Play" id="play" class="play"-->
+	    <div id="profile-thumb" class="profile-thumb">
+	    	<?php
+	    			if(isset($_GET["id"])){
+		        ?>
+		        <img src=<?php echo '"'.'uploads/'.$_GET["id"].'_p.jpg'.'"';?>/>
+		        <?php
+		        }else{ }
 
-    <div id="profile-thumb" class="profile-thumb">
-    	<?php
-    			if(isset($_GET["id"])){
-	        ?>
-	        <img src=<?php echo '"'.'uploads/'.$_GET["id"].'_p.jpg'.'"';?>/>
-	        <?php
-	        }else{ }
+		        ?>
+	    </div>
+	    <div class="banner"><img src="img/banner.gif" alt=""></div>
 
-	        ?>
+	    <div class="marco_video">
+			<a href="javascript:void(0);">
+	    		<img src="img/play_vid2.png" class="play_vid2" alt="">
+	    	</a>
+	    </div>
+
+		<!--First video-->
+	    <video id="vid" src="videos/inv/inv.mp4" style="" title="vid_1" webkit-playsinline playsinline>
+	        <source src="videos/inv/inv.webm" type="video/webm" />
+	        <source src="videos/inv/inv.ogg" type="video/ogg" />
+	    </video>
+
+	    <!--Second video-->
+	    <video id="vid2" src="videos/rep_en3/rep1_opc1.mp4" class="vid2" poster="img/bg.png"  title="vid_1" webkit-playsinline playsinline>
+	    	<source src="videos/rep_en3/rep1_opc1.webm" type="video/webm" />
+	    	<source src="videos/rep_en3/rep1_opc1.ogg" type="video/ogg" />
+	    </video>
+
+		<!--third video-->
+	    <video id="vid2a" src="videos/rep_en3/rep2.mp4" class="vid2" poster="img/bg.png" title="vid_2" webkit-playsinline playsinline>
+	    	<source src="videos/rep_en3/rep2.webm" type="video/webm" />
+	    	<source src="videos/rep_en3/rep2.ogg" type="video/ogg" />
+	    	<canvas class="c"></canvas>
+	    </video>
+
+		<!--Last video-->
+	    <video id="vid2b" src="videos/rep_en3/rep3.mp4" class="vid2" poster="img/bg.png" title="vid_2" webkit-playsinline playsinline>
+	    	<source src="videos/rep_en3/rep3.webm" type="video/webm" />
+	    	<source src="videos/rep_en3/rep3.ogg" type="video/ogg" />
+	    </video>
     </div>
-
-    <div class="marco_video">
-		<a href="javascript:void(0);">
-    		<img src="img/play_vid2.png" class="play_vid2" alt="">
-    	</a>
-    </div>
-
-	<!--First video-->
-    <video id="vid" src="videos/inv/inv.mp4" style="" title="vid_1" webkit-playsinline playsinline>
-        <source src="videos/inv/inv.webm" type="video/webm" />
-        <source src="videos/inv/inv.ogg" type="video/ogg" />
-    </video>
-
-    <!--Second video-->
-    <video id="vid2" src="videos/rep_en3/rep1_opc1.mp4" class="vid2" poster="img/bg.png"  title="vid_1" webkit-playsinline playsinline>
-    	<source src="videos/rep_en3/rep1_opc1.webm" type="video/webm" />
-    	<source src="videos/rep_en3/rep1_opc1.ogg" type="video/ogg" />
-    </video>
-
-	<!--third video-->
-    <video id="vid2a" src="videos/rep_en3/rep2.mp4" class="vid2" poster="img/bg.png" title="vid_2" webkit-playsinline playsinline>
-    	<source src="videos/rep_en3/rep2.webm" type="video/webm" />
-    	<source src="videos/rep_en3/rep2.ogg" type="video/ogg" />
-    	<canvas class="c"></canvas>
-    </video>
-
-	<!--Last video-->
-    <video id="vid2b" src="videos/rep_en3/rep3.mp4" class="vid2" poster="img/bg.png" title="vid_2" webkit-playsinline playsinline>
-    	<source src="videos/rep_en3/rep3.webm" type="video/webm" />
-    	<source src="videos/rep_en3/rep3.ogg" type="video/ogg" />
-    </video>
 
 </div><!--/video-->
 

@@ -104,7 +104,58 @@ $( window ).load(function() {
 
     }else{
 
+    };
+    
+
+
+
+    //****************
+    //Scale
+    //****************
+    /*
+    var h_video, w_video, h_foto, w_foto
+    $(window).resize(function(){
+        h_video = $('.content_video');
+        console.log();
+    });
+    function ScaleVideo_foto(){
     }
+    
+
+    var $el = $(".content_video");
+    var elHeight = $el.outerHeight();
+    var elWidth = $el.outerWidth();
+
+    var $wrapper = $("#scaleable-wrapper");
+
+    $(window).resize(function(){
+        console.log(doResize($wrapper));
+
+    });
+
+    function doResize(ui) { 
+      var scale, origin; 
+      scale = Math.min(
+        ui.size.width / elWidth,    
+        ui.size.height / elHeight
+      );
+      
+      $el.css({
+        transform: "translate(-50%, -50%) " + "scale(" + scale + ")"
+      });
+      return scale;
+    };
+    */
+
+
+
+
+
+    //****************
+    //Scale
+    //****************
+
+
 
 
     //******
@@ -136,8 +187,11 @@ $( window ).load(function() {
             //onLogin(response);
             FB.login(function(response) {
               onLogin(response);
+              console.log("Ingreso Automatico");
+              $(".content_facebook_connect").hide();
             }, {scope: 'publish_actions,user_friends'});
           } else {
+            console.log("Ingreso por Click");
             // Otherwise, show Login dialog first.
 
           }
@@ -147,6 +201,7 @@ $( window ).load(function() {
     };
 
     function onLogin(response) {
+      $('.loader').show();
       if (response.status == 'connected') {
         FB.api('/me?fields=first_name', function(data) {
             var value_t = data.first_name;
@@ -160,12 +215,12 @@ $( window ).load(function() {
               if (response && !response.error) {
                   if(Number(response.min) <= 18){
                     console.log("Menor de edad");
+                    window.location.href = "http://www.talkingalcohol.com/espanol/";
                   }else{
                     console.log("Mayor de edad");
                     $('body').addClass('ageGateActive');
                     $('.content_ingresar').hide();
-                    $('.content_facebook_connect').show();
-                    $('.loader').hide();
+                    
                     faceConnect();
                     //If is refered
                     if(body.hasClass('refered')){
@@ -181,10 +236,7 @@ $( window ).load(function() {
         );
       }
     };
-    function fb_log(callback){
 
-      // Place following code after FB.init call.
-    }
 
     //******
     //Facebook
@@ -226,12 +278,6 @@ $( window ).load(function() {
           $('video').prop('muted', !$('video').prop('muted'));
       });
 
-      //Popup legal
-      $( 'a.legal' ).hover(function() {
-              $( '.amigos_une_amigos' ).animate({'bottom': '-30px', 'opacity': '1'}, 400);
-            }, function() {
-              $( '.amigos_une_amigos' ).animate({'bottom': '-330px', 'opacity': '0'}, 400);
-      });
 
       //If body have class refered by facebook
       if(body.hasClass('refered')){
@@ -464,6 +510,7 @@ $( window ).load(function() {
 
           var boxContainer = $('.box_amigos_facebook');
           console.log("Se encontraron : "+response.data.length+" amigos");
+          $('.loader').hide();
 
           //Show actions on bottom
             $('body').addClass('steps step_1');
@@ -593,7 +640,7 @@ $( window ).load(function() {
             if(body.hasClass('refered')){
 
                 $("#vid2").show();
-                $(".content_facebook_connect").hide();
+                
                 
                 //Autoplay video if is connected
 
@@ -646,7 +693,6 @@ $( window ).load(function() {
               }else{
                   $('.loader').hide();
                   console.log("borrado de loader, carga video");
-                  $('.amigos_une_amigos').hide();
                   video.play();
               }
 
