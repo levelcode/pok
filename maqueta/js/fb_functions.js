@@ -646,7 +646,6 @@ $( window ).load(function() {
               }else{
                   $('.loader').hide();
                   console.log("borrado de loader, carga video");
-                  $('.content_facebook_connect,.amigos_une_amigos').hide();
                   video.play();
               }
 
