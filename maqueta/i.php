@@ -25,7 +25,7 @@
 
 
         <link rel="stylesheet" href="css/normalize.css">
-        
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
         <link rel="stylesheet" href="css/main.css">
 
@@ -43,7 +43,7 @@
 
         <meta property="og:image:height" content="400" />
 
-        <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" /> 
+        <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" />
 
         <?php
 
@@ -55,7 +55,7 @@
 
             ?>
 
-            <meta property="og:image" content='<?php echo $dominio."/subidas/".$_GET["id"].".jpg";?>' />
+            <meta property="og:image" content='<?php echo $dominio."/subidas/".$_GET["id"]."_p.jpg";?>' />
             <meta property="og:url" content='<?php echo $dominio."/index.php?id=".$_GET["id"]; ?>' />
             <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" />
 
@@ -175,6 +175,7 @@
 
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
+        <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js"></script>-->
 
         <script src="js/fabric/dist/fabric.min.js"></script>
 
