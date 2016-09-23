@@ -20,7 +20,7 @@
 	    	<?php
 	    			if(isset($_GET["id"])){
 		        ?>
-		        <img src=<?php echo '"'.'uploads/'.$_GET["id"].'_p.jpg'.'"';?>/>
+		        <img src=<?php echo '"'.'subidas/'.$_GET["id"].'_p.jpg'.'"';?>/>
 		        <?php
 		        }else{ }
 

@@ -112,6 +112,7 @@ $( window ).load(function() {
     //****************
     //Scale
     //****************
+
     /*
     var h_video, w_video, h_foto, w_foto
     $(window).resize(function(){
@@ -146,10 +147,6 @@ $( window ).load(function() {
       return scale;
     };
     */
-
-
-
-
 
     //****************
     //Scale
