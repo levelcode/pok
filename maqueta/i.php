@@ -54,10 +54,6 @@
 
         <meta property="fb:app_id" content="1660712804256395" />
 
-        <meta property="og:image:width" content="600" />
-
-        <meta property="og:image:height" content="600" />
-
         <?php
 
             $dominio = "https://datapola.com";
@@ -69,7 +65,12 @@
             ?>
             <meta property="og:type" content="datapola:amigo"/>
             <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" /> 
+            
+            <meta property="og:image:secure_url" content='<?php echo $dominio."/subidas/".$_GET["id"].".jpg";?>' />
             <meta property="og:image" content='<?php echo $dominio."/subidas/".$_GET["id"].".jpg";?>' />
+            <meta property="og:image:width" content="600" />
+            <meta property="og:image:height" content="600" />
+            
             <meta property="og:url" content='<?php echo $dominio."/index.php?id=".$_GET["id"]; ?>' />
             <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" />
 

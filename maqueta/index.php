@@ -80,7 +80,7 @@
             }else{
 
             ?>
-
+            <meta property="og:url" content="https://datapola.com" />
             <meta property="og:image" content="https://datapola.com/img/datapola.jpg" />
             <meta property="og:title" content="DATAPOLA" />
             <?php
