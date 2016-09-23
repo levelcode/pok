@@ -26,7 +26,6 @@
 
 		        ?>
 	    </div>
-	    <div class="banner"><img src="img/banner.gif" alt=""></div>
 
 	    <div class="marco_video">
 			<a href="javascript:void(0);">

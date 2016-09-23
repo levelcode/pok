@@ -47,6 +47,14 @@
     .banner img, .banner2 img{
         width: 100%;
     }
+    .banner2, .banner{
+        position: absolute;
+        margin-left: inherit;
+        margin-bottom: 3px;
+        top: -41px;
+    }
+
+    
     
 
 

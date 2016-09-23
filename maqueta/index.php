@@ -198,6 +198,8 @@
 
 
         <script type="text/javascript" src="js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+        <script type="text/javascript" src="js/iphone-inline-video.browser.js"></script>
+        
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 
