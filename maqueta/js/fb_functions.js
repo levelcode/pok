@@ -122,11 +122,6 @@ $( window ).load(function() {
      //$('.content_facebook_connect').hide();
      $('.loader').hide();
 
-    //click modal
-    //$('.reportar_facebook').click(function(event) {
-    //  console.log('show modal');
-     //$('.content_terms').fadeIn(600);
-   //});
 
    $('.drop_bg, .close').click(function(event) {
      $('.content_terms').fadeOut(600);
@@ -334,6 +329,8 @@ $( window ).load(function() {
             $('.banner2').css('visibility', 'hidden');
             $('.loader').hide();
             var urlformat = "https://datapola.com/"+url;
+            $('.modificar').show();
+            $('.reportar_facebook').show();
             $('.marco_video').show();
             $('.play_vid2').show();
             //Autoplay video if I create report
@@ -403,35 +400,42 @@ $( window ).load(function() {
 
       //Click modify
       modifyReport.click(function(event) {
-        //Show first event
-        $('.reportar_facebook').show();
-        $('.reportar_otro_amigo').hide();
-        $('#search_friend').val('');
-        $('#photo_friend').val('');
-        $('#id_friend').val('');
-        $('#beers_input').val('');
+        if(cancelopublish == true){
+          console.log('Regreso desde reporte');
+          window.location.href = "https://datapola.com";
+        }else{
+          //Show first event
+          $('.reportar_facebook').show();
+          $('.reportar_otro_amigo').hide();
+          $('#search_friend').val('');
+          $('#photo_friend').val('');
+          $('#id_friend').val('');
+          $('#beers_input').val('');
 
-        $('#profile-thumb').empty();
-        $('body').removeClass().addClass('steps step_1');
+          $('#profile-thumb').empty();
+          $('body').removeClass().addClass('steps step_1');
 
-        //Mute video
-        $(".vid2, .profile-thumb").hide();
-        //Hide rec square
-        $('.marco_video, .play').hide();
-        video2.currentTime = 0;
-        video2.pause();
+          //Mute video
+          $(".vid2, .profile-thumb").hide();
+          //Hide rec square
+          $('.marco_video, .play').hide();
+          video2.currentTime = 0;
+          video2.pause();
 
-        video2a.currentTime = 0;
-        video2a.pause();
+          video2a.currentTime = 0;
+          video2a.pause();
 
-        video2b.currentTime = 0;
-        video2b.pause();
+          video2b.currentTime = 0;
+          video2b.pause();
 
-        //Play First Video
+          //Play First Video
 
-        $("#vid").show();
-        video.currentTime = 0;
-        video.play();
+          $("#vid").show();
+          video.currentTime = 0;
+          video.play();
+
+        }
+        
 
         return false;
         event.preventDefault();
@@ -439,35 +443,42 @@ $( window ).load(function() {
 
       //Click modify
       reportAnother.click(function(event) {
-        //Show first event
-        $('.reportar_facebook').show();
-        $('.reportar_otro_amigo').hide();
-        $('#search_friend').val('');
-        $('#photo_friend').val('');
-        $('#id_friend').val('');
-        $('#beers_input').val('');
+        if(cancelopublish == true){
+          console.log('Regreso desde reporte');
+          window.location.href = "https://datapola.com";
+        }else{
+          //Show first event
+          $('.reportar_facebook').show();
+          $('.reportar_otro_amigo').hide();
+          $('#search_friend').val('');
+          $('#photo_friend').val('');
+          $('#id_friend').val('');
+          $('#beers_input').val('');
 
-        $('#profile-thumb').empty();
-        $('body').removeClass().addClass('steps step_1');
+          $('#profile-thumb').empty();
+          $('body').removeClass().addClass('steps step_1');
 
-        //Mute video
-        $(".vid2, .profile-thumb").hide();
-        //Hide rec square
-        $('.marco_video, .play').hide();
-        video2.currentTime = 0;
-        video2.pause();
+          //Mute video
+          $(".vid2, .profile-thumb").hide();
+          //Hide rec square
+          $('.marco_video, .play').hide();
+          video2.currentTime = 0;
+          video2.pause();
 
-        video2a.currentTime = 0;
-        video2a.pause();
+          video2a.currentTime = 0;
+          video2a.pause();
 
-        video2b.currentTime = 0;
-        video2b.pause();
+          video2b.currentTime = 0;
+          video2b.pause();
 
-        //Play First Video
+          //Play First Video
 
-        $("#vid").show();
-        video.currentTime = 0;
-        video.play();
+          $("#vid").show();
+          video.currentTime = 0;
+          video.play();
+
+        }
+        
         
 
         return false;
@@ -510,7 +521,7 @@ $( window ).load(function() {
       });
     }
 
-
+    var cancelopublish = false;
 
     function faceConnect(){
       $('.compartir_facebook').click(function(){
@@ -521,231 +532,199 @@ $( window ).load(function() {
       })
       
       console.log('Peticiones de FB');
-        //------------------------- Login -----------------------//
-        FB.api(
-        '/me/taggable_friends?limit=1000',
-        'GET',
-        {
-          "fields":
-          "context,first_name,last_name,name,id,picture.width(400).height(400).type(large)"
-        },
-        function(response) {
+      //------------------------- Login -----------------------//
+      FB.api(
+      '/me/taggable_friends?limit=1000',
+      'GET',
+      {
+        "fields":
+        "context,first_name,last_name,name,id,picture.width(400).height(400).type(large)"
+      },
+      function(response) {
 
-          var boxContainer = $('.box_amigos_facebook');
-          console.log("Se encontraron : "+response.data.length+" amigos");
-          $('.loader').hide();
+        var boxContainer = $('.box_amigos_facebook');
+        console.log("Se encontraron : "+response.data.length+" amigos");
+        $('.loader').hide();
 
-          //Show actions on bottom
-            $('body').addClass('steps step_1');
+        //Show actions on bottom
+          $('body').addClass('steps step_1');
 
-            //Hide legal
+          //Hide legal
 
-            $('.content_video').show();
+          $('.content_video').show();
 
-          //Data array
-          for(y=0; y<response.data.length; y++) {
-            $('.hidden').hide();
-            //Load images
-            boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + " '/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man' style='display:none'>"+ response.data[y].id +"</span></div>");
-          }
-          //Action for input
-          boxContainer.hide();
-          //search friend
-          $('#search_friend').unbind('click').click(function(event) {
-              $(this).siblings('.box_amigos_facebook').toggle(400);
-          });
-          $('#search_friend').keydown(function(e) {
-              $('.box_amigos_facebook').slideDown(400);
-              setTimeout(function () {
-                  var value_t = $("#search_friend").val();
-                  if(value_t.length >= 1){
-                    console.log(value_t);
-                    filler(response, value_t, boxContainer);
-                  }else{
-                    filler(response, '', boxContainer);
-                  }
-              }, 100);
-          });
+        //Data array
+        for(y=0; y<response.data.length; y++) {
+          $('.hidden').hide();
+          //Load images
+          boxContainer.append("<div class='box_perfil'><img src='" + response.data[y].picture.data.url + " '/><span class='nombre'>" + response.data[y].name + "</span><span class='hidden id_man' style='display:none'>"+ response.data[y].id +"</span></div>");
+        }
+        //Action for input
+        boxContainer.hide();
+        //search friend
+        $('#search_friend').unbind('click').click(function(event) {
+            $(this).siblings('.box_amigos_facebook').toggle(400);
+        });
+        $('#search_friend').keydown(function(e) {
+            $('.box_amigos_facebook').slideDown(400);
+            setTimeout(function () {
+                var value_t = $("#search_friend").val();
+                if(value_t.length >= 1){
+                  console.log(value_t);
+                  filler(response, value_t, boxContainer);
+                }else{
+                  filler(response, '', boxContainer);
+                }
+            },100);
+        });
 
 
-          //Action box profile item
-          $('.box_perfil').click(function(event) {
+        //Action box profile item
+        $('.box_perfil').click(function(event) {
 
-            var img = $(this).children('img').attr('src'),
-                nombre = $(this).children('.nombre').text(),
-                id_user = $(this).children('.id_man').text();
+          var img = $(this).children('img').attr('src'),
+              nombre = $(this).children('.nombre').text(),
+              id_user = $(this).children('.id_man').text();
 
-                $('#search_friend').val(nombre);
-                $('#photo_friend').val(img);
-                $('#id_friend').val(id_user);
-                $(this).parent().hide(400);
-          });
+              $('#search_friend').val(nombre);
+              $('#photo_friend').val(img);
+              $('#id_friend').val(id_user);
+              $(this).parent().hide(400);
+        });
           //Click for publish BS
-          $('#push_public').click(function(e){
-            //Share action;
-            $(this).addClass('loaded');
-            $('#retorno_pub').empty();
-            $('#retorno_pub').append('Publicando');
-            var objectToLike = 'https://datapola.com/',
-                trimedNme = random,
-                dataFB = {
-                "image_url" : $('#photo_friend').val(),
-                "id_user" : trimedNme
-            };
+        $('#push_public').click(function(e){
+          //Share action;
+          $(this).addClass('loaded');
+          $('#retorno_pub').empty();
+          $('#retorno_pub').append('Publicando');
+          var objectToLike = 'https://datapola.com/',
+              trimedNme = random,
+              dataFB = {
+              "image_url" : $('#photo_friend').val(),
+              "id_user" : trimedNme
+          };
 
-            var canvas1 = new fabric.Canvas('c1'),
-                urlFoto = $('#photo_friend').val();
-            //inicializacion
-            console.log('url foto FB: '+ console.log('launch draw'));
-            var foto1 = fototexto(canvas1,"img/600x600.jpg", "img/sello.png",urlFoto, 115, 60,0.7,$('#search_friend').val() , $('#beers_input').val(), 430,470, 'hoefler_textregular', 60, 600, 600, trimedNme,callBack1);
+          var canvas1 = new fabric.Canvas('c1'),
+              urlFoto = $('#photo_friend').val();
+          //inicializacion
+          console.log('url foto FB: '+ console.log('launch draw'));
+          var foto1 = fototexto(canvas1,"img/600x600.jpg", "img/sello.png",urlFoto, 115, 60,0.7,$('#search_friend').val() , $('#beers_input').val(), 430,470, 'hoefler_textregular', 60, 600, 600, trimedNme,callBack1);
 
-            function callBack1(url, nombre){
-              console.log('launch draw 1 '+url);
-              var urlformat = "https://datapola.com/subidas/"+nombre+".jpg";
-              console.log("url retornada: " + urlformat);
+          function callBack1(url, nombre){
+            console.log('launch draw 1 '+url);
+            var urlformat = "https://datapola.com/subidas/"+nombre+".jpg";
+            console.log("url retornada: " + urlformat);
 
-              //Post object
-              var tempSharer = FB.api(
-                'me/objects/datapola:amigo',
-                'post',
-                {'object': {
-                  'og:url': 'https://datapola.com/i.php?id='+nombre,
-                  'og:title': 'DESCUBRE POR QUÉ ESTÁS REPORTADO INGRESANDO AQUÍ',
-                  'og:type': 'datapola:amigo',
-                  'og:image': urlformat,
-                  'og:description': 'Tú también puedes reportar a tus amigos en DATAPOLA.',
-                  'fb:app_id': '1660712804256395'
-                }},
-                 function(response) {
-                  //Read last object
-                  FB.api(
-                    'me/objects/datapola:amigo',
-                    'get',
-                    function(response) {
-                      var id_amiguito = response.data[0].id;
+            //Post object
+            FB.api(
+              'me/objects/datapola:amigo',
+              'post',
+              {'object': {
+                'og:url': 'https://datapola.com/i.php?id='+nombre,
+                'og:title': 'DESCUBRE POR QUÉ ESTÁS REPORTADO INGRESANDO AQUÍ',
+                'og:type': 'datapola:amigo',
+                'og:image': urlformat,
+                'og:description': 'Tú también puedes reportar a tus amigos en DATAPOLA.',
+                'fb:app_id': '1660712804256395'
+              }},
+                function(response) {
+                //Read last object
+                FB.api(
+                  'me/objects/datapola:amigo',
+                  'get',
+                  function(response) {
+                    var id_amiguito = response.data[0].id;
 
-                      //Action
-                      var temp_pub = FB.ui({
-                        method: 'share_open_graph',
-                        action_type: 'datapola:reportar',
-                        action_properties: JSON.stringify({
-                          amigo:id_amiguito,
-                          tags:String($('#id_friend').val())
-                        })
-                      }, function(r){
-
-                        if (!r || r.error) {
-                          console.log(String('Error: '+r.error));
-                        } else {
-                          $('.reportar_facebook').hide();
-                          $('.reportar_otro_amigo').show();
-                          console.log("Exito en la publicacion en FB" + r);
-                          tempSharer = null;
-                          temp_pub = null;
-                          
-                          FB = null;
-                          window.fbAsyncInit = null;
-                          (function(d, s, id){
-                             var js, fjs = d.getElementsByTagName(s)[0];
-                             if (d.getElementById(id)) {return;}
-                             js = d.createElement(s); js.id = id;
-                             js.src = "//connect.facebook.net/en_US/sdk.js";
-                             fjs.parentNode.insertBefore(js, fjs);
-                          }(document, 'script', 'facebook-jssdk'));
-                          window.fbAsyncInit = function() {
-                              //Se instancia el elemento FB
-                              FB.init({
-                                appId: '1660712804256395',
-                                status: true,
-                                xfbml: true,
-                                cookie: true,
-                                version    : 'v2.7',
-                                channelUrl: url_l+'/channelUrl.html'
-                              });
-                              console.log("SDK FB RE solicitado");
-                          };
-                          //$('#fb-root').empty();
-                          $('.reportar_facebook').removeClass('loaded');
-                          
-                        }
-
-                      });
-
-                    }
-                  );
-              });
-
-
-              //*********************
-              //FB Object POST METHOD
-              //*********************
-
-            }
-          });//End of publish bs
+                    //Action
+                    FB.ui({
+                      method: 'share_open_graph',
+                      action_type: 'datapola:reportar',
+                      action_properties: JSON.stringify({
+                        amigo:id_amiguito,
+                        tags:String($('#id_friend').val())
+                      })
+                    }, function(r){ 
+                      if (!r || r.error) {
+                        console.log(String('Error: '+r.error));
+                      } else {
+                        $('.reportar_facebook').hide();
+                        $('.modificar').hide();
+                        $('.reportar_otro_amigo').show();
+                        console.log("Exito en la publicacion en FB" + r);
+                        //$('#fb-root').empty();
+                        $('.reportar_facebook').removeClass('loaded');
+                        cancelopublish = true;
+                        
+                      }
+                    });// FB ui
+                });//FB api get
+            });//FB api post
+          }
+        });//End of publish bs
 
           //Draw image profile on video if the user is refered
-            if(body.hasClass('refered')){
+        if(body.hasClass('refered')){
+            $('.banner').css('visibility', 'hidden');
+            $("#vid2").show();
+            
+            
+            //Autoplay video if is connected
+
+            //video
+            $('body').removeClass().addClass('steps step_3');
+
+            //Play Videpo
+            video2.play();
+            //Launch image
+            //When vid2 is finished
+            document.getElementById('vid2').addEventListener('ended',stop2,false);
+            function stop2(e) {
+                setTimeout(function(){ $('.banner').css('visibility', 'visible'); }, 3000);
+                $('.vid2').hide();
+                $('#vid2a').show();
+                //Play second Video
+                video2a.play();
+                //Attach image generated
+                $('#profile-thumb').show()
+                //document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
+                $('.profile-thumb').show();
+            }
+
+            //When vid2a is finished
+            document.getElementById('vid2a').addEventListener('ended',stop3,false);
+            function stop3(e) {
                 $('.banner').css('visibility', 'hidden');
-                $("#vid2").show();
-                
-                
-                //Autoplay video if is connected
+                $('.vid2').hide();
+                $('#vid2b').show();
+                //Play third Video
+                video2b.play();
+                //Attach image generated
+                $('.profile-thumb').hide();
+            }
 
-                //video
-                $('body').removeClass().addClass('steps step_3');
+            //When vid2b is finished
+            document.getElementById('vid2b').addEventListener('ended',stop4,false);
+            function stop4(e) {
+                //$('.content_video').hide();
+                  //modifyReport.hide();
+                  //reportAnother.show();
+            }
 
-                //Play Videpo
-                video2.play();
-                //Launch image
-                //When vid2 is finished
-                document.getElementById('vid2').addEventListener('ended',stop2,false);
-                function stop2(e) {
-                    setTimeout(function(){ $('.banner').css('visibility', 'visible'); }, 3000);
-                    $('.vid2').hide();
-                    $('#vid2a').show();
-                    //Play second Video
-                    video2a.play();
-                    //Attach image generated
-                    $('#profile-thumb').show()
-                    //document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
-                    $('.profile-thumb').show();
-                }
+            //When vid2a is finished
 
-                //When vid2a is finished
-                document.getElementById('vid2a').addEventListener('ended',stop3,false);
-                function stop3(e) {
-                    $('.banner').css('visibility', 'hidden');
-                    $('.vid2').hide();
-                    $('#vid2b').show();
-                    //Play third Video
-                    video2b.play();
-                    //Attach image generated
-                    $('.profile-thumb').hide();
-                }
+            $('.reportar_amigo_final').click(function(event) {
+              /* Act on the event */
+              //
+              window.location.href = "https://datapola.com";
+            });
 
-                //When vid2b is finished
-                document.getElementById('vid2b').addEventListener('ended',stop4,false);
-                function stop4(e) {
-                    //$('.content_video').hide();
-                      //modifyReport.hide();
-                      //reportAnother.show();
-                }
+        }else{
+              $('.loader').hide();
+              console.log("borrado de loader, carga video");
+              video.play();
+        }
 
-                //When vid2a is finished
-
-                $('.reportar_amigo_final').click(function(event) {
-                  /* Act on the event */
-                  //
-                  window.location.href = "https://datapola.com";
-                });
-
-              }else{
-                  $('.loader').hide();
-                  console.log("borrado de loader, carga video");
-                  video.play();
-              }
-
-        });//End of async
+      });//End of async
     }//End of facbook connect
 
     init();
