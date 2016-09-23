@@ -44,6 +44,9 @@
     {
         background: transparent url(../img/marco.gif) no-repeat center 33%;
     }
+    .banner img, .banner2 img{
+        width: 100%;
+    }
     
 
 
@@ -53,9 +56,7 @@
 @media (max-width: 767px) {
     .profile-thumb
     {
-        position: fixed;
-        top: initial;
-        left: -15%;
+        
 
     }
     .wrapper .content_buscar_amigo
@@ -90,8 +91,7 @@
     }
     .profile-thumb
     {
-        -webkit-filter: saturate(53%) brightness(98%) contrast(43%) blur(0.8px);
-        filter: saturate(53%) brightness(98%) contrast(43%) blur(1px);
+
     }
 
     footer .box_share a.legal
@@ -304,7 +304,7 @@
     }
     .profile-thumb
     {
-        width: 19.2%;
+        
     }
     #vid,
     .vid2
