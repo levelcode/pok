@@ -50,17 +50,13 @@
 
         <link rel="stylesheet" href="js/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
 
-        <meta property="og:description" content="Que todo el mundo sepa que usted le promete polas de cumpleaños a sus amigos y nunca les paga." />
-
-        <meta property="og:type" content="datapola:amigo"/>
+        <meta property="og:description" content="Tú también puedes reportar a tus amigos en DATAPOLA." />
 
         <meta property="fb:app_id" content="1660712804256395" />
 
-        <meta property="og:image:width" content="400" />
+        <meta property="og:image:width" content="600" />
 
-        <meta property="og:image:height" content="400" />
-
-        <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" />
+        <meta property="og:image:height" content="600" />
 
         <?php
 
@@ -71,8 +67,9 @@
                 $bodyref = 'refered';
 
             ?>
-
-            <meta property="og:image" content='<?php echo $dominio."/subidas/".$_GET["id"]."_p.jpg";?>' />
+            <meta property="og:type" content="datapola:amigo"/>
+            <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" /> 
+            <meta property="og:image" content='<?php echo $dominio."/subidas/".$_GET["id"].".jpg";?>' />
             <meta property="og:url" content='<?php echo $dominio."/index.php?id=".$_GET["id"]; ?>' />
             <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" />
 
@@ -83,8 +80,8 @@
 
             ?>
 
-            <meta property="og:image" content="https://datapola.com/img/fondo2.jpg" />
-
+            <meta property="og:image" content="https://datapola.com/img/datapola.jpg" />
+            <meta property="og:title" content="DATAPOLA" />
             <?php
 
             }

@@ -122,6 +122,8 @@
 
 	<div id="step_2">
 
+	<a href="https://youtu.be/kOe1cmEVEXQ" class="banner2" target="_blank"><img src="img/banner.gif" alt=""></a>
+
 		<div class="content_reportar">
 
 			<div class="content_form_reportar reportar_2">
@@ -144,11 +146,7 @@
 
 	<div id="step_3">
 
-		<p>
-
-			Es mejor que vaya <span>buscando </span> un <span>abogado</span>
-
-		</p>
+			<a href="https://youtu.be/kOe1cmEVEXQ" class="banner" target="_blank"><img src="img/banner.gif" alt=""></a>
 
 		<div class="content_reportar">
 
