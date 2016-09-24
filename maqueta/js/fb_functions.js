@@ -472,90 +472,86 @@ $( window ).load(function() {
 
       //Click modify
       modifyReport.click(function(event) {
-        if(cancelopublish == true){
-          console.log('Regreso desde reporte');
-          window.location.href = "https://datapola.com";
-        }else{
-          //Show first event
-          $('.reportar_facebook').show();
-          $('.reportar_otro_amigo').hide();
-          $('#search_friend').val('');
-          $('#photo_friend').val('');
-          $('#id_friend').val('');
-          $('#beers_input').val('');
+        random = Math.floor((Math.random() * 10000000) + 1);
+        console.log("Se Genera nuevo ID");
+        //Show first event
+        $('.reportar_facebook').show();
+        $('.reportar_otro_amigo').hide();
+        $('#search_friend').val('');
+        $('#photo_friend').val('');
+        $('#id_friend').val('');
+        $('#beers_input').val('');
 
-          $('#profile-thumb').empty();
-          $('body').removeClass().addClass('steps step_1');
+        $('#profile-thumb').empty();
+        $('body').removeClass().addClass('steps step_1');
 
-          //Mute video
-          $(".vid2, #profile-thumb").hide();
-          //Hide rec square
-          $('.marco_video, .play').hide();
-          video2.currentTime = 0;
-          video2.pause();
+        //Mute video
+        $(".vid2, #profile-thumb").hide();
+        //Hide rec square
+        $('.marco_video, .play').hide();
+        video2.currentTime = 0;
+        video2.pause();
 
-          video2a.currentTime = 0;
-          video2a.pause();
+        video2a.currentTime = 0;
+        video2a.pause();
 
-          video2b.currentTime = 0;
-          video2b.pause();
+        video2b.currentTime = 0;
+        video2b.pause();
 
-          //Play First Video
+        //Play First Video
 
-          $("#vid").show();
-          video.currentTime = 0;
-          video.play();
+        $("#vid").show();
+        video.currentTime = 0;
+        video.play();
 
-          resize_fn();
-          resize_fn();
-          resize_fn();
+        resize_fn();
+        resize_fn();
+        resize_fn();
 
-        }
+        
         return false;
         event.preventDefault();
       });
 
       //Click modify
       reportAnother.click(function(event) {
-        if(cancelopublish == true){
-          console.log('Regreso desde reporte');
-          window.location.href = "https://datapola.com";
-        }else{
-          //Show first event
-          $('.reportar_facebook').show();
-          $('.reportar_otro_amigo').hide();
-          $('#search_friend').val('');
-          $('#photo_friend').val('');
-          $('#id_friend').val('');
-          $('#beers_input').val('');
+        random = Math.floor((Math.random() * 10000000) + 1);
+        console.log("Se Genera nuevo ID");
+        //Show first event
+        $('.reportar_facebook').show();
+        $('.reportar_otro_amigo').hide();
+        $('#search_friend').val('');
+        $('#photo_friend').val('');
+        $('#id_friend').val('');
+        $('#beers_input').val('');
 
-          $('#profile-thumb').empty();
-          $('body').removeClass().addClass('steps step_1');
+        $('#profile-thumb').empty();
+        $('body').removeClass().addClass('steps step_1');
 
-          //Mute video
-          $(".vid2, #profile-thumb").hide();
-          //Hide rec square
-          $('.marco_video, .play').hide();
-          video2.currentTime = 0;
-          video2.pause();
+        //Mute video
+        $(".vid2, #profile-thumb").hide();
+        //Hide rec square
+        $('.marco_video, .play').hide();
+        video2.currentTime = 0;
+        video2.pause();
 
-          video2a.currentTime = 0;
-          video2a.pause();
+        video2a.currentTime = 0;
+        video2a.pause();
 
-          video2b.currentTime = 0;
-          video2b.pause();
+        video2b.currentTime = 0;
+        video2b.pause();
 
-          //Play First Video
+        //Play First Video
 
-          $("#vid").show();
-          video.currentTime = 0;
-          video.play();
+        $("#vid").show();
+        video.currentTime = 0;
+        video.play();
 
-          resize_fn();
-          resize_fn();
-          resize_fn();
+        resize_fn();
+        resize_fn();
+        resize_fn();
 
-        }
+        
         return false;
         event.preventDefault();
       });
