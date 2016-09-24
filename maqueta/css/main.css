@@ -437,12 +437,12 @@ canvas
     width: 100%;
     height: calc(100% - 41px);
     border-top: 1px solid #ed1a3b;
-    margin-top: 15px;
+    margin-top: 40px;
     background: rgba(0,0,0,0.8);
 }
-.wrapper .content_buscar_amigo #step_2 .content_reportar
+.wrapper .content_buscar_amigo #step_1 .content_reportar
 {
-     margin-top: 40px;
+     margin-top: 15px !important;
 }
 .wrapper .content_buscar_amigo .content_reportar .content_form_reportar
 {

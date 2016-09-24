@@ -88,9 +88,20 @@ $( window ).load(function() {
     if(movil == true){
       $('#save').on("touchstart",function(){
         console.log("Reproduce touch en mobile");
-        autov(video, videoc);
+        if(body.hasClass('refered')){
+          autov(video2, video2c);
+          autov(video2a, video2ac);
+          autov(video2b, video2bc);
+          console.log("Videos referidos loaders.")
+        }else{
+          autov(video, videoc);
+          console.log("Video intro loader.")
+        }
       });
     }
+
+
+
     
     $('#save').click(function() {
 
@@ -100,7 +111,15 @@ $( window ).load(function() {
 
       //hack for mobile video manage autoplay
       if(movil != true){
-        autov(video, videoc);
+        if(body.hasClass('refered')){
+          autov(video2, video2c);
+          autov(video2a, video2ac);
+          autov(video2b, video2bc);
+          console.log("Videos referidos loaders.")
+        }else{
+          autov(video, videoc);
+          console.log("Video intro loader.")
+        }
       }
       //video.play();
       //setTimeout(function(){ video.pause();video.currentTime = 0;}, 200);
@@ -119,6 +138,7 @@ $( window ).load(function() {
       }
      });
      $('.content_video').hide();
+     $('.wrapper_video').hide();
      //$('.content_facebook_connect').hide();
      $('.loader').hide();
 
@@ -326,7 +346,7 @@ $( window ).load(function() {
           var foto2 = fototexto(canvas2,"img/410x536.jpg", "img/sello_p.png",urlFoto, 30, 30,0.7, $('#search_friend').val() , $('#beers_input').val(), 400,440, 'hoefler_textregular', 60, 410, 536, String(trimedNme+'_p'), callBack2);
           //$('.loader').show();
           function callBack2(url){
-            $('.banner2').css('visibility', 'hidden');
+            $('.banner').css('visibility', 'hidden');
             $('.loader').hide();
             var urlformat = "https://datapola.com/"+url;
             $('.modificar').show();
@@ -357,35 +377,31 @@ $( window ).load(function() {
                   $('.vid2').hide();
                   $('#vid2a').show();
                   $('#vid2a').show();
-                  setTimeout(function(){ $('.banner2').css('visibility', 'visible'); }, 11000);
+                  setTimeout(function(){ $('.banner').css('visibility', 'visible'); }, 11000);
                   
                   //Play second Video
                   video2a.play();
                   //Attach image generated
                   $('#profile-thumb').show()
-                  //document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
-                  $('.profile-thumb').show();
               }
 
               //When vid2a is finished
               document.getElementById('vid2a').addEventListener('ended',stop3,false);
               function stop3(e) {
-                  $('.banner2').css('visibility', 'hidden');
+                  $('.banner').css('visibility', 'hidden');
                   
                   $('.vid2').hide();
                   $('#vid2b').show();
                   //Play third Video
                   video2b.play();
                   //Attach image generated
-                  $('.profile-thumb').hide();
+                  $('#profile-thumb').hide();
               }
 
               //When vid2b is finished
               document.getElementById('vid2b').addEventListener('ended',stop4,false);
               function stop4(e) {
-                  //$('.content_video').hide();
-                    //modifyReport.hide();
-                    //reportAnother.show();
+                  
               }
 
             });//Play vid 2
@@ -416,7 +432,7 @@ $( window ).load(function() {
           $('body').removeClass().addClass('steps step_1');
 
           //Mute video
-          $(".vid2, .profile-thumb").hide();
+          $(".vid2, #profile-thumb").hide();
           //Hide rec square
           $('.marco_video, .play').hide();
           video2.currentTime = 0;
@@ -459,7 +475,7 @@ $( window ).load(function() {
           $('body').removeClass().addClass('steps step_1');
 
           //Mute video
-          $(".vid2, .profile-thumb").hide();
+          $(".vid2, #profile-thumb").hide();
           //Hide rec square
           $('.marco_video, .play').hide();
           video2.currentTime = 0;
@@ -552,6 +568,8 @@ $( window ).load(function() {
           //Hide legal
 
           $('.content_video').show();
+          $('.wrapper_video').show();
+          
 
         //Data array
         for(y=0; y<response.data.length; y++) {
@@ -687,7 +705,7 @@ $( window ).load(function() {
                 //Attach image generated
                 $('#profile-thumb').show()
                 //document.getElementById('profile-thumb').innerHTML = "<img src='" + urlformat + "' width='290' height='390'>";
-                $('.profile-thumb').show();
+                $('#profile-thumb').show();
             }
 
             //When vid2a is finished
@@ -699,7 +717,7 @@ $( window ).load(function() {
                 //Play third Video
                 video2b.play();
                 //Attach image generated
-                $('.profile-thumb').hide();
+                $('#profile-thumb').hide();
             }
 
             //When vid2b is finished
