@@ -12,6 +12,7 @@ var downloadURL = "";
 var day;
 var month;
 var year;
+var cancelopublish = false;
 
 //Vars FB
 var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href),
@@ -43,6 +44,7 @@ if(movil==true){
 
 };
 
+//Make videos usable by iOS
 if(ios == true){
   console.log("Desde ios")
   makeVideoPlayableInline(video);
@@ -50,12 +52,13 @@ if(ios == true){
   makeVideoPlayableInline(video2a);
   makeVideoPlayableInline(video2b);
 }
-//Gonzo script
 
+//Search if the client is mobile
 (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
 
 movil = jQuery.browser.mobile;
 
+//Search if the client is iOS
 function iOS() {
 
   var iDevices = [
@@ -74,17 +77,74 @@ function iOS() {
   return false;
 }
 
-//hack for mobile video
-function autov(video, videoc){
-  videoc.prop('muted', true);
-  video.play();
-  setTimeout(function(){ video.pause();videoc.prop('muted', false);video.currentTime = 0;}, 200);
-}
+
 
 $( window ).load(function() {
 
+
+    //**************
+    //*** Escala ***
+    //**************
+
+    var w = $('body').width();
+    var h = $('body').height();
+
+    var wv = 1920;
+    var hv = 1080;
+
+    var scale;
+    function resize_fn(){
+        
+        w = $('body').width();
+        h = $('body').height();
+        
+        scale = Math.min(Number(h-150)/hv, w/wv);
+        $('#contenedor_videos').css({
+            "-ms-transform": "scale(" + scale + ")"
+        });
+        $('#contenedor_videos').css({
+            "-webkit-transform": "scale(" + scale + ")"
+        });
+        $('#contenedor_videos').css({
+            "-moz-transform": "scale(" + scale + ")"
+        });
+        $('#contenedor_videos').css({
+            "-o-transform": "scale(" + scale + ")"
+        });
+        $('#contenedor_videos').css({
+            "transform": "scale(" + scale + ")"
+        });
+
+        var widthcont = Number($('#contenedor_videos').width()*scale)/2;
+        var widtheight = Number($('#contenedor_videos').height()*scale)/2;
+        console.log("Ancho calculado: " + widthcont + " Escala: "+scale);
+        $('#contenedor_videos').css({
+            left:  "calc( 50% - " + widthcont + "px)"
+        });
+
+        if(movil == true)
+        {
+          $('.wrapper .content_buscar_amigo').css({top: +Number(widtheight*2)+"px"
+          });
+        }
+        
+        return scale
+    }
+    $( window ).resize(function() {
+        console.log(resize_fn());
+    });
+    
+    resize_fn();
+    console.log("Escalador OK");
+
+    //**************
+    //*** Escala ***
+    //**************
+
+
     //**************
     //Click and save
+    //**************
     if(movil == true){
       $('#save').on("touchstart",function(){
         console.log("Reproduce touch en mobile");
@@ -99,6 +159,22 @@ $( window ).load(function() {
         }
       });
     }
+    //**************
+    //Click and save
+    //**************
+
+
+    //**************
+    //++Hack Video++
+    //**************
+    function autov(video, videoc){
+      videoc.prop('muted', true);
+      video.play();
+      setTimeout(function(){ video.pause();videoc.prop('muted', false);video.currentTime = 0;resize_fn();}, 200);
+    }
+    //**************
+    //++Hack Video++
+    //**************
 
 
 
@@ -121,8 +197,6 @@ $( window ).load(function() {
           console.log("Video intro loader.")
         }
       }
-      //video.play();
-      //setTimeout(function(){ video.pause();video.currentTime = 0;}, 200);
       $('.loader').show();
       $('.amigos_une_amigos').animate({'width': '850px', 'bottom': '-34'}, 400);
       $('.marco_video img').delay(28000).css('display', 'block');
@@ -132,55 +206,27 @@ $( window ).load(function() {
     $("#beers_input").keypress(function (e) {
        //if the letter is not digit then display error and don't type anything
        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-          //display error message
-          $("#errmsg").html("Ingresa solo números").show().fadeOut("slow");
-                 return false;
+        //display error message
+        $("#errmsg").html("Ingresa solo números").show().fadeOut("slow");
+        return false;
       }
-     });
-     $('.content_video').hide();
-     $('.wrapper_video').hide();
-     //$('.content_facebook_connect').hide();
-     $('.loader').hide();
+    });
 
 
    $('.drop_bg, .close').click(function(event) {
      $('.content_terms').fadeOut(600);
    });
 
-    //Hide canvascontent_terms
-    $('.canvascreator').hide();
-
-    //**************
-
     
-
-
-    //******************
-    // Validacion Cookie
-    //******************
-
-
 
     
 
 
 
-    //****************
-    //Scale
-    //****************
-
-    
 
     //****************
-    //Scale
+    //*** Facebook ***
     //****************
-
-
-
-
-    //******
-    //Facebook
-    //******
     (function(d, s, id){
        var js, fjs = d.getElementsByTagName(s)[0];
        if (d.getElementById(id)) {return;}
@@ -263,13 +309,13 @@ $( window ).load(function() {
     };
 
 
-    //******
-    //Facebook
-    //******
+    //****************
+    //*** Facebook ***
+    //****************
 
-    //******
-    //funciones Globales canvas
-    //******
+    //***************************
+    // Funciones Globales canvas
+    //***************************
     function dataURLtoBlob(dataURL) {
           var binary = atob(dataURL.split(',')[1]);
           var array = [];
@@ -280,6 +326,16 @@ $( window ).load(function() {
     }
 
     function init(){
+      //Hide Banner
+      $('.banner').hide();
+      //Hide old videos
+      $('.content_video').hide();
+      //Hide videos
+      $('.wrapper_video').hide();
+      //Hide loader
+      $('.loader').hide();
+      //Hide canvascontent_terms
+      $('.canvascreator').hide();
 
       //Video controls
       $(".sound").click( function (){
@@ -325,9 +381,8 @@ $( window ).load(function() {
           $('body').removeClass().addClass('steps step_2');
 
           //pause video
-
-              video.currentTime = 0;
-              video.pause();
+          video.currentTime = 0;
+          video.pause();
 
           //hide report another guy
           reportAnother.hide();
@@ -338,32 +393,33 @@ $( window ).load(function() {
           $('.vid2').hide();
           $('#vid2').show();
 
+          //init Canvas Vars
           var canvas2 = new fabric.Canvas('c2'),
               urlFoto = $('#photo_friend').val(),
               //trimedNme = String(unescape(encodeURIComponent( $('#search_friend').val().replace(/\s+/g, '') ))+random);;
               trimedNme = random;
 
           var foto2 = fototexto(canvas2,"img/410x536.jpg", "img/sello_p.png",urlFoto, 30, 30,0.7, $('#search_friend').val() , $('#beers_input').val(), 400,440, 'hoefler_textregular', 60, 410, 536, String(trimedNme+'_p'), callBack2);
-          //$('.loader').show();
+          
+          // Callback fototexto
           function callBack2(url){
-            $('.banner').css('visibility', 'hidden');
+            $('.banner').hide();
             $('.loader').hide();
             var urlformat = "https://datapola.com/"+url;
             $('.modificar').show();
             $('.reportar_facebook').show();
             $('.marco_video').show();
             $('.play_vid2').show();
-            //Autoplay video if I create report
-            //
 
+            //Button play video reportado preview
             $('.play_vid2').click(function(event) {
-              //Play Videpo
+              
+              //Play Video
               video2.play();
               $('.play_vid2').hide();
 
               //Kill link
               $(this).off();
-              //Launch image
 
               //Clear bfeore append
               $('#profile-thumb').empty();
@@ -377,7 +433,7 @@ $( window ).load(function() {
                   $('.vid2').hide();
                   $('#vid2a').show();
                   $('#vid2a').show();
-                  setTimeout(function(){ $('.banner').css('visibility', 'visible'); }, 11000);
+                  setTimeout(function(){ $('.banner').show();}, 11000);
                   
                   //Play second Video
                   video2a.play();
@@ -388,7 +444,7 @@ $( window ).load(function() {
               //When vid2a is finished
               document.getElementById('vid2a').addEventListener('ended',stop3,false);
               function stop3(e) {
-                  $('.banner').css('visibility', 'hidden');
+                  $('.banner').hide();
                   
                   $('.vid2').hide();
                   $('#vid2b').show();
@@ -450,9 +506,11 @@ $( window ).load(function() {
           video.currentTime = 0;
           video.play();
 
-        }
-        
+          resize_fn();
+          resize_fn();
+          resize_fn();
 
+        }
         return false;
         event.preventDefault();
       });
@@ -493,15 +551,17 @@ $( window ).load(function() {
           video.currentTime = 0;
           video.play();
 
-        }
-        
-        
+          resize_fn();
+          resize_fn();
+          resize_fn();
 
+        }
         return false;
         event.preventDefault();
       });
     }
 
+    //Search friends inside FB response.
     function filler(response, query, boxContainer){
       var query_l = query.length - 1;
       var query_t = query.substring(0,query_l).toLowerCase();
@@ -517,9 +577,8 @@ $( window ).load(function() {
         //Load images
       }
       console.log("coincidieron: "+ count)
-      //Action for input
-      //boxContainer.hide();
-      //search friend
+
+      // Input: search friend
       $('#search_friend').unbind('click').click(function(event) {
           $(this).siblings('.box_amigos_facebook').toggle(400);
       });
@@ -537,7 +596,7 @@ $( window ).load(function() {
       });
     }
 
-    var cancelopublish = false;
+    
 
     function faceConnect(){
       $('.compartir_facebook').click(function(){
@@ -682,7 +741,7 @@ $( window ).load(function() {
 
           //Draw image profile on video if the user is refered
         if(body.hasClass('refered')){
-            $('.banner').css('visibility', 'hidden');
+            $('.banner').hide();
             $("#vid2").show();
             
             
@@ -697,7 +756,7 @@ $( window ).load(function() {
             //When vid2 is finished
             document.getElementById('vid2').addEventListener('ended',stop2,false);
             function stop2(e) {
-                setTimeout(function(){ $('.banner').css('visibility', 'visible'); }, 3000);
+                setTimeout(function(){ $('.banner').show(); }, 3000);
                 $('.vid2').hide();
                 $('#vid2a').show();
                 //Play second Video
@@ -711,7 +770,7 @@ $( window ).load(function() {
             //When vid2a is finished
             document.getElementById('vid2a').addEventListener('ended',stop3,false);
             function stop3(e) {
-                $('.banner').css('visibility', 'hidden');
+                $('.banner').hide();
                 $('.vid2').hide();
                 $('#vid2b').show();
                 //Play third Video
@@ -744,9 +803,16 @@ $( window ).load(function() {
 
       });//End of async
     }//End of facbook connect
+    
+    //************
+    //*** INIT ***
+    //************
 
     init();
 
+    //******************
+    //*** FOTO TEXTO ***
+    //******************
 
     function fototexto(canvas, url_fondo, url_sello ,url, x, y, scale, texto_nombre, texto_polas, top_texto_nombre, top_texto_polas, font, size, width, height, tName, callback){
         canvas.setWidth(width);
@@ -831,6 +897,10 @@ $( window ).load(function() {
         }
     }
 
+     //******************
+    //*** FOTO TEXTO ***
+    //******************
+
     //Funcion para insertar los elementos desde una URL
     function insertarFotoDrag(canvas, url, seleccionable, eventos, zindex, nombre, left, top, scale, callback_imagen)
     {
@@ -853,6 +923,7 @@ $( window ).load(function() {
         }, {crossOrigin: 'Anonymous'});
     }
 
+    //Funcion para crear la foto en el canvas
     function create(canvas, tName, callback){
         canvas.discardActiveObject();
         canvas.renderAll();

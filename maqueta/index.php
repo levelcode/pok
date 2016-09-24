@@ -36,11 +36,13 @@
         <link rel="manifest" href="icons/manifest.json">
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+        
+        <meta name="theme-color" content="#ffffff">
 
 
 
         <link rel="stylesheet" href="css/normalize.css">
-        
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
         <link rel="stylesheet" href="css/main.css">
 
@@ -50,14 +52,7 @@
 
         <meta property="og:description" content="Tú también puedes reportar a tus amigos en DATAPOLA." />
 
-
         <meta property="fb:app_id" content="1660712804256395" />
-
-        <meta property="og:image:width" content="600" />
-
-        <meta property="og:image:height" content="600" />
-
-        
 
         <?php
 
@@ -70,7 +65,12 @@
             ?>
             <meta property="og:type" content="datapola:amigo"/>
             <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" /> 
+            
+            <meta property="og:image:secure_url" content='<?php echo $dominio."/subidas/".$_GET["id"].".jpg";?>' />
             <meta property="og:image" content='<?php echo $dominio."/subidas/".$_GET["id"].".jpg";?>' />
+            <meta property="og:image:width" content="600" />
+            <meta property="og:image:height" content="600" />
+            
             <meta property="og:url" content='<?php echo $dominio."/index.php?id=".$_GET["id"]; ?>' />
             <meta property="datapola:amigo" content="<?php echo $_GET["id"]; ?>" />
 
@@ -80,7 +80,7 @@
             }else{
 
             ?>
-            <meta property="og:url" content="https://datapola.com" />
+
             <meta property="og:image" content="https://datapola.com/img/datapola.jpg" />
             <meta property="og:title" content="DATAPOLA" />
             <?php
@@ -112,23 +112,7 @@
 
         <div class="wrapper">
 
-            <!--div class="content_terms">
-                <div class="drop_bg"></div><!--ghost bg-->
-                <!--div class="box_terms">
-                    <a href="javscript:void(0);" class="close">x</a>
-                    <h2>Publicar en Facebook</h2>
-                    <div class="border_top_yellow"></div>
-                    <form>
-                        <label>Edita el texto de tu publicacion</label>
-                        <input type="text" id="publication" placeholder="Escribe el mensaje que acompañará la publicación">
-                    </form>
-                    <button id="push_public" class="boton fb_boton"></button>
-
-                    <p id="retorno_pub"></p>
-                </div>
-            </div-->
-
-            <?php require 'content.php'; ?>
+            <?php require 'content_leo.php'; ?>
 
         </div><!--end of wrapper-->
 
@@ -190,6 +174,7 @@
 
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
+        <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js"></script>-->
 
         <script src="js/fabric/dist/fabric.min.js"></script>
 
@@ -199,12 +184,45 @@
 
         <script type="text/javascript" src="js/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
         <script type="text/javascript" src="js/iphone-inline-video.browser.js"></script>
-        
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 
 
         <script type="text/javascript" src="js/jquery-cookie.js"></script>
+        <script>
+            $( document ).ready(function() {
+
+                var w = $('body').width();
+                var h = $('body').height();
+
+                var wv = 1920;
+                var hv = 1080;
+
+                var scale;
+                function resize_fn(){
+                    scale = Math.min(Number(h-150)/hv, w/wv);
+                    $('#contenedor_videos').css({
+                        transform: "scale(" + scale + ")"
+                    });
+                    var widthcont = Number($('#contenedor_videos').width()*scale)/2;
+                    console.log(widthcont);
+                    $('#contenedor_videos').css({
+                        left:  "calc( 50% - " + widthcont + "px)"
+                    });
+                    
+                    return scale
+                }
+                $( window ).resize(function() {
+                    w = $('body').width();
+                    h = $('body').height();
+                    console.log(resize_fn());
+                });
+                
+                setTimeout(function(){ resize_fn();}, 2000);
+                console.log("Listo scalador");
+            });
+        </script>
+
+
+
         <script type="text/javascript" src="js/fb_functions.js"></script>
 
         <!--script type="text/javascript" src="js/general.js"></script-->

@@ -52,7 +52,7 @@ canvas
 }
 
 #vid{
-    position:fixed;
+    position:absolute;
     width:100%;
     height: calc(100% - 150px);
     background-color: #000;
@@ -60,7 +60,7 @@ canvas
     top: 0;
 }
 .vid{
-    position:fixed;
+    position:absolute;
     background-color:black;
     top:50%; left:50%;
     transform:translate(-50%, -50%);
@@ -101,7 +101,7 @@ canvas
 .vid2
 {
     display:none;
-    position: fixed;
+    position: absolute;
     background-color: #000;
     top: 0;
     width: 100%;
@@ -1119,10 +1119,6 @@ body.steps .content_buscar_amigo{
     body.steps.step_1 .content_buscar_amigo #step_1{
         display: block;
     }
-
-        body.steps.step_1 .content_video .vid2{
-            display: !important;
-        }
 
     /*second step*/
     body.steps.step_2 .content_buscar_amigo #step_2{

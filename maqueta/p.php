@@ -215,7 +215,8 @@
                     h = $('body').height();
                     console.log(resize_fn());
                 });
-                resize_fn();
+                
+                setTimeout(function(){ resize_fn();}, 2000);
                 console.log("Listo scalador");
             });
         </script>

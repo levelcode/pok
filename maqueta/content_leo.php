@@ -162,7 +162,7 @@
 
 	</div>
 
-	<a href="https://youtu.be/kOe1cmEVEXQ" class="banner" target="_blank" style="display:none"><img src="img/banner.gif" alt=""></a>
+	<a href="https://youtu.be/kOe1cmEVEXQ" class="banner" target="_blank"><img src="img/banner.gif" alt=""></a>
 	<div id="step_2">
 
 		<div class="content_reportar">

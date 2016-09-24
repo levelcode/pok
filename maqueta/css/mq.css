@@ -142,7 +142,6 @@
         background-position: center 0%;
         position: relative;
         overflow: hidden;
-        height: auto;
     }
     footer
     {
@@ -185,7 +184,7 @@
         width: 90%;
         padding: 5%;
         position: relative;
-        top: 0;
+        top: 50%;
     }
     .wrapper .content_ingresar p
     {
@@ -217,8 +216,7 @@
 
     .wrapper .content_buscar_amigo
     {
-        position: relative;
-        height: 100%;
+        position: absolute;
     }
     #step_1, #step_2, #step_3
     {
