@@ -13,18 +13,9 @@ var day;
 var month;
 var year;
 var cancelopublish = false;
-
-//Vars FB
-var url_l = String((window.location != window.parent.location) ? document.referrer: document.location.href),
-body = $('body'),
-dominio = "datapola.com/",
-movil = false,
-ios =  iOS(),
-ref = document.referrer,
-fb_valid = false;
-
-
-
+var body = $('body');
+var ref = document.referrer
+var fb_valid = false;
 
 
 //Variables de video
@@ -38,20 +29,7 @@ var video2 = $("#vid2").get(0),
     video2b = $("#vid2b").get(0),
     video = $("#vid").get(0);
 
-if(movil==true){
-  console.log("Desde mobile: "+movil);
-}else{
 
-};
-
-//Make videos usable by iOS
-if(ios == true){
-  console.log("Desde ios")
-  makeVideoPlayableInline(video);
-  makeVideoPlayableInline(video2);
-  makeVideoPlayableInline(video2a);
-  makeVideoPlayableInline(video2b);
-}
 
 //Search if the client is mobile
 (function(a){(jQuery.browser=jQuery.browser||{}).mobile=/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))})(navigator.userAgent||navigator.vendor||window.opera);
@@ -67,7 +45,8 @@ function iOS() {
     'iPod Simulator',
     'iPad',
     'iPhone',
-    'iPod'
+    'iPod',
+    'safari'
   ];
 
   while (iDevices.length) {
@@ -99,32 +78,22 @@ $( window ).load(function() {
         h = $('body').height();
         
         scale = Math.min(Number(h-150)/hv, w/wv);
-        $('#contenedor_videos').css({
-            "-ms-transform": "scale(" + scale + ")"
-        });
-        $('#contenedor_videos').css({
-            "-webkit-transform": "scale(" + scale + ")"
-        });
-        $('#contenedor_videos').css({
-            "-moz-transform": "scale(" + scale + ")"
-        });
-        $('#contenedor_videos').css({
-            "-o-transform": "scale(" + scale + ")"
-        });
-        $('#contenedor_videos').css({
-            "transform": "scale(" + scale + ")"
-        });
-
         var widthcont = Number($('#contenedor_videos').width()*scale)/2;
-        var widtheight = Number($('#contenedor_videos').height()*scale)/2;
-        console.log("Ancho calculado: " + widthcont + " Escala: "+scale);
+        var heightcont = Number($('#contenedor_videos').height()*scale)/2;
+
         $('#contenedor_videos').css({
+            '-webkit-transform':"scale3d("+scale+","+scale+",1)",
+            '-moz-transform': "scale3d("+scale+","+scale+",1)",
+            '-o-transform': "scale3d("+scale+","+scale+",1)",
+            '-ms-transform': "scale3d("+scale+","+scale+",1)",
+            "-webkit-backface-visibility":  "hidden",
             left:  "calc( 50% - " + widthcont + "px)"
         });
 
+        console.log("Ancho calculado: " + widthcont + " Escala: "+scale);
         if(movil == true)
         {
-          $('.wrapper .content_buscar_amigo').css({top: +Number(widtheight*2)+"px"
+          $('.wrapper .content_buscar_amigo').css({top: +Number(heightcont*2)+"px"
           });
         }
         
@@ -140,6 +109,29 @@ $( window ).load(function() {
     //**************
     //*** Escala ***
     //**************
+
+    //********************
+    //*** Mobile Valid ***
+    //********************
+
+    if(movil==true){
+      console.log("Desde mobile: "+movil);
+    }else{
+
+    };
+
+    //Make videos usable by iOS
+    if(ios == true){
+      console.log("Desde ios")
+      makeVideoPlayableInline(video);
+      makeVideoPlayableInline(video2);
+      makeVideoPlayableInline(video2a);
+      makeVideoPlayableInline(video2b);
+    }
+
+    //********************
+    //*** Mobile Valid ***
+    //********************
 
 
     //**************
@@ -170,7 +162,7 @@ $( window ).load(function() {
     function autov(video, videoc){
       videoc.prop('muted', true);
       video.play();
-      setTimeout(function(){ video.pause();videoc.prop('muted', false);video.currentTime = 0;resize_fn();}, 200);
+      setTimeout(function(){ video.pause();videoc.prop('muted', false);video.currentTime = 0;}, 200);
     }
     //**************
     //++Hack Video++
@@ -191,15 +183,20 @@ $( window ).load(function() {
           autov(video2, video2c);
           autov(video2a, video2ac);
           autov(video2b, video2bc);
-          console.log("Videos referidos loaders.")
+          console.log("Videos referidos loaded.")
         }else{
           autov(video, videoc);
-          console.log("Video intro loader.")
+          console.log("Video intro loaded.")
         }
       }
+      if(body.hasClass('refered')){
+        autov(video, videoc);
+        console.log("Video intro loaded.")
+      }
+
+
       $('.loader').show();
       $('.amigos_une_amigos').animate({'width': '850px', 'bottom': '-34'}, 400);
-      $('.marco_video img').delay(28000).css('display', 'block');
     });
 
     //Typing validation
@@ -328,8 +325,6 @@ $( window ).load(function() {
     function init(){
       //Hide Banner
       $('.banner').hide();
-      //Hide old videos
-      $('.content_video').hide();
       //Hide videos
       $('.wrapper_video').hide();
       //Hide loader
@@ -430,6 +425,11 @@ $( window ).load(function() {
               //When vid2 is finished
               document.getElementById('vid2').addEventListener('ended',stop2,false);
               function stop2(e) {
+                  if(ios == true){
+                    setTimeout(function(){ $('.banner').show(); $('.wrapper_video').effect( "shake", {times:1, distance:2}, 100 );}, 1000);
+                  }else{
+                    setTimeout(function(){ $('.banner').show();}, 11000);
+                  }
                   $('.vid2').hide();
                   $('#vid2a').show();
                   $('#vid2a').show();
@@ -444,6 +444,9 @@ $( window ).load(function() {
               //When vid2a is finished
               document.getElementById('vid2a').addEventListener('ended',stop3,false);
               function stop3(e) {
+                  if(ios == true){
+                    setTimeout(function(){ $('.wrapper_video').effect( "shake", {times:1, distance:2}, 100 );}, 1000);
+                  }
                   $('.banner').hide();
                   
                   $('.vid2').hide();
@@ -503,11 +506,6 @@ $( window ).load(function() {
         $("#vid").show();
         video.currentTime = 0;
         video.play();
-
-        resize_fn();
-        resize_fn();
-        resize_fn();
-
         
         return false;
         event.preventDefault();
@@ -546,11 +544,6 @@ $( window ).load(function() {
         $("#vid").show();
         video.currentTime = 0;
         video.play();
-
-        resize_fn();
-        resize_fn();
-        resize_fn();
-
         
         return false;
         event.preventDefault();
@@ -618,12 +611,7 @@ $( window ).load(function() {
         $('.loader').hide();
 
         //Show actions on bottom
-          $('body').addClass('steps step_1');
-
-          //Hide legal
-
-          $('.content_video').show();
-          $('.wrapper_video').show();
+        $('body').addClass('steps step_1');
           
 
         //Data array
@@ -701,35 +689,75 @@ $( window ).load(function() {
                 'fb:app_id': '1660712804256395'
               }},
                 function(response) {
+                  if (!response || response.error) {
+                    console.log(String('Error: '+response.error));
+                  } else {
+                    console.log("Exito al Crear Objero ");
+                  }
                 //Read last object
+                console.log("Objeto Creado: " + urlformat);
                 FB.api(
                   'me/objects/datapola:amigo',
                   'get',
                   function(response) {
+                    if (!response || response.error) {
+                      console.log(String('Error: '+r.error));
+                    } else {
+                      console.log("Exito al Recuperar Objeto ");
+                    }
                     var id_amiguito = response.data[0].id;
 
-                    //Action
-                    FB.ui({
-                      method: 'share_open_graph',
-                      action_type: 'datapola:reportar',
-                      action_properties: JSON.stringify({
-                        amigo:id_amiguito,
-                        tags:String($('#id_friend').val())
-                      })
-                    }, function(r){ 
-                      if (!r || r.error) {
-                        console.log(String('Error: '+r.error));
-                      } else {
-                        $('.reportar_facebook').hide();
-                        $('.modificar').hide();
-                        $('.reportar_otro_amigo').show();
-                        console.log("Exito en la publicacion en FB" + r);
-                        //$('#fb-root').empty();
-                        $('.reportar_facebook').removeClass('loaded');
-                        cancelopublish = true;
-                        
-                      }
-                    });// FB ui
+                    //Action Standar
+                    if(ios == true){
+                      console.log("Abriendo Modal iOS");
+                      FB.api(
+                          'me/datapola:reportar',
+                          'post',
+                          {
+                             amigo: id_amiguito, // make sure to have the apropiate og:type meta set
+                             tags: $('#id_friend').val(), // the tokens ids for those friens you wanna tag and you got on previous step
+                          },
+                          function(response) {
+                            if (!response || response.error) {
+                              console.log(response.error);
+                            } else {
+                              alert("Su publicacion se realizo con éxito");
+                              $('.reportar_facebook').hide();
+                              $('.modificar').hide();
+                              $('.reportar_otro_amigo').show();
+                              console.log("Exito en la publicacion en FB" + r);
+                              //$('#fb-root').empty();
+                              $('.reportar_facebook').removeClass('loaded');
+                              cancelopublish = true;
+                            }
+                            
+                          }
+                      );
+                    }else{
+                      FB.ui({
+                        method: 'share_open_graph',
+                        action_type: 'datapola:reportar',
+                        action_properties: JSON.stringify({
+                          amigo:id_amiguito,
+                          tags:String($('#id_friend').val())
+                        })
+                      }, function(r){ 
+                        if (!r || r.error) {
+                          console.log(String('Error: '+r.error));
+                        } else {
+                          $('.reportar_facebook').hide();
+                          $('.modificar').hide();
+                          $('.reportar_otro_amigo').show();
+                          console.log("Exito en la publicacion en FB" + r);
+                          //$('#fb-root').empty();
+                          $('.reportar_facebook').removeClass('loaded');
+                          cancelopublish = true;
+                          
+                        }
+                      });// FB ui
+
+                    }//else ios
+                    
                 });//FB api get
             });//FB api post
           }
@@ -738,6 +766,7 @@ $( window ).load(function() {
           //Draw image profile on video if the user is refered
         if(body.hasClass('refered')){
             $('.banner').hide();
+            $('.wrapper_video').show();
             $("#vid2").show();
             
             
@@ -752,7 +781,13 @@ $( window ).load(function() {
             //When vid2 is finished
             document.getElementById('vid2').addEventListener('ended',stop2,false);
             function stop2(e) {
-                setTimeout(function(){ $('.banner').show(); }, 3000);
+                if(ios == true){
+                  setTimeout(function(){ $('.banner').show(); $('.wrapper_video').effect( "shake", {times:1, distance:2}, 100 );}, 1000);
+                }else{
+                  setTimeout(function(){ $('.banner').show();}, 11000);
+                }
+                
+
                 $('.vid2').hide();
                 $('#vid2a').show();
                 //Play second Video
@@ -766,10 +801,15 @@ $( window ).load(function() {
             //When vid2a is finished
             document.getElementById('vid2a').addEventListener('ended',stop3,false);
             function stop3(e) {
+                if(ios == true){
+                  setTimeout(function(){ $('.wrapper_video').effect( "shake", {times:1, distance:2}, 100 );}, 1000);
+                }
+
                 $('.banner').hide();
                 $('.vid2').hide();
                 $('#vid2b').show();
                 //Play third Video
+                console.log("Play ultimo video");
                 video2b.play();
                 //Attach image generated
                 $('#profile-thumb').hide();
@@ -793,8 +833,16 @@ $( window ).load(function() {
 
         }else{
               $('.loader').hide();
-              console.log("borrado de loader, carga video");
+              console.log("borrado de loader, carga video 1");
+              //$('.marco_video').show();
+              $('.wrapper_video').show();
+              $('#vid').show();
               video.play();
+              document.getElementById('vid').addEventListener('ended',stopT,false);
+              function stopT(e) {
+                  
+              }
+              console.log('shake vid');
         }
 
       });//End of async

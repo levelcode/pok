@@ -10,7 +10,21 @@
 
 
 
+<?php 
 
+$detect = new Mobile_Detect;
+
+if ( $detect->isMobile() ) {
+	$videoT = "small";
+	$ext_videoT = "mp4";
+}else{
+	$videoT = "android";
+	$ext_videoT = "mp4";
+}
+
+
+
+?>
 
 <div class="wrapper_video" style="display:none">
 	<div id="contenedor_videos">
@@ -28,25 +42,25 @@
 		        ?>
 	    </div>
 		<!--First video-->
-	    <video id="vid" src="videos/inv/inv.mp4" style="" class="video_l" title="vid_1" webkit-playsinline playsinline>
+	    <video id="vid" src="videos/<?php echo $videoT; ?>/inv.<?php echo $ext_videoT; ?>" style="" class="video_l" title="vid_1" poster="img/bg.png" webkit-playsinline playsinline>
 	        <source src="videos/inv/inv.webm" type="video/webm" />
 	        <source src="videos/inv/inv.ogg" type="video/ogg" />
 	    </video>
 
 	    <!--Second video-->
-	    <video id="vid2" src="videos/rep_en3/rep1_opc1.mp4" class="video_l vid2" poster="img/bg.png"  title="vid_1" webkit-playsinline playsinline>
+	    <video id="vid2" src="videos/<?php echo $videoT; ?>/rep1_opc1.<?php echo $ext_videoT; ?>" class="video_l vid2" poster="img/bg.png"  title="vid_1" webkit-playsinline playsinline>
 	    	<source src="videos/rep_en3/rep1_opc1.webm" type="video/webm" />
 	    	<source src="videos/rep_en3/rep1_opc1.ogg" type="video/ogg" />
 	    </video>
 
 		<!--third video-->
-	    <video id="vid2a" src="videos/rep_en3/rep2.mp4" class="video_l vid2" poster="img/bg.png" title="vid_2" webkit-playsinline playsinline>
+	    <video id="vid2a" src="videos/<?php echo $videoT; ?>/rep2.<?php echo $ext_videoT; ?>" class="video_l vid2" title="vid_2" webkit-playsinline playsinline>
 	    	<source src="videos/rep_en3/rep2.webm" type="video/webm" />
 	    	<source src="videos/rep_en3/rep2.ogg" type="video/ogg" />
 	    </video>
 
 		<!--Last video-->
-	    <video id="vid2b" src="videos/rep_en3/rep3.mp4" class="video_l vid2" poster="img/bg.png" title="vid_2" webkit-playsinline playsinline>
+	    <video id="vid2b" src="videos/<?php echo $videoT; ?>/rep3.<?php echo $ext_videoT; ?>" class="video_l vid2" title="vid_2" webkit-playsinline playsinline>
 	    	<source src="videos/rep_en3/rep3.webm" type="video/webm" />
 	    	<source src="videos/rep_en3/rep3.ogg" type="video/ogg" />
 	    </video>
@@ -74,7 +88,6 @@
 }
 .video_l{
 	position: absolute !important;
-    position: absolute !important;
     height: 1080px !important;
     width: 1920px !important;
     left: 0 !important;
