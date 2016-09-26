@@ -102,7 +102,7 @@
     </head>
 
     <body <?php if (isset($bodyref)){echo 'class="'.$bodyref.'"';}?>>
-
+        <p id="consola_logs" style="position:absolute; width:500px; height:auto; background:rgba(0,0,0,0.8); z-index:1000"></p>
         <!--Loader-->
         <div class="loader" style="width: 100%;height: 100%;background-color: black;z-index: 10000;display:block">
 
@@ -187,41 +187,6 @@
 
 
         <script type="text/javascript" src="js/jquery-cookie.js"></script>
-        <script>
-            $( document ).ready(function() {
-
-                var w = $('body').width();
-                var h = $('body').height();
-
-                var wv = 1920;
-                var hv = 1080;
-
-                var scale;
-                function resize_fn(){
-                    scale = Math.min(Number(h-150)/hv, w/wv);
-                    $('#contenedor_videos').css({
-                        transform: "scale(" + scale + ")"
-                    });
-                    var widthcont = Number($('#contenedor_videos').width()*scale)/2;
-                    console.log(widthcont);
-                    $('#contenedor_videos').css({
-                        left:  "calc( 50% - " + widthcont + "px)"
-                    });
-                    
-                    return scale
-                }
-                $( window ).resize(function() {
-                    w = $('body').width();
-                    h = $('body').height();
-                    console.log(resize_fn());
-                });
-                
-                setTimeout(function(){ resize_fn();}, 2000);
-                console.log("Listo scalador");
-            });
-        </script>
-
-
 
         <script type="text/javascript" src="js/fb_functions.js"></script>
 
