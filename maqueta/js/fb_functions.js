@@ -1,7 +1,7 @@
 //Lanzador universal de consola
 function console_dev(string){
   console.log(string);
-  $("#consola_logs").append("</p>"+string+"<p>");
+  //$("#consola_logs").append("</p>"+string+"<p>");
 };
 
 //Globales
@@ -226,8 +226,12 @@ $( window ).load(function() {
         FB.getLoginStatus(function(response) {
           console_dev(String("Estado usuario: "+response.status));
           if (response.status == 'connected') {
+            //The User was already sign up on the app so, we will not call fb.login
+
             if(movil == false){
+              //Automatic access trough PC
               console_dev("Ingreso Automatico.");
+
               $('.loader').show();
               setTimeout(function(){
                 FB.api('/me?fields=first_name', function(data) {
@@ -235,17 +239,25 @@ $( window ).load(function() {
                 });
                 validEdad();
                 $(".content_facebook_connect").hide();
+
               }, 500);
             }else{
+              //Automatic access trough Mobile Devices
               console_dev("Ingreso por Mobile.");
+
+              //Asign a button with the accesss directly to FB.api without fb.login
               $('#save').on("click",function(){
                 $(".content_facebook_connect").hide();
                 if(body.hasClass('refered')){
+                  //This are for users that enter to the site as refereds (only will see content)
+
                   $('.loader').show();
                   console_dev("NO Dialogo Permisos");
                   validRefer();
-                  //validEdad();
+                  
                 }else{
+                  //This are for users that enter to the site as and will publish content but was accepted permission dialogs before.
+
                   $('.loader').show();
                   console_dev("Dialogo Permisos");
                   FB.api('/me?fields=first_name', function(data) {
@@ -258,15 +270,25 @@ $( window ).load(function() {
               });
             }
           } else {
+             //The User are still not authenticated and need a button with a call to fb.login
+
             if(movil == false){
-              console_dev("Ingreso por Click.");
+              //Asign a button with the accesss to fb.login for PC and other devices
+
+              console_dev("Ingreso por Click. New user");
               $('#save').click(function() {
                 $(".content_facebook_connect").hide();
                 $('.loader').show();
                 if(body.hasClass('refered')){
+                  //This are for users that enter to the site as refereds (only will see content)
+                  
                   console_dev("NO Dialogo Permisos");
                   validRefer();
+
                 }else{
+                  //This is for users that enter to the site and will publish content
+
+
                   console_dev("Dialogo Permisos");
                   FB.login(function(response) {
                     onLogin(response);
@@ -275,14 +297,23 @@ $( window ).load(function() {
                 $('.amigos_une_amigos').animate({'width': '850px', 'bottom': '-34'}, 400);
               });
             }else{
-              console_dev("Ingreso por Tap.");
+              //Asign a button with the accesss to fb.login for Mobile Devices
+
+              console_dev("Ingreso por Tap.  New user");
               $('#save').on("click",function(){
                 $(".content_facebook_connect").hide();
                 $('.loader').show();
                 if(body.hasClass('refered')){
+                  //This are for users that enter to the site as refered (only will see content), they will login after.
                   console_dev("NO Dialogo Permisos");
                   validRefer();
                 }else{
+                  //This is for users that enter to the site from mobile and will publish content, but NOT has accepted permission dialogs before.
+                  
+                  //******
+                  //******This is one of the points when my app launches blank screen in android inappbrowser
+                  //*******
+
                   console_dev("Dialogo Permisos");
                   FB.login(function(response) {
                     onLogin(response);

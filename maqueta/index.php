@@ -102,7 +102,7 @@
     </head>
 
     <body <?php if (isset($bodyref)){echo 'class="'.$bodyref.'"';}?>>
-         <p id="consola_logs" style="position:absolute; width:500px; height:auto; background:rgba(0,0,0,0.8); z-index:1000"></p>
+         <p id="consola_logs" style="position:absolute; width:350px; height:auto; background:rgba(0,0,0,0.8); z-index:1000"></p>
         <!--Loader-->
         <div class="loader" style="width: 100%;height: 100%;background-color: black;z-index: 10000;display:block">
 
@@ -195,18 +195,13 @@
 
         <!--script type="text/javascript" src="js/general.js"></script-->
         <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-
-            e.src='//www.google-analytics.com/analytics.js';
-
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+          ga('create', 'UA-48964618-11', 'auto');
+          ga('send', 'pageview');
 
         </script>
 
