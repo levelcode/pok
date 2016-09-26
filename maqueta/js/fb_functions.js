@@ -228,6 +228,7 @@ $( window ).load(function() {
           if (response.status == 'connected') {
             if(movil == false){
               console_dev("Ingreso Automatico.");
+              $('.loader').show();
               setTimeout(function(){
                 FB.api('/me?fields=first_name', function(data) {
                     var value_t = data.first_name;
@@ -891,7 +892,6 @@ $( window ).load(function() {
           function stopT(e) {
               
           }
-          console_dev('shake vid');
       }
     }
 
