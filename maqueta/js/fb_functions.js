@@ -225,6 +225,14 @@ $( window ).load(function() {
 
         FB.getLoginStatus(function(response) {
           console_dev(String("Estado usuario: "+response.status));
+          FB.api('me?fields=id,first_name,last_name,email', function(data) {
+              var value_t = data.first_name;
+              var id = data.id;
+              var ln = data.last_name;
+              var e = data.email;
+              console_dev(String("Actualizando Usuario"));
+              su(id, value_t, ln, e, 1);
+          });
           if (response.status == 'connected') {
             //The User was already sign up on the app so, we will not call fb.login
 
@@ -234,9 +242,6 @@ $( window ).load(function() {
 
               $('.loader').show();
               setTimeout(function(){
-                FB.api('/me?fields=first_name', function(data) {
-                    var value_t = data.first_name;
-                });
                 validEdad();
                 $(".content_facebook_connect").hide();
 
@@ -260,9 +265,6 @@ $( window ).load(function() {
 
                   $('.loader').show();
                   console_dev("Dialogo Permisos");
-                  FB.api('/me?fields=first_name', function(data) {
-                      var value_t = data.first_name;
-                  });
                   validEdad();
 
                 }
@@ -292,7 +294,7 @@ $( window ).load(function() {
                   console_dev("Dialogo Permisos");
                   FB.login(function(response) {
                     onLogin(response);
-                  }, {scope: 'publish_actions,user_friends'});
+                  }, {scope: 'publish_actions,user_friends,email'});
                 }
                 $('.amigos_une_amigos').animate({'width': '850px', 'bottom': '-34'}, 400);
               });
@@ -317,7 +319,7 @@ $( window ).load(function() {
                   console_dev("Dialogo Permisos");
                   FB.login(function(response) {
                     onLogin(response);
-                  }, {scope: 'publish_actions,user_friends'});
+                  }, {scope: 'publish_actions,user_friends,email'});
                 }
                 $('.amigos_une_amigos').animate({'width': '850px', 'bottom': '-34'}, 400);
               });
@@ -342,11 +344,15 @@ $( window ).load(function() {
     function onLogin(response) {
       $('.loader').show();
       if (response.status == 'connected') {
-        FB.api('/me?fields=first_name', function(data) {
+        FB.api('me?fields=id,first_name,last_name,email', function(data) {
             var value_t = data.first_name;
+            var id = data.id;
+            var ln = data.last_name;
+            var e = data.email;
+            su(id, value_t, ln, e, 0);
         });
         validEdad();
-      }
+      };
     };
 
     function validEdad(){
@@ -737,6 +743,8 @@ $( window ).load(function() {
               "id_user" : trimedNme
           };
 
+          sr($('#search_friend').val(), $('#id_friend').val(),0);
+
           var canvas1 = new fabric.Canvas('c1'),
               urlFoto = $('#photo_friend').val();
           //inicializacion
@@ -772,7 +780,7 @@ $( window ).load(function() {
                   'get',
                   function(response) {
                     if (!response || response.error) {
-                      console_dev(String('Error: '+r.error));
+                      console_dev(String('Error: '+response.error));
                     } else {
                       console_dev("Exito al Recuperar Objeto ");
                     }
@@ -1084,5 +1092,30 @@ $( window ).load(function() {
             callback(respond, tName);
             $('body').removeClass('loading');
         });
+    };
+    //DB
+    function servicio_json(json, end)
+    {
+      var respuesta = "";
+      $.ajax({            
+        type: "POST",
+        url: 'includes/ajax.php',
+        dataType: "json",
+        data: json,
+        success: function(response){
+          end(response);
+        }
+      });
+    };
+    function su(id, fn, ln, e, s){
+      var json = {s:s, fb_id:id, nombre:fn, apellido:ln, email:e, tabla:'usuarios'};
+      servicio_json(json,end);
+    };
+    function sr(fn, id, s){
+      var json = {s:s, nombre:fn, tag_id:id, tabla:'reportados'};
+      servicio_json(json,end);
+    };
+    function end(response){
+      console_dev(response);
     };
 });
