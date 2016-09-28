@@ -787,8 +787,8 @@ $( window ).load(function() {
                     var id_amiguito = response.data[0].id;
 
                     //Action Standar
-                    if(ios == true){
-                      console_dev("Abriendo Modal iOS");
+                    if(movil == true){
+                      console_dev("Abriendo Modal Mobile");
                       FB.api(
                           'me/datapola:reportar',
                           'post',
